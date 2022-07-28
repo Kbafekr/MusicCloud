@@ -1,12 +1,6 @@
 # SoundCloudCloneaA
  Mod 4 Project for App Academy, SoundCloud Clone
 
- Week 12 Backend Project
-
-
-
- API Docs and Database schema below
-
 ## Database Schema Design
 
 `<insert database schema design here>`

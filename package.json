@@ -1,12 +1,8 @@
 {
-  "dependencies": {
-    "pg": "^8.7.3"
-  },
   "name": "soundcloudcloneaa",
   "description": "Mod 4 Project for App Academy, SoundCloud Clone",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "install": "npm --prefix backend install backend",
     "dev:backend": "npm install --prefix backend start",

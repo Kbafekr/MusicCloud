@@ -1,3 +1,4 @@
+
 // backend/utils/auth.js
 const jwt = require('jsonwebtoken');
 const { jwtConfig } = require('../config');
@@ -50,7 +51,7 @@ const setTokenCookie = (res, user) => {
       return next();
     });
   };
-
+//returns error if no users feature 0 authentication required
   const requireAuth = function (req, _res, next) {
     if (req.user) return next();
 

@@ -9,8 +9,8 @@ const { Sequelize, Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const { id, username, email } = this; // context will be the User instance
-      return { id, username, email };
+      const  { firstName, lastName, id, username, email } = this; // context will be the User instance
+      return { firstName, lastName, id, username, email };
     }
 
     validatePassword(password) {
@@ -26,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
       const user = await User.scope('loginUser').findOne({
         where: {
           [Op.or]: {
+            firstName: credential,
+            lastName: credential,
             username: credential,
             email: credential
           }
@@ -37,11 +39,13 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     //signup
-    static async signup({ username, email, password }) {
+    static async signup({ firstName, lastName, email, username, password }) {
       const hashedPassword = bcrypt.hashSync(password);
       const user = await User.create({
-        username,
+        firstName,
+        lastName,
         email,
+        username,
         hashedPassword
       });
       return await User.scope('currentUser').findByPk(user.id);

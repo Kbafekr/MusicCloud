@@ -78,3 +78,5 @@ res.json(editSong)
     })
     res.json(deleteSong.destroy())
   })
+
+  module.exports = router

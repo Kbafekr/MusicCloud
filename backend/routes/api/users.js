@@ -30,44 +30,19 @@ const validateSignup = [
     handleValidationErrors
   ];
 
-  const UniqueSignupValidations = () => {
-    const err = {}
-    const emailInput = await User.findOne({where: {email: email}})
-    if (emailInput) {
-        err.emailError = "Email already associated with another user."
-    }
-
-    const userNameInput = await User.findOne({where: {username: username}})
-    if (userNameInput) {
-        err.userNameError = "username already associated with another user."
-    }
-
-    err.status(403)
-    res.json(err)
-
-  }
-
 
   let where = {};
 
 // Sign up
-router.post(
-  '/',
-  validateSignup,
-  async (req, res) => {
-    const { firstName, lastName, email, username, password } = req.body;
+router.post('/', validateSignup, async (req, res) => {
+  const { username, firstName, lastName, email, password } = req.body;
 
-    UniqueSignupValidations();
+  const user = await User.signup({ username, firstName, lastName, email, password });
 
-    const user = await User.signup({ firstName, lastName, email, username, password });
+  await setTokenCookie(res, user);
 
-    await setTokenCookie(res, user);
-
-    return res.json({
-      user
-    });
-  }
-);
+  return res.json({ user });
+});
 
 
 // find all users

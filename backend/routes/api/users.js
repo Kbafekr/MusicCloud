@@ -9,6 +9,8 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+let where = {};
+
 const validateSignup = [
   check('email')
     .exists({ checkFalsy: true })
@@ -40,10 +42,19 @@ router.post(
     await setTokenCookie(res, user);
 
     return res.json({
-      user,
+      user
     });
   }
 );
 
+
+// find all users
+router.get('/', async (req, res) => {
+  const allUsers = await User.findAll({
+      where,
+
+  });
+  res.json(allUsers);
+});
 
 module.exports = router;

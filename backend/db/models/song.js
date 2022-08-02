@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
 
     static associate(models) {
-      Song.belongsTo(models.User, {foreignKey: "userId", onDelete: "cascade"})
+      Song.belongsTo(models.User, {foreignKey: "userId", hooks: true, onDelete: "cascade"})
     }
   }
   Song.init({

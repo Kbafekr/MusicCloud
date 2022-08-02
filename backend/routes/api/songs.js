@@ -31,18 +31,15 @@ const router = express.Router();
   //get song details by Id
 
   router.get('/:songId', async (req, res) => {
-    const {songId} = req.params
-    const songDetails = await Song.findOne({
-        where: {
-            id: songId
-        },
-        include: [{
-            model: User
-        }]
-    })
+    const theSong = await Song.findOne({
+      where: {
+        id: req.params.id
+      },
+        include: [{ model: User}]
+    });
 
-    res.json(songDetails)
-  })
+    return res.json(theSong);
+});
 
   //create a song for an album based on albums id
 
@@ -57,7 +54,7 @@ const router = express.Router();
   })
   //edit song
 
-router.put('/userSongs', async (req, res) => {
+router.put('/:songId', async (req, res) => {
     const {id, userId, albumId, title, description, url} = req.body
 
 

@@ -19,7 +19,7 @@ const router = express.Router();
 
   //get all songs created by the current User
 
-  router.get('/userSongs', async (req, res) => {
+  router.get('/current', async (req, res) => {
     const user = req.user.id
     const userSongs = await Song.findAll(
         {where: {

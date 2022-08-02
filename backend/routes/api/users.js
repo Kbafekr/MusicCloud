@@ -34,8 +34,18 @@ const validateSignup = [
   let where = {};
 
 // Sign up
-router.post('/', validateSignup, async (req, res) => {
+router.post('/', validateSignup, async (req, res, next) => {
   const { username, firstName, lastName, email, password } = req.body;
+    const errors = {}
+
+  const emailInput = await User.findOne({ where : {email : email} })
+  const usernameInput = await User.findOne({ where: {username : username} })
+  if (emailInput) errors.emailInputError = "Email already in use"
+  if (usernameInput) errors.usernameInputError = "Username already in use"
+
+    errors.status = 403;
+    res.json(errors)
+
 
   const user = await User.signup({ username, firstName, lastName, email, password });
 
@@ -49,6 +59,18 @@ router.post('/', validateSignup, async (req, res) => {
 router.get('/', async (req, res) => {
   const allUsers = await User.findAll({
       where,
+
+  });
+  res.json(allUsers);
+});
+
+//current user
+
+router.get('/current', async (req, res) => {
+  const allUsers = await User.findOne({
+      where: {
+        id: req.user.id
+      }
 
   });
   res.json(allUsers);

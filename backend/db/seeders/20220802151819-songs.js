@@ -26,7 +26,7 @@ module.exports = {
         description: 'Seventh studio album of Rise Against',
         url: "https://en.wikipedia.org/wiki/The_Black_Market_(Rise_Against_album)"
         },
-        {
+      {
           userId: 4,
           albumId: 3,
           title: "#4",

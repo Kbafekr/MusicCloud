@@ -9,6 +9,27 @@ const { handleValidationErrors } = require('../../utils/validation');
 
 const router = express.Router();
 
+
+const SongValidation = [
+  check('title')
+  .exists({ checkFalsy: true })
+  .isLength({ min: 2})
+  .withMessage('Song title must be at least two characters.'),
+  check('username')
+  .exists({ checkFalsy: true })
+    .isLength({ min: 4 })
+    .withMessage('Please provide a username with at least 4 characters.'),
+    check('username')
+    .not()
+    .isEmail()
+    .withMessage('Username cannot be an email.'),
+    check('password')
+    .exists({ checkFalsy: true })
+    .isLength({ min: 6 })
+    .withMessage('Password must be 6 characters or more.'),
+    handleValidationErrors
+  ];
+
 //get all songs
   router.get('/', async (req, res) => {
     const mySongs = await Song.findAll({

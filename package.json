@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Kbafekr/SoundCloudCloneaA/issues"
   },
-  "homepage": "https://github.com/Kbafekr/SoundCloudCloneaA#readme"
+  "homepage": "https://github.com/Kbafekr/SoundCloudCloneaA#readme",
+  "dependencies": {
+    "sqlite3": "^5.0.11"
+  }
 }

@@ -15,18 +15,14 @@ const SongValidation = [
   .exists({ checkFalsy: true })
   .isLength({ min: 2})
   .withMessage('Song title must be at least two characters.'),
-  check('username')
+  check('description')
   .exists({ checkFalsy: true })
     .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
-    check('username')
-    .not()
-    .isEmail()
-    .withMessage('Username cannot be an email.'),
-    check('password')
+    .withMessage('Please provide a valid description'),
+    check('url')
     .exists({ checkFalsy: true })
-    .isLength({ min: 6 })
-    .withMessage('Password must be 6 characters or more.'),
+    .isLength({ min: 2})
+    .withMessage('Username cannot be an email.'),
     handleValidationErrors
   ];
 

@@ -30,43 +30,56 @@ const validateSignup = [
     handleValidationErrors
   ];
 
+  //make a validation for login that passes error into handle validation errors
+
+
 
   let where = {};
 
 // Sign up
 router.post('/', validateSignup, async (req, res, next) => {
-  const { username, firstName, lastName, email, password } = req.body;
-    const errors = {}
 
-  const emailInput = await User.findOne({ where : {email : email} })
-  const usernameInput = await User.findOne({ where: {username : username} })
-  if (emailInput) errors.emailInputError = "Email already in use"
-  if (usernameInput) errors.usernameInputError = "Username already in use"
+  const errorCode = {
+    'title': "Username and/or email already exists",
+    'statusCode': 403,
+    'message': {}
+  }
 
-    errors.status = 403;
-    res.json(errors)
+  const {firstName, lastName, email, username, password} = req.body;
+
+  const EmailInput = await User.findOne({where: {email}});
+  const UsernameInput = await User.findOne({where: {username}});
+
+  if (EmailInput && UsernameInput) {
+    errorCode.message = "Email and Username already associated with a user"
+    return res.status(403).json(errorCode)
+  }
+
+  if (EmailInput) {
+    errorCode.message = "Email already associated with a user"
+    return res.status(403).json(errorCode)
+  }
+
+  if (UsernameInput) {
+    errorCode.message = "Username already associated with a user"
+    return res.status(403).json(errorCode)
+  }
+
+  const user = await User.signup({firstName, lastName, email, username, password });
 
 
-  const user = await User.signup({ username, firstName, lastName, email, password });
+  const token = setTokenCookie(res, user);
 
-  await setTokenCookie(res, user);
+  user.token = token
 
-  return res.json({ user });
-});
+  await user.save()
 
-
-// find all users
-router.get('/', async (req, res) => {
-  const allUsers = await User.findAll({
-      where,
-
-  });
-  res.json(allUsers);
+  return res.json({ user, token });
 });
 
 //current user
 
-router.get('/current', async (req, res) => {
+router.get('/current', requireAuth, async (req, res) => {
   const allUsers = await User.findOne({
       where: {
         id: req.user.id

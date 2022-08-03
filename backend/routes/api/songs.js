@@ -1,7 +1,7 @@
 // backend/routes/api/songs.js
 const express = require('express');
 
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
+const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { User, Song, Album } = require('../../db/models');
 
 const { check } = require('express-validator');
@@ -28,15 +28,15 @@ const SongValidation = [
 
 //get all songs
   router.get('/', async (req, res) => {
-    const mySongs = await Song.findAll({
+    const allSongs = await Song.findAll({
         where: {}
     })
-    res.json(mySongs)
+    res.json(allSongs)
   })
 
   //get all songs created by the current User
 
-  router.get('/current', async (req, res) => {
+  router.get('/current', requireAuth, async (req, res) => {
     const user = req.user.id
     const userSongs = await Song.findAll(
         {where: {
@@ -47,13 +47,24 @@ const SongValidation = [
 
   //get song details by Id
 
-  router.get('/:songId', async (req, res) => {
+  router.get('/:songid', restoreUser, requireAuth, async (req, res) => {
     const theSong = await Song.findOne({
       where: {
-        id: req.params.id
+        id: req.params.songid
       },
         include: [{ model: User}]
     });
+
+    if (!theSong) {
+      const errors = {
+        'title': "Error retrieving song",
+        'statusCode': 404,
+        'message': {}
+      }
+
+      errors.message = "Song does not exist/could not be found with requested id"
+      res.status(404).json(errors)
+    }
 
     return res.json(theSong);
 });
@@ -69,27 +80,61 @@ const SongValidation = [
         }
     })
   })
+
+
   //edit song
 
-router.put('/:songId', async (req, res) => {
-    const {id, userId, albumId, title, description, url} = req.body
+router.put('/:id', requireAuth, SongValidation, async (req, res) => {
+    const {title, description, url} = req.body
 
+    const Id = req.params.id
 
 const editSong = await Song.findOne({
     where: {
-        id: id
+        id: Id
     }
 })
-res.json(editSong)
+
+if (!editSong) {
+  const errors = {
+    'title': "Error retrieving song",
+    'statusCode': 404,
+    'message': {}
+  }
+  errors.message = "Song does not exist/could not be found with requested id"
+  return res.status(404).json(errors)
+}
+
+if (title) {editSong.title = title }
+if (description) {editSong.description = description }
+if (url) {editSong.url = url }
+
+await editSong.save()
+return res.status(201).json(editSong)
 })
+
+
+
   //delete a song
 
-  router.delete('/:songId', async (req, res) => {
+  router.delete('/:id', requireAuth, restoreUser, async (req, res) => {
     const deleteSong = await Song.findOne({
         where: {
             id: req.params.id
         }
     })
+
+    if (!deleteSong) {
+      const errors = {
+        'title': "Error retrieving song",
+        'statusCode': 404,
+        'message': {}
+      }
+
+      errors.message = "Song does not exist, could not be found with requested id"
+      return res.status(404).json(errors)
+    }
+
     res.json(deleteSong.destroy())
   })
 

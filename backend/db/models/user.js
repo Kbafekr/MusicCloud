@@ -54,8 +54,8 @@ module.exports = (sequelize, DataTypes) => {
 
   static associate(models) {
     // define association here
-    User.hasMany(models.Album, {foreignKey: "userId", onDelete: "cascade", })
-    User.hasMany(models.Song, {foreignKey: "userId", onDelete: "cascade", })
+    User.hasMany(models.Song, {foreignKey: 'userId', onDelete: 'CASCADE', })
+
 };
   }
   User.init(

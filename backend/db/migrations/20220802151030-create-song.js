@@ -11,7 +11,7 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Users"
+          model: 'Users',
         },
         onDelete: 'cascade',
         allowNull: false
@@ -19,7 +19,7 @@ module.exports = {
       albumId: {
         type: Sequelize.INTEGER,
         references: {
-          model: "Albums"
+          model: 'Songs',
         },
         onDelete: 'cascade',
         allowNull: false

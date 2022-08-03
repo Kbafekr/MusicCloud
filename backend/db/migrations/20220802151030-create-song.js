@@ -13,6 +13,7 @@ module.exports = {
         references: {
           model: "Users"
         },
+        onDelete: 'cascade',
         allowNull: false
       },
       albumId: {
@@ -20,6 +21,7 @@ module.exports = {
         references: {
           model: "Albums"
         },
+        onDelete: 'cascade',
         allowNull: false
       },
       title: {

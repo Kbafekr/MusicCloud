@@ -23,11 +23,12 @@ module.exports = {
           description: 'Seventh studio album of Rise Against',
           },
         {
-            userId: 1,
+            userId: 3,
             title: "#4",
             description: 'Debut studio album of Ling Tosite Sigure',
             },
-      ], {});
+      ],
+      {});
   },
 
   async down (queryInterface, Sequelize) {

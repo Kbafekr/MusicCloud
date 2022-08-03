@@ -22,7 +22,7 @@ const validateLogin = [
 
 // get all Albums
 
-router.get('/', async (req, res) => {
+router.get('/', restoreUser, async (req, res) => {
   const albums = await Album.findAll({
     where: {}
   })
@@ -31,7 +31,7 @@ router.get('/', async (req, res) => {
 
 //get all albums created by current user
 
-router.get('/', requireAuth, async (req, res) => {{
+router.get('/current', requireAuth, restoreUser, async (req, res) => {{
   const Allalbums = await Album.findAll({
     where: {
       userId: req.user.id
@@ -39,11 +39,35 @@ router.get('/', requireAuth, async (req, res) => {{
   })
   res.json(Allalbums)
 }}
-
 )
+
 //get details of an album from an id
 
-// router.get('')
+router.get('/:albumid', async (req,res) => {
+  const AlbumId = req.params.albumid
+
+  const albumdetails = await Album.findByPk(AlbumId, {
+
+    include: [{
+      model: User
+    },
+    {model: Song}
+  ]
+
+  })
+  if (!albumdetails) {
+    const errors = {
+      'title': "Error retrieving Album",
+      'statusCode': 404,
+      'message': {}
+    }
+    errors.message = "Album does not exist/could not be found with requested id"
+    return res.status(404).json(errors)
+  }
+
+  return res.json(albumdetails)
+})
+
 //create an album
 
 //edit an album

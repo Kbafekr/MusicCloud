@@ -69,18 +69,6 @@ const SongValidation = [
     return res.json(theSong);
 });
 
-  //create a song for an album based on albums id
-
-  router.post('/userSongs', async (req, res) => {
-    const {userId, albumId, title, description, url} = req.body
-
-    const albumSong = await Album.findOne({
-        where: {
-            albumId: albumId
-        }
-    })
-  })
-
 
   //edit song
 
@@ -137,5 +125,48 @@ return res.status(201).json(editSong)
 
     res.json(deleteSong.destroy())
   })
+
+  //create a song for an album based on albums id
+
+// router.post('/:albumId/songs', restoreUser, requireAuth, async (req, res) => {
+//   const {title, description, url, imageUrl} = req.body
+//   const AlbumId = req.params.albumId
+//   const userId = req.user.id
+//   const album = await Album.findOne({
+//       where: {
+//           id: AlbumId
+//       }
+//   })
+
+//   if (!album) {
+//     const errors = {
+//       'title': "Error retrieving album",
+//       'statusCode': 404,
+//       'message': {}
+//     }
+//     errors.message = "Album does not exist/could not be found with requested id"
+//     return res.status(404).json(errors)
+//   }
+
+//   if (req.user.id !== album.userId) {
+//   const errors = {
+//     'title': "Error authenticating user",
+//     'statusCode': 403,
+//     'message': {}
+//   }
+//   errors.message = "Album does not belong to current user"
+//   return res.status(404).json(errors)
+// }
+//   const newSong = await Song.create({
+//      userId: userId,
+//      albumId: AlbumId,
+//      title: title,
+//      description: description,
+//      url: url,
+//      imageUrl: imageUrl
+
+//   })
+//   return res.status(201).json(newSong)
+// })
 
   module.exports = router

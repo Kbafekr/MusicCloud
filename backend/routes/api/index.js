@@ -3,7 +3,8 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const songsRouter = require('./songs')
-const { restoreUser } = require("../../utils/auth.js");
+const albumsRouter = require('./albums')
+const { restoreUser } = require("../../utils/auth.js")
 
 
 
@@ -14,6 +15,7 @@ router.use(restoreUser);
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/songs', songsRouter );
+router.use('/albums', albumsRouter)
 
 // test route in api router
 router.post('/test', function(req, res) {

@@ -11,21 +11,26 @@ module.exports = (sequelize, DataTypes) => {
      */
 
     static associate(models) {
-      Song.belongsTo(models.User, {foreignKey: "userId", hooks: true, onDelete: "cascade"})
+      Song.belongsTo(models.User, {foreignKey: "userId", onDelete: "cascade"})
+      Song.belongsTo(models.Album, {foreignKey: "albumId", onDelete: "cascade"})
     }
   }
   Song.init({
     userId:{
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     albumId: {
       type: DataTypes.INTEGER,
+      allowNull: false
     },
     title: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     description: {
       type: DataTypes.STRING,
+      allowNull: false
     },
     url: {
       type: DataTypes.STRING,

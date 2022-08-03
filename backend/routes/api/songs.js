@@ -2,7 +2,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User, Song } = require('../../db/models');
+const { User, Song, Album } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -84,7 +84,7 @@ res.json(editSong)
 })
   //delete a song
 
-  router.delete('/userSong', async (req, res) => {
+  router.delete('/:songId', async (req, res) => {
     const deleteSong = await Song.findOne({
         where: {
             id: req.params.id

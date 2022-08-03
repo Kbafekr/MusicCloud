@@ -15,22 +15,22 @@ module.exports = {
       {
       userId: 1,
       albumId: 1,
-      title: "i'mperfect",
-      description: 'Fifth studio album of Ling Tosite Sigure',
+      title: "Metamorphose",
+      description: 'Post-hardcore Japanese Math Rock Hybrid',
       url: "https://en.wikipedia.org/wiki/I%27mperfect"
       },
       {
         userId: 2,
         albumId: 2,
         title: "The Black Market",
-        description: 'Seventh studio album of Rise Against',
+        description: 'Post-Hardcore Punk Rock about Pollution',
         url: "https://en.wikipedia.org/wiki/The_Black_Market_(Rise_Against_album)"
         },
       {
-          userId: 4,
+          userId: 1,
           albumId: 3,
-          title: "#4",
-          description: 'Debut studio album of Ling Tosite Sigure',
+          title: "Boukan",
+          description: 'Japanese Hard Rock with a Melancholy Tone',
           url: "https://en.wikipedia.org/wiki/Number_4_(album)"
           },
     ],

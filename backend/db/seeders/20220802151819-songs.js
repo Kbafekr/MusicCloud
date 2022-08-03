@@ -17,21 +17,24 @@ module.exports = {
       albumId: 1,
       title: "Metamorphose",
       description: 'Post-hardcore Japanese Math Rock Hybrid',
-      url: "https://en.wikipedia.org/wiki/I%27mperfect"
+      url: "https://en.wikipedia.org/wiki/I%27mperfect",
+      imageUrl: ""
       },
       {
         userId: 2,
         albumId: 2,
         title: "The Black Market",
         description: 'Post-Hardcore Punk Rock about Pollution',
-        url: "https://en.wikipedia.org/wiki/The_Black_Market_(Rise_Against_album)"
+        url: "https://en.wikipedia.org/wiki/The_Black_Market_(Rise_Against_album)",
+        imageUrl: ""
         },
       {
           userId: 1,
           albumId: 3,
           title: "Boukan",
           description: 'Japanese Hard Rock with a Melancholy Tone',
-          url: "https://en.wikipedia.org/wiki/Number_4_(album)"
+          url: "https://en.wikipedia.org/wiki/Number_4_(album)",
+          imageUrl: ""
           },
     ],
 

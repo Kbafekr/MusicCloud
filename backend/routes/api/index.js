@@ -5,6 +5,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const songsRouter = require('./songs')
 const albumsRouter = require('./albums')
+const commentRouter = require('./comments')
 const { restoreUser } = require("../../utils/auth.js")
 
 
@@ -16,7 +17,8 @@ router.use(restoreUser);
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/songs', songsRouter );
-router.use('/albums', albumsRouter)
+router.use('/albums', albumsRouter);
+router.use('/comments', commentRouter);
 
 // test route in api router
 router.post('/test', function(req, res) {

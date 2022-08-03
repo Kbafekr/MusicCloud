@@ -40,7 +40,7 @@ const validateSignup = [
 router.post('/', validateSignup, async (req, res, next) => {
 
   const errorCode = {
-    'title': "Username and/or email already exists",
+    'title': "Forbidden: Username and/or email already exists",
     'statusCode': 403,
     'message': {}
   }

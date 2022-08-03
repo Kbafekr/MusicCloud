@@ -76,10 +76,10 @@ router.post('/', restoreUser, requireAuth, validateLogin, async (req, res) => {
   const {title, description, imageUrl} = req.body
 
   const newAlbum = await Album.create({
-    UserId,
-    title,
-    description,
-    imageUrl
+    userId: UserId,
+    title: title,
+    description: description,
+    imageUrl: imageUrl
   })
   res.status(201).json(newAlbum)
 })

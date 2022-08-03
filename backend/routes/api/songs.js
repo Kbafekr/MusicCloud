@@ -6,6 +6,7 @@ const { User, Song, Album, Comment } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
+const { route } = require('./comments');
 
 const router = express.Router();
 
@@ -73,7 +74,7 @@ const SongValidation = [
   //create a song for an album based on albums id
 
 router.post('/', restoreUser, requireAuth, async (req, res) => {
-  const {albumId, title, description, url, imageUrl} = req.body
+  const {title, description, url, imageUrl, albumId} = req.body
   const userId = req.user.id
   const album = await Album.findOne({
       where: {
@@ -91,14 +92,14 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
     return res.status(404).json(errors)
   }
 
-  if (req.user.id !== album.userId) {
+  if (userId !== album.userId) {
   const errors = {
     'title': "Error authenticating user",
     'statusCode': 403,
     'message': {}
   }
   errors.message = "Album does not belong to current user"
-  return res.status(404).json(errors)
+  return res.status(403).json(errors)
 }
   const newSong = await Song.create({
      userId: userId,
@@ -148,6 +149,7 @@ return res.status(201).json(editSong)
   //delete a song
 
   router.delete('/:id', requireAuth, restoreUser, async (req, res) => {
+    const userId = req.user.id
     const deleteSong = await Song.findOne({
         where: {
             id: req.params.id
@@ -165,6 +167,16 @@ return res.status(201).json(editSong)
       return res.status(404).json(errors)
     }
 
+    if (userId !== deleteSong.userId) {
+      const errors = {
+        'title': "Error authenticating user",
+        'statusCode': 403,
+        'message': {}
+      }
+      errors.message = "Comment does not belong to current user"
+      return res.status(403).json(errors)
+    }
+
     await deleteSong.destroy()
     const success = {
       'message': 'song successfully deleted',
@@ -173,4 +185,56 @@ return res.status(201).json(editSong)
     res.status(200).json(success)
   })
 
+
+
+  // get all Comments by a Song's id
+
+  router.get('/:songId/comments', restoreUser, requireAuth, async (req, res) => {
+    const SongId = req.params.songId
+
+    const SongComments = await Comment.findByPk(SongId)
+    if(!SongComments) {
+      const errors = {
+        'title': "Error retrieving song comments",
+        'statusCode': 404,
+        'message': {}
+      }
+
+      errors.message = "Song does not exist, associated comments could not be found with requested id"
+      return res.status(404).json(errors)
+    }
+
+    return res.json(SongComments)
+  })
+
+
+
+  //create a comment for a song based on Song's id
+
+  router.post('/:songId/comments', restoreUser, requireAuth, async (req, res) => {
+    const SongId = req.params.songId
+    const UserId = req.user.id
+    const {body} = req.body
+
+    const findSong = await Song.findByPk(SongId)
+
+
+    if (!findSong) {
+      const errors = {
+        'title': "Error retrieving song comments",
+        'statusCode': 404,
+        'message': {}
+      }
+
+      errors.message = "Song does not exist, associated comments could not be found with requested id"
+      return res.status(404).json(errors)
+    }
+
+    const comment = await Comment.create({
+      userId: UserId,
+      songId: SongId,
+      body: body
+    })
+     return res.json(comment)
+  })
   module.exports = router

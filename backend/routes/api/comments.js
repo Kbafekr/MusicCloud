@@ -16,17 +16,89 @@ const validateComment = [
   handleValidationErrors
 ];
 
-// get all Comments by a Song's id
-
-router.get('/', restoreUser, requireAuth, async (req, res) => {
-  const AllComments = await Comment.findAll({
-    where: {}
-  })
-  res.json(AllComments)
-})
-// create a Comment for a Song based on the Song's id
-
 // edit a Comment
 
+router.put('/:commentId', restoreUser, requireAuth, async (req, res) => {
+  const CommentId = req.params.commentId
+  const userId = req.user.id
+  const {body} = req.body
+  let CommentEdit = await Comment.findByPk(CommentId)
+
+  if (!CommentEdit) {
+    const errors = {
+      'title': "Error retrieving comments",
+      'statusCode': 404,
+      'message': {}
+    }
+
+    errors.message = "Comment does not exist, associated comments could not be found with requested id"
+    return res.status(404).json(errors)
+  }
+
+  if (userId !== CommentEdit.userId) {
+    const errors = {
+      'title': "Error authenticating user",
+      'statusCode': 403,
+      'message': {}
+    }
+    errors.message = "Comment does not belong to current user"
+    return res.status(403).json(errors)
+  }
+
+  if (body) {CommentEdit.body = body }
+      await CommentEdit.save()
+
+  return res.status(201).json(CommentEdit)
+})
 // delete a Comment
+
+router.delete('/:commentid', requireAuth, restoreUser, async (req, res) => {
+const CommentId = req.params.commentid
+const userId = req.user.id
+
+
+  const deleteComment = await Comment.findOne({
+      where: {
+          id: CommentId
+      }
+  })
+
+  if (!deleteComment) {
+    const errors = {
+      'title': "Error retrieving Comment",
+      'statusCode': 404,
+      'message': {}
+    }
+
+    errors.message = "Comment does not exist, could not be found with requested id"
+    return res.status(404).json(errors)
+  }
+
+  if (userId !== deleteComment.userId) {
+    const errors = {
+      'title': "Error authenticating user",
+      'statusCode': 403,
+      'message': {}
+    }
+    errors.message = "Comment does not belong to current user"
+    return res.status(403).json(errors)
+  }
+
+  await deleteComment.destroy()
+  const success = {
+    'message': 'Comment successfully deleted',
+    'statusCode': '200'
+  }
+  res.status(200).json(success)
+})
+
+
+
+
+
+
+
+
+
+
 module.exports = router;

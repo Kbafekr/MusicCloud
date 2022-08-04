@@ -9,10 +9,18 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       playlistId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'playlists',
+        },
+        onDelete: 'cascade'
       },
       songId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Songs',
+        },
+        onDelete: 'cascade'
       },
       createdAt: {
         allowNull: false,

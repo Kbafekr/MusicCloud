@@ -18,7 +18,7 @@ module.exports = {
       title: "Metamorphose",
       description: 'Post-hardcore Japanese Math Rock Hybrid',
       url: "https://en.wikipedia.org/wiki/I%27mperfect",
-      imageUrl: ""
+      imageUrl: "https://i.pinimg.com/originals/67/c6/43/67c6437c9cc765de0ecac344b737e604.jpg"
       },
       {
         userId: 2,
@@ -26,7 +26,7 @@ module.exports = {
         title: "The Black Market",
         description: 'Post-Hardcore Punk Rock about Pollution',
         url: "https://en.wikipedia.org/wiki/The_Black_Market_(Rise_Against_album)",
-        imageUrl: ""
+        imageUrl: "https://i.ebayimg.com/images/g/a2gAAOSwssRdOYmU/s-l640.jpg"
         },
       {
           userId: 1,
@@ -34,7 +34,7 @@ module.exports = {
           title: "Boukan",
           description: 'Japanese Hard Rock with a Melancholy Tone',
           url: "https://en.wikipedia.org/wiki/Number_4_(album)",
-          imageUrl: ""
+          imageUrl: "https://i.pinimg.com/736x/00/64/d0/0064d0b07ddd1ba607f033b91d6b6b0e--ling-tosite-sigure-bands.jpg"
           },
     ],
 

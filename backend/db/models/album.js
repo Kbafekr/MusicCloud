@@ -18,18 +18,33 @@ module.exports = (sequelize, DataTypes) => {
   }
   Album.init({
     userId: {
-      type: DataTypes.INTEGER
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     title: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 100]
+      }
     },
     description: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull:false,
+      validate: {
+        len: [1, 200]
+      }
     },
     imageUrl: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: true
     },
   }, {
+    defaultScope: {
+      attributes: {
+        exclude: ['createdAt', 'updatedAt']
+      }
+    },
     sequelize,
     modelName: 'Album',
   });

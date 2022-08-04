@@ -68,12 +68,12 @@ router.get('/:artistId/songs', restoreUser, requireAuth, async (req, res) => {
 
     if (!findArtist) {
         const errors = {
-          'title': "Error retrieving Artist",
+          'title': "Couldn't find an Artist with the specified id",
           'statusCode': 404,
           'message': {}
         }
 
-        errors.message = "Artist does not exist, associated Artist could not be found with requested id"
+        errors.message = "Artist couldn't be found"
         return res.status(404).json(errors)
       }
 
@@ -93,8 +93,10 @@ router.get('/:artistId/songs', restoreUser, requireAuth, async (req, res) => {
         errors.message = "Artist with requested id does not have songs."
         return res.status(404).json(errors)
       }
-
-      res.json(ArtistsSongs)
+      const response = {
+        "Songs": ArtistsSongs
+      }
+      res.json(response)
     })
 
 
@@ -135,7 +137,7 @@ router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
       res.json(ArtistsAlbums)
     })
 
-    
+
 //get all playlists of an artist based on the artists id
 
 

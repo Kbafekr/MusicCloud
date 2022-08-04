@@ -53,7 +53,7 @@ const SongValidation = [
       where: {
         id: req.params.songid
       },
-        include: [{ model: User}]
+        include: [{ model: User, as: 'Artist'}, {model: Album}]
     });
 
     if (!theSong) {

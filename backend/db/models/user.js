@@ -57,6 +57,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Song, {foreignKey: 'userId', onDelete: 'CASCADE'})
     User.hasMany(models.Album, {foreignKey: 'userId', onDelete: 'CASCADE'})
     User.hasMany(models.Comment, {foreignKey: 'userId', onDelete: 'CASCADE'})
+    User.hasMany(models.playlist, {foreignKey: 'userId', onDelete: 'CASCADE'})
 
 };
   }
@@ -116,23 +117,21 @@ module.exports = (sequelize, DataTypes) => {
       },
 
     },
-    {
+    {defaultScope: {
+      attributes: {
+        exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
+      }
+    },
+    scopes: {
+      currentUser: {
+        attributes: { exclude: ["hashedPassword"] }
+      },
+      loginUser: {
+        attributes: {}
+      }
+    },
       sequelize,
       modelName: "User",
-      defaultScope: {
-        attributes: {
-          exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
-        }
-      },
-      scopes: {
-        currentUser: {
-          attributes: { exclude: ["hashedPassword"] }
-        },
-        loginUser: {
-          attributes: {}
-        }
-      },
-
     }
   );
   return User;

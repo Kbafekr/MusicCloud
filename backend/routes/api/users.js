@@ -2,7 +2,7 @@
 const express = require('express');
 
 const { setTokenCookie, restoreUser, requireAuth } = require('../../utils/auth');
-const { User, Song, Album } = require('../../db/models');
+const { User, Song, Album, Comment, playlist } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -23,6 +23,22 @@ const validateSignup = [
     .not()
     .isEmail()
     .withMessage('Username cannot be an email.'),
+    check('firstName')
+  .exists({ checkFalsy: true })
+    .isLength({ min: 2 })
+    .withMessage('Please provide a firstName with at least 2 characters.'),
+    check('firstName')
+    .not()
+    .isEmail()
+    .withMessage('firstName cannot be an email.'),
+    check('lastName')
+  .exists({ checkFalsy: true })
+    .isLength({ min: 2 })
+    .withMessage('Please provide a lastName with at least 2 characters.'),
+    check('lastName')
+    .not()
+    .isEmail()
+    .withMessage('lastName cannot be an email.'),
     check('password')
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
@@ -40,7 +56,7 @@ const validateSignup = [
 router.post('/', validateSignup, async (req, res, next) => {
 
   const errorCode = {
-    'title': "Forbidden: Username and/or email already exists",
+    'title': "User already exists",
     'statusCode': 403,
     'message': {}
   }
@@ -79,15 +95,19 @@ router.post('/', validateSignup, async (req, res, next) => {
 
 //current user
 
-router.get('/current', requireAuth, async (req, res) => {
-  const allUsers = await User.findOne({
+router.get('/current', restoreUser, requireAuth, async (req, res) => {
+  const currentUser = await User.findOne({
       where: {
         id: req.user.id
-      }
-
+      },
+      attributes: {include: ['id', 'firstName', 'lastName', 'username', 'email',]}
   });
-  res.json(allUsers);
+  const {token} = req.cookies
+  currentUser.token = token
+  currentUser.save()
+ return res.json(currentUser)
 });
+
 
 
 
@@ -135,6 +155,18 @@ router.get('/:userId', restoreUser, requireAuth, async (req, res) => {
 
   })
 
+
+
+
+
+
+
+
+
+
+
+
+
 //get all songs of an artist based on artists id
 
 router.get('/:userId/songs', restoreUser, requireAuth, async (req, res) => {
@@ -143,12 +175,12 @@ router.get('/:userId/songs', restoreUser, requireAuth, async (req, res) => {
 
   if (!findArtist) {
       const errors = {
-        'title': "Error retrieving Artist",
+        'title': "Couldn't find an Artist with the specified id",
         'statusCode': 404,
         'message': {}
       }
 
-      errors.message = "Artist does not exist, associated Artist could not be found with requested id"
+      errors.message = "Artist couldn't be found"
       return res.status(404).json(errors)
     }
 
@@ -168,9 +200,19 @@ router.get('/:userId/songs', restoreUser, requireAuth, async (req, res) => {
       errors.message = "Artist with requested id does not have songs."
       return res.status(404).json(errors)
     }
-
-    res.json(ArtistsSongs)
+    const response = {
+      "Songs": ArtistsSongs
+    }
+    res.json(response)
   })
+
+
+
+
+
+
+
+
 
 //get all albums of an artist based on the artists id
 

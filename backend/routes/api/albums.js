@@ -1,7 +1,7 @@
 // backend/routes/api/session.js
 const express = require('express');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, Comment } = require('../../db/models');
+const { User, Song, Album, Comment, playlist } = require('../../db/models');
 
 const router = express.Router();
 const { check } = require('express-validator');

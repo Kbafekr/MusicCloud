@@ -32,7 +32,13 @@ module.exports = (sequelize, DataTypes) => {
         len: [1, 100]
       }
     }
-  }, {
+  },
+  {
+    defaultScope: {
+    attributes: {
+      exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
+    }
+  },
     sequelize,
     modelName: 'Comment',
   });

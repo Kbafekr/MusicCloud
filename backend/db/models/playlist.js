@@ -2,6 +2,8 @@
 const {
   Model
 } = require('sequelize');
+
+//remember that this model name is lowercase
 module.exports = (sequelize, DataTypes) => {
   class playlist extends Model {
     /**
@@ -11,13 +13,33 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      playlist.belongsTo(models.User, {foreignKey: 'userId'})
+      playlist.belongsToMany(models.Song, {through: models.playlistsong, foreignKey: 'playlistId'})
     }
   }
   playlist.init({
-    userId: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    imageUrl: DataTypes.STRING
+    userId:
+     {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [2, 30]
+      }
+     },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    }
   }, {
+    defaultScope: {
+      attributes: {
+        exclude: ["createdAt", "updatedAt"]
+      }
+    },
     sequelize,
     modelName: 'playlist',
   });

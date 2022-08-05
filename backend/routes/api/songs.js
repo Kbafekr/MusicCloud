@@ -81,17 +81,17 @@ const SongValidation = [
       if (title) where.title = title
       if (createdAt) where.createdAt = createdAt
 
-      page = parseInt(page)
-      size = parseInt(size)
+     if (page) page = parseInt(page)
+     if (size) size = parseInt(size)
 
-      if ((!page) || page > 10) page = 0
-      if ((!size) || size > 20) size = 20
+      if (page > 10) page = 0
+      if (size > 20) size = 20
 
-             let pagination = {}
+      let pagination = {}
 
 
          pagination.limit = size
-         
+
          if (page = 0) {
           pagination.offset = 0
          }

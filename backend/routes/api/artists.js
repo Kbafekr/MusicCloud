@@ -8,7 +8,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 
-const validateComment = [
+const validateArtist = [
   check('body')
     .exists({ checkFalsy: true })
     .isLength({min: 1})
@@ -23,11 +23,7 @@ const validateComment = [
 router.get('/:artistId', restoreUser, requireAuth, async (req, res) => {
     const ArtistId = req.params.artistId
     const findArtist = await User.findByPk(ArtistId, {
-        attributes: [
-            'id',
-            'username',
-            'imageUrl'
-        ]
+      attributes: {include: ['id', 'username', 'imageUrl']}
     })
 
 
@@ -54,7 +50,13 @@ router.get('/:artistId', restoreUser, requireAuth, async (req, res) => {
             userId: ArtistId
         }
       })
-      const response = {findArtist, totalSongs, totalAlbums}
+      const response = {
+        'id': findArtist.id,
+        'username': findArtist.username,
+        'imageUrl': findArtist.imageUrl,
+        'totalSongs': totalSongs,
+        'totalAlbums': totalAlbums,
+      }
 
       res.json(response)
 
@@ -121,8 +123,12 @@ router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
       const ArtistsAlbums = await Album.findAll({
         where: {
             id: ArtistId
-        }
+        },
+        attributes: { include: [
+          'id', 'userId', 'title', 'description', 'imageUrl', 'createdAt', 'updatedAt'
+        ]}
       })
+
       if (!ArtistsAlbums) {
         const errors = {
           'title': "Error retrieving Albums",
@@ -134,7 +140,10 @@ router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
         return res.status(404).json(errors)
       }
 
-      res.json(ArtistsAlbums)
+      const response = {
+        'Albums': ArtistsAlbums
+      }
+      res.json(response)
     })
 
 
@@ -172,8 +181,10 @@ router.get('/:artistId/playlists', restoreUser, requireAuth, async (req, res, ne
       errors.message = "playlist does not exist/could not be found with requested id"
       res.status(404).json(errors)
       }
-
-    res.json(UserPlaylist)
+      const response = {
+        'Playlists': UserPlaylist
+      }
+    res.json(response)
   })
 
 

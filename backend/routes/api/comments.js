@@ -18,7 +18,7 @@ const validateComment = [
 
 // edit a Comment
 
-router.put('/:commentId', restoreUser, requireAuth, async (req, res) => {
+router.put('/:commentId', restoreUser, requireAuth, validateComment, async (req, res) => {
   const CommentId = req.params.commentId
   const userId = req.user.id
   const {body} = req.body
@@ -48,7 +48,7 @@ router.put('/:commentId', restoreUser, requireAuth, async (req, res) => {
   if (body) {CommentEdit.body = body }
       await CommentEdit.save()
 
-  return res.status(201).json(CommentEdit)
+  return res.status(200).json(CommentEdit)
 })
 // delete a Comment
 

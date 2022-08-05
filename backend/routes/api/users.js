@@ -159,7 +159,13 @@ router.get('/:userId', restoreUser, requireAuth, async (req, res) => {
           userId: ArtistId
       }
     })
-    const response = {findArtist, totalSongs, totalAlbums}
+    const response = {
+      'id': findArtist.id,
+      'username': findArtist.username,
+      'imageUrl': findArtist.imageUrl,
+      'totalSongs': totalSongs,
+      'totalAlbums': totalAlbums,
+    }
 
     res.json(response)
 
@@ -219,11 +225,6 @@ router.get('/:userId/songs', restoreUser, requireAuth, async (req, res) => {
 
 
 
-
-
-
-
-
 //get all albums of an artist based on the artists id
 
 router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
@@ -245,8 +246,12 @@ router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
     const ArtistsAlbums = await Album.findAll({
       where: {
           id: ArtistId
-      }
+      },
+      attributes: { include: [
+        'id', 'userId', 'title', 'description', 'imageUrl', 'createdAt', 'updatedAt'
+      ]}
     })
+
     if (!ArtistsAlbums) {
       const errors = {
         'title': "Error retrieving Albums",
@@ -258,9 +263,11 @@ router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
       return res.status(404).json(errors)
     }
 
-    res.json(ArtistsAlbums)
+    const response = {
+      'Albums': ArtistsAlbums
+    }
+    res.json(response)
   })
-
 
 
   //get all playlists by user id
@@ -298,8 +305,10 @@ router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
         res.status(404).json(errors)
         }
 
-
-      res.json(UserPlaylist)
+        const response = {
+          'Playlists': UserPlaylist
+        }
+      res.json(response)
     })
 
 

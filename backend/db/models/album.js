@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Album.hasMany(models.Song, {foreignKey: "albumId", onDelete: "cascade"})
-      Album.belongsTo(models.User, {foreignKey: "userId", onDelete: "cascade"})
+      Album.belongsTo(models.User, {foreignKey: "userId", as: 'Artist', onDelete: "cascade"})
     }
   }
   Album.init({
@@ -40,11 +40,6 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: true
     },
   }, {
-    defaultScope: {
-      attributes: {
-        exclude: ['createdAt', 'updatedAt']
-      }
-    },
     sequelize,
     modelName: 'Album',
   });

@@ -28,6 +28,13 @@ const SongValidation = [
     handleValidationErrors
   ];
 
+  const validateComment = [
+    check('body')
+      .exists({ checkFalsy: true })
+      .isLength({min: 1})
+      .withMessage('body must be at least one character and be present'),
+    handleValidationErrors
+  ];
 
  //  if ((!Number.isInteger(page) || page <= 0) || (!Number.isInteger(size) || size <= 0) ) {
   //      const errors = {
@@ -92,7 +99,7 @@ const SongValidation = [
 
          pagination.limit = size
          pagination.offset = size * (page - 1)
-        
+
 
       const allSongs = await Song.findAll({
           where: { ...where },
@@ -128,7 +135,11 @@ const SongValidation = [
         {where: {
             userId: user
   }})
-  res.json(userSongs)
+
+  const response = {
+    "songs": userSongs
+  }
+  res.json(response)
   })
 
   //get song details by Id
@@ -138,7 +149,12 @@ const SongValidation = [
       where: {
         id: req.params.songid
       },
-        include: [{ model: User, as: 'Artist'}, {model: Album}]
+        include: [{ model: User, as: 'Artist',
+     attributes: ['id', 'username', 'imageUrl']
+      }, {model: Album,
+        attributes: ['id', 'title', 'imageUrl']}
+
+      ]
     });
 
     if (!theSong) {
@@ -164,7 +180,7 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
   const album = await Album.findOne({
       where: {
           id: albumId
-      }
+      },
   })
 
   if (!album) {
@@ -243,7 +259,7 @@ return res.status(201).json(editSong)
 
     if (!deleteSong) {
       const errors = {
-        'title': "Error retrieving song",
+        'title': "Song couldn't be found",
         'statusCode': 404,
         'message': {}
       }
@@ -277,8 +293,15 @@ return res.status(201).json(editSong)
   router.get('/:songId/comments', restoreUser, requireAuth, async (req, res) => {
     const SongId = req.params.songId
 
-    const SongComments = await Comment.findByPk(SongId)
-    if(!SongComments) {
+    const Comments = await Comment.findByPk(SongId, {
+      include: [
+        {model: User, attributes:
+      ['id', 'username']
+    }
+]
+  })
+
+    if(!Comments) {
       const errors = {
         'title': "Error retrieving song comments",
         'statusCode': 404,
@@ -288,15 +311,17 @@ return res.status(201).json(editSong)
       errors.message = "Song does not exist, associated comments could not be found with requested id"
       return res.status(404).json(errors)
     }
-
-    return res.json(SongComments)
+    const response = {
+      'Comments': Comments
+    }
+    return res.json(response)
   })
 
 
 
   //create a comment for a song based on Song's id
 
-  router.post('/:songId/comments', restoreUser, requireAuth, async (req, res) => {
+  router.post('/:songId/comments', restoreUser, requireAuth, validateComment, async (req, res) => {
     const SongId = req.params.songId
     const UserId = req.user.id
     const {body} = req.body

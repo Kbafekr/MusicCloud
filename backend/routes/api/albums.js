@@ -8,7 +8,7 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 
-const validateLogin = [
+const validateAlbum = [
   check('title')
     .exists({ checkFalsy: true })
     .isLength({min: 2})
@@ -24,9 +24,15 @@ const validateLogin = [
 
 router.get('/', restoreUser, async (req, res) => {
   const albums = await Album.findAll({
-    where: {}
+    where: {},
+    attributes: { include: [
+      'id', 'userId', 'title', 'description', 'imageUrl', 'createdAt', 'updatedAt'
+    ]}
   })
-  res.json(albums)
+  const response = {
+    'Albums': albums
+  }
+  res.json(response)
 })
 
 //get all albums created by current user
@@ -35,9 +41,15 @@ router.get('/current', requireAuth, restoreUser, async (req, res) => {{
   const Allalbums = await Album.findAll({
     where: {
       userId: req.user.id
-    }
+    },
+    attributes: { include: [
+      'id', 'userId', 'title', 'description', 'imageUrl', 'createdAt', 'updatedAt'
+    ]}
   })
-  res.json(Allalbums)
+  const response = {
+    'Albums': Allalbums
+  }
+  res.json(response)
 }}
 )
 
@@ -48,10 +60,10 @@ router.get('/:albumid', async (req,res) => {
 
   const albumdetails = await Album.findByPk(AlbumId, {
 
-    include: [{
-      model: User
-    },
-    {model: Song}
+    include: [{ model: User, as: 'Artist',
+     attributes: ['id', 'username', 'imageUrl']
+      }, {model: Song,
+        attributes: ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']}
   ]
 
   })
@@ -70,7 +82,7 @@ router.get('/:albumid', async (req,res) => {
 
 //create an album
 
-router.post('/', restoreUser, requireAuth, validateLogin, async (req, res) => {
+router.post('/', restoreUser, requireAuth, validateAlbum, async (req, res) => {
   const UserId = req.user.id;
 
   const {title, description, imageUrl} = req.body
@@ -87,7 +99,7 @@ router.post('/', restoreUser, requireAuth, validateLogin, async (req, res) => {
 
 //edit an album
 
-router.put('/:albumid', restoreUser, requireAuth, validateLogin, async (req, res) => {
+router.put('/:albumid', restoreUser, requireAuth, validateAlbum, async (req, res) => {
  const userId = req.user.id
  const AlbumId = req.params.albumid
  const {title, description, imageUrl} = req.body

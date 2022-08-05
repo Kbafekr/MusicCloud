@@ -42,8 +42,10 @@ router.get('/current', restoreUser, requireAuth, async (req, res) => {
     errors.message = "playlists do not exist/could not be found with associated user"
     return res.status(404).json(errors)
   }
-
-  return res.json(UserPlaylists)
+  const response = {
+    'Playlists': UserPlaylists
+  }
+  return res.json(response)
 })
 
 //create a playlist
@@ -167,7 +169,7 @@ router.get('/:playlistId', restoreUser, requireAuth, async (req,res) => {
         'statusCode': 404,
         'message': {}
       }
-      errors.message = "playlistcould not be found with given id"
+      errors.message = "playlist could not be found with given id"
       res.status(404).json(errors)
       }
       return res.json(findPlaylist)

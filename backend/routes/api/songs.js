@@ -2,11 +2,12 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, Comment } = require('../../db/models');
+const { User, Song, Album, Comment, playlist } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 const { route } = require('./comments');
+const e = require('express');
 
 const router = express.Router();
 
@@ -27,13 +28,96 @@ const SongValidation = [
     handleValidationErrors
   ];
 
-//get all songs
-  router.get('/', async (req, res) => {
-    const allSongs = await Song.findAll({
-        where: {}
+
+ //  if ((!Number.isInteger(page) || page <= 0) || (!Number.isInteger(size) || size <= 0) ) {
+  //      const errors = {
+  //        'title': "Error retrieving songs with query parameters",
+  //        'statusCode': 400,
+  //        'errors': {}
+  //      }
+
+  //       if (!Number.isInteger(page) || page <= 0) {
+  //         errors.errors.page = "Page value in query must be a number greater than 0"
+  //         }
+
+  //       if (!Number.isInteger(size) || size <= 0) {
+  //         errors.errors.size = "size value in query must be a number greater than 0"
+  //       }
+
+  //       if (!Number.isInteger(size) || size <= 0) {
+  //         errors.errors.size = "size value in query must be a number greater than 0"
+  //       }
+
+  //      res.status(400).json(errors)
+  //    }
+  const QuerySearchValidation = [
+    check('title')
+      .optional({nullable: true})
+      .isLength({ min: 1})
+      .withMessage('Song title must be longer than one character'),
+    check('createdAt')
+     .isDate()
+      .optional({nullable: true})
+      .withMessage('please provide a valid date'),
+    check('page')
+      .optional({nullable: true})
+      .isInt({min: 0})
+      .withMessage('page must be a number greater than -1'),
+    check('size')
+      .optional({nullable: true})
+      .isInt({min: 0})
+      .withMessage('size must be a number greater than -1'),
+      handleValidationErrors
+    ];
+
+  //add query filters to get all songs
+
+  //get all songs
+    router.get('/', restoreUser, requireAuth, QuerySearchValidation, async (req, res) => {
+
+      let {page, size, title, createdAt} = req.query
+      let where = {};
+
+      if (title) where.title = title
+      if (createdAt) where.createdAt = createdAt
+
+      page = parseInt(page)
+      size = parseInt(size)
+
+      if ((!page) || page > 10) page = 0
+      if ((!size) || size > 20) size = 20
+
+             let pagination = {}
+
+
+         pagination.limit = size
+         pagination.offset = size * (page - 1)
+
+      const allSongs = await Song.findAll({
+          where: { ...where },
+          ...pagination
+      })
+
+      if (!allSongs) {
+        const errors = {
+          'title': "Error retrieving songs",
+          'statusCode': 404,
+          'message': {}
+        }
+
+        errors.message = "Songs could not be found with requested parameters"
+        res.status(404).json(errors)
+      }
+      const response = {
+        "Songs": allSongs,
+        "page": page,
+        "size": size
+      }
+      res.json(response)
     })
-    res.json(allSongs)
-  })
+
+
+
 
   //get all songs created by the current User
 
@@ -237,4 +321,6 @@ return res.status(201).json(editSong)
     })
      return res.json(comment)
   })
+
+
   module.exports = router

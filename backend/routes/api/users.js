@@ -88,9 +88,19 @@ router.post('/', validateSignup, async (req, res, next) => {
 
   user.token = token
 
+  delete user.createdAt;
+  delete user.updatedAt;
+
   await user.save()
 
-  return res.json({ user, token });
+  return res.json({
+      "id": user.id,
+      "firstName": user.firstName,
+      "lastName": user.lastName,
+      "email": user.email,
+      "username": user.username,
+      "token": user.token
+    });
 });
 
 //current user
@@ -250,6 +260,48 @@ router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
 
     res.json(ArtistsAlbums)
   })
+
+
+
+  //get all playlists by user id
+
+  router.get('/:userId/playlists', restoreUser, requireAuth, async (req, res, next) => {
+    const userId = req.params.userId;
+
+    const UserCurrent = await User.findByPk(userId)
+
+    if (!UserCurrent) {
+
+      const errors = {
+        'title': "Error retrieving User",
+        'statusCode': 404,
+        'message': {}
+      }
+      errors.message = "User does not exist/could not be found with requested id"
+      res.status(404).json(errors)
+      }
+
+      const UserPlaylist = await playlist.findAll({
+        where: {
+          userId: userId
+        },
+        attributes: {include: ['id', 'userId', 'name', 'imageUrl', 'createdAt', 'updatedAt']}
+      })
+
+      if (!UserPlaylist) {
+        const errors = {
+          'title': "Error retrieving playlist",
+          'statusCode': 404,
+          'message': {}
+        }
+        errors.message = "playlist does not exist/could not be found with requested id"
+        res.status(404).json(errors)
+        }
+
+
+      res.json(UserPlaylist)
+    })
+
 
 
 module.exports = router;

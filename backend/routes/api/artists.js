@@ -1,7 +1,7 @@
 // backend/routes/api/artists.js
 const express = require('express');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, Comment, Playlist } = require('../../db/models');
+const { User, Song, Album, Comment, playlist } = require('../../db/models');
 
 const router = express.Router();
 const { check } = require('express-validator');
@@ -138,7 +138,43 @@ router.get('/:userId/albums', restoreUser, requireAuth, async (req, res) => {
     })
 
 
-//get all playlists of an artist based on the artists id
+//get all playlists by artist id
+
+router.get('/:artistId/playlists', restoreUser, requireAuth, async (req, res, next) => {
+  const userId = req.params.artistId;
+
+  const UserCurrent = await User.findByPk(userId)
+
+  if (!UserCurrent) {
+
+    const errors = {
+      'title': "Error retrieving User",
+      'statusCode': 404,
+      'message': {}
+    }
+    errors.message = "User does not exist/could not be found with requested id"
+    res.status(404).json(errors)
+    }
+
+    const UserPlaylist = await playlist.findAll({
+      where: {
+        userId: userId
+      },
+      attributes: {include: ['id', 'userId', 'name', 'imageUrl', 'createdAt', 'updatedAt']}
+    })
+
+    if (!UserPlaylist) {
+      const errors = {
+        'title': "Error retrieving playlist",
+        'statusCode': 404,
+        'message': {}
+      }
+      errors.message = "playlist does not exist/could not be found with requested id"
+      res.status(404).json(errors)
+      }
+
+    res.json(UserPlaylist)
+  })
 
 
 

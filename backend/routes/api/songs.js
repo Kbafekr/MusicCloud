@@ -59,19 +59,15 @@ const SongValidation = [
   //    }
   const QuerySearchValidation = [
     check('title')
-      .optional({nullable: true})
       .isLength({ min: 1})
       .withMessage('Song title must be longer than one character'),
     check('createdAt')
      .isDate()
-      .optional({nullable: true})
       .withMessage('please provide a valid date'),
     check('page')
-      .optional({nullable: true})
       .isInt({min: 0})
       .withMessage('page must be a number greater than -1'),
     check('size')
-      .optional({nullable: true})
       .isInt({min: 0})
       .withMessage('size must be a number greater than -1'),
       handleValidationErrors

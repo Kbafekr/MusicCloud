@@ -81,23 +81,18 @@ const SongValidation = [
       if (title) where.title = title
       if (createdAt) where.createdAt = createdAt
 
-     if (page) page = parseInt(page)
-     if (size) size = parseInt(size)
+      page = parseInt(page)
+      size = parseInt(size)
 
-      if (page > 10) page = 0
-      if (size > 20) size = 20
+      if ((!page) || page > 10) page = 1
+      if ((!size) || size > 20) size = 20
 
-      let pagination = {}
+             let pagination = {}
 
 
          pagination.limit = size
-
-         if (page = 0) {
-          pagination.offset = 0
-         }
-         else {
-           pagination.offset = size * (page - 1)
-         }
+         pagination.offset = size * (page - 1)
+        
 
       const allSongs = await Song.findAll({
           where: { ...where },

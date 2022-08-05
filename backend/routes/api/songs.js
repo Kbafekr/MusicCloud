@@ -91,7 +91,13 @@ const SongValidation = [
 
 
          pagination.limit = size
-         pagination.offset = size * (page - 1)
+         
+         if (page = 0) {
+          pagination.offset = 0
+         }
+         else {
+           pagination.offset = size * (page - 1)
+         }
 
       const allSongs = await Song.findAll({
           where: { ...where },

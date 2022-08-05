@@ -12,7 +12,7 @@ const validateplaylist = [
   check('name')
     .exists({ checkFalsy: true })
     .isLength({min: 1})
-    .withMessage('name must be at least one character and be present'),
+    .withMessage('playlist name must be at least one character and be present'),
   handleValidationErrors
 ];
 
@@ -196,7 +196,7 @@ router.put('/:playlistId', restoreUser, requireAuth, validateplaylist, async (re
     'statusCode': 404,
     'message': {}
   }
-  errors.message = "playlistcould not be found with given id"
+  errors.message = "playlist could not be found with given id"
   res.status(404).json(errors)
   }
 
@@ -236,7 +236,7 @@ router.delete('/:playlistId', requireAuth, restoreUser, async (req, res) => {
       'message': {}
     }
 
-    errors.message = "Song does not exist, could not be found with requested id"
+    errors.message = "playlist does not exist, could not be found with requested id"
     return res.status(404).json(errors)
   }
 

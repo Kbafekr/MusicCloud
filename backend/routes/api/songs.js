@@ -59,15 +59,19 @@ const SongValidation = [
   //    }
   const QuerySearchValidation = [
     check('title')
+      .optional()
       .isLength({ min: 1})
       .withMessage('Song title must be longer than one character'),
     check('createdAt')
      .isDate()
+      .optional()
       .withMessage('please provide a valid date'),
     check('page')
+      .optional()
       .isInt({min: 0})
       .withMessage('page must be a number greater than -1'),
     check('size')
+      .optional()
       .isInt({min: 0})
       .withMessage('size must be a number greater than -1'),
       handleValidationErrors
@@ -167,7 +171,7 @@ const SongValidation = [
     return res.json(theSong);
 });
 
-
+  //api docs say they can be created without album id
   //create a song for an album based on albums id
 
 router.post('/', restoreUser, requireAuth, async (req, res) => {
@@ -212,9 +216,9 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
 
   //edit song
 
-router.put('/:id', requireAuth, SongValidation, async (req, res) => {
+router.put('/:id', restoreUser, requireAuth, SongValidation, async (req, res) => {
     const {title, description, url} = req.body
-
+  const userId = req.user.id
     const Id = req.params.id
 
 const editSong = await Song.findOne({
@@ -233,12 +237,22 @@ if (!editSong) {
   return res.status(404).json(errors)
 }
 
+if (editSong.userId !== userId) {
+  const errors = {
+    'title': "Error authenticating user",
+    'statusCode': 403,
+    'message': {}
+  }
+  errors.message = "Album does not belong to current user"
+  return res.status(403).json(errors)
+}
+
 if (title) {editSong.title = title }
 if (description) {editSong.description = description }
 if (url) {editSong.url = url }
 
 await editSong.save()
-return res.status(201).json(editSong)
+return res.status(200).json(editSong)
 })
 
 

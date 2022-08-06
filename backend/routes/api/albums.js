@@ -37,7 +37,7 @@ router.get('/', restoreUser, async (req, res) => {
 
 //get all albums created by current user
 
-router.get('/current', requireAuth, restoreUser, async (req, res) => {{
+router.get('/current', restoreUser, requireAuth, async (req, res) => {{
   const Allalbums = await Album.findAll({
     where: {
       userId: req.user.id
@@ -55,7 +55,7 @@ router.get('/current', requireAuth, restoreUser, async (req, res) => {{
 
 //get details of an album from an id
 
-router.get('/:albumid', async (req,res) => {
+router.get('/:albumid', restoreUser, requireAuth, async (req,res) => {
   const AlbumId = req.params.albumid
 
   const albumdetails = await Album.findByPk(AlbumId, {

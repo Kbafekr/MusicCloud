@@ -77,7 +77,7 @@ router.get('/:albumid', async (req,res) => {
     return res.status(404).json(errors)
   }
 
-  return res.json(albumdetails)
+  return res.status(200).json(albumdetails)
 })
 
 //create an album

@@ -1524,7 +1524,7 @@ Returns the details of an artist specified by their id.
     }
     ```
 
-### Add Query Filters to Get All Songs
+### cle
 
 Return songs filtered by query parameters.
 

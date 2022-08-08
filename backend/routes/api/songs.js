@@ -11,6 +11,8 @@ const e = require('express');
 
 const router = express.Router();
 
+const { Op } = require("sequelize")
+
 
 const SongValidation = [
   check('title')
@@ -63,7 +65,7 @@ const SongValidation = [
       .isLength({ min: 1})
       .withMessage('Song title must be longer than one character'),
     check('createdAt')
-     .isDate()
+    .isLength({ min: 1})
       .optional()
       .withMessage('please provide a valid date'),
     check('page')
@@ -86,7 +88,20 @@ const SongValidation = [
       let where = {};
 
       if (title) where.title = title
-      if (createdAt) where.createdAt = createdAt
+
+      if (createdAt)
+       { const date = createdAt.slice(0, 10)
+        const time = createdAt.slice(11, createdAt.length)
+
+        let datetime = date;
+
+        if (time) {
+        datetime = date.concat(`T${time}`)
+        }
+
+        console.log("this is time" + datetime)
+          {where.createdAt = { [Op.startsWith]: datetime } }
+       }
 
       page = parseInt(page)
       size = parseInt(size)

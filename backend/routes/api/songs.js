@@ -98,9 +98,8 @@ const SongValidation = [
         if (time) {
         datetime = date.concat(`T${time}`)
         }
-
-        console.log("this is time" + datetime)
-          {where.createdAt = {[Op.like]: datetime }}
+          {where.createdAt = {[Op.like]: datetime}
+        console.log("this is query" + where.createdAt)}
       }
 
       page = parseInt(page)

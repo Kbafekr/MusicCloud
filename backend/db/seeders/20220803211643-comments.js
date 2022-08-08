@@ -15,17 +15,17 @@ module.exports = {
       {
       userId: 1,
       songId: 1,
-      body: 'crazy guitar solo'
+      body: 'crazy solo'
       },
       {
         userId: 1,
         songId: 3,
-        body: 'hit different'
+        body: 'hits different'
       },
       {
         userId: 2,
         songId: 2,
-        body: 'punk phase'
+        body: 'cool song'
       },
     ], {});
   },

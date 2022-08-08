@@ -70,12 +70,12 @@ const SongValidation = [
       .withMessage('please provide a valid date'),
     check('page')
       .optional()
-      .isInt({min: 0})
-      .withMessage('page must be a number greater than -1'),
+      .isInt({min: 1})
+      .withMessage('page must be a number greater than 0'),
     check('size')
       .optional()
-      .isInt({min: 0})
-      .withMessage('size must be a number greater than -1'),
+      .isInt({min: 1})
+      .withMessage('size must be a number greater than 0'),
       handleValidationErrors
     ];
 
@@ -89,15 +89,14 @@ const SongValidation = [
 
       if (title) where.title = title
 
-      if (createdAt)
-          where.createdAt = createdAt
+      if (createdAt) where.createdAt = createdAt
 
 
       page = parseInt(page)
       size = parseInt(size)
 
-      if ((!page) || page > 10) page = 1
-      if ((!size) || size > 20) size = 20
+      if ((!page) || page > 10 ) page = 1
+      if ((!size) || size > 20 ) size = 20
 
              let pagination = {}
 

@@ -98,7 +98,7 @@ const SongValidation = [
         if (time) {
         datetime = date.concat(`T${time}`)
         }
-          {where.createdAt = {[Op.like]: datetime}
+          {where.createdAt = {[Op.iLike]: `%${datetime}%`}
         console.log("this is query" + where.createdAt)}
       }
 

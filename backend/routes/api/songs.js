@@ -90,8 +90,8 @@ const SongValidation = [
       if (title) where.title = title
 
       if (createdAt)
-          {where.createdAt = createdAt}
-      
+          where.createdAt = createdAt
+
 
       page = parseInt(page)
       size = parseInt(size)

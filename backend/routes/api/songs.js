@@ -100,7 +100,7 @@ const SongValidation = [
         }
 
         console.log("this is time" + datetime)
-          {where.createdAt = { [Op.startsWith]: datetime } }
+          {where.createdAt =  datetime } 
        }
 
       page = parseInt(page)

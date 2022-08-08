@@ -91,16 +91,16 @@ const SongValidation = [
 
       if (createdAt)
        { const date = createdAt.slice(0, 10)
-        const time = createdAt.slice(11, createdAt.length)
+        const time = createdAt.slice(12, createdAt.length)
 
         let datetime = date;
 
         if (time) {
-        datetime = date.concat(`T${time}`)
+        datetime = date.concat('T', time)
         }
 
         console.log("this is time" + datetime)
-          {where.createdAt = { [Op.startsWith]: datetime } }
+          {where.createdAt = { [Op.like]: datetime } }
        }
 
       page = parseInt(page)

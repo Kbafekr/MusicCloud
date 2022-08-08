@@ -65,9 +65,9 @@ const SongValidation = [
       .isLength({ min: 1})
       .withMessage('Song title must be longer than one character'),
     check('createdAt')
-    .isLength({ min: 1})
+    .isLength({ min: 24})
       .optional()
-      .withMessage('please provide a valid date'),
+      .withMessage('please provide a valid date (example format: "2022-08-08T14:30:34.959Z")'),
     check('page')
       .optional()
       .isInt({min: 1})

@@ -90,16 +90,7 @@ const SongValidation = [
       if (title) where.title = title
 
       if (createdAt)
-       { const date = createdAt.slice(0, 10)
-        const time = createdAt.slice(12, createdAt.length)
-
-        let datetime = date;
-
-        if (time) {
-        datetime = date.concat(`T${time}`)
-        }
-          {where.createdAt = {[Op.iLike]: `%${datetime}%`}
-        console.log("this is query" + where.createdAt)}
+          {where.createdAt = {[Op.startsWith]: createdAt}
       }
 
       page = parseInt(page)

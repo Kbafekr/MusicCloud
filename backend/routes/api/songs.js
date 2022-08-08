@@ -91,7 +91,7 @@ const SongValidation = [
 
       if (createdAt)
        { const date = createdAt.slice(0, 10)
-        const time = createdAt.slice(11, createdAt.length)
+        const time = createdAt.slice(12, createdAt.length)
 
         let datetime = date;
 
@@ -100,8 +100,8 @@ const SongValidation = [
         }
 
         console.log("this is time" + datetime)
-          {where.createdAt = { [Op.startsWith]: datetime } }
-       }
+          {where.createdAt = datetime }
+      }
 
       page = parseInt(page)
       size = parseInt(size)

@@ -2,18 +2,14 @@
 
 ## Description
 
-A fullstack pixel-perfect clone of SoundCloud. View live online here:
+A fullstack pixel-perfect clone of SoundCloud using React, Redux, and Express. 
+Preview live online [here:](https://soundcloudcloneaa.herokuapp.com/api/csrf/restore)
 
 View a live Demo here: 
 
 ## Features
-* 
-*
-*
-*
-*
-*
-
+* Create, edit, delete, and listen to songs.
+* Create, edit, and delete playlists.
 
 ## Setup
   1. Clone this repository and ```npm install``` at root directory.

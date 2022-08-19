@@ -1,18 +1,18 @@
 # MusicCloud
 
-#Description
+# Description
 
-A fullstack pixel-perfect clone of SoundCloud. Listen to songs and customize playlists 
+A fullstack pixel-perfect clone of SoundCloud. Listen to songs and customize playlists
 
-#Features
+# Features
 
-#Setup
+# Setup
 
-#Technologies Used:
+# Technologies Used:
 
-*CSS
-*Express
-*Node.js
-*React
-*Redux
-*Sequelize
+* CSS
+* Express
+* Node.js
+* React
+* Redux
+* Sequelize

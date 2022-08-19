@@ -15,7 +15,8 @@ View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
         * Create a ```.env``` file based on the env.example
         * Run ```npx dotenv sequelize db:migrate```
         * Run ```npx dotenv sequelize db:seed:all```
-  3. Run ```npm start``` in the root directory.
+        * Run ```npm start``` in the backend directory.
+  3. Run ```npm start``` in frontend directory.
   4. Open http://localhost:3000 to view in browser.
   
 ## Technologies Used:

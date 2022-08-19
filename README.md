@@ -26,3 +26,4 @@ View a live demo [here:](https://soundcloudcloneaa.herokuapp.com/api/csrf/restor
 * React
 * Redux
 * Sequelize
+* SQLite

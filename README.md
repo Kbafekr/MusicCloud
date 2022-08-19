@@ -1,4 +1,18 @@
 # MusicCloud
 
+#Description
 
-SoundCloud Clone using React/Redux and Express
+A fullstack pixel-perfect clone of SoundCloud. Listen to songs and customize playlists 
+
+#Features
+
+#Setup
+
+#Technologies Used:
+
+*CSS
+*Express
+*Node.js
+*React
+*Redux
+*Sequelize

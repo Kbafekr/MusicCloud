@@ -1,0 +1,21 @@
+.CarouselImages {
+display: flex;
+flex-direction: column;
+justify-content: center;
+width: 100%;
+align-items: center;
+overflow: auto;
+position: relative;
+}
+
+.images {
+    border-radius: 5px;
+    width: 100%;
+    height: 800px;
+}
+
+.images.active {
+    opacity: 0;
+    transition-duration: 1s;
+    transform: scale(2);
+}

@@ -55,10 +55,10 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           {/* <div className="separatordropdown">username</div> */}
           {/* <li>{localStorage.getItem('username')}</li> */}
-          <li>{user.user.username}</li>
+          <li>{user.username}</li>
           {/* <div className="separatordropdown">email</div> */}
           {/* <li>{localStorage.getItem('email')}</li> */}
-          <li>{user.user.email}</li>
+          <li>{user.email}</li>
 
           <li>
             <button className='logoutButton' onClick={logout}>Log Out</button>

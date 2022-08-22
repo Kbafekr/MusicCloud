@@ -10,6 +10,14 @@ function ProfileButton({ user }) {
     localStorage.setItem('imageUrl', user.user.imageUrl)
   }
 
+  if (!localStorage.getItem('username')) {
+    localStorage.setItem('username', user.user.username)
+  }
+
+  if (!localStorage.getItem('email')) {
+    localStorage.setItem('email', user.user.email)
+  }
+
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -43,9 +51,9 @@ function ProfileButton({ user }) {
       {showMenu && (
         <ul className="profile-dropdown">
           <div className="separatordropdown">username</div>
-          <li>{user.user.username}</li>
+          <li>{localStorage.getItem('username')}</li>
           <div className="separatordropdown">email</div>
-          <li>{user.user.email}</li>
+          <li>{localStorage.getItem('email')}</li>
           <li>
             <button className='logoutButton' onClick={logout}>Log Out</button>
           </li>

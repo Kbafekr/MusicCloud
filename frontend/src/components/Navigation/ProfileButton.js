@@ -5,6 +5,11 @@ import './ProfileButton.css'
 
 
 function ProfileButton({ user }) {
+  //set image to session storage since it gets deleted off of render
+  if (!sessionStorage.getItem('imageUrl')) {
+    sessionStorage.setItem('imageUrl', user.user.imageUrl)
+  }
+
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
 
@@ -29,19 +34,18 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
-
   return (
     <>
       <button onClick={openMenu}>
-        <img className='profileImg' src={user.imageUrl} alt='image'/>
+        <img className='profileImg' src={sessionStorage.getItem('imageUrl')} />
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
           <div className="separatordropdown">username</div>
-          <li>{user.username}</li>
+          <li>{user.user.username}</li>
           <div className="separatordropdown">email</div>
-          <li>{user.email}</li>
+          <li>{user.user.email}</li>
           <li>
             <button className='logoutButton' onClick={logout}>Log Out</button>
           </li>

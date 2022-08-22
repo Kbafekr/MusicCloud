@@ -18,6 +18,7 @@ align-items: center;
 position: relative;
 margin-left: auto;
 margin-right: auto;
+z-index: 0;
 }
 
 img.images {

@@ -1,13 +1,17 @@
 
+.SignupForm-outer {
+  padding: 50px;
+  width: 500px;
+  height: 500px;
+  display: flex;
+ flex-direction: column;
+ padding: 10px;
+ justify-content: center;
+ align-items: center;
 
-
-.SignupForm {
-  padding: 100px;
 }
-form {
-  width: 100%;
-  height: 100%;
 
+.SignupForm-inner {
  display: flex;
  flex-direction: column;
  padding: 10px;
@@ -15,8 +19,54 @@ form {
  align-items: center;
 
 }
-form.label {
-  font-size: large;
+.emailInputSignup {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 450px;
+}
+.usernameInputSignup {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 450px;
+}
+.firstnameInputSignup {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 450px;
+}
+.lastnameInputSignup {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 450px;
+}
+.passwordInputSignup {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 450px;
+}
+.confirmpasswordInputSignup {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 450px;
+}
+
+.submitInputSignup {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 450px;
+  background-color: rgb(255, 111, 0);
+}
+
+.submitInputSignup:hover {
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .SignUpNavBar:hover {

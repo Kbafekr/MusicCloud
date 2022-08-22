@@ -21,16 +21,18 @@ function LoginForm() {
   };
 
   return (
-    <div className="loginStyle">
+    <div className="loginStyle-outer">
 
-    <form onSubmit={handleSubmit}>
+    <form className='loginStyle-inner' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
             ))}
       </ul>
+      <h1>Sign in</h1>
       <label>
         <input
+        className="credentialInputLogin"
         placeholder="Username or Email..."
           type="text"
           autoComplete="email"
@@ -41,6 +43,7 @@ function LoginForm() {
       </label>
       <label>
         <input
+        className="passwordInputLogin"
         placeholder="Password..."
         autoComplete="current-password"
           type="password"
@@ -49,7 +52,7 @@ function LoginForm() {
           required
           />
       </label>
-      <button type="submit">Continue</button>
+      <button className='submitloginButton' type="submit">Continue</button>
     </form>
           </div>
   );

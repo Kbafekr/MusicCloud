@@ -21,14 +21,14 @@ export function HomePage() {
         else {
             setImageNumber(0)
         }
-    }, [])
+    }, [imageNumber])
 
     if (UserSignedIn) {
         return (
             <div className='homePage'>
             <h1>Welcome back!</h1>
             <div className='CarouselImages'>
-             <img className='images' src={ImagesArray[imageNumber].image}/>
+             <img className='images' src={ImagesArray[imageNumber].image} alt='images'/>
             </div>
 
             <div className='headers'>
@@ -52,7 +52,7 @@ export function HomePage() {
         return (
             <div className='homePage'>
                 <div className='CarouselImages'>
-                 <img className='images' src={ImagesArray[imageNumber].image}/>
+                 <img className='images' src={ImagesArray[imageNumber].image} alt='images'/>
                 </div>
 
                 <div className='headers'>

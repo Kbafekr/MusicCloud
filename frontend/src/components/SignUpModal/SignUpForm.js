@@ -31,14 +31,16 @@ function SignupForm() {
   };
 
   return (
-    <div className="SignupForm">
+    <div className="SignupForm-outer">
 
-    <form onSubmit={handleSubmit} autoComplete='off'>
+    <form className="SignupForm-inner" onSubmit={handleSubmit} autoComplete='off'>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
+      <h1>Create an account</h1>
       <label>
         <input
+        className="emailInputSignup"
         autoComplete="email"
           placeholder="Email..."
           type="text"
@@ -49,6 +51,7 @@ function SignupForm() {
       </label>
       <label>
         <input
+        className="usernameInputSignup"
         placeholder="Username..."
         autoComplete="username"
           type="text"
@@ -59,6 +62,7 @@ function SignupForm() {
       </label>
       <label>
         <input
+        className="firstnameInputSignup"
         placeholder="First Name..."
         type="text"
         autoComplete="cc-given-name"
@@ -69,6 +73,7 @@ function SignupForm() {
       </label>
       <label>
         <input
+        className="lastnameInputSignup"
           placeholder="Last Name..."
           autoComplete="cc-family-name"
           type="text"
@@ -79,6 +84,7 @@ function SignupForm() {
       </label>
       <label>
         <input
+        className="passwordInputSignup"
         autoComplete="new-password"
           placeholder="Password..."
           type="password"
@@ -89,6 +95,7 @@ function SignupForm() {
       </label>
       <label>
         <input
+        className="confirmpasswordInputSignup"
         autoComplete="new-password"
         placeholder="Confirm Password..."
           type="password"
@@ -97,7 +104,7 @@ function SignupForm() {
           required
           />
       </label>
-      <button type="submit">Accept & Continue</button>
+      <button className="submitInputSignup" type="submit">Accept & Continue</button>
     </form>
           </div>
   );

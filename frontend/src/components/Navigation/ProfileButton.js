@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
     <>
       <button onClick={openMenu}>
         {/* <img className='profileImg' src={localStorage.getItem('imageUrl')} /> */}
-        <img className='profileImg' src={user.imageUrl} />
+        <img className='profileImg' src={user.imageUrl} alt='profilepic' />
 
         <i className="fas fa-user-circle" />
       </button>

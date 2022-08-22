@@ -5,9 +5,9 @@ import './ProfileButton.css'
 
 
 function ProfileButton({ user }) {
-  //set image to session storage since it gets deleted off of render
-  if (!sessionStorage.getItem('imageUrl')) {
-    sessionStorage.setItem('imageUrl', user.user.imageUrl)
+  //set image to local storage since it gets deleted off of render and doesn;t expire when exiting page
+  if (!localStorage.getItem('imageUrl')) {
+    localStorage.setItem('imageUrl', user.user.imageUrl)
   }
 
   const dispatch = useDispatch();
@@ -37,7 +37,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <img className='profileImg' src={sessionStorage.getItem('imageUrl')} />
+        <img className='profileImg' src={localStorage.getItem('imageUrl')} />
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (

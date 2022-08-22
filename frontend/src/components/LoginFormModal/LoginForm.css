@@ -8,3 +8,10 @@
     font-weight: bold;
     text-align: right
   };
+
+body {
+  color: blue;
+}
+
+.LogInNavBar {
+}

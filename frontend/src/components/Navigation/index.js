@@ -16,21 +16,26 @@ function Navigation({ isLoaded }){
   } else {
     sessionLinks = (
       <>
+      <div className='SignupSide'>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/signup">
+        <button type="submit">Create account</button>
+        </NavLink>
+      </div>
       </>
     );
   }
 
   return (
     <div className='navBarStyle'>
-    <ul>
-      <li>
-        <NavLink exact to="/">Home</NavLink>
+      <NavLink exact to="/">
+      <img src={require('./MusicCloudLogo.png')} alt='MusicCloud Logo'/>
+      </NavLink>
+
+      <div className='navBarRightSide'>
         {isLoaded && sessionLinks}
-      </li>
-    </ul>
-</div>
+    </div>
+    </div>
   );
 }
 

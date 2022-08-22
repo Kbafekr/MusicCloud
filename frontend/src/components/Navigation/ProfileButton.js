@@ -47,16 +47,16 @@ function ProfileButton({ user }) {
     <>
       <button onClick={openMenu}>
         {/* <img className='profileImg' src={localStorage.getItem('imageUrl')} /> */}
-        {/* <img className='profileImg' src={user.imageUrl} /> */}
+        <img className='profileImg' src={user.imageUrl} />
 
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
-          {/* <div className="separatordropdown">username</div> */}
+          <div className="separatordropdown">username</div>
           {/* <li>{localStorage.getItem('username')}</li> */}
           <li>{user.username}</li>
-          {/* <div className="separatordropdown">email</div> */}
+          <div className="separatordropdown">email</div>
           {/* <li>{localStorage.getItem('email')}</li> */}
           <li>{user.email}</li>
 

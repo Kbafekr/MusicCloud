@@ -2,7 +2,7 @@
 .SignupForm-outer {
   padding: 50px;
   width: 500px;
-  height: 500px;
+  height: 550px;
   display: flex;
  flex-direction: column;
  padding: 10px;
@@ -38,6 +38,12 @@
   width: 450px;
 }
 .lastnameInputSignup {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 450px;
+}
+.imageUrlInputSignup {
   padding: 5px;
   font-size: 24px;
   margin: 10px;

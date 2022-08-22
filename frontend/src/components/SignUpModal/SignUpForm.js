@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignUpForm.css'
 
@@ -12,16 +11,15 @@ function SignupForm() {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [password, setPassword] = useState("");
+  const [imageUrl, setImageUrl] = useState('')
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
-
-  if (sessionUser) return <Redirect to="/" />;
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (password === confirmPassword) {
       setErrors([]);
-      return dispatch(sessionActions.signup({ email, username, firstName, lastName, password }))
+      return dispatch(sessionActions.signup({ email, username, firstName, lastName, imageUrl, password }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -35,7 +33,7 @@ function SignupForm() {
 
     <form className="SignupForm-inner" onSubmit={handleSubmit} autoComplete='off'>
       <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>
       <h1>Create an account</h1>
       <label>
@@ -80,6 +78,15 @@ function SignupForm() {
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
           required
+          />
+      </label>
+      <label>
+        <input
+        className="imageUrlInputSignup"
+          placeholder="Profile Image Url..."
+          type="text"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
           />
       </label>
       <label>

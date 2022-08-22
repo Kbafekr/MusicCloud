@@ -61,7 +61,7 @@ router.post('/', validateSignup, async (req, res, next) => {
     'message': {}
   }
 
-  const {firstName, lastName, email, username, password} = req.body;
+  const {firstName, lastName, email, username, imageUrl, password} = req.body;
 
   const EmailInput = await User.findOne({where: {email}});
   const UsernameInput = await User.findOne({where: {username}});
@@ -81,7 +81,7 @@ router.post('/', validateSignup, async (req, res, next) => {
     return res.status(403).json(errorCode)
   }
 
-  const user = await User.signup({firstName, lastName, email, username, password });
+  const user = await User.signup({firstName, lastName, email, username, password, imageUrl});
 
 
   const token = setTokenCookie(res, user);
@@ -99,7 +99,9 @@ router.post('/', validateSignup, async (req, res, next) => {
       "lastName": user.lastName,
       "email": user.email,
       "username": user.username,
+      "Profile Picture": user.imageUrl,
       "token": user.token
+
     });
 });
 

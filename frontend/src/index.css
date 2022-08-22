@@ -7,3 +7,9 @@ body {
     display: block;
     font: 12px Lucida;
 }
+
+@media screen and (max-width: 800px) {
+    body {
+      background-color: rgb(159, 15, 15);
+    }
+  }

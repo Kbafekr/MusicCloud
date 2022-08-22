@@ -30,24 +30,26 @@ function LoginForm() {
             ))}
       </ul>
       <label>
-        Username or Email
         <input
+        placeholder="Username or Email..."
           type="text"
+          autoComplete="email"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
           />
       </label>
       <label>
-        Password
         <input
+        placeholder="Password..."
+        autoComplete="current-password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
           />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit">Continue</button>
     </form>
           </div>
   );

@@ -1,0 +1,8 @@
+.LogInDemo {
+  border: none;
+  background-color: transparent;
+}
+
+.LogInDemo:hover {
+  cursor: pointer;
+}

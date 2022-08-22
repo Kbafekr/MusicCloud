@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import * as sessionActions from "../../store/session";
-import './Signup.css';
 import './SignUpForm.css'
 
 function SignupForm() {
@@ -34,13 +33,14 @@ function SignupForm() {
   return (
     <div className="SignupForm">
 
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} autoComplete='off'>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label>
-        Email
         <input
+        autoComplete="email"
+          placeholder="Email..."
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -48,8 +48,9 @@ function SignupForm() {
           />
       </label>
       <label>
-        Username
         <input
+        placeholder="Username..."
+        autoComplete="username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -57,17 +58,19 @@ function SignupForm() {
           />
       </label>
       <label>
-        firstName
         <input
-          type="text"
+        placeholder="First Name..."
+        type="text"
+        autoComplete="cc-given-name"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
           required
           />
       </label>
       <label>
-        lastName
         <input
+          placeholder="Last Name..."
+          autoComplete="cc-family-name"
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
@@ -75,8 +78,9 @@ function SignupForm() {
           />
       </label>
       <label>
-        Password
         <input
+        autoComplete="new-password"
+          placeholder="Password..."
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -84,15 +88,16 @@ function SignupForm() {
           />
       </label>
       <label>
-        Confirm Password
         <input
+        autoComplete="new-password"
+        placeholder="Confirm Password..."
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
           required
           />
       </label>
-      <button type="submit">Sign Up</button>
+      <button type="submit">Accept & Continue</button>
     </form>
           </div>
   );

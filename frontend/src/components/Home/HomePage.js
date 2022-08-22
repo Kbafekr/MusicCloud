@@ -1,7 +1,7 @@
 import './HomePage.css'
 import { useState, useEffect } from 'react'
 import {useSelector} from 'react-redux'
-import { ImagesArray } from './Carousel-Images/Images'
+import {ImagesArray} from '../../images/Images'
 
 export function HomePage() {
     const UserSignedIn = useSelector(state => state.session.user)

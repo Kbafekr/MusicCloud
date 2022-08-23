@@ -45,7 +45,7 @@ function ProfileButton({ user }) {
   };
   return (
     <>
-      <button onClick={openMenu}>
+      <button className='profileButton' onClick={openMenu}>
         {/* <img className='profileImg' src={localStorage.getItem('imageUrl')} /> */}
         <img className='profileImg' src={user.imageUrl} alt='profilepic' />
 

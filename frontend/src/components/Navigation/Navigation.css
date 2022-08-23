@@ -1,32 +1,101 @@
+.navBarLeftSide {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  width: 80%;
+  align-items: center;
+}
+
+.navBarRightSide {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  width: 20%;
+  align-items: center;
+  height: 100%;
+}
+
+.profileButton {
+  margin-right: 20px;
+}
+.membershipContainer {
+  margin: 0px 10px
+}
+
+.membershipContainer > * {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 20px;
+}
+.homeButton {
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  font-size: 18px;
+  border-top: none;
+  border-bottom: none;
+  background-color: transparent;
+  padding: 8px 20px;
+  color: rgb(194, 194, 194);
+}
+.songButton {
+  border-left: solid 1px black;
+  border-right: solid 1px black;
+  font-size: 18px;
+  border-top: none;
+  border-bottom: none;
+  background-color: transparent;
+  padding: 8px 20px;
+  color: rgb(194, 194, 194);
+}
+
+.songButton:hover, .homeButton:hover {
+  color: white;
+  cursor: pointer;
+}
+
 .LogInNavBar {
   color: white;
   background-color: black;
   border: 1px solid white;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
+  font-size: 12px;
 }
 .SignupNavBar {
   color: white;
   background-color: rgb(255, 111, 0);
-  padding: 5px;
-  border: 3px solid rgb(255, 111, 0);
+  border: rgb(255, 111, 0) ;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
 }
 
 .LogInDemo {
   border: none;
   background-color: transparent;
+  width: 100%;
+  height: 100%;
+  font-size: 12px;
 }
  .SignupSide {
+  height: 100%;
+  align-items: center;
   padding-right: 20px;
   display: flex;
   flex-direction: row;
   column-gap: 10px;
  }
+
 img {
   height: 30px;
   width: 200px;
   padding-left: 20px;
 
 }
+
+/* top parent container */
 .navBarStyle {
   margin: 0 9%;
   border-top: 5px solid rgb(252, 113, 20);

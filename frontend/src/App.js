@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import { HomePage } from "./components/Home/HomePage";
 import { PageNotFound } from "./components/UnknownPage/PageNotFound";
 import ReturnAllSongs from "./components/Songs";
+import SongDetails from "./components/Songs/OneSong";
 
 function App() {
   const dispatch = useDispatch();
@@ -22,8 +23,11 @@ function App() {
           <Route exact path='/'>
             <HomePage />
           </Route>
-          <Route path='/songs'>
+          <Route exact path='/songs'>
             <ReturnAllSongs />
+          </Route>
+          <Route path='/songs/:songId'>
+            <SongDetails />
           </Route>
           <Route>
             <PageNotFound />

@@ -70,6 +70,54 @@ export const getAllSongs = () => async dispatch => {
     }
 }
 
+//get one song thunk
+export const getOneSong = (songId) => async dispatch => {
+    const response = await csrfFetch(`/api/songs/${songId}`)
+    if (response.ok) {
+        const OneSong = await response.json()
+        await dispatch(actionGetOneSong(OneSong))
+    }
+}
+
+//create a song thunk
+
+export const CreateASong = (song) => async dispatch => {
+    const response = await csrfFetch('/api/songs/', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(song)
+})
+    if (response.ok) {
+        const newSong = await response.json()
+        await dispatch(actionCreateASong(newSong.Songs))
+    }
+}
+
+//edit a song thunk
+
+export const EditASong = (song) => async dispatch => {
+    const response = await csrfFetch(`/api/songs/${song.id}`, {
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(song)
+})
+    if (response.ok) {
+        const songEdit = await response.json()
+        await dispatch(actionEditASong(songEdit.Songs))
+    }
+}
+//delete a song thunk
+
+export const DeleteASong = (songId) => async dispatch => {
+    const response = await csrfFetch(`/api/songs/${songId}`, {
+    method: 'Delete',
+})
+    if (response.ok) {
+        const response = await response.json()
+        await dispatch(actionDeleteASong(songId))
+        return response
+    }
+}
 
 //initial state
 
@@ -85,10 +133,23 @@ export const songsReducer = (state = initialState, action) => {
             action.songs.forEach(song => {
                 newState[song.id] = song
             })
-                return newState
-            default:
-                return state
+
+            return newState
+
+        case GET_ONE_SONG: {
+            const newState = {...state}
+            return newState
+        }
+        case CREATE_A_SONG:
+            // return newState
+        case EDIT_A_SONG:
+            // return newState
+        case DELETE_A_SONG:
+            // return newState
+        default:
+            return state
     }
 }
+
 
 //export reducer

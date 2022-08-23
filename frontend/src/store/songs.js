@@ -128,20 +128,29 @@ const initialState = {}
 
 export const songsReducer = (state = initialState, action) => {
     switch (action.type) {
-        case GET_ALL_SONGS:
+        case GET_ALL_SONGS: {
             const newState = {...state.songs};
+
             action.songs.forEach(song => {
                 newState[song.id] = song
             })
-
-            return newState
-
-        case GET_ONE_SONG: {
-            const newState = {...state}
             return newState
         }
-        case CREATE_A_SONG:
-            // return newState
+
+        case GET_ONE_SONG: {
+            const newState = {...action.song}
+            //normalize nested components into state
+            newState.AlbumId = action.song.Album.id
+            newState.AlbumTitle = action.song.Album.title
+            newState.AlbumImageUrl = action.song.Album.imageUrl
+            newState.ArtistId = action.song.Artist.id
+            newState.ArtistUsername = action.song.Artist.username
+            newState.ArtistProfilePic = action.song.Artist.imageUrl
+            return newState
+        }
+        case CREATE_A_SONG: {
+            const newState = {...state}
+        }
         case EDIT_A_SONG:
             // return newState
         case DELETE_A_SONG:

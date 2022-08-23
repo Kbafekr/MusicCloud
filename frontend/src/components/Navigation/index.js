@@ -54,7 +54,6 @@ function Navigation({ isLoaded }){
       <NavLink exact to="/">
       <img src={require('./MusicCloudLogo.png')} alt='MusicCloud Logo'/>
       </NavLink>
-
       <div className='membershipContainer'>
       {memberLinks}
       </div>

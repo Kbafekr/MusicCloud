@@ -5,6 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import { HomePage } from "./components/Home/HomePage";
 import { PageNotFound } from "./components/UnknownPage/PageNotFound";
+import ReturnAllSongs from "./components/Songs";
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,9 @@ function App() {
         <Switch>
           <Route exact path='/'>
             <HomePage />
+          </Route>
+          <Route path='/songs'>
+            <ReturnAllSongs />
           </Route>
           <Route>
             <PageNotFound />

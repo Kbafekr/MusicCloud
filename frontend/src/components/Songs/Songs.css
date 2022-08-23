@@ -8,7 +8,7 @@
     flex-direction: column;
     text-align: center;
     background-color: white;
-    height: 80%;
+    height: 100%;
     padding-top: 50px;
 }
 
@@ -16,15 +16,14 @@
 display: flex;
 flex-direction: column;
 justify-content: center;
-width: 100%;
 align-items: center;
 position: relative;
 margin-left: auto;
 margin-right: auto;
 z-index: 0;
     border-radius: 5px;
-    width: 500px;
-    height: 350px;
+    width: 200px;
+    height: 150px;
     padding: 20px;
 
 }

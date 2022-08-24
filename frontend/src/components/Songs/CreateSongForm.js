@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateASong } from "../../store/songs";
+import { CreateASong, songsReducer } from "../../store/songs";
 import { useHistory } from "react-router-dom";
 import './CreateSong.css'
 
@@ -24,15 +24,23 @@ function CreateSong({setShowModal}) {
 
     e.preventDefault();
     setErrors([]);
-    if(user){
-      const response =  dispatch(CreateASong({ albumId, title, description, url, imageUrl }))
-      //this will hard refresh do not do
-      // history.go(0)
-        setShowModal(false)
-        return response
+    if (user){
+      setShowModal(false)
+      return dispatch(CreateASong({ albumId, title, description, url, imageUrl }))
+      .catch(async (res) => {
+        // console.log(res + 'this is res')
+        const data = await res.json();
+        // console.log(data + 'this is data')
+        if (data && data.errors) setErrors(data.errors);
+        // console.log(data.errors + 'this is dataerrors')
+        // console.log(setErrors + 'this is setErrors')
+        alert('Request denied. User does not own album.')
+
+      });
     }
     return setErrors(['User must be signed in to create song']);
-  };
+    }
+
 
   return (
     <div className="CreateSong-outer">

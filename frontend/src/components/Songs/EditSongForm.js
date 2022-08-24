@@ -34,7 +34,7 @@ function EditSong({setShowModal}) {
     if(id){
       setShowModal(false)
 
-      return dispatch(EditASong({ id, albumId, title, description, url, imageUrl }))
+      return dispatch(EditASong({id, albumId, title, description, url, imageUrl}))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);

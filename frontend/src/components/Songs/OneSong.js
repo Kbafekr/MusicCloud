@@ -23,7 +23,7 @@ export default function SongDetails() {
 
  useEffect(() => {
     dispatch(getOneSong(songId))
- }, [dispatch])
+ }, [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 
 
  if(!song.id) {

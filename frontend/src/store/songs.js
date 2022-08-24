@@ -155,10 +155,22 @@ export const songsReducer = (state = initialState, action) => {
         }
         case EDIT_A_SONG:
             {   const newState = {...state}
+            // console.log('this is newstate' + state)
+            //     const data = {...action}
+                // console.log('this is data' + data)
                 // const songCopy = { ...state[action.song.id]}
                 // newState[action.song.id] = songCopy
-                newState[action.song.id] = action.song
-                return newState[action.song.id]
+                // newState[action.song.id] = action.song
+                //normalize nested components into state
+            // newState[action.song.id.AlbumTitle] = newState.song.Album.title
+            // newState[action.song.AlbumImageUrl] = newState.song.AlbumImageUrl
+            // newState[action.song.ArtistId] = newState.song.ArtistId
+            // newState[action.song.ArtistUsername] = newState.song.ArtistUsername
+            // newState[action.song.ArtistProfilePic] = newState.song.ArtistProfilePic
+                // return newState[action.song.id]
+
+                newState[action.song.id] = action.song;
+                return newState[action.song.id];
             }
         case DELETE_A_SONG:
             {

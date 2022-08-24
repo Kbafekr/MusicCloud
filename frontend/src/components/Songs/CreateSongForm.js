@@ -45,7 +45,7 @@ function CreateSong() {
         <input
         className="albumIdInputCreateSong"
         autoComplete="off"
-          placeholder="AlbumId..."
+          placeholder="AlbumId (must belong to user)..."
           type="number"
           value={albumId}
           onChange={(e) => setAlbumId(e.target.value)}

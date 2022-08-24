@@ -62,7 +62,7 @@ function EditSong() {
         <input
         className="albumIdInputEditSong"
         autoComplete="off"
-          placeholder={albumId}
+          placeholder={albumId || "AlbumId (must belong to user)..."}
           type="number"
           value={albumId}
           onChange={(e) => setAlbumId(e.target.value)}
@@ -72,7 +72,7 @@ function EditSong() {
       <label>
         <input
         className="titleInputEditSong"
-        placeholder={title}
+        placeholder={title || "Title..."}
         autoComplete="off"
           type="text"
           value={title}
@@ -83,7 +83,7 @@ function EditSong() {
       <label>
         <input
         className="descriptionCreateSong"
-        placeholder={description}
+        placeholder={description || 'description...'}
         type="text"
         autoComplete="off"
           value={description}
@@ -94,7 +94,7 @@ function EditSong() {
       <label>
         <input
         className="urlCreateSong"
-          placeholder={url}
+          placeholder={url || 'Audio Url...'}
           autoComplete="off"
           type="text"
           value={url}
@@ -105,7 +105,7 @@ function EditSong() {
       <label>
         <input
         className="imageUrlCreateSong"
-          placeholder={imageUrl}
+          placeholder={imageUrl || "Song Image Url (optional)..."}
           type="text"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}

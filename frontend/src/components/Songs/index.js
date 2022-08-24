@@ -10,6 +10,8 @@ import '../UnknownPage/PageNotFound.css'
 import '../Navigation/Navigation.css'
 import EditSongModal from './EditFormIndex';
 import DeleteSongModal from './DeleteFormIndex';
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 //get all songs, dispatch thunk action creator
 export default function ReturnAllSongs() {
@@ -52,12 +54,17 @@ export default function ReturnAllSongs() {
         return (
 
           <div className="songName" key={song.id}>
-          <div className='albumId'>Album: {song.albumId}</div>
           <img className='songImage' src={song.imageUrl}></img>
+          <div className='albumId'>Album: {song.albumId}</div>
 
           <NavLink className='songLink' to={`/songs/${song.id}`}>{song.title}</NavLink>
 
-          <audio className='song-player-general' src={song.url}>Play Me</audio>
+          <AudioPlayer
+             autoPlay={false}
+             src={song.url}
+             onPlay={e => console.log("onPlay")}
+          />
+          {/* <audio className='song-player-general' src={song.url}>Play Me</audio> */}
           {/* <div className='EditSongForm'>
             <EditSongModal songId={song.id}/>
           </div>

@@ -5,6 +5,8 @@ import { Redirect, NavLink, useParams,  } from 'react-router-dom';
 import './OneSong.css'
 import EditSongModal from './EditFormIndex';
 import DeleteSongModal from './DeleteFormIndex';
+import AudioPlayer from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
 
 //get all songs, dispatch thunk action creator
 export default function SongDetails() {
@@ -36,7 +38,11 @@ export default function SongDetails() {
           <img className='songImage' src={song.imageUrl}></img>
           <div className='songTitle'>Song: {song.title}</div>
           <div className='description'>Description: {song.description}</div>
-          <audio className='song-player-general' src={song.url}>Play Me</audio>
+          <AudioPlayer
+             autoPlay={false}
+              src={song.url}
+               onPlay={e => console.log("onPlay")}
+          />
         </div>
         <div className='Album-container'>
         <div className='albumId'>Album # {song.AlbumId}</div>

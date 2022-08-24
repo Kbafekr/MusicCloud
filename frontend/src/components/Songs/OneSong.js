@@ -25,6 +25,7 @@ export default function SongDetails() {
     dispatch(getOneSong(songId))
  }, [dispatch])
 
+
  if(!song.id) {
 return (<h1>Whomp Whomp</h1>)
  }
@@ -37,7 +38,7 @@ return (<h1>Whomp Whomp</h1>)
         <DeleteSongModal />
       </div>
         <div className='song-container'>
-          <div className="songName" key={song.id}>
+          <div className="songName" key={songId}>
           <img className='songImage' src={song.imageUrl}></img>
           <div className='songTitle'>Song: {song.title}</div>
           <div className='description'>Description: {song.description}</div>

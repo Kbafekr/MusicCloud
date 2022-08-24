@@ -104,7 +104,6 @@ export const EditASong = (song) => async dispatch => {
     if (response.ok) {
         const songEdit = await response.json()
         await dispatch(actionEditASong(songEdit))
-        return songEdit
     }
 }
 //delete a song thunk
@@ -155,10 +154,11 @@ export const songsReducer = (state = initialState, action) => {
             return newState
         }
         case EDIT_A_SONG:
-            {
-                const newState = {...state}
+            {   const newState = {...state}
+                // const songCopy = { ...state[action.song.id]}
+                // newState[action.song.id] = songCopy
                 newState[action.song.id] = action.song
-                return newState
+                return newState[action.song.id]
             }
         case DELETE_A_SONG:
             {

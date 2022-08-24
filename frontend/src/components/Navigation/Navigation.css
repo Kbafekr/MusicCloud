@@ -5,6 +5,7 @@
 .NavBarContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: nowrap;
   justify-content: space-between;
   margin: 0 9%;
   border-top: 5px solid rgb(252, 113, 20);
@@ -20,6 +21,7 @@
   .navBarLeftSide {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: left;
     align-items: center;
   }
@@ -33,6 +35,7 @@
   .navBarRightSide {
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     justify-content: right;
     align-items: center;
     height: 100%;

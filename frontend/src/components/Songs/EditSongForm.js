@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateASong, EditASong } from "../../store/songs";
+import { getOneSong, EditASong } from "../../store/songs";
 import { useHistory } from "react-router-dom";
 import {useParams} from 'react-router-dom'
 
 import './CreateSong.css'
+import { render } from "react-dom";
 
 function EditSong({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory()
-  const {songId} = useParams()
+  // const {songId} = useParams()
 
   const user = useSelector(state => state.session.user)
   const song = useSelector(state => state.song)
-
+  const [id, setId] = useState(song.id)
   const [albumId, setAlbumId] = useState(song.albumId)
   const [title, setTitle] = useState(song.title)
   const [description, setDescription] = useState(song.description);
@@ -27,21 +28,13 @@ function EditSong({setShowModal}) {
 
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     setErrors([]);
-    if(songId){
-      const response = dispatch(EditASong({ id: songId, albumId, title, description, url, imageUrl }))
-      //this will hard refresh do not do
-      // history.go(0)
+    if(id){
       setShowModal(false)
-        return response
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
-    }
-    else {
-      return dispatch(EditASong({ id: song.id, albumId, title, description, url, imageUrl }))
+
+      return dispatch(EditASong({ id, albumId, title, description, url, imageUrl }))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -51,8 +44,9 @@ function EditSong({setShowModal}) {
   };
 
 
+
   return (
-    <div className="EditSong-outer">
+    <div className="EditSong-outer" key={song}>
 
     <form className="EditSong-inner" onSubmit={handleSubmit} autoComplete='off'>
       <ul>

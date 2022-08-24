@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateASong, EditASong } from "../../store/songs";
+import { useHistory } from "react-router-dom";
 import {useParams} from 'react-router-dom'
 
 import './CreateSong.css'
 
 function EditSong() {
   const dispatch = useDispatch();
+  const history = useHistory()
   const {songId} = useParams()
 
   const user = useSelector(state => state.session.user)
@@ -28,7 +30,9 @@ function EditSong() {
     e.preventDefault();
     setErrors([]);
     if(songId){
-      return dispatch(EditASong({ id: songId, albumId, title, description, url, imageUrl }))
+      const response = dispatch(EditASong({ id: songId, albumId, title, description, url, imageUrl }))
+        history.go(0)
+        return response
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);

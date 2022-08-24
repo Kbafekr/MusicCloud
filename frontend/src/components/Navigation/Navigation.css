@@ -1,5 +1,44 @@
-/* top parent container */
-div.NavBarContainer {
+button {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+}
+.SignupNavBar {
+  color: white;
+  background-color: rgb(255, 111, 0);
+  padding: 5px;
+  border: 3px solid rgb(255, 111, 0);
+}
+ .SignupSide {
+  padding-right: 20px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+ }
+.HomeLogo {
+  height: 30px;
+  width: 200px;
+  padding-left: 20px;
+
+}
+.NavBarContainer {
+  margin: 0 9%;
+  border-top: 5px solid rgb(252, 113, 20);
+  padding: 5px;
+    background-color: #333;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: large;
+    font-weight: bold;
+    align-items: center;
+    height: 30px
+  };
+
+
+/* top parent container
+.NavBarContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -106,4 +145,4 @@ div.NavBarContainer {
   width: 100%;
   height: 100%;
   font-size: 12px;
-}
+} */

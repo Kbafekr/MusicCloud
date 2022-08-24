@@ -3,6 +3,8 @@ import { getOneSong } from '../../store/songs';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink, useParams,  } from 'react-router-dom';
 import './OneSong.css'
+import EditSongModal from './EditFormIndex';
+import DeleteSongModal from './DeleteFormIndex';
 
 //get all songs, dispatch thunk action creator
 export default function SongDetails() {
@@ -23,6 +25,12 @@ export default function SongDetails() {
 
   return (
     <div className='song-details-container'>
+      <div className='EditSongForm'>
+        <EditSongModal />
+      </div>
+      <div className='DeleteSongModal'>
+        <DeleteSongModal />
+      </div>
         <div className='song-container'>
           <div className="songName" key={song.id}>
           <img className='songImage' src={song.imageUrl}></img>

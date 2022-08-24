@@ -12,20 +12,20 @@
 .Whomps {
     display: flex;
     justify-content: center;
-    height: 500px;
-    width: 500px;
+    height: 250px;
+    width: 250px;
     padding: 20px;
 }
 
 
 .whomp1 {
-    height: 500px;
-    width: 500px;
+    height: 250px;
+    width: 250px;
 }
 
 .whomp2 {
-    height: 500px;
-    width: 500px;
+    height: 250px;
+    width: 250px;
     transform: scalex(-1)
 }
 

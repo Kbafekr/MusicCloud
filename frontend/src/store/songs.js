@@ -89,6 +89,7 @@ export const CreateASong = (song) => async dispatch => {
 })
     if (response.ok) {
         const newSong = await response.json()
+        console.log('fsdaf' + newSong)
         await dispatch(actionCreateASong(newSong.Songs))
     }
 }
@@ -150,11 +151,21 @@ export const songsReducer = (state = initialState, action) => {
         }
         case CREATE_A_SONG: {
             const newState = {...state}
+            newState[action.song.id] = action.song
+            return newState
         }
         case EDIT_A_SONG:
-            // return newState
+            {
+                const newState = {...state}
+                newState[action.song.id] = action.song
+                return newState
+            }
         case DELETE_A_SONG:
-            // return newState
+            {
+                const newState = {...state}
+                delete newState[action.id]
+                return newState
+            }
         default:
             return state
     }

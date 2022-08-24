@@ -7,7 +7,7 @@ import SignUpModal from '../SignUpModal';
 import LoginAsDemo from '../LoginDemoUser';
 //sign in imports for navbar
 import ProfileButton from './ProfileButton';
-import SongButton from '../Songs/SongButton';
+import SongButton from './SongButton';
 import HomeButton from './HomeButton';
 
 import './Navigation.css';

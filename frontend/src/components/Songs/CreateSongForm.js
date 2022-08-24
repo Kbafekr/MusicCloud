@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateASong } from "../../store/songs";
+import { useHistory } from "react-router-dom";
 import './CreateSong.css'
 
 function CreateSong() {
+  const history = useHistory()
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
 
@@ -14,17 +16,17 @@ function CreateSong() {
   const [imageUrl, setImageUrl] = useState('')
   const [errors, setErrors] = useState([]);
 
+  const [isModalOpen, setModalOpen] = useState(false)
+
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setErrors([]);
     if(user){
-      setErrors([]);
-      return dispatch(CreateASong({ albumId, title, description, url, imageUrl }))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+      const response =  dispatch(CreateASong({ albumId, title, description, url, imageUrl }))
+        return response
+
     }
     return setErrors(['User must be signed in to create song']);
   };
@@ -32,7 +34,7 @@ function CreateSong() {
   return (
     <div className="CreateSong-outer">
 
-    <form className="CreateSong-inner" onSubmit={handleSubmit} autoComplete='off'>
+    <form className="CreateSong-inner" onClick={() => setModalOpen(true)} onSubmit={handleSubmit} autoComplete='off'>
       <ul>
         {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>
@@ -90,7 +92,7 @@ function CreateSong() {
           onChange={(e) => setImageUrl(e.target.value)}
           />
       </label>
-      <button className="submitCreateSong" type="submit">Submit new song</button>
+      <button className="submitCreateSong" onClick={() => setModalOpen(false)} type="submit">Submit new song</button>
     </form>
           </div>
   );

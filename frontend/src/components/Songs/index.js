@@ -9,6 +9,7 @@ import Whomp from '../../images/Whomp.webp'
 import '../UnknownPage/PageNotFound.css'
 import '../Navigation/Navigation.css'
 import EditSongModal from './EditFormIndex';
+import DeleteSongModal from './DeleteFormIndex';
 
 //get all songs, dispatch thunk action creator
 export default function ReturnAllSongs() {
@@ -57,9 +58,12 @@ export default function ReturnAllSongs() {
           <NavLink className='songLink' to={`/songs/${song.id}`}>{song.title}</NavLink>
 
           <audio className='song-player-general' src={song.url}>Play Me</audio>
-          <div className='EditSongForm'>
+          {/* <div className='EditSongForm'>
             <EditSongModal songId={song.id}/>
           </div>
+          <div className='DeleteSongModal'>
+          <DeleteSongModal /> */}
+          {/* </div> */}
           </div>
       )
 

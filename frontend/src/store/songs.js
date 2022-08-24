@@ -89,8 +89,7 @@ export const CreateASong = (song) => async dispatch => {
 })
     if (response.ok) {
         const newSong = await response.json()
-        console.log('fsdaf' + newSong)
-        await dispatch(actionCreateASong(newSong.Songs))
+        await dispatch(actionCreateASong(newSong))
     }
 }
 

@@ -21,13 +21,14 @@ function CreateSong({setShowModal}) {
 
 
   const handleSubmit = (e) => {
-    setShowModal(false)
+
     e.preventDefault();
     setErrors([]);
     if(user){
       const response =  dispatch(CreateASong({ albumId, title, description, url, imageUrl }))
       //this will hard refresh do not do
       // history.go(0)
+        setShowModal(false)
         return response
     }
     return setErrors(['User must be signed in to create song']);
@@ -36,7 +37,7 @@ function CreateSong({setShowModal}) {
   return (
     <div className="CreateSong-outer">
 
-    <form className="CreateSong-inner" onClick={() => setShowModal(true)} onSubmit={handleSubmit} autoComplete='off'>
+    <form className="CreateSong-inner" onSubmit={handleSubmit} autoComplete='off'>
       <ul>
         {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>

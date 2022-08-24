@@ -25,6 +25,9 @@ export default function SongDetails() {
     dispatch(getOneSong(songId))
  }, [dispatch])
 
+ if(!song.id) {
+return (<h1>Whomp Whomp</h1>)
+ }
   return (
     <div className='song-details-container'>
       <div className='EditSongForm'>

@@ -1,13 +1,13 @@
 /* top parent container */
 .navBarStyle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   margin: 0 9%;
   border-top: 5px solid rgb(252, 113, 20);
   padding: 5px;
   width: auto;
     background-color: #333;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     font-size: large;
     font-weight: bold;
     align-items: center;
@@ -45,8 +45,8 @@
    display: flex;
    flex-direction: row;
    column-gap: 10px; }
-  /*
 
+   /*
   .profileButton {
   margin-right: 20px;
 }

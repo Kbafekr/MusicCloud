@@ -31,7 +31,8 @@ function EditSong() {
     setErrors([]);
     if(songId){
       const response = dispatch(EditASong({ id: songId, albumId, title, description, url, imageUrl }))
-        history.go(0)
+      //this will hard refresh do not do
+      // history.go(0)
         return response
         .catch(async (res) => {
           const data = await res.json();

@@ -25,7 +25,8 @@ function CreateSong() {
     setErrors([]);
     if(user){
       const response =  dispatch(CreateASong({ albumId, title, description, url, imageUrl }))
-      history.go(0)
+      //this will hard refresh do not do
+      // history.go(0)
         return response
     }
     return setErrors(['User must be signed in to create song']);

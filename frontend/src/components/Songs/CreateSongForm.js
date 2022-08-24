@@ -21,6 +21,7 @@ function CreateSong() {
 
 
   const handleSubmit = (e) => {
+    setModalOpen(false)
     e.preventDefault();
     setErrors([]);
     if(user){
@@ -87,7 +88,7 @@ function CreateSong() {
       <label>
         <input
         className="imageUrlCreateSong"
-          placeholder="Song Image Url..."
+          placeholder="Song Image Url (optional)..."
           type="text"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}

@@ -52,7 +52,7 @@ function Navigation({ isLoaded }){
 
     <div className='navBarLeftSide'>
       <NavLink exact to="/">
-      <img src={require('./MusicCloudLogo.png')} alt='MusicCloud Logo'/>
+      <img className='HomeLogo' src={require('./MusicCloudLogo.png')} alt='MusicCloud Logo'/>
       </NavLink>
       <div className='membershipContainer'>
       {memberLinks}

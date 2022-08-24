@@ -1,4 +1,4 @@
-/* top parent container */
+top parent container
 .navBarStyle {
   margin: 0 9%;
   border-top: 5px solid rgb(252, 113, 20);
@@ -13,7 +13,21 @@
     height: 30px
   };
 
-  .navBarRightSide {
+  .navBarLeftSide {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    width: 80%;
+    align-items: center;
+  }
+
+  .HomeLogo {
+    height: 30px;
+    width: 200px;
+    padding-left: 20px;
+
+  }
+  /* .navBarRightSide {
     display: flex;
     flex-direction: row;
     justify-content: right;
@@ -21,21 +35,6 @@
     align-items: center;
     height: 100%;
   }
-  
-  .navBarLeftSide {
-  display: flex;
-  flex-direction: row;
-  justify-content: left;
-  width: 80%;
-  align-items: center;
-}
-
-img {
-  height: 30px;
-  width: 200px;
-  padding-left: 20px;
-
-}
 
 .profileButton {
   margin-right: 20px;
@@ -108,4 +107,4 @@ img {
   display: flex;
   flex-direction: row;
   column-gap: 10px;
- }
+ } */

@@ -103,7 +103,7 @@ export const EditASong = (song) => async dispatch => {
 })
     if (response.ok) {
         const songEdit = await response.json()
-        await dispatch(actionEditASong(songEdit.Songs))
+        await dispatch(actionEditASong(songEdit))
     }
 }
 //delete a song thunk

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateASong } from "../../store/songs";
 import { useHistory } from "react-router-dom";
@@ -26,7 +26,6 @@ function CreateSong() {
     if(user){
       const response =  dispatch(CreateASong({ albumId, title, description, url, imageUrl }))
         return response
-
     }
     return setErrors(['User must be signed in to create song']);
   };
@@ -92,7 +91,7 @@ function CreateSong() {
           onChange={(e) => setImageUrl(e.target.value)}
           />
       </label>
-      <button className="submitCreateSong" onClick={() => setModalOpen(false)} type="submit">Submit new song</button>
+      <button className="submitCreateSong" type="submit">Submit new song</button>
     </form>
           </div>
   );

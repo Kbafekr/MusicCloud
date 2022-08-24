@@ -48,7 +48,7 @@ function Navigation({ isLoaded }){
   }
 
   return (
-  <div className='navBarStyle'>
+  <div className='NavBarContainer'>
     <div className='navBarLeftSide'>
       <NavLink exact to="/">
       <img className='HomeLogo' src={require('./MusicCloudLogo.png')} alt='MusicCloud Logo'/>

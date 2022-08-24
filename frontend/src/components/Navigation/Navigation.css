@@ -13,7 +13,16 @@
     height: 30px
   };
 
-  .navBarLeftSide > * {
+  .navBarRightSide {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    width: 20%;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .navBarLeftSide {
   display: flex;
   flex-direction: row;
   justify-content: left;
@@ -21,13 +30,11 @@
   align-items: center;
 }
 
-.navBarRightSide {
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
-  width: 20%;
-  align-items: center;
-  height: 100%;
+img {
+  height: 30px;
+  width: 200px;
+  padding-left: 20px;
+
 }
 
 .profileButton {
@@ -102,10 +109,3 @@
   flex-direction: row;
   column-gap: 10px;
  }
-
-img {
-  height: 30px;
-  width: 200px;
-  padding-left: 20px;
-
-}

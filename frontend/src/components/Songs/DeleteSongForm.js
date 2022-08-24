@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 
 import './CreateSong.css'
 
-function DeleteSong({}) {
+function DeleteSong({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory()
   // const {songId} = useParams()
@@ -17,12 +17,13 @@ function DeleteSong({}) {
 
   console.log(songId + 'sdafsdfsdafsdfasdfsd')
 
-  const [isModalOpen, setModalOpen] = useState(false)
+  // const [isModalOpen, setModalOpen] = useState(false)
 
 
 
   const handleSubmit = async () => {
       const response = dispatch(DeleteASong(songId))
+      setShowModal(false)
       history.push('/songs')
       return response
         }
@@ -35,7 +36,7 @@ function DeleteSong({}) {
         <div></div>
        <p>Are you sure you want to delete?</p>
       <button className="submitDeleteSong" type="submit">Delete song</button>
-      <button className='cancelDeleteSong' onClick={() => setModalOpen(false)}>Cancel</button>
+      <button className='cancelDeleteSong' onClick={() => setShowModal(false)}>Cancel</button>
     </form>
           </div>
   );

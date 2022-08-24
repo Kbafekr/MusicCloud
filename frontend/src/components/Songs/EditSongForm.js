@@ -6,7 +6,7 @@ import {useParams} from 'react-router-dom'
 
 import './CreateSong.css'
 
-function EditSong() {
+function EditSong({setShowModal}) {
   const dispatch = useDispatch();
   const history = useHistory()
   const {songId} = useParams()
@@ -22,7 +22,7 @@ function EditSong() {
   const [errors, setErrors] = useState([]);
 
   //force modal close
-  const [isModalOpen, setModalOpen] = useState(false)
+  // const [showModal, setShowModal] = useState(false);
 
 
 
@@ -33,6 +33,7 @@ function EditSong() {
       const response = dispatch(EditASong({ id: songId, albumId, title, description, url, imageUrl }))
       //this will hard refresh do not do
       // history.go(0)
+      setShowModal(false)
         return response
         .catch(async (res) => {
           const data = await res.json();
@@ -112,7 +113,7 @@ function EditSong() {
           />
       </label>
       <button className="submitEditSong" type="submit">Update song</button>
-      <button className='cancelEditSong' type='submit' onClick={() => setModalOpen(false)}>Cancel edit</button>
+      <button className='cancelEditSong' type='submit' onClick={() => setShowModal(false)}>Cancel edit</button>
     </form>
           </div>
   );

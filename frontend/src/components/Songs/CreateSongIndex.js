@@ -11,7 +11,7 @@ function CreateSongModal() {
       <button className='CreateSongButton' onClick={() => setShowModal(true)}>Create Song</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateSong />
+          <CreateSong setShowModal={setShowModal}/>
         </Modal>
       )}
     </>

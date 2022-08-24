@@ -12,7 +12,7 @@ function DeleteSongModal() {
       <button className='DeleteSongButton' onClick={() => setShowModal(true)}>Delete Song</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeleteSong />
+          <DeleteSong setShowModal={setShowModal} />
         </Modal>
       )}
     </>

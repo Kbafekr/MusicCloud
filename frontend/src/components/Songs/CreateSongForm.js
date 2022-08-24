@@ -4,7 +4,7 @@ import { CreateASong } from "../../store/songs";
 import { useHistory } from "react-router-dom";
 import './CreateSong.css'
 
-function CreateSong() {
+function CreateSong({setShowModal}) {
   const history = useHistory()
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
@@ -16,12 +16,12 @@ function CreateSong() {
   const [imageUrl, setImageUrl] = useState('')
   const [errors, setErrors] = useState([]);
 
-  const [isModalOpen, setModalOpen] = useState(false)
+  // const [isModalOpen, setModalOpen] = useState(false)
 
 
 
   const handleSubmit = (e) => {
-    setModalOpen(false)
+    setShowModal(false)
     e.preventDefault();
     setErrors([]);
     if(user){
@@ -36,7 +36,7 @@ function CreateSong() {
   return (
     <div className="CreateSong-outer">
 
-    <form className="CreateSong-inner" onClick={() => setModalOpen(true)} onSubmit={handleSubmit} autoComplete='off'>
+    <form className="CreateSong-inner" onClick={() => setShowModal(true)} onSubmit={handleSubmit} autoComplete='off'>
       <ul>
         {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>

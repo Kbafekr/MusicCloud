@@ -95,6 +95,7 @@ function CreateSong({setShowModal}) {
           />
       </label>
       <button className="submitCreateSong" type="submit">Submit new song</button>
+      <button className='cancelCreateSong' onClick={() => setShowModal(false)}>Cancel song</button>
     </form>
           </div>
   );

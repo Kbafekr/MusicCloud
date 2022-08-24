@@ -3,6 +3,7 @@
   margin: 0 9%;
   border-top: 5px solid rgb(252, 113, 20);
   padding: 5px;
+  width: auto;
     background-color: #333;
     display: flex;
     flex-direction: row;
@@ -17,7 +18,7 @@
     display: flex;
     flex-direction: row;
     justify-content: left;
-    width: 80%;
+    width: auto;
     align-items: center;
   }
 
@@ -31,7 +32,7 @@
     display: flex;
     flex-direction: row;
     justify-content: right;
-    width: 20%;
+    width: auto;
     align-items: center;
     height: 100%;
   }

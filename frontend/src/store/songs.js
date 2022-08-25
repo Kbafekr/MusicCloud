@@ -151,19 +151,31 @@ const initialState = {}
 export const songsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_SONGS: {
-            const newState = {...state.songs};
-
+            const newState = {};
             action.songs.forEach(song => {
                 newState[song.id] = song
             })
             return newState
+
+            // const newState = {...state.songs};
+
+            // action.songs.forEach(song => {
+            //     newState[song.id] = song
+            // })
+            // return newState
         }
         case GET_OWNED_SONGS: {
-            const newState = {...state.songs};
+            const newState = {};
             action.songs.songs.forEach(song => {
                 newState[song.id] = song
             })
             return newState
+
+            // const newState = {...state.songs};
+            // action.songs.songs.forEach(song => {
+            //     newState[song.id] = song
+            // })
+            // return newState
         }
 
         case GET_ONE_SONG: {

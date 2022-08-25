@@ -4,7 +4,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import "./OneAlbum.css";
 
-import EditAlbumModal from "./EditAlbumIndex";
+// import EditAlbumModal from "./EditAlbumIndex";
+
+//import modal file create album index
+import { Modal } from '../../../context/Modal';
+import EditAlbum from './EditAlbumForm';
+//exceeded rendering capacity with conditional rendering for nested properties
+//just create modal in here
+
+
+
 // import DeleteSongModal from './DeleteFormIndex';
 
 import AudioPlayer from "react-h5-audio-player";
@@ -15,6 +24,7 @@ export default function AlbumDetails() {
   const dispatch = useDispatch();
   const { albumId } = useParams();
 
+  const [showModal, setShowModal] = useState(false);
   const album = useSelector((state) => state.album);
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
@@ -23,7 +33,7 @@ export default function AlbumDetails() {
 
   useEffect(() => {
     dispatch(getOneAlbum(albumId));
-  }, [dispatch, album.title, album.description, album.imageUrl])
+  }, [dispatch, showModal])
     // dispatch, album.Artist, album.Songs]);
   //  [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 
@@ -31,17 +41,22 @@ export default function AlbumDetails() {
     return <h1>Whomp Whomp</h1>;
   }
 
+
     if (album.Artist && album.Songs) {
      return (
     <div className="album-details-container">
-      <div className='EditAlbumForm'>
-        <EditAlbumModal />
-      </div>
+      <button className='EditAlbumButton' onClick={() => setShowModal(true)}>Edit Album</button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <EditAlbum setShowModal={setShowModal} />
+        </Modal>
+      )}
+
       {/* <div className='DeleteSongModal'>
         <DeleteSongModal />
       </div> */}
       <div className="album-container">
-        <div className="albumKey" key={albumId}>
+        <div className="albumKey">
           <div className="albumTitle">{album.title}</div>
           <img className="albumImage" src={album.imageUrl}></img>
           <div className="albumDescription">
@@ -88,9 +103,12 @@ export default function AlbumDetails() {
 }
 else  return (
   <div className="album-details-container">
-    <div className='EditAlbumForm'>
-        <EditAlbumModal />
-      </div>
+      <button className='EditAlbumButton' onClick={() => setShowModal(true)}>Edit Album</button>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <EditAlbum setShowModal={setShowModal} />
+        </Modal>
+      )}
     {/* <div className='DeleteSongModal'>
       <DeleteSongModal />
     </div>  */}

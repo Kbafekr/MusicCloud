@@ -60,16 +60,10 @@ export default function CurrentSongs() {
 
           <AudioPlayer
              autoPlay={false}
+             muted={true}
              src={song.url}
              onPlay={e => console.log("onPlay")}
           />
-          {/* <audio className='song-player-general' src={song.url}>Play Me</audio> */}
-          {/* <div className='EditSongForm'>
-            <EditSongModal songId={song.id}/>
-          </div>
-          <div className='DeleteSongModal'>
-          <DeleteSongModal /> */}
-          {/* </div> */}
           </div>
       )
 

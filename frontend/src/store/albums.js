@@ -159,7 +159,7 @@ export const albumsReducer = (state = initialState, action) => {
             return newState
         }
         case GET_OWNED_ALBUMS: {
-            const newState = {...state.albums};
+            const newState = {};
             action.albums.Albums.forEach(album => {
                 newState[album.id] = album
             })

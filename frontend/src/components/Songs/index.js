@@ -8,15 +8,13 @@ import LoginAsDemo from '../LoginDemoUser';
 import Whomp from '../../images/Whomp.webp'
 import '../UnknownPage/PageNotFound.css'
 import '../Navigation/Navigation.css'
-import EditSongModal from './EditFormIndex';
-import DeleteSongModal from './DeleteFormIndex';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
 //get all songs, dispatch thunk action creator
 export default function ReturnAllSongs() {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user)
+  const user = useSelector(state => state.session.user.id)
 
   const songs = useSelector(state => state.song)
   const SongsArray = Object.values(songs)
@@ -55,6 +53,7 @@ export default function ReturnAllSongs() {
 
           <div className="songName" key={song.id}>
           <img className='songImage' src={song.imageUrl}></img>
+          <div className='userId'>User: {song.userId}</div>
           <div className='albumId'>Album: {song.albumId}</div>
 
           <NavLink className='songLink' to={`/songs/${song.id}`}>{song.title}</NavLink>
@@ -62,15 +61,9 @@ export default function ReturnAllSongs() {
           <AudioPlayer
              autoPlay={false}
              src={song.url}
+             muted={true}
              onPlay={e => console.log("onPlay")}
           />
-          {/* <audio className='song-player-general' src={song.url}>Play Me</audio> */}
-          {/* <div className='EditSongForm'>
-            <EditSongModal songId={song.id}/>
-          </div>
-          <div className='DeleteSongModal'>
-          <DeleteSongModal /> */}
-          {/* </div> */}
           </div>
       )
 

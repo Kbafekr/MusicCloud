@@ -75,7 +75,7 @@ export const getAllSongs = () => async dispatch => {
     const response = await csrfFetch('/api/songs')
     if (response.ok) {
         const allSongs = await response.json()
-        await dispatch(actionGetSongs(allSongs.Songs))
+        await dispatch(actionGetSongs(allSongs))
     }
 }
 
@@ -151,8 +151,9 @@ const initialState = {}
 export const songsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_SONGS: {
-            const newState = {};
-            action.songs.forEach(song => {
+            const newState = {state};
+
+            action.songs.Songs.forEach(song => {
                 newState[song.id] = song
             })
             return newState
@@ -181,12 +182,12 @@ export const songsReducer = (state = initialState, action) => {
         case GET_ONE_SONG: {
             const newState = {...action.song}
             //normalize nested components into state
-            newState.AlbumId = action.song.Album.id
-            newState.AlbumTitle = action.song.Album.title
-            newState.AlbumImageUrl = action.song.Album.imageUrl
-            newState.ArtistId = action.song.Artist.id
-            newState.ArtistUsername = action.song.Artist.username
-            newState.ArtistProfilePic = action.song.Artist.imageUrl
+            // newState.AlbumId = action.song.Album.id
+            // newState.AlbumTitle = action.song.Album.title
+            // newState.AlbumImageUrl = action.song.Album.imageUrl
+            // newState.ArtistId = action.song.Artist.id
+            // newState.ArtistUsername = action.song.Artist.username
+            // newState.ArtistProfilePic = action.song.Artist.imageUrl
             return newState
         }
         case CREATE_A_SONG: {

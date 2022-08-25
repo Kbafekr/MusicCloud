@@ -62,7 +62,7 @@ function ProfileButton({ user }) {
 
           <li>
             <div className="mySongs">
-              <NavLink className="mySongsText" to={"/songs/current"}>
+              <NavLink className="mySongsText" to={'/songs/current'}>
                 My Songs
               </NavLink>
             </div>

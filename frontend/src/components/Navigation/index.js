@@ -53,15 +53,14 @@ function Navigation({ isLoaded }){
 
   return (
   <div className='NavBarContainer'>
-    <div className='navBarLeftSide'>
+    {/* <div className='navBarLeftSide'> */}
       <NavLink exact to="/">
       <img className='HomeLogo' src={require('./MusicCloudLogo.png')} alt='MusicCloud Logo'/>
       </NavLink>
       <div className='membershipContainer'>
       {memberLinks}
       </div>
-    </div>
-
+    {/* </div> */}
     <div className='navBarRightSide'>
         {isLoaded && sessionLinks}
     </div>

@@ -1,6 +1,6 @@
 
 /* Overall container */
-.song-details-container {
+.album-details-container {
     margin: 0 9%;
     display: flex;
     align-items: center;
@@ -12,6 +12,9 @@
     padding-top: 50px;
 }
 
+.albumTitle {
+    font-size: 48px;
+}
 /* song section */
 .songImage {
 display: flex;
@@ -29,7 +32,7 @@ z-index: 0;
 
 }
 
-.songImage:hover {
+.albumImage:hover {
     opacity: 1;
     transition-duration: 1s;
     transform: scale(1.1);

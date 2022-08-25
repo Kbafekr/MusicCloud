@@ -56,7 +56,7 @@ export default function AlbumDetails() {
         </div>
         <div className="album-container">
           <div className="albumKey">
-            <div className="albumTitle">{album.title}</div>
+            <div className="albumTitle">Album: {album.title}</div>
             <img className="albumImage" src={album.imageUrl}></img>
             <div className="albumDescription">
               Description: {album.description}

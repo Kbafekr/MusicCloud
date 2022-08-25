@@ -31,6 +31,9 @@ export function LibraryPage() {
             <NavLink className='mySongsText' to={'/songs/current'}>
             My Songs
           </NavLink>
+          <NavLink className='myAlbumsText' to={'/albums/current'}>
+            My Albums
+          </NavLink>
         </div>
         )
     }

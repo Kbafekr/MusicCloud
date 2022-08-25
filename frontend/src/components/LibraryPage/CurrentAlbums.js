@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { getAllSongs } from '../../store/songs';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink,  } from 'react-router-dom';
-import './CurrentAlbums.css'
+import './CurrentSongs.css'
 import LoginAsDemo from '../LoginDemoUser';
 import Whomp from '../../images/Whomp.webp'
 import '../UnknownPage/PageNotFound.css'
 import '../Navigation/Navigation.css'
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import { UserAlbums } from '../../store/albums';
 
 //get all songs owned by current User, dispatch thunk action creator
 export default function CurrentAlbums() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
-  const songs = useSelector(state => state.song)
-  const SongsArray = Object.values(songs)
+  const albums = useSelector(state => state.album)
+  const AlbumsArray = Object.values(albums)
 
   // console.log('this is songsarray' + SongsArray)
   // console.log('this is songs' + Object.values(songs))
 
  useEffect(() => {
-    dispatch(UserSongs())
+    dispatch(UserAlbums())
  }, [dispatch])
 
  if (!user) {
@@ -43,32 +45,20 @@ export default function CurrentAlbums() {
 )
  }
   return (
-    <div className='songs-container'>
-      <div className='createSongForm'>
+    <div className='albums-container'>
+      {/* <div className='createSongForm'>
 
-      </div>
-      {SongsArray.map((song) => {
+      </div> */}
+      {AlbumsArray.map((album) => {
         return (
 
-          <div className="songName" key={song.id}>
-          <img className='songImage' src={song.imageUrl}></img>
-          <div className='albumId'>Album: {song.albumId}</div>
+          <div className="albumKey" key={album.id}>
+          <img className='albumImage' src={album.imageUrl}></img>
+          <div className='userId'>User: {album.userId}</div>
+          <div className='albumDescription'>Description: {album.description}</div>
 
-          <NavLink className='songLink' to={`/songs/${song.id}`}>{song.title}</NavLink>
-
-          <AudioPlayer
-             autoPlay={false}
-             src={song.url}
-             onPlay={e => console.log("onPlay")}
-          />
-          {/* <audio className='song-player-general' src={song.url}>Play Me</audio> */}
-          {/* <div className='EditSongForm'>
-            <EditSongModal songId={song.id}/>
-          </div>
-          <div className='DeleteSongModal'>
-          <DeleteSongModal /> */}
-          {/* </div> */}
-          </div>
+          <NavLink className='albumLink' to={`/albums/${album.id}`}>{album.title}</NavLink>
+      </div>
       )
 
 })}

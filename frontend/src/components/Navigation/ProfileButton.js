@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from 'react-redux';
-import * as sessionActions from '../../store/session';
+import { useDispatch } from "react-redux";
+import * as sessionActions from "../../store/session";
 import { NavLink } from "react-router-dom";
-import './ProfileButton.css'
-
+import "./ProfileButton.css";
 
 function ProfileButton({ user }) {
   // set image to local storage since it gets deleted off of render and doesn;t expire when exiting page
@@ -35,7 +34,7 @@ function ProfileButton({ user }) {
       setShowMenu(false);
     };
 
-    document.addEventListener('click', closeMenu);
+    document.addEventListener("click", closeMenu);
 
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
@@ -46,9 +45,9 @@ function ProfileButton({ user }) {
   };
   return (
     <>
-      <button className='profileButton' onClick={openMenu}>
+      <button className="profileButton" onClick={openMenu}>
         {/* <img className='profileImg' src={localStorage.getItem('imageUrl')} /> */}
-        <img className='profileImg' src={user.imageUrl} alt='profilepic' />
+        <img className="profileImg" src={user.imageUrl} alt="profilepic" />
 
         <i className="fas fa-user-circle" />
       </button>
@@ -60,16 +59,27 @@ function ProfileButton({ user }) {
           <div className="separatordropdown">email</div>
           {/* <li>{localStorage.getItem('email')}</li> */}
           <li>{user.email}</li>
+
           <li>
-          <div className='mySongs'>
-          <NavLink className='mySongsText' to={'/songs/current'}>
-            My Songs
-          </NavLink>
-          </div>
+            <div className="mySongs">
+              <NavLink className="mySongsText" to={"/songs/current"}>
+                My Songs
+              </NavLink>
+            </div>
           </li>
 
           <li>
-            <button className='logoutButton' onClick={logout}>Log Out</button>
+            <div className="myAlbums">
+              <NavLink className="myAlbumsText" to={"/albums/current"}>
+                My Albums
+              </NavLink>
+            </div>
+          </li>
+
+          <li>
+            <button className="logoutButton" onClick={logout}>
+              Log Out
+            </button>
           </li>
         </ul>
       )}

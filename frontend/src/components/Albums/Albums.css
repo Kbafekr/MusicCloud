@@ -1,6 +1,6 @@
 
 
-.songs-container {
+.albums-container {
     margin: 0 9%;
     display: flex;
     align-items: center;
@@ -12,7 +12,7 @@
     padding-bottom: 50px;
 }
 
-.songImage {
+.albumImage {
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -28,18 +28,18 @@ z-index: 0;
 
 }
 
-.songImage:hover {
+.albumImage:hover {
     opacity: 1;
     transition-duration: 1s;
     transform: scale(1.1);
 }
 
-.albumId > * {
+.userId > * {
     font-weight:100;
     font-size: 24px;
 }
 
-.songLink {
+.albumLink {
     font-style: italic;
     font-size: 48px;
 }

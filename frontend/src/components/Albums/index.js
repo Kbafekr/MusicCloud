@@ -43,8 +43,6 @@ export default function ReturnAllAlbums() {
  }
   return (
     <div className='albums-container'>
-      <div className='getAllAlbums'>
-      </div>
 
       {AlbumsArray.map((album) => {
         return (

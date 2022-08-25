@@ -89,9 +89,9 @@ function EditSong({setShowModal}) {
       <label>
         <input
         className="urlCreateSong"
-          placeholder={url || 'Audio Url...'}
+          placeholder={url || 'Audio Url (required)...'}
           autoComplete="off"
-          type="text"
+          type="url"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           required
@@ -101,13 +101,15 @@ function EditSong({setShowModal}) {
         <input
         className="imageUrlCreateSong"
           placeholder={imageUrl || "Song Image Url (optional)..."}
-          type="text"
+          type="url"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           />
       </label>
+      <div className="editSongButtons">
       <button className="submitEditSong" type="submit">Update song</button>
-      <button className='cancelEditSong' onClick={() => setShowModal(false)}>Cancel edit</button>
+      <button className='cancelEditSong' onClick={() => setShowModal(false)}>Cancel</button>
+      </div>
     </form>
           </div>
   );

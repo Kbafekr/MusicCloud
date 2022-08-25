@@ -35,8 +35,10 @@ function DeleteSong({setShowModal}) {
       <p>Warning! This will permanently remove {song.title} from your library.</p>
         <div></div>
        <p>Are you sure you want to delete?</p>
+       <div className="deleteSongButtons">
       <button className="submitDeleteSong" type="submit">Delete song</button>
       <button className='cancelDeleteSong' onClick={() => setShowModal(false)}>Cancel</button>
+       </div>
     </form>
           </div>
   );

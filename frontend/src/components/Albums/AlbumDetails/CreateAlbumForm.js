@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { CreateASong, songsReducer } from "../../store/songs";
+import { CreateAnAlbum } from "../../../store/albums";
 import { useHistory } from "react-router-dom";
-import './CreateSong.css'
+import './CreateAlbum.css'
 
-function CreateSong({setShowModal}) {
-  const history = useHistory()
+function CreateAlbum({setShowModal}) {
   const dispatch = useDispatch();
+
   const user = useSelector(state => state.session.user)
 
-  const [albumId, setAlbumId] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
   const [imageUrl, setImageUrl] = useState('')
   const [errors, setErrors] = useState([]);
 
-  // const [isModalOpen, setModalOpen] = useState(false)
 
 
 
@@ -26,7 +23,7 @@ function CreateSong({setShowModal}) {
     setErrors([]);
     if (user){
       setShowModal(false)
-      return dispatch(CreateASong({ albumId, title, description, url, imageUrl }))
+      return dispatch(CreateAnAlbum({title, description, imageUrl }))
       .catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
@@ -38,34 +35,23 @@ function CreateSong({setShowModal}) {
 
       });
     }
-    return setErrors(['User must be signed in to create song']);
+    return setErrors(['User must be signed in to create album']);
     }
 
 
   return (
-    <div className="CreateSong-outer">
+    <div className="CreateAlbum-outer">
 
-    <form className="CreateSong-inner" onSubmit={handleSubmit} autoComplete='off'>
+    <form className="CreateAlbum-inner" onSubmit={handleSubmit} autoComplete='off'>
       <ul>
         {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>
-      <h1>Create a song</h1>
+      <h1>Create an album</h1>
       <label>
         <input
-        className="albumIdInputCreateSong"
+        className="titleInputCreateAlbum"
         autoComplete="off"
-          placeholder="AlbumId (must belong to user)..."
-          type="number"
-          value={albumId}
-          onChange={(e) => setAlbumId(e.target.value)}
-          required
-          />
-      </label>
-      <label>
-        <input
-        className="titleInputCreateSong"
-        placeholder="Title..."
-        autoComplete="off"
+          placeholder="title..."
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
@@ -74,7 +60,7 @@ function CreateSong({setShowModal}) {
       </label>
       <label>
         <input
-        className="descriptionCreateSong"
+        className="descriptionCreateAlbum"
         placeholder="description..."
         type="text"
         autoComplete="off"
@@ -85,29 +71,20 @@ function CreateSong({setShowModal}) {
       </label>
       <label>
         <input
-        className="urlCreateSong"
-          placeholder="Audio Url..."
-          autoComplete="off"
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          required
-          />
-      </label>
-      <label>
-        <input
-        className="imageUrlCreateSong"
-          placeholder="Song Image Url (optional)..."
-          type="text"
+        className="imageUrlCreateAlbum"
+          placeholder="Album Image Url (optional)..."
+          type="url"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           />
       </label>
-      <button className="submitCreateSong" type="submit">Submit new song</button>
-      <button className='cancelCreateSong' onClick={() => setShowModal(false)}>Cancel song</button>
+      <div className="createAlbumButtons">
+      <button className="submitCreateAlbum" type="submit">Submit new album</button>
+      <button className='cancelCreateAlbum' onClick={() => setShowModal(false)}>Cancel</button>
+      </div>
     </form>
           </div>
   );
 }
 
-export default CreateSong;
+export default CreateAlbum;

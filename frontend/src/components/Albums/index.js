@@ -7,6 +7,7 @@ import LoginAsDemo from '../LoginDemoUser';
 import Whomp from '../../images/Whomp.webp'
 import '../UnknownPage/PageNotFound.css'
 import '../Navigation/Navigation.css'
+import CreateAlbumModal from './AlbumDetails/CreateAlbumIndex';
 
 
 //get all albums, dispatch thunk action creator
@@ -43,6 +44,9 @@ export default function ReturnAllAlbums() {
  }
   return (
     <div className='albums-container'>
+      <div className='createAlbumForm'>
+        <CreateAlbumModal />
+      </div>
 
       {AlbumsArray.map((album) => {
         return (

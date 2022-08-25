@@ -92,7 +92,7 @@ export const UserAlbums = () => async dispatch => {
 
 //get one album thunk
 export const getOneAlbum = (albumId) => async dispatch => {
-    const response = await csrfFetch(`/api/album/${albumId}`)
+    const response = await csrfFetch(`/api/albums/${albumId}`)
     if (response.ok) {
         const OneAlbum = await response.json()
         await dispatch(actionGetOneAlbum(OneAlbum))

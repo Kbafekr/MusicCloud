@@ -11,6 +11,7 @@ import { LibraryPage } from "./components/LibraryPage/LibraryPage";
 import ReturnAllAlbums from "./components/Albums";
 import CurrentSongs from "./components/LibraryPage/CurrentSongs";
 import CurrentAlbums from "./components/LibraryPage/CurrentAlbums";
+import AlbumDetails from "./components/Albums/AlbumDetails/OneAlbum";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ function App() {
             <CurrentAlbums />
           </Route>
           <Route exact path='/albums/:albumId'>
-            <ReturnAllAlbums />
+            <AlbumDetails />
           </Route>
 
           <Route>

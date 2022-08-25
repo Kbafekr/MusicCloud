@@ -51,7 +51,7 @@ return (<h1>Whomp Whomp</h1>)
         <div className='Album-container'>
         <div className='albumId'>Album # {song.AlbumId}</div>
         <img className='albumImage' src={song.AlbumImageUrl} />
-          <div className='albumTitle'>Album: {song.AlbumTitle}</div>
+          <NavLink className='albumLink' to={`/albums/${song.AlbumId}`}>{song.AlbumTitle}</NavLink>
         </div>
          <div className='Artist-container'>
           <div className='artistId'>Artist: {song.ArtistId}</div>

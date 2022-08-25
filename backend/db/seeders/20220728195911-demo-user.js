@@ -8,9 +8,9 @@ module.exports = {
         firstName: 'Demo',
         lastName: 'User',
         email: 'DemoUser@me.com',
-        username: 'DemoUsr',
+        username: 'DemoUser',
         hashedPassword: bcrypt.hashSync('password'),
-        imageUrl: 'https://i.kym-cdn.com/entries/icons/medium/000/025/605/showtime.jpg'
+        imageUrl: 'https://www.pngall.com/wp-content/uploads/5/Black-Dog-PNG.png'
       },
       {
         firstName: 'FakeU',

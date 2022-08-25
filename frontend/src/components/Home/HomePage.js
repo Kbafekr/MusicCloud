@@ -26,7 +26,7 @@ export function HomePage() {
     if (UserSignedIn) {
         return (
             <div className='homePage'>
-            <h1>Welcome back!</h1>
+            <h1>Welcome back {UserSignedIn.username}!</h1>
             <div className='CarouselImages'>
              <img className='images' src={ImagesArray[imageNumber].image} alt='images'/>
             </div>

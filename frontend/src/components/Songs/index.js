@@ -15,7 +15,6 @@ import 'react-h5-audio-player/lib/styles.css';
 export default function ReturnAllSongs() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user.id)
-
   const songs = useSelector(state => state.song)
   const SongsArray = Object.values(songs)
   // console.log('this is songsarray' + SongsArray)
@@ -53,6 +52,7 @@ export default function ReturnAllSongs() {
 
           <div className="songName" key={song.id}>
           <img className='songImage' src={song.imageUrl}></img>
+          <div className='songDescription'>Description: {song.description}</div>
           <div className='userId'>User: {song.userId}</div>
           <div className='albumId'>Album: {song.albumId}</div>
 

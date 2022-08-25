@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { getOneAlbum } from "../../../store/albums";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import "./OneAlbum.css";
 
-// import EditSongModal from './EditFormIndex';
+import EditAlbumModal from "./EditAlbumIndex";
 // import DeleteSongModal from './DeleteFormIndex';
 
 import AudioPlayer from "react-h5-audio-player";
@@ -23,7 +23,7 @@ export default function AlbumDetails() {
 
   useEffect(() => {
     dispatch(getOneAlbum(albumId));
-  }, [])
+  }, [dispatch, album.title, album.description, album.imageUrl])
     // dispatch, album.Artist, album.Songs]);
   //  [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 
@@ -34,14 +34,15 @@ export default function AlbumDetails() {
     if (album.Artist && album.Songs) {
      return (
     <div className="album-details-container">
-      {/* <div className='EditSongForm'>
-        <EditSongModal />
+      <div className='EditAlbumForm'>
+        <EditAlbumModal />
       </div>
-      <div className='DeleteSongModal'>
+      {/* <div className='DeleteSongModal'>
         <DeleteSongModal />
       </div> */}
       <div className="album-container">
         <div className="albumKey" key={albumId}>
+          <div className="albumTitle">{album.title}</div>
           <img className="albumImage" src={album.imageUrl}></img>
           <div className="albumDescription">
             Description: {album.description}
@@ -87,14 +88,15 @@ export default function AlbumDetails() {
 }
 else  return (
   <div className="album-details-container">
-    {/* <div className='EditSongForm'>
-      <EditSongModal />
-    </div>
-    <div className='DeleteSongModal'>
+    <div className='EditAlbumForm'>
+        <EditAlbumModal />
+      </div>
+    {/* <div className='DeleteSongModal'>
       <DeleteSongModal />
-    </div> */}
+    </div>  */}
     <div className="album-container">
       <div className="albumKey" key={albumId}>
+      <div className="albumTitle">{album.title}</div>
         <img className="albumImage" src={album.imageUrl}></img>
         <div className="albumDescription">
           Description: {album.description}

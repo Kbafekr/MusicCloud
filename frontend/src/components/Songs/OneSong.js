@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getOneSong } from '../../store/songs';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, NavLink, useParams,  } from 'react-router-dom';
+import {NavLink, useParams,  } from 'react-router-dom';
 import './OneSong.css'
 import EditSongModal from './EditFormIndex';
 import DeleteSongModal from './DeleteFormIndex';

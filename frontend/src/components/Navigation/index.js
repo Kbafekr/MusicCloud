@@ -9,6 +9,8 @@ import LoginAsDemo from '../LoginDemoUser';
 import ProfileButton from './ProfileButton';
 import SongButton from './SongButton';
 import HomeButton from './HomeButton';
+import LibraryButton from './LibraryButton';
+import AlbumButton from './AlbumButton';
 
 import './Navigation.css';
 
@@ -24,6 +26,8 @@ function Navigation({ isLoaded }){
       <div className='memberLinks'>
       <HomeButton user={sessionUser} />
       <SongButton user={sessionUser} />
+      <AlbumButton user={sessionUser} />
+      <LibraryButton user={sessionUser} />
       </div>
       </>
     )

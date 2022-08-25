@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { NavLink } from "react-router-dom";
 import './ProfileButton.css'
 
 
@@ -59,6 +60,13 @@ function ProfileButton({ user }) {
           <div className="separatordropdown">email</div>
           {/* <li>{localStorage.getItem('email')}</li> */}
           <li>{user.email}</li>
+          <li>
+          <div className='mySongs'>
+          <NavLink className='mySongsText' to={'/songs/current'}>
+            My Songs
+          </NavLink>
+          </div>
+          </li>
 
           <li>
             <button className='logoutButton' onClick={logout}>Log Out</button>

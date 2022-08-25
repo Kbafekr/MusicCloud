@@ -12,6 +12,8 @@ const EDIT_A_SONG = 'songs/EditASong'
 
 const DELETE_A_SONG = 'songs/DeleteASong'
 
+const GET_OWNED_SONGS = 'songs/GetOwnedSongs'
+
 
 
 
@@ -25,6 +27,13 @@ const actionGetSongs = (songs) => {
     }
 }
 
+//get owned songs action
+const actionGetOwnedSongs = (songs) => {
+    return {
+        type: GET_OWNED_SONGS,
+        songs
+    }
+}
 //get one song action
 const actionGetOneSong = (song) => {
     return {
@@ -67,6 +76,17 @@ export const getAllSongs = () => async dispatch => {
     if (response.ok) {
         const allSongs = await response.json()
         await dispatch(actionGetSongs(allSongs.Songs))
+    }
+}
+
+//get all songs owned by current user
+
+export const UserSongs = () => async dispatch => {
+    const response = await csrfFetch('/api/songs/current')
+    if (response.ok) {
+        const ownedSongs = await response.json()
+        await dispatch(actionGetOwnedSongs(ownedSongs))
+        return ownedSongs
     }
 }
 
@@ -119,8 +139,10 @@ export const DeleteASong = (songId) => async dispatch => {
     }
 }
 
-//initial state
 
+
+
+//initial state
 
 const initialState = {}
 
@@ -132,6 +154,13 @@ export const songsReducer = (state = initialState, action) => {
             const newState = {...state.songs};
 
             action.songs.forEach(song => {
+                newState[song.id] = song
+            })
+            return newState
+        }
+        case GET_OWNED_SONGS: {
+            const newState = {...state.songs};
+            action.songs.songs.forEach(song => {
                 newState[song.id] = song
             })
             return newState

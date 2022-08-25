@@ -72,7 +72,7 @@
   padding: 8px 20px;
   color: rgb(194, 194, 194);
 }
-.songButton {
+.songButton, .libraryButton, .albumButton {
   border-left: solid 1px black;
   border-right: solid 1px black;
   font-size: 18px;
@@ -83,7 +83,7 @@
   color: rgb(194, 194, 194);
 }
 
-.songButton:hover, .homeButton:hover {
+.songButton:hover, .homeButton:hover, .albumButton:hover, .libraryButton:hover {
   color: white;
   cursor: pointer;
 }

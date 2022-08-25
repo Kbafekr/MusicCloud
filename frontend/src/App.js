@@ -7,6 +7,9 @@ import { HomePage } from "./components/Home/HomePage";
 import { PageNotFound } from "./components/UnknownPage/PageNotFound";
 import ReturnAllSongs from "./components/Songs";
 import SongDetails from "./components/Songs/OneSong";
+import { LibraryPage } from "./components/LibraryPage/LibraryPage";
+import ReturnAllAlbums from "./components/Albums";
+import CurrentSongs from "./components/LibraryPage/CurrentSongs";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,11 +26,20 @@ function App() {
           <Route exact path='/'>
             <HomePage />
           </Route>
+          <Route exact path='/library'>
+            <LibraryPage />
+          </Route>
           <Route exact path='/songs'>
             <ReturnAllSongs />
           </Route>
-          <Route path='/songs/:songId'>
+          <Route exact path='/songs/current'>
+            <CurrentSongs />
+          </Route>
+          <Route exact path='/songs/:songId'>
             <SongDetails />
+          </Route>
+          <Route exact path='/albums'>
+            <ReturnAllAlbums />
           </Route>
           <Route>
             <PageNotFound />

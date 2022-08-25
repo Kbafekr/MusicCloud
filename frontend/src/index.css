@@ -1,6 +1,7 @@
 /* TODO Add site wide styles */
 body, html, footer {
-    width: 100%;
+    width: auto;
+    height: auto;
 }
 body {
     background-color: rgb(214, 213, 213);

@@ -1,0 +1,28 @@
+.homePage {
+    margin: 0 9%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    height: auto;
+}
+
+.CarouselImages {
+display: flex;
+flex-direction: column;
+justify-content: center;
+width: 100%;
+align-items: center;
+position: relative;
+margin-left: auto;
+margin-right: auto;
+z-index: 0;
+}
+
+img.images {
+    border-radius: 5px;
+    width: 100%;
+    height: 800px;
+}

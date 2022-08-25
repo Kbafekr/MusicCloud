@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { getAllSongs } from '../../store/songs';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, NavLink } from 'react-router-dom';
-import './Songs.css'
+import { Redirect, NavLink,  } from 'react-router-dom';
+import './CurrentSongs.css'
 import LoginAsDemo from '../LoginDemoUser';
 import Whomp from '../../images/Whomp.webp'
 import '../UnknownPage/PageNotFound.css'
 import '../Navigation/Navigation.css'
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+import { UserSongs } from '../../store/songs';
 
-//get all songs, dispatch thunk action creator
-export default function ReturnAllAlbums() {
+//get all songs owned by current User, dispatch thunk action creator
+export default function CurrentSongs() {
   const dispatch = useDispatch()
   const user = useSelector(state => state.session.user)
 
   const songs = useSelector(state => state.song)
   const SongsArray = Object.values(songs)
+
   // console.log('this is songsarray' + SongsArray)
   // console.log('this is songs' + Object.values(songs))
 
  useEffect(() => {
-    dispatch(getAllSongs())
+    dispatch(UserSongs())
  }, [dispatch])
 
  if (!user) {
@@ -45,6 +47,7 @@ export default function ReturnAllAlbums() {
   return (
     <div className='songs-container'>
       <div className='createSongForm'>
+
       </div>
       {SongsArray.map((song) => {
         return (

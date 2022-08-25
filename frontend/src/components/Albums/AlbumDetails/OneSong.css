@@ -1,0 +1,69 @@
+
+/* Overall container */
+.song-details-container {
+    margin: 0 9%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    height: 100%;
+    padding-top: 50px;
+}
+
+/* song section */
+.songImage {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+margin-left: auto;
+margin-right: auto;
+z-index: 0;
+    border-radius: 5px;
+    width: 200px;
+    height: 150px;
+    padding: 20px;
+
+}
+
+.songImage:hover {
+    opacity: 1;
+    transition-duration: 1s;
+    transform: scale(1.1);
+}
+
+.albumId {
+    font-weight: bold;
+    font-size: 60px;
+}
+
+.songLink {
+    font-style: italic;
+    font-size: 48px;
+}
+
+/* Album section */
+
+
+/* Artist section */
+
+.artistProfilePic {
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+position: relative;
+margin-left: auto;
+margin-right: auto;
+z-index: 0;
+    border: 2px solid black;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    margin-top: 20px;
+
+}

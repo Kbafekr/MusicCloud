@@ -26,9 +26,11 @@ function App() {
           <Route exact path='/'>
             <HomePage />
           </Route>
+
           <Route exact path='/library'>
             <LibraryPage />
           </Route>
+
           <Route exact path='/songs'>
             <ReturnAllSongs />
           </Route>
@@ -38,9 +40,18 @@ function App() {
           <Route exact path='/songs/:songId'>
             <SongDetails />
           </Route>
+
           <Route exact path='/albums'>
             <ReturnAllAlbums />
           </Route>
+
+          <Route exact path='/albums/current'>
+            <ReturnAllAlbums />
+          </Route>
+          <Route exact path='/albums/:albumId'>
+            <ReturnAllAlbums />
+          </Route>
+
           <Route>
             <PageNotFound />
           </Route>

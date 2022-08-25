@@ -151,7 +151,7 @@ const initialState = {}
 export const songsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_ALL_SONGS: {
-            const newState = {};
+            const newState = {...state.songs};
 
             action.songs.Songs.forEach(song => {
                 newState[song.id] = song
@@ -167,7 +167,7 @@ export const songsReducer = (state = initialState, action) => {
         }
         case GET_OWNED_SONGS: {
             const newState = {};
-            action.songs.songs.forEach(song => {
+            action.songs.Songs.forEach(song => {
                 newState[song.id] = song
             })
             return newState

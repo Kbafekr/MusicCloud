@@ -1,20 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { getAllSongs } from '../../store/songs';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, NavLink,  } from 'react-router-dom';
-import CreateSongModal from './CreateSongIndex';
 import './Songs.css'
 import LoginAsDemo from '../LoginDemoUser';
 import Whomp from '../../images/Whomp.webp'
 import '../UnknownPage/PageNotFound.css'
 import '../Navigation/Navigation.css'
+import CreateSongModal from './CreateSongIndex';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
 //get all songs, dispatch thunk action creator
 export default function ReturnAllSongs() {
   const dispatch = useDispatch()
-  const user = useSelector(state => state.session.user.id)
+  const user = useSelector(state => state.session.user)
+
   const songs = useSelector(state => state.song)
   const SongsArray = Object.values(songs)
   // console.log('this is songsarray' + SongsArray)
@@ -42,12 +43,14 @@ export default function ReturnAllSongs() {
 </div>
 )
  }
-  return (
-    <div className='songs-container'>
+ if (!songs.Album && !songs.Artist) {
+
+   return (
+     <div className='songs-container'>
       <div className='createSongForm'>
         <CreateSongModal />
       </div>
-      {SongsArray.map((song) => {
+      {SongsArray && SongsArray.map((song) => {
         return (
 
           <div className="songName" key={song.id}>
@@ -63,12 +66,16 @@ export default function ReturnAllSongs() {
              src={song.url}
              muted={true}
              onPlay={e => console.log("onPlay")}
-          />
+             />
           </div>
       )
 
-})}
+
+    })}
 
 </div>
 )
+
+}
+
 }

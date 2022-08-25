@@ -44,6 +44,7 @@ export default function CurrentSongs() {
 </div>
 )
  }
+ if (!songs.Album && !songs.Artist) {
   return (
     <div className='songs-container'>
       {/* <div className='createSongForm'>
@@ -71,4 +72,5 @@ export default function CurrentSongs() {
 
 </div>
 )
+}
 }

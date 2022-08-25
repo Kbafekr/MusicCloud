@@ -10,6 +10,7 @@ import '../Navigation/Navigation.css'
 import CreateAlbumModal from './AlbumDetails/CreateAlbumIndex';
 
 
+
 //get all albums, dispatch thunk action creator
 export default function ReturnAllAlbums() {
   const dispatch = useDispatch()

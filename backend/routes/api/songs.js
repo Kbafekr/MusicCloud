@@ -133,7 +133,7 @@ const SongValidation = [
 
   //get all songs created by the current User
 
-  router.get('/current', requireAuth, async (req, res) => {
+  router.get('/current', restoreUser, requireAuth, async (req, res) => {
     const user = req.user.id
     const userSongs = await Song.findAll(
         {where: {
@@ -141,7 +141,7 @@ const SongValidation = [
   }})
 
   const response = {
-    "songs": userSongs
+    "Songs": userSongs
   }
   res.json(response)
   })

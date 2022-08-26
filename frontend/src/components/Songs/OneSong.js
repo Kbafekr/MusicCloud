@@ -34,7 +34,7 @@ export default function SongDetails() {
 
   useEffect(() => {
     dispatch(getOneSong(songId));
-  }, [dispatch, showModal]);
+  }, [dispatch, showModal, user]);
 
   // }, [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 

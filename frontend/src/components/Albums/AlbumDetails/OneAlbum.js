@@ -34,7 +34,7 @@ export default function AlbumDetails() {
 
   useEffect(() => {
     dispatch(getOneAlbum(albumId));
-  }, [dispatch, showModal]);
+  }, [dispatch, showModal, user]);
   // dispatch, album.Artist, album.Songs]);
   //  [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 

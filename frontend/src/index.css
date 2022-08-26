@@ -1,16 +1,39 @@
-/* TODO Add site wide styles */
-body, html, footer {
-    width: auto;
-    height: auto;
-}
-body {
-    background-color: rgb(214, 213, 213);
-    display: block;
-    font: 12px Lucida;
+:root {
+  background-color: rgb(214, 213, 213);
+  display: block;
+  font: 12px Lucida;
 }
 
+body {
+  margin: 0 9%;
+  border-top: 0.5vh solid rgb(243, 92, 23);
+}
+body, footer {
+  width: auto;
+  height: auto;
+  background-color: white;
+}
+
+footer {
+display: flex;
+flex-direction: row;
+margin: 0 4%;
+border-top: 1px dotted rgb(0, 0, 0, 0.5);
+text-align: left;
+padding-top: 3%;
+padding-bottom: 3%;
+color: rgb(0, 0, 0, 0.3);
+}
+
+.icon {
+width: 3vw;
+height: 3vh;
+position: relative;
+left: 10%;
+bottom: 15%;
+}
 @media screen and (max-width: 800px) {
-    body {
-      background-color: rgb(159, 15, 15);
-    }
+  :root {
+    background-color: rgb(159, 15, 15);
   }
+}

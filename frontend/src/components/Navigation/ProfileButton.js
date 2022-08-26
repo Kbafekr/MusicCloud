@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { NavLink } from "react-router-dom";
 import "./ProfileButton.css";
-
 function ProfileButton({ user }) {
   // set image to local storage since it gets deleted off of render and doesn;t expire when exiting page
 

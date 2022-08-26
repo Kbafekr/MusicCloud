@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getOneSong } from "../../store/songs";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+import Whomp from "../../images/Whomp.webp";
+import LoginAsDemo from "../LoginDemoUser";
 import "./OneSong.css";
 
 //import modal file create album index
@@ -21,6 +23,7 @@ export default function SongDetails() {
   const { songId } = useParams();
 
   const [showModal, setShowModal] = useState(false);
+  const user = useSelector((state) => state.session.user)
   const song = useSelector((state) => state.song);
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
@@ -32,6 +35,27 @@ export default function SongDetails() {
   }, [dispatch, showModal]);
 
   // }, [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
+
+  if (!user) {
+    return (
+      <div className="errorPage">
+        <h1>Whomp Whomp!</h1>
+        <div className="Whomps">
+          <img className="whomp1" src={Whomp} alt="Whomp1" />
+          <img className="whomp2" src={Whomp} alt="Whomp2" />
+        </div>
+        <div className="headers">
+          <h2>Looks like you're an unauthorized user</h2>
+          <div className="linkerror">
+            <h3>
+              Please sign in as a Demo User:
+              <LoginAsDemo />
+            </h3>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!songId) {
     return <h1>Whomp Whomp</h1>;

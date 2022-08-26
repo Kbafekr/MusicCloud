@@ -23,7 +23,7 @@ export default function ReturnAllSongs() {
 
   useEffect(() => {
     dispatch(getAllSongs());
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   if (!user) {
     return (

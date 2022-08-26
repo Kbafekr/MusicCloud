@@ -9,7 +9,6 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   song: songsReducer,
   album: albumsReducer
-
 });
 
 /* Initialize an enhancer variable that will be set to different store enhancers

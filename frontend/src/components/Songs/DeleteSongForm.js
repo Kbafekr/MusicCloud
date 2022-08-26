@@ -15,7 +15,7 @@ function DeleteSong({setShowModal}) {
 
 
   const handleSubmit = () => {
-     dispatch(DeleteASong(songId)).then((response) => {
+    return dispatch(DeleteASong(songId)).then((response) => {
       setShowModal(false)
       history.push('/songs')
      })

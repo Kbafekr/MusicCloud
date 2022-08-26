@@ -15,15 +15,16 @@ function DeleteSong({setShowModal}) {
 
 
   const handleSubmit = async () => {
-    await dispatch(DeleteASong(songId)).then((response) => {
-      history.push('/songs')
-      setShowModal(false)
-    })
-      // const response = dispatch(DeleteASong(songId)).then
-      // setShowModal(false)
-      // history.push('/songs')
-      // return response
-        }
+    const response = await dispatch(DeleteASong(songId)).then
+        setShowModal(false)
+        history.push('/songs')
+        return response
+  }
+
+  // await dispatch(DeleteASong(songId)).then((response) => {
+  //   history.push('/songs')
+  //   setShowModal(false)
+  //       }
 
   return (
     <div className="DeleteSong-outer">

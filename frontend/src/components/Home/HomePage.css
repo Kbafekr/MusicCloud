@@ -4,8 +4,15 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    background-color: white;
+    width: auto;
     height: auto;
+
+}
+
+.headers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .CarouselImages {
@@ -14,13 +21,30 @@ flex-direction: column;
 justify-content: center;
 width: 100%;
 align-items: center;
-margin-left: auto;
-margin-right: auto;
 z-index: 0;
 }
 
-img.images {
-    border-radius: 5px;
+.imagesArray {
     width: 100%;
-    height: 800px;
+    height: 50em;
+}
+
+.CreateAccountButtonHomePage {
+
+    width: 10%;
+
+}
+
+.SignInHomePage {
+    display: flex;
+    flex-direction: row;
+}
+
+.signinbutton{
+    position: relative;
+    top: 1.8vh;
+    height: 40%;
+    width: 30%;
+
+
 }

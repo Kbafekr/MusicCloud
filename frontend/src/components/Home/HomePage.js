@@ -2,7 +2,9 @@ import './HomePage.css'
 import { useState, useEffect } from 'react'
 import {useSelector} from 'react-redux'
 import {ImagesArray} from '../../images/Images'
-
+import SignUpModal from '../SignUpModal'
+import LoginFormModal from '../LoginFormModal'
+import LoginAsDemo from '../LoginDemoUser'
 export function HomePage() {
     const UserSignedIn = useSelector(state => state.session.user)
 
@@ -28,7 +30,7 @@ export function HomePage() {
             <div className='homePage'>
             <h1>Welcome back {UserSignedIn.username}!</h1>
             <div className='CarouselImages'>
-             <img className='images' src={ImagesArray[imageNumber].image} alt='images'/>
+             <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/>
             </div>
 
             <div className='headers'>
@@ -39,11 +41,6 @@ export function HomePage() {
 
              <h1>Thanks for listening. Now join in!</h1>
              <h2>Save tracks, follow artists and build playlists. All for free.</h2>
-
-             <h3> create account button</h3>
-             <h4>already have an account? + sign in button</h4>
-
-             <h5>footer (include github link, modal for language selection, other bs)</h5>
             </div>
         </div>
         )
@@ -52,7 +49,7 @@ export function HomePage() {
         return (
             <div className='homePage'>
                 <div className='CarouselImages'>
-                 <img className='images' src={ImagesArray[imageNumber].image} alt='images'/>
+                 <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/>
                 </div>
 
                 <div className='headers'>
@@ -64,10 +61,17 @@ export function HomePage() {
                  <h1>Thanks for listening. Now join in!</h1>
                  <h2>Save tracks, follow artists and build playlists. All for free.</h2>
 
-                 <h3> create account button</h3>
-                 <h4>already have an account? + sign in button</h4>
+                <div className='CreateAccountButtonHomePage'>
+                 <SignUpModal/>
+                </div>
+                <div className='SignInHomePage'>
+                 <h4>already have an account?</h4>
+                 <div className='signinbutton'>
 
-                 <h5>footer (include github link, modal for language selection, other bs)</h5>
+                 <LoginFormModal/>
+                 </div>
+                </div>
+
                 </div>
             </div>
 

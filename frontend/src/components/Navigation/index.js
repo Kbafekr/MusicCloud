@@ -25,9 +25,9 @@ function Navigation({ isLoaded }){
       <>
       <div className='memberLinks'>
       <HomeButton user={sessionUser} />
+      <LibraryButton user={sessionUser} />
       <SongButton user={sessionUser} />
       <AlbumButton user={sessionUser} />
-      <LibraryButton user={sessionUser} />
       </div>
       </>
     )

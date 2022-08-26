@@ -51,13 +51,15 @@ export default function ReturnAllAlbums() {
 
       {AlbumsArray.map((album) => {
         return (
-
+        <div className='albumCard'>
           <div className="albumKey" key={album.id}>
+          <div className='albumId'>Album Id: {album.id}</div>
           <img className='albumImage' src={album.imageUrl}></img>
           <div className='userId'>User: {album.userId}</div>
           <div className='albumDescription'>Description: {album.description}</div>
 
           <NavLink className='albumLink' to={`/albums/${album.id}`}>{album.title}</NavLink>
+        </div>
 
           </div>
       )

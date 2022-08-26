@@ -14,12 +14,6 @@ function DeleteSong({setShowModal}) {
   const songId = useSelector(state => state.song.id)
 
 
-  console.log(songId + 'sdafsdfsdafsdfasdfsd')
-
-  // const [isModalOpen, setModalOpen] = useState(false)
-
-
-
   const handleSubmit = async () => {
       const response = dispatch(DeleteASong(songId))
       setShowModal(false)

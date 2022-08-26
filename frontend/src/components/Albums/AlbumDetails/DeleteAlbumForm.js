@@ -28,8 +28,10 @@ function DeleteAlbum({setShowModal}) {
       <p>Warning! This will permanently remove {album.title} from your library.</p>
         <div></div>
        <p>Are you sure you want to delete?</p>
+       <div className="deleteAlbumButtons">
       <button className="submitDeleteAlbum" type="submit">Delete album</button>
       <button className='cancelDeleteAlbum' onClick={() => setShowModal(false)}>Cancel</button>
+       </div>
     </form>
           </div>
   );

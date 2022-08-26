@@ -43,7 +43,6 @@ export default function ReturnAllAlbums() {
 </div>
 )
  }
- if (!albums.Artist && !albums.Songs) {
   return (
     <div className='albums-container'>
       <div className='createAlbumForm'>
@@ -70,4 +69,3 @@ export default function ReturnAllAlbums() {
 </div>
 )
  }
-}

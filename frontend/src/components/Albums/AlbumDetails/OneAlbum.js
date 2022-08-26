@@ -63,7 +63,7 @@ export default function AlbumDetails() {
     );
   }
 
-  if (!album.id) {
+  if (!albumId) {
     return (
       <div className="errorPage">
         <h1>Whomp Whomp!</h1>

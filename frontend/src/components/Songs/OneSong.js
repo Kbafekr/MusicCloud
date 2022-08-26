@@ -59,7 +59,7 @@ export default function SongDetails() {
     );
   }
 
-  if (!song.id) {
+  if (!songId) {
     return (
       <div className="errorPage">
         <h1>Whomp Whomp!</h1>

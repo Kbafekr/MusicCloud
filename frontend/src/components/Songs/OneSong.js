@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import { getOneSong } from "../../store/songs";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+import "./OneSong.css";
 import Whomp from "../../images/Whomp.webp";
 import LoginAsDemo from "../LoginDemoUser";
-import "./OneSong.css";
+import '../UnknownPage/PageNotFound.css'
+
 
 //import modal file create album index
 import { Modal } from "../../context/Modal";
@@ -12,8 +14,8 @@ import EditSong from "./EditSongForm";
 //exceeded rendering capacity with conditional rendering for nested properties
 //just create modal in here
 
-import EditSongModal from "./EditFormIndex";
 import DeleteSongModal from "./DeleteFormIndex";
+
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
@@ -23,8 +25,8 @@ export default function SongDetails() {
   const { songId } = useParams();
 
   const [showModal, setShowModal] = useState(false);
-  const user = useSelector((state) => state.session.user)
   const song = useSelector((state) => state.song);
+  const user = useSelector((state) => state.session.user)
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
   //   console.log(Albumvalues)
@@ -58,7 +60,23 @@ export default function SongDetails() {
   }
 
   if (!songId) {
-    return <h1>Whomp Whomp</h1>;
+    return (
+      <div className="errorPage">
+        <h1>Whomp Whomp!</h1>
+        <div className="Whomps">
+          <img className="whomp1" src={Whomp} alt="Whomp1" />
+          <img className="whomp2" src={Whomp} alt="Whomp2" />
+        </div>
+        <div className="headers">
+          <h2>Looks like this song doesn't exist</h2>
+          <div className='linkerror'>
+             <NavLink to="/">Click here to go home</NavLink>
+             <NavLink to="/songs">Click here to go back to all songs</NavLink>
+             <NavLink to="/songs/current">Click here to go back to owned songs</NavLink>
+                </div>
+          </div>
+        </div>
+    );
   }
   if (song.Artist && song.Album) {
     return (

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
-import { DeleteASong } from '../../store/songs';
 import DeleteSong from './DeleteSongForm';
 import './EditSong.css'
 

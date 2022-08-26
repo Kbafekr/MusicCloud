@@ -14,7 +14,12 @@ function DeleteAlbum({setShowModal}) {
 
 
 
-  const handleSubmit = async () => {
+  const handleSubmit = () => {
+
+    // return dispatch(DeleteAnAlbum(albumId)).then((response) => {
+    //   history.push('/albums')
+    //   setShowModal(false)
+    //  })
       const response = dispatch(DeleteAnAlbum(albumId))
       setShowModal(false)
       history.push('/albums')

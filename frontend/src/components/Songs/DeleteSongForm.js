@@ -14,11 +14,15 @@ function DeleteSong({setShowModal}) {
   const songId = useSelector(state => state.song.id)
 
 
-  const handleSubmit = async () => {
-      const response = dispatch(DeleteASong(songId))
+  const handleSubmit = () => {
+     dispatch(DeleteASong(songId)).then((response) => {
       setShowModal(false)
       history.push('/songs')
-      return response
+     })
+      // const response = dispatch(DeleteASong(songId)).then
+      // setShowModal(false)
+      // history.push('/songs')
+      // return response
         }
 
   return (

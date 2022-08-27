@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 
 import './CreateSong.css'
 
-function DeleteSong({setShowModal}) {
+function DeleteSong({setModalDelete}) {
   const dispatch = useDispatch();
   const history = useHistory()
   // const {songId} = useParams()
@@ -14,16 +14,17 @@ function DeleteSong({setShowModal}) {
   const songId = useSelector(state => state.song.id)
 
 
-  const handleSubmit = async () => {
-    const response = await dispatch(DeleteASong(songId)).then
-        setShowModal(false)
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+        await dispatch(DeleteASong(songId))
+        setModalDelete(false)
         history.push('/songs')
-        return response
   }
+
 
   // await dispatch(DeleteASong(songId)).then((response) => {
   //   history.push('/songs')
-  //   setShowModal(false)
+  //   setModalDelete(false)
   //       }
 
   return (
@@ -35,7 +36,7 @@ function DeleteSong({setShowModal}) {
        <p>Are you sure you want to delete?</p>
        <div className="deleteSongButtons">
       <button className="submitDeleteSong" type="submit">Delete song</button>
-      <button className='cancelDeleteSong' onClick={() => setShowModal(false)}>Cancel</button>
+      <button className='cancelDeleteSong' onClick={() => setModalDelete(false)}>Cancel</button>
        </div>
     </form>
           </div>

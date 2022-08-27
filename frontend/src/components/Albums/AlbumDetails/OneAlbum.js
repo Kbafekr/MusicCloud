@@ -63,25 +63,25 @@ export default function AlbumDetails() {
     );
   }
 
-  if (!album.id) {
-    return (
-      <div className="errorPage">
-        <h1>Whomp Whomp!</h1>
-        <div className="Whomps">
-          <img className="whomp1" src={Whomp} alt="Whomp1" />
-          <img className="whomp2" src={Whomp} alt="Whomp2" />
-        </div>
-        <div className="headers">
-          <h2>Looks like this album doesn't exist</h2>
-          <div className='linkerror'>
-             <NavLink to="/">Click here to go home</NavLink>
-             <NavLink to="/albums">Click here to go back to all albums</NavLink>
-             <NavLink to="/albums/current">Click here to go back to owned albums</NavLink>
-                </div>
-          </div>
-        </div>
-    );
-  }
+  // if (!album.id) {
+  //   return (
+  //     <div className="errorPage">
+  //       <h1>Whomp Whomp!</h1>
+  //       <div className="Whomps">
+  //         <img className="whomp1" src={Whomp} alt="Whomp1" />
+  //         <img className="whomp2" src={Whomp} alt="Whomp2" />
+  //       </div>
+  //       <div className="headers">
+  //         <h2>Looks like this album doesn't exist</h2>
+  //         <div className='linkerror'>
+  //            <NavLink to="/">Click here to go home</NavLink>
+  //            <NavLink to="/albums">Click here to go back to all albums</NavLink>
+  //            <NavLink to="/albums/current">Click here to go back to owned albums</NavLink>
+  //               </div>
+  //         </div>
+  //       </div>
+  //   );
+  // }
 
   if (album.Artist && album.Songs) {
     return (

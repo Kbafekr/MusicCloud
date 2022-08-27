@@ -14,7 +14,9 @@ import EditSong from "./EditSongForm";
 //exceeded rendering capacity with conditional rendering for nested properties
 //just create modal in here
 
-import DeleteSongModal from "./DeleteFormIndex";
+//create modal for delete
+// import DeleteSongModal from "./DeleteFormIndex";
+import DeleteSong from './DeleteSongForm';
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
@@ -25,6 +27,7 @@ export default function SongDetails() {
   const { songId } = useParams();
 
   const [showModal, setShowModal] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false)
   const song = useSelector((state) => state.song);
   const user = useSelector((state) => state.session.user)
   //   console.log(song)
@@ -34,7 +37,7 @@ export default function SongDetails() {
 
   useEffect(() => {
     dispatch(getOneSong(songId));
-  }, [dispatch, showModal, user]);
+  }, [dispatch, showModal, user, modalDelete]);
 
   // }, [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 
@@ -92,9 +95,12 @@ export default function SongDetails() {
             <EditSong setShowModal={setShowModal} />
           </Modal>
         )}
-        <div className="DeleteSongModal">
-          <DeleteSongModal />
-        </div>
+       <button className='DeleteSongButton' onClick={() => setModalDelete(true)}>Delete Song</button>
+      {modalDelete && (
+        <Modal onClose={() => setModalDelete(false)}>
+          <DeleteSong setModalDelete={setModalDelete} />
+        </Modal>
+      )}
         <div className="song-container">
           <div className="songName">
             <img className="songImage" src={song.imageUrl}></img>
@@ -138,9 +144,12 @@ export default function SongDetails() {
             <EditSong setShowModal={setShowModal} />
           </Modal>
         )}
-        <div className="DeleteSongModal">
-          <DeleteSongModal />
-        </div>
+        <button className='DeleteSongButton' onClick={() => setModalDelete(true)}>Delete Song</button>
+      {modalDelete && (
+        <Modal onClose={() => setModalDelete(false)}>
+          <DeleteSong setModalDelete={setModalDelete} />
+        </Modal>
+      )}
         <div className="song-container">
           <div className="songName">
             <img className="songImage" src={song.imageUrl}></img>

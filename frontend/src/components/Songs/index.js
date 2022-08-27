@@ -54,8 +54,8 @@ export default function ReturnAllSongs() {
         {SongsArray &&
           SongsArray.map((song) => {
             return (
-              <div className="songCard">
-                <div className="songName" key={song.id}>
+                <div className="songCard" key={song.id}>
+                  <div>{song.id}</div>
                   <img className="songImage" src={song.imageUrl}></img>
                   <div className="songDescription">
                     Description: {song.description}
@@ -74,7 +74,6 @@ export default function ReturnAllSongs() {
                     onPlay={(e) => console.log("onPlay")}
                   />
                 </div>
-              </div>
             );
           })}
       </div>

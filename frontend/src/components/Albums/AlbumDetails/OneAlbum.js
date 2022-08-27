@@ -3,9 +3,9 @@ import { getOneAlbum } from "../../../store/albums";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import "./OneAlbum.css";
-import Whomp from '../../../images/Whomp.webp'
+import Whomp from "../../../images/Whomp.webp";
 import LoginAsDemo from "../../LoginDemoUser";
-import '../../UnknownPage/PageNotFound.css'
+import "../../UnknownPage/PageNotFound.css";
 // import EditAlbumModal from "./EditAlbumIndex";
 
 //import modal file create album index
@@ -14,7 +14,9 @@ import EditAlbum from "./EditAlbumForm";
 //exceeded rendering capacity with conditional rendering for nested properties
 //just create modal in here
 
-import DeleteAlbumModal from "./DeleteAlbumIndex";
+//create modal for delete
+// import DeleteAlbumModal from "./DeleteAlbumIndex";
+import DeleteAlbum from "./DeleteAlbumForm";
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
@@ -25,8 +27,9 @@ export default function AlbumDetails() {
   const { albumId } = useParams();
 
   const [showModal, setShowModal] = useState(false);
+  const [modalDelete, setModalDelete] = useState(false);
   const album = useSelector((state) => state.album);
-  const user = useSelector((state) => state.session.user)
+  const user = useSelector((state) => state.session.user);
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
   //   console.log(Albumvalues)
@@ -34,13 +37,9 @@ export default function AlbumDetails() {
 
   useEffect(() => {
     dispatch(getOneAlbum(albumId));
-  }, [dispatch, showModal, user]);
+  }, [dispatch, showModal, user, modalDelete]);
   // dispatch, album.Artist, album.Songs]);
   //  [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
-
-  if (!albumId) {
-    return <h1>Whomp Whomp</h1>;
-  }
 
   if (!user) {
     return (
@@ -95,9 +94,18 @@ export default function AlbumDetails() {
           </Modal>
         )}
 
-        <div className="DeleteAlbumModal">
-          <DeleteAlbumModal />
-        </div>
+        <button
+          className="DeleteAlbumButton"
+          onClick={() => setModalDelete(true)}
+        >
+          Delete Album
+        </button>
+        {modalDelete && (
+          <Modal onClose={() => setModalDelete(false)}>
+            <DeleteAlbum setModalDelete={setModalDelete} />
+          </Modal>
+        )}
+
         <div className="album-container">
           <div className="albumKey">
             <div className="albumTitle">Album: {album.title}</div>
@@ -154,9 +162,17 @@ export default function AlbumDetails() {
             <EditAlbum setShowModal={setShowModal} />
           </Modal>
         )}
-        <div className="DeleteAlbumModal">
-          <DeleteAlbumModal />
-        </div>
+        <button
+          className="DeleteAlbumButton"
+          onClick={() => setModalDelete(true)}
+        >
+          Delete Album
+        </button>
+        {modalDelete && (
+          <Modal onClose={() => setModalDelete(false)}>
+            <DeleteAlbum setModalDelete={setModalDelete} />
+          </Modal>
+        )}
         <div className="album-container">
           <div className="albumKey" key={albumId}>
             <div className="albumTitle">{album.title}</div>

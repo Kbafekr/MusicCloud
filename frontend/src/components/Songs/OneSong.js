@@ -5,8 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 import "./OneSong.css";
 import Whomp from "../../images/Whomp.webp";
 import LoginAsDemo from "../LoginDemoUser";
-import '../UnknownPage/PageNotFound.css'
-
+import "../UnknownPage/PageNotFound.css";
 
 //import modal file create album index
 import { Modal } from "../../context/Modal";
@@ -16,7 +15,7 @@ import EditSong from "./EditSongForm";
 
 //create modal for delete
 // import DeleteSongModal from "./DeleteFormIndex";
-import DeleteSong from './DeleteSongForm';
+import DeleteSong from "./DeleteSongForm";
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
@@ -27,9 +26,9 @@ export default function SongDetails() {
   const { songId } = useParams();
 
   const [showModal, setShowModal] = useState(false);
-  const [modalDelete, setModalDelete] = useState(false)
+  const [modalDelete, setModalDelete] = useState(false);
   const song = useSelector((state) => state.song);
-  const user = useSelector((state) => state.session.user)
+  const user = useSelector((state) => state.session.user);
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
   //   console.log(Albumvalues)
@@ -72,13 +71,15 @@ export default function SongDetails() {
         </div>
         <div className="headers">
           <h2>Looks like this song doesn't exist</h2>
-          <div className='linkerror'>
-             <NavLink to="/">Click here to go home</NavLink>
-             <NavLink to="/songs">Click here to go back to all songs</NavLink>
-             <NavLink to="/songs/current">Click here to go back to owned songs</NavLink>
-                </div>
+          <div className="linkerror">
+            <NavLink to="/">Click here to go home</NavLink>
+            <NavLink to="/songs">Click here to go back to all songs</NavLink>
+            <NavLink to="/songs/current">
+              Click here to go back to owned songs
+            </NavLink>
           </div>
         </div>
+      </div>
     );
   }
   if (song.Artist && song.Album) {
@@ -95,12 +96,17 @@ export default function SongDetails() {
             <EditSong setShowModal={setShowModal} />
           </Modal>
         )}
-       <button className='DeleteSongButton' onClick={() => setModalDelete(true)}>Delete Song</button>
-      {modalDelete && (
-        <Modal onClose={() => setModalDelete(false)}>
-          <DeleteSong setModalDelete={setModalDelete} />
-        </Modal>
-      )}
+        <button
+          className="DeleteSongButton"
+          onClick={() => setModalDelete(true)}
+        >
+          Delete Song
+        </button>
+        {modalDelete && (
+          <Modal onClose={() => setModalDelete(false)}>
+            <DeleteSong setModalDelete={setModalDelete} />
+          </Modal>
+        )}
         <div className="song-container">
           <div className="songName">
             <img className="songImage" src={song.imageUrl}></img>
@@ -144,12 +150,17 @@ export default function SongDetails() {
             <EditSong setShowModal={setShowModal} />
           </Modal>
         )}
-        <button className='DeleteSongButton' onClick={() => setModalDelete(true)}>Delete Song</button>
-      {modalDelete && (
-        <Modal onClose={() => setModalDelete(false)}>
-          <DeleteSong setModalDelete={setModalDelete} />
-        </Modal>
-      )}
+        <button
+          className="DeleteSongButton"
+          onClick={() => setModalDelete(true)}
+        >
+          Delete Song
+        </button>
+        {modalDelete && (
+          <Modal onClose={() => setModalDelete(false)}>
+            <DeleteSong setModalDelete={setModalDelete} />
+          </Modal>
+        )}
         <div className="song-container">
           <div className="songName">
             <img className="songImage" src={song.imageUrl}></img>

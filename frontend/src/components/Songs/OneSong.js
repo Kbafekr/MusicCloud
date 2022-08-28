@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { getOneSong } from "../../store/songs";
+import React, { Suspense, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
+import { getOneSong } from "../../store/songs";
 import "./OneSong.css";
 import Whomp from "../../images/Whomp.webp";
 import LoginAsDemo from "../LoginDemoUser";
@@ -24,6 +24,7 @@ import "react-h5-audio-player/lib/styles.css";
 export default function SongDetails() {
   const dispatch = useDispatch();
   const { songId } = useParams();
+  const history = useHistory()
 
   const [showModal, setShowModal] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
@@ -61,8 +62,9 @@ export default function SongDetails() {
     );
   }
 
-  if (!song.id) {
+  if (!song.id ) {
     return (
+      <Suspense fallback={<div>loading...</div>}>
       <div className="errorPage">
         <h1>Whomp Whomp!</h1>
         <div className="Whomps">
@@ -80,6 +82,7 @@ export default function SongDetails() {
           </div>
         </div>
       </div>
+      </Suspense>
     );
   }
   if (song.Artist && song.Album) {
@@ -136,44 +139,45 @@ export default function SongDetails() {
         </div>
       </div>
     );
-  } else
-    return (
-      <div className="song-details-container">
-        {/* <div className='EditSongForm'>
-              <EditSongModal />
-            </div> */}
-        <button className="EditSongForm" onClick={() => setShowModal(true)}>
-          Edit Song
-        </button>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <EditSong setShowModal={setShowModal} />
-          </Modal>
-        )}
-        <button
-          className="DeleteSongButton"
-          onClick={() => setModalDelete(true)}
-        >
-          Delete Song
-        </button>
-        {modalDelete && (
-          <Modal onClose={() => setModalDelete(false)}>
-            <DeleteSong setModalDelete={setModalDelete} />
-          </Modal>
-        )}
-        <div className="song-container">
-          <div className="songName">
-            <img className="songImage" src={song.imageUrl}></img>
-            <div className="songTitle">Song: {song.title}</div>
-            <div className="description">Description: {song.description}</div>
-            <AudioPlayer
-              autoPlay={false}
-              src={song.url}
-              muted={true}
-              onPlay={(e) => console.log("onPlay")}
-            />
-          </div>
-        </div>
-      </div>
-    );
+  }
+  // else
+  //   return (
+  //     <div className="song-details-container">
+  //       {/* <div className='EditSongForm'>
+  //             <EditSongModal />
+  //           </div> */}
+  //       <button className="EditSongForm" onClick={() => setShowModal(true)}>
+  //         Edit Song
+  //       </button>
+  //       {showModal && (
+  //         <Modal onClose={() => setShowModal(false)}>
+  //           <EditSong setShowModal={setShowModal} />
+  //         </Modal>
+  //       )}
+  //       <button
+  //         className="DeleteSongButton"
+  //         onClick={() => setModalDelete(true)}
+  //       >
+  //         Delete Song
+  //       </button>
+  //       {modalDelete && (
+  //         <Modal onClose={() => setModalDelete(false)}>
+  //           <DeleteSong setModalDelete={setModalDelete} />
+  //         </Modal>
+  //       )}
+  //       <div className="song-container">
+  //         <div className="songName">
+  //           <img className="songImage" src={song.imageUrl}></img>
+  //           <div className="songTitle">Song: {song.title}</div>
+  //           <div className="description">Description: {song.description}</div>
+  //           <AudioPlayer
+  //             autoPlay={false}
+  //             src={song.url}
+  //             muted={true}
+  //             onPlay={(e) => console.log("onPlay")}
+  //           />
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
 }

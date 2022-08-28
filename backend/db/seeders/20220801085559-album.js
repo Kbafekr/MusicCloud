@@ -23,10 +23,10 @@ module.exports = {
         },
         {
           userId: 2,
-          title: "The Black Market",
-          description: "Seventh studio album of Rise Against",
+          title: "Lexin Music",
+          description: "Uplifting Piano Music",
           imageUrl:
-            "https://en.wikipedia.org/wiki/The_Black_Market_(Rise_Against_album)#/media/File:Riseagainsttheblackmarket.jpg",
+            "https://cdn.pixabay.com/audio/2022/08/10/18-47-13-464_200x200.jpg",
         },
         {
           userId: 3,
@@ -37,10 +37,10 @@ module.exports = {
         },
         {
           userId: 1,
-          title: "i'mperfect",
-          description: "Fifth studio album of Ling Tosite Sigure",
+          title: "Video Game Music",
+          description: "Tunes in 8-bit",
           imageUrl:
-            "https://en.wikipedia.org/wiki/I'mperfect#/media/File:I'mperfect.png",
+            "https://icon2.cleanpng.com/20180214/ozw/kisspng-pac-man-games-ghosts-blue-ghost-cliparts-5a8481ac7804f0.2492376515186333884916.jpg",
         },
       ],
       {}

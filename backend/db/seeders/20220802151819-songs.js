@@ -23,10 +23,10 @@ module.exports = {
         {
           userId: 2,
           albumId: 2,
-          title: "The Black Market",
-          description: 'Punk Rock',
-          url: "https://drive.google.com/file/d/18jyaLj8L-XRhOPxTUmeY1E_tFvNlYccY/view",
-          imageUrl: "https://i.ebayimg.com/images/g/a2gAAOSwssRdOYmU/s-l640.jpg"
+          title: "Inspiring Cinematic Piano",
+          description: 'Classical Piano Solo',
+          url: "https://cdn.pixabay.com/download/audio/2022/08/10/audio_158527cbab.mp3?filename=inspiring-cinematic-piano-116957.mp3",
+          imageUrl: "https://cdn.pixabay.com/audio/2022/08/10/18-47-13-464_200x200.jpg"
           },
         {
             userId: 1,
@@ -55,18 +55,18 @@ module.exports = {
       {
       userId: 1,
       albumId: 4,
-      title: "Metamorphose",
-      description: 'So much noise',
-      url: "https://drive.google.com/file/d/1QKV8nbIAdjlmRlURwVSpBMRrb88ewQcr/view",
-      imageUrl: "https://i.pinimg.com/originals/67/c6/43/67c6437c9cc765de0ecac344b737e604.jpg"
+      title: "Feed the Machine",
+      description: 'Classic Video Game Sound',
+      url: "https://cdn.pixabay.com/download/audio/2022/08/09/audio_4bd7b03f6c.mp3?filename=feed-the-machine-classic-arcade-game-116846.mp3",
+      imageUrl: "https://cdn.pixabay.com/audio/2022/08/09/16-40-54-414_200x200.jpg"
       },
       {
           userId: 1,
           albumId: 4,
-          title: "Boukan",
-          description: 'Slow start heavy finish',
-          url: "https://drive.google.com/file/d/1y6qap5Me1v7o8YFxjqF4GhxvXFf4IuvQ/view",
-          imageUrl: "https://i.pinimg.com/736x/00/64/d0/0064d0b07ddd1ba607f033b91d6b6b0e--ling-tosite-sigure-bands.jpg"
+          title: "Floppy Disk",
+          description: 'Level 1',
+          url: "https://cdn.pixabay.com/audio/2022/08/09/audio_b7595a37c1.mp3",
+          imageUrl: "https://cdn.pixabay.com/audio/2022/08/09/16-40-54-414_200x200.jpg"
           },
     ],
 

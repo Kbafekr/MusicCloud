@@ -100,7 +100,7 @@
 
 /* media screen */
 
-
+/*
 @media screen and (min-width: 800px){
  .homeButton, .songButton, .libraryButton, .albumButton {
   padding: 0em 1.5em;
@@ -110,7 +110,7 @@
  .homeButton, .songButton, .libraryButton, .albumButton {
   padding: 0em 0.5em;
  }
-}
+} */
 
 
 

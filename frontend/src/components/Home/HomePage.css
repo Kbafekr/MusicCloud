@@ -15,12 +15,6 @@ justify-content: center;
 width: 100%;
 align-items: center;
 z-index: 0;
-transition-property: opacity;
-transition-duration: 1s;
-}
-
-.imagesArray {
-    animation: Transition 2s ease-in-out 0s infinite normal;
 }
 
 .headers {

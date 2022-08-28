@@ -15,8 +15,7 @@ export function HomePage() {
     useEffect(() => {
         if (imageNumber < ImagesArray.length) {
            const ImageTransition =  setInterval(() => {
-            duration: 1,
-            
+
 
             //check to see if previous number is greater than images array length, if not then
                 setImageNumber((previousImageNumber) => (previousImageNumber + 1) % ImagesArray.length)

@@ -96,7 +96,7 @@ width: 60%
     display: flex;
     flex-direction: row;
     height: 60%;
-    width: 40%
+    width: 60%
     }
 }
 @media screen and (max-width: 650px){

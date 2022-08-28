@@ -12,27 +12,45 @@ body {
   margin: 0 9%;
   border-top: 0.5vh solid rgb(243, 92, 23);
 }
-body, footer {
+body, footer{
   width: auto;
   height: auto;
   background-color: white;
 }
 
+
 footer {
 display: flex;
 flex-direction: row;
 margin: 0 4%;
-border-top: 1px dotted rgb(0, 0, 0, 0.5);
+border-top: 0.1em dotted rgb(0, 0, 0, 0.5);
 text-align: left;
-padding-top: 3%;
-padding-bottom: 3%;
+padding-top: 1%;
+padding-bottom: 1%;
 color: rgb(0, 0, 0, 0.3);
 }
 
-.icon {
-width: 3vw;
-height: 3vh;
-position: relative;
-left: 10%;
-bottom: 15%;
+footer > * {
+  font-size: 14px;
 }
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+  align-items: center;
+  height: 100%;
+}
+img.icon {
+width: 4vw;
+height: 4vh;
+background-color: transparent;
+}
+
+@media screen and (max-width: 800px)
+    {
+        img.icon {
+          width: 3vw;
+          height: 3vh;
+        }
+    }

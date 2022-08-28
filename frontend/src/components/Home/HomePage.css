@@ -8,13 +8,6 @@
     height: auto;
 
 }
-
-.headers {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .CarouselImages {
 display: flex;
 flex-direction: column;
@@ -22,13 +15,22 @@ justify-content: center;
 width: 100%;
 align-items: center;
 z-index: 0;
+transition-property: opacity;
+transition-duration: 1s;
 }
 
 .imagesArray {
-    width: 100%;
-    height: 50em;
+    animation: Transition 2s ease-in-out 0s infinite normal;
 }
 
+.headers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* below image carousel */
 .CreateAccountButtonHomePage {
 
     width: 10%;
@@ -45,6 +47,30 @@ z-index: 0;
     top: 1.8vh;
     height: 40%;
     width: 30%;
-
-
 }
+
+
+/* media screens */
+@media screen and (min-width: 1000px){
+    .imagesArray {
+        width: 100%;
+        height: 40em;
+    }
+    }
+
+
+    @media screen and (max-width: 1000px) and (min-width: 650px)
+    {
+        .imagesArray {
+            width: 100%;
+            height: 30em;
+        }
+    }
+
+    @media screen and (max-width: 650px)
+    {
+        .imagesArray {
+            width: 100%;
+            height: 20em;
+        }
+    }

@@ -155,3 +155,11 @@
   background-color: transparent;
   border: none;
 }
+
+/* once signed in */
+.SignInSide {
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
+}

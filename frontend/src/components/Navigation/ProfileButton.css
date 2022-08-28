@@ -1,50 +1,100 @@
+.container {
+        display: flex;
+        flex-direction: column;
+        justify-content: right;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        height: 100%;
+      }
+.profileButton {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+}
+
+.profileImg {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
 .profile-dropdown {
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 0;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
     position: relative;
-    display: block;
-    text-align: center;
-    width: fit-content;
-    top: 150px;
-    left: 5px;
-    height: fit-content;
-list-style: none;
-background-color: white;
+    justify-content: center;
+    list-style: none;
+    background-color: white;
 
-}
-
-.profileImg {
-    width: 30px;
-    height: 30px;
 }
 .profile-dropdown li {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.584);
-    padding: 5px 10px;
-    font-size: 24px;
+    border-bottom: 0.1em solid rgba(0, 0, 0, 0.584);
+    padding: 0.2em 0.4em;
+    font-size: 1em;
+    text-align: center;
 }
 
 .profile-dropdown li:hover {
     background-color: gray;
 }
 
+
+
+
+/* dropdown menu */
 .separatordropdown {
-    padding: 3px;
+    padding: 0.1em;
     color: rgba(0, 0, 0, 0.38);
-    font-size: 18px;
+    font-size: 0.8em;
     font-style: italic;
     text-decoration: underline;
+    text-align: center;
 
 }
 
 .logoutButton {
-    font-size: 24px;
+    font-size: 1em;
     background-color: rgb(255, 111, 0);
 }
 
 .logoutButton:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.05);
+    color: white;
+}
+
+.mySongs, .myAlbums {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    column-gap: 1em;
+    align-items: center;
+}
+
+.icon {
+    width: 1em;
+    height: 1em;
+    background-color: transparent;
+}
+
+.mySongsText, .myAlbumsText{
+    text-decoration: none;
+    color: black;
+}
+
+.mySongs:hover, .myAlbums:hover {
+    transform: scale(1.05);
+    color: white;
+}
+
+.mySongsText:hover, .myAlbumsText:hover, .icon:hover{
+    transform: scale(1.05);
+    color: white;
 }

@@ -30,7 +30,7 @@ function LoginForm() {
             ))}
       </ul>
       <h1>Sign in</h1>
-      <label>
+      <label className= 'label'>
         <input
         className="credentialInputLogin"
         placeholder="Username or Email..."
@@ -41,7 +41,7 @@ function LoginForm() {
           required
           />
       </label>
-      <label>
+      <label className= 'label'>
         <input
         className="passwordInputLogin"
         placeholder="Password..."

@@ -29,13 +29,13 @@ function SignupForm() {
 
   return (
     <div className="SignupForm-outer">
-
+      {/* <button className='closeButton' onClick={handleSubmit}>Close</button> */}
     <form className="SignupForm-inner" onSubmit={handleSubmit} autoComplete='off'>
       <ul>
         {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>
       <h1>Create an account</h1>
-      <label>
+      <label className= 'label'>
         <input
         className="emailInputSignup"
         autoComplete="email"
@@ -46,7 +46,7 @@ function SignupForm() {
           required
           />
       </label>
-      <label>
+      <label className= 'label'>
         <input
         className="usernameInputSignup"
         placeholder="Username..."
@@ -57,7 +57,7 @@ function SignupForm() {
           required
           />
       </label>
-      <label>
+      <label className= 'label'>
         <input
         className="firstnameInputSignup"
         placeholder="First Name..."
@@ -68,7 +68,7 @@ function SignupForm() {
           required
           />
       </label>
-      <label>
+      <label className= 'label'>
         <input
         className="lastnameInputSignup"
           placeholder="Last Name..."
@@ -79,7 +79,7 @@ function SignupForm() {
           required
           />
       </label>
-      <label>
+      <label className= 'label'>
         <input
         className="imageUrlInputSignup"
           placeholder="Profile Image Url..."
@@ -88,7 +88,7 @@ function SignupForm() {
           onChange={(e) => setImageUrl(e.target.value)}
           />
       </label>
-      <label>
+      <label className= 'label'>
         <input
         className="passwordInputSignup"
         autoComplete="new-password"
@@ -99,7 +99,7 @@ function SignupForm() {
           required
           />
       </label>
-      <label>
+      <label className= 'label'>
         <input
         className="confirmpasswordInputSignup"
         autoComplete="new-password"

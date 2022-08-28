@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import { NavLink } from "react-router-dom";
 import "./ProfileButton.css";
+import "./Navigation.css";
+import icon1 from '../../images/icons/icon1.png'
+import icon2 from '../../images/icons/icon2.png'
 function ProfileButton({ user }) {
   // set image to local storage since it gets deleted off of render and doesn;t expire when exiting page
 
@@ -44,10 +47,11 @@ function ProfileButton({ user }) {
   };
   return (
     <>
+    <div className="container">
+
       <button className="profileButton" onClick={openMenu}>
         {/* <img className='profileImg' src={localStorage.getItem('imageUrl')} /> */}
         <img className="profileImg" src={user.imageUrl} alt="profilepic" />
-
         <i className="fas fa-user-circle" />
       </button>
       {showMenu && (
@@ -61,6 +65,9 @@ function ProfileButton({ user }) {
 
           <li>
             <div className="mySongs">
+            <NavLink to={"/songs/current"}>
+              <img className='icon' src={icon1} alt="songs icon"/>
+              </NavLink>
               <NavLink className="mySongsText" to={'/songs/current'}>
                 My Songs
               </NavLink>
@@ -69,6 +76,10 @@ function ProfileButton({ user }) {
 
           <li>
             <div className="myAlbums">
+            <NavLink to={"/albums/current"}>
+              <img className='icon' src={icon2} alt="albums icon"/>
+              </NavLink>
+
               <NavLink className="myAlbumsText" to={"/albums/current"}>
                 My Albums
               </NavLink>
@@ -82,6 +93,7 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
+    </div>
     </>
   );
 }

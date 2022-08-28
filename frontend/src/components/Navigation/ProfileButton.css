@@ -77,11 +77,15 @@ width: 60%
 @media screen and (max-width: 830px) and (min-width: 800px)
 {
     .profileButton {
-    align-items: center;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 40%;
     width: 20%
+    }
+    .profileImg {
+        visibility: hidden;
+        height: 1%;
+        width: 1%;
     }
 }
 

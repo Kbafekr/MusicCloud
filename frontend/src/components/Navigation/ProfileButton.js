@@ -67,7 +67,7 @@ function ProfileButton({ user }) {
           <li>
             <div className="mySongs">
             <NavLink to={"/songs/current"}>
-              <img className='icon' src={icon1} alt="songs icon"/>
+              <img className='Navicon' src={icon1} alt="songs icon"/>
               </NavLink>
               <NavLink className="mySongsText" to={'/songs/current'}>
                 My Songs
@@ -78,7 +78,7 @@ function ProfileButton({ user }) {
           <li>
             <div className="myAlbums">
             <NavLink to={"/albums/current"}>
-              <img className='icon' src={icon2} alt="albums icon"/>
+              <img className='Navicon' src={icon2} alt="albums icon"/>
               </NavLink>
 
               <NavLink className="myAlbumsText" to={"/albums/current"}>

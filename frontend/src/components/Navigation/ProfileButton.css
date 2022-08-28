@@ -162,7 +162,7 @@ column-gap: 1em;
 align-items: center;
 }
 
-.icon {
+.Navicon {
 width: 1em;
 height: 1em;
 background-color: transparent;
@@ -178,7 +178,7 @@ transform: scale(1.05);
 color: white;
 }
 
-.mySongsText:hover, .myAlbumsText:hover, .icon:hover{
+.mySongsText:hover, .myAlbumsText:hover, .Navicon:hover{
 transform: scale(1.05);
 color: white;
 }

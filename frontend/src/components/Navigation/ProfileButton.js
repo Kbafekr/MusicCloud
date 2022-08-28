@@ -54,6 +54,7 @@ function ProfileButton({ user }) {
         <img className="profileImg" src={user.imageUrl} alt="profilepic" />
         <i className="fas fa-user-circle" />
       </button>
+  
       {showMenu && (
         <ul className="profile-dropdown">
           <div className="separatordropdown">username</div>

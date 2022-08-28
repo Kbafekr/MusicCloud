@@ -5,7 +5,7 @@
 .NavBarContainer {
   display: flex;
   flex-flow: row nowrap;
-  background-color: rgba(61, 61, 61, 0.95);
+  background-color: rgb(49, 49, 49);
     font-size: large;
     font-weight: bold;
     align-items: center;
@@ -14,7 +14,7 @@
   };
 
   #showNavBar {
-    background-color: rgb(53, 53, 53);
+    background-color: rgb(44, 44, 44);
   }
 
   #NavBar {

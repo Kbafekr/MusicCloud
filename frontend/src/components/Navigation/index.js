@@ -56,7 +56,7 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div className="NavBarContainer" id={signedIn ? 'showNavBar' : 'NavBar'}>
+    <div className="NavBarContainer" id={signedIn === true ? 'showNavBar' : 'NavBar'}>
       <div className="LogoSide">
         <NavLink className='LogoNav' exact to="/">
           <img

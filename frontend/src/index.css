@@ -36,10 +36,3 @@ position: relative;
 left: 10%;
 bottom: 15%;
 }
-
-
-@media screen and (max-width: 800px) {
-  :root {
-    background-color: rgb(159, 15, 15);
-  }
-}

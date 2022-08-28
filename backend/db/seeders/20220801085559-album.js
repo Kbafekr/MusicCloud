@@ -40,7 +40,7 @@ module.exports = {
           title: "Video Game Music",
           description: "Tunes in 8-bit",
           imageUrl:
-            "https://icon2.cleanpng.com/20180214/ozw/kisspng-pac-man-games-ghosts-blue-ghost-cliparts-5a8481ac7804f0.2492376515186333884916.jpg",
+            "https://media.wired.co.uk/photos/606d9d25751ea43ccd9887e7/master/w_1600%2Cc_limit/wired-retro-gaming-4.jpg",
         },
       ],
       {}

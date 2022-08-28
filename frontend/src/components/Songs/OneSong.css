@@ -1,5 +1,7 @@
+/*
 
-/* Overall container */
+
+
 .song-details-container {
     margin: 0 9%;
     display: flex;
@@ -12,7 +14,6 @@
     padding-top: 50px;
 }
 
-/* song section */
 .songImage {
 display: flex;
 flex-direction: column;
@@ -45,10 +46,8 @@ z-index: 0;
     font-size: 48px;
 }
 
-/* Album section */
 
 
-/* Artist section */
 
 .artistProfilePic {
     display: flex;
@@ -66,4 +65,4 @@ z-index: 0;
     padding: 20px;
     margin-top: 20px;
 
-}
+} */

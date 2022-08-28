@@ -17,10 +17,13 @@ import "./Navigation.css";
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector((state) => state.session.user);
 
+  let signedIn;
+
   let sessionLinks;
   let memberLinks;
 
   if (sessionUser) {
+    signedIn = true
     memberLinks = (
       <>
         <div className="memberLinks">
@@ -40,6 +43,7 @@ function Navigation({ isLoaded }) {
       </>
     );
   } else {
+    signedIn = false
     sessionLinks = (
       <>
         <div className="SignupSide">
@@ -52,7 +56,7 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div className="NavBarContainer">
+    <div className="NavBarContainer" id={signedIn ? 'showNavBar' : 'NavBar'}>
       <div className="LogoSide">
         <NavLink exact to="/">
           <img
@@ -62,8 +66,10 @@ function Navigation({ isLoaded }) {
           />
         </NavLink>
       </div>
-      <div className="navBarLeftSide">{memberLinks}</div>
-      <div className="navBarRightSide">{isLoaded && sessionLinks}</div>
+      <div className="navBarLeftSide" id={signedIn ? 'leftSideSignedIn' : 'leftSideSignedOut'}>
+        {memberLinks}</div>
+      <div className="navBarRightSide" id={signedIn ? 'rightSideSignedIn' : 'rightSideSignedOut'}>
+        {isLoaded && sessionLinks}</div>
     </div>
   );
 }

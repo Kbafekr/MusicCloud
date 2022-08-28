@@ -23,7 +23,7 @@ function Navigation({ isLoaded }) {
   let memberLinks;
 
   if (sessionUser) {
-    signedIn = true
+    signedIn = true;
     memberLinks = (
       <>
         <div className="memberLinks">
@@ -43,7 +43,7 @@ function Navigation({ isLoaded }) {
       </>
     );
   } else {
-    signedIn = false
+    signedIn = false;
     sessionLinks = (
       <>
         <div className="SignupSide">
@@ -56,9 +56,12 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <div className="NavBarContainer" id={signedIn === true ? 'showNavBar' : 'NavBar'}>
+    <div
+      className="NavBarContainer"
+      id={signedIn === true ? "showNavBar" : "NavBar"}
+    >
       <div className="LogoSide">
-        <NavLink className='LogoNav' exact to="/">
+        <NavLink className="LogoNav" exact to="/">
           <img
             className="imgLogo"
             src={require("./MusicCloudLogo.png")}
@@ -66,10 +69,18 @@ function Navigation({ isLoaded }) {
           />
         </NavLink>
       </div>
-      <div className="navBarLeftSide" id={signedIn ? 'leftSideSignedIn' : 'leftSideSignedOut'}>
-        {memberLinks}</div>
-      <div className="navBarRightSide" id={signedIn ? 'rightSideSignedIn' : 'rightSideSignedOut'}>
-        {isLoaded && sessionLinks}</div>
+      <div
+        className="navBarLeftSide"
+        id={signedIn ? "leftSideSignedIn" : "leftSideSignedOut"}
+      >
+        {memberLinks}
+      </div>
+      <div
+        className="navBarRightSide"
+        id={signedIn ? "rightSideSignedIn" : "rightSideSignedOut"}
+      >
+        {isLoaded && sessionLinks}
+      </div>
     </div>
   );
 }

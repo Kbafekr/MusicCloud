@@ -26,7 +26,7 @@
   /* left most side containing logo */
   .LogoSide {
     height: 100%;
-    width: 30%;
+    width: 25%;
     display: flex;
     align-items: center;
   }
@@ -43,6 +43,7 @@
     padding-left: 1em;
   }
 
+  /* middle nav */
   /* side containing logged-in features */
   .navBarLeftSide {
     height: 100%;
@@ -51,7 +52,7 @@
   }
 
   #leftSideSignedIn {
-    width: 35%;
+    width: 45%;
   }
 
   #leftSideSignedOut {
@@ -78,7 +79,6 @@
     border-top: none;
     border-bottom: none;
     background-color: transparent;
-    padding: 0em 1.5em;
     color: rgb(194, 194, 194);
   }
   .songButton, .libraryButton, .albumButton {
@@ -90,7 +90,6 @@
     border-bottom: none;
     border-left: none;
     background-color: transparent;
-    padding: 0em 1.5em;
     color: rgb(194, 194, 194);
   }
 
@@ -99,8 +98,23 @@
     cursor: pointer;
   }
 
+/* media screen */
 
 
+@media screen and (min-width: 800px){
+ .homeButton, .songButton, .libraryButton, .albumButton {
+  padding: 0em 1.5em;
+ }
+}
+@media screen and (max-width: 800px){
+ .homeButton, .songButton, .libraryButton, .albumButton {
+  padding: 0em 0.5em;
+ }
+}
+
+
+
+/* right side */
 
 /* includes sign up features */
   .navBarRightSide {
@@ -113,11 +127,11 @@
   }
 
   #rightSideSignedIn {
-    width: 35%;
+    width: 30%;
   }
 
   #rightSideSignedOut {
-    width: 40%;
+    width: 45%;
   }
 
   .SignUpSide {

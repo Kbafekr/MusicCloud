@@ -47,14 +47,14 @@ function ProfileButton({ user }) {
   };
   return (
     <>
-    <div className="container">
+    <div className='containerRow'>
 
-      <button className="profileButton" onClick={openMenu}>
+      <button className={showMenu === true ? 'profileWithMenu' : 'profileButton'} onClick={openMenu}>
         {/* <img className='profileImg' src={localStorage.getItem('imageUrl')} /> */}
-        <img className="profileImg" src={user.imageUrl} alt="profilepic" />
+        <img className={showMenu === true ? 'ImgWithMenu' : 'profileImg'} src={user.imageUrl} alt="profilepic" />
         <i className="fas fa-user-circle" />
       </button>
-  
+
       {showMenu && (
         <ul className="profile-dropdown">
           <div className="separatordropdown">username</div>

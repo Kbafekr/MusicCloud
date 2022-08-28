@@ -26,7 +26,7 @@
   /* left most side containing logo */
   .LogoSide {
     height: 100%;
-    width: 25%;
+    width: 30%;
     display: flex;
     align-items: center;
   }
@@ -51,11 +51,11 @@
   }
 
   #leftSideSignedIn {
-    width: 60%;
+    width: 35%;
   }
 
   #leftSideSignedOut {
-    width: 35%;
+    width: 30%;
   }
 
   /* container of nav links */
@@ -113,7 +113,7 @@
   }
 
   #rightSideSignedIn {
-    width: 15%;
+    width: 35%;
   }
 
   #rightSideSignedOut {

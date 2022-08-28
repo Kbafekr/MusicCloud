@@ -23,29 +23,33 @@ z-index: 0;
     align-items: center;
 }
 
+@keyframes opacitychange {
+    0% {
+        opacity: 0.0;
+      }
 
-/* below image carousel */
-.CreateAccountButtonHomePage {
+    50% {
+        opacity: 1;
+      }
 
-    width: 10%;
+    100% {
+        opacity: 0;
+      }
+    }
 
+#ActiveImage {
+    animation: opacitychange 5s infinite;
+    width: 100%;
 }
-
-.SignInHomePage {
-    display: flex;
-    flex-direction: row;
-}
-
-.signinbutton{
-    position: relative;
-    top: 1.8vh;
-    height: 40%;
-    width: 30%;
-}
-
 
 /* media screens */
-@media screen and (min-width: 1000px){
+@media screen and (min-width: 1200px){
+    .imagesArray {
+        width: 100%;
+        height: 50em;
+    }
+    }
+@media screen and (min-width: 1000px) and (max-width: 1200px){
     .imagesArray {
         width: 100%;
         height: 40em;
@@ -68,3 +72,22 @@ z-index: 0;
             height: 20em;
         }
     }
+
+    /* below image carousel */
+.CreateAccountButtonHomePage {
+
+    width: 10%;
+
+}
+
+.SignInHomePage {
+    display: flex;
+    flex-direction: row;
+}
+
+.signinbutton{
+    position: relative;
+    top: 1.8vh;
+    height: 40%;
+    width: 30%;
+}

@@ -11,6 +11,7 @@ export function HomePage() {
 
     const [imageNumber, setImageNumber] = useState(0)
 
+
     //prevents counter from updating after every single render
     useEffect(() => {
         if (imageNumber < ImagesArray.length) {
@@ -19,7 +20,7 @@ export function HomePage() {
 
             //check to see if previous number is greater than images array length, if not then
                 setImageNumber((previousImageNumber) => (previousImageNumber + 1) % ImagesArray.length)
-            }, 2000)
+            }, 5000)
 
             return () => clearInterval(ImageTransition)
         }
@@ -33,7 +34,20 @@ export function HomePage() {
             <div className='homePage'>
             <h1>Welcome back {UserSignedIn.username}!</h1>
             <div className='CarouselImages'>
-             <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/>
+
+            {ImagesArray.map((image, index) =>
+                    {
+                    return (
+                        <div id={index === imageNumber ? 'ActiveImage' : 'InactiveImage'} key={index}>
+                            {index === imageNumber && (
+                            <img className='imagesArray' src={image.image} alt='images'/>
+                            )}
+                        </div>
+                        )
+
+                    })
+                }
+             {/* <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/> */}
             </div>
 
             <div className='headers'>
@@ -52,7 +66,19 @@ export function HomePage() {
         return (
             <div className='homePage'>
                 <div className='CarouselImages'>
-                 <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/>
+                {ImagesArray.map((image, index) =>
+                    {
+                    return (
+                        <div id={index === imageNumber ? 'ActiveImage' : 'InactiveImage'} key={index}>
+                            {index === imageNumber && (
+                            <img className='imagesArray' src={image.image} alt='images'/>
+                            )}
+                        </div>
+                        )
+
+                    })
+                }
+                 {/* <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/> */}
                 </div>
 
                 <div className='headers'>

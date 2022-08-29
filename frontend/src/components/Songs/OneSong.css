@@ -45,7 +45,7 @@
     padding-bottom: 20px;
 }
 
-.songCard {
+.SinglesongCard {
     width: 100%;
     background-color: rgb(214, 213, 213);
     background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
@@ -55,6 +55,7 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 2em;
+    ax-width: 25em;
 }
 
 .OnesongImage {
@@ -103,6 +104,7 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 2em;
+    max-width: 25em;
 }
 
 .OneSongalbumId {
@@ -114,6 +116,7 @@
         width: 20em;
         height: 15em;
         border-radius: 5px;
+        max-width: 25em;
 }
 .OneSongalbumLink {
     font-style: italic;

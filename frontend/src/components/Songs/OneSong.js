@@ -115,7 +115,7 @@ export default function SongDetails() {
         </div>
         <div className="Onesong-container">
           {/* song */}
-          <div className="songCard">
+          <div className="SinglesongCard">
             <div className="songName">
               <img className="OnesongImage" src={song.imageUrl}></img>
               <div className="songTitle">Song: {song.title}</div>

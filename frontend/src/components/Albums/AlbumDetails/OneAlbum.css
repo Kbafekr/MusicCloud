@@ -46,7 +46,7 @@
 }
 
 .OneAlbumCard {
-    width: 100%;
+    max-width: 25em;
     background-color: rgb(214, 213, 213);
     background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
     box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);

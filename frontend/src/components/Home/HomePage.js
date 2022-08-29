@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import { ImagesArray } from "../../images/Images";
 import { backgroundImages } from "../../images/Images";
 import { getAllSongs } from "../../store/songs";
-import { getOneSong } from "../../store/songs";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import SignUpModal from "../SignUpModal";
@@ -15,93 +14,91 @@ export function HomePage() {
   //get all songs
   const dispatch = useDispatch();
   const UserSignedIn = useSelector((state) => state.session.user);
-  const user = useSelector((state) => state.session.user);
-
   const songs = useSelector((state) => state.song);
   const SongsArray = Object.values(songs);
   //filter through songs to randomly select whats trending
   let randomNumber;
-
   let filtered;
   let titleFiltered;
   //prevents counter from updating after every single render
 
-  //set state for
+  //set state for images carousel
   const [imageNumber, setImageNumber] = useState(0);
   const [backgroundImageNumber, setBackgroundImageNumber] = useState(0);
-  const [Number, setNumber] = useState(0)
-
+  //set state for random trending song
+  const [Number, setNumber] = useState(0);
   //set search bar state
-
   const [searchTitle, setSearchTitle] = useState("");
 
+  //randomNumber
+  randomNumber = Math.floor(Math.random() * SongsArray.length);
+  //useEffect to get all songs and setRandomNumber
   useEffect(() => {
-    dispatch(getAllSongs())
+    dispatch(getAllSongs());
     setNumber(randomNumber);
   }, [dispatch]);
 
-  // currently trending
-  randomNumber = Math.floor(Math.random() * SongsArray.length);
-  filtered = SongsArray.filter(
-      (filteredSongs, index) => index === Number
-      );
-      //   console.log(filtered + 'filtered')
-      //   console.log(randomNumber + 'randomNumber')
+  // currently trending filter
+  filtered = SongsArray.filter((filteredSongs, index) => index === Number);
+  //   console.log(filtered + 'filtered')
+  //   console.log(randomNumber + 'randomNumber')
+  // filtered by search
 
-      // filtered by search
+  // useEffects for if user isn't signed in set carousel image
+  useEffect(() => {
+    if (!UserSignedIn) {
+      if (backgroundImageNumber < backgroundImages.length) {
+        const backgroundImageTransition = setInterval(() => {
+          //check to see if previous number is greater than images array length, if not then
+          setBackgroundImageNumber(
+            (previousBackgroundImageNumber) =>
+              (previousBackgroundImageNumber + 1) % backgroundImages.length
+          );
+        }, 5000);
+
+        return () => clearInterval(backgroundImageTransition);
+      } else {
+        setBackgroundImageNumber(0);
+      }
+    }
+    // if user is signed in
+  else
+    if (imageNumber < ImagesArray.length) {
+      const ImageTransition = setInterval(() => {
+        //check to see if previous number is greater than images array length, if not then
+        setImageNumber(
+          (previousImageNumber) =>
+            (previousImageNumber + 1) % ImagesArray.length
+        );
+      }, 5000);
+
+      return () => clearInterval(ImageTransition);
+    } else {
+      setImageNumber(0);
+    }
+  }, [imageNumber, backgroundImageNumber]);
 
 
-      // useEffects
-      useEffect(() => {
-          if (!UserSignedIn) {
-              if (backgroundImageNumber < backgroundImages.length) {
-                  const backgroundImageTransition = setInterval(() => {
-                      //check to see if previous number is greater than images array length, if not then
-                      setBackgroundImageNumber(
-                          (previousBackgroundImageNumber) =>
-                          (previousBackgroundImageNumber + 1) % backgroundImages.length
-                          );
-                        }, 5000);
 
-                        return () => clearInterval(backgroundImageTransition);
-                    } else {
-                        setBackgroundImageNumber(0);
-                    }
-                }
 
-                if (imageNumber < ImagesArray.length) {
-                    const ImageTransition = setInterval(() => {
-                        //check to see if previous number is greater than images array length, if not then
-                        setImageNumber(
-                            (previousImageNumber) =>
-                            (previousImageNumber + 1) % ImagesArray.length
-                            );
-                        }, 5000);
+  //   handlesubmit for search
 
-                        return () => clearInterval(ImageTransition);
-                    } else {
-                        setImageNumber(0);
-                    }
-                }, [imageNumber, backgroundImageNumber]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchTitle(e.target.value);
+  };
 
-                //   handlesubmit
+  titleFiltered = SongsArray.filter(
+    (filteredSongs, index) => filteredSongs.title == searchTitle
+  );
 
-                const handleSubmit = (e) => {
-                    e.preventDefault();
-                    setSearchTitle(e.target.value)
-                };
-
-                titleFiltered = SongsArray.filter(
-                    (filteredSongs, index) => filteredSongs.title == searchTitle
-                    );
-
-                    if (UserSignedIn) {
-                        return (
-                            <div className="homePage">
+  if (UserSignedIn) {
+    return (
+      <div className="homePage">
         <h1>Welcome back {UserSignedIn.username}!</h1>
         <div className="CarouselImages">
           {ImagesArray.map((image, index) => {
-              return (
+            return (
               <div
                 id={index === imageNumber ? "ActiveImage" : "InactiveImage"}
                 key={index}
@@ -115,6 +112,7 @@ export function HomePage() {
           {/* <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/> */}
         </div>
 
+          {/* search bar */}
         <div className="headers">
           {/* SearchBar */}
           <h1>Search for songs by title</h1>
@@ -124,31 +122,36 @@ export function HomePage() {
               type="search"
               value={searchTitle}
               placeholder={"Enter Song Title..." || searchTitle}
-            //   onChange={(e) => setSearchTitle(e.target.value)}
+              //   onChange={(e) => setSearchTitle(e.target.value)}
               onChange={handleSubmit}
             />
           </div>
 
-          <div className={titleFiltered.length ? "SearchResult-container" : "Hidden"}>
-          {titleFiltered &&
-            titleFiltered.map((song) => {
+          <div
+            className={
+              titleFiltered.length ? "SearchResult-container" : "Hidden"
+            }
+          >
+            {/* search return map */}
+            {titleFiltered &&
+              titleFiltered.map((song) => {
                 return (
-                    <div className="songCard" key={song.id}>
-                  <div>Song id: {song.id}</div>
-                  <img className="songImage" src={song.imageUrl}></img>
-                  <div className="songDescription">
-                    Description: {song.description}
-                  </div>
-                  <div className="userId">User: {song.userId}</div>
-                  <div className="albumId">Album: {song.albumId}</div>
+                  <div className="songCard" key={song.id}>
+                    <div>Song id: {song.id}</div>
+                    <img className="songImage" src={song.imageUrl}></img>
+                    <div className="songDescription">
+                      Description: {song.description}
+                    </div>
+                    <div className="userId">User: {song.userId}</div>
+                    <div className="albumId">Album: {song.albumId}</div>
 
-                  <NavLink className="songLink" to={`/songs/${song.id}`}>
-                    {song.title}
-                  </NavLink>
-                </div>
-              );
-            })}
-            </div>
+                    <NavLink className="songLink" to={`/songs/${song.id}`}>
+                      {song.title}
+                    </NavLink>
+                  </div>
+                );
+              })}
+          </div>
 
           {/* trending songs */}
 
@@ -178,7 +181,9 @@ export function HomePage() {
         </div>
       </div>
     );
-  } else {
+  }
+//   if user isnt signed in
+  else {
     return (
       <div className="homePage">
         <div className="CarouselImages">

@@ -18,6 +18,7 @@ export function HomePage() {
   const SongsArray = Object.values(songs);
   //filter through songs to randomly select whats trending
   let randomNumber;
+
   let filtered;
   let titleFiltered;
   //prevents counter from updating after every single render
@@ -72,7 +73,6 @@ export function HomePage() {
     // if user is signed in
   else
   dispatch(getAllSongs());
-  randomNumber = Math.floor(Math.random() * SongsArray.length);
     if (imageNumber < ImagesArray.length) {
       const ImageTransition = setInterval(() => {
         //check to see if previous number is greater than images array length, if not then
@@ -87,10 +87,12 @@ export function HomePage() {
       setImageNumber(0);
     }
 
-    setNumber(randomNumber)
   }, [imageNumber, backgroundImageNumber, dispatch, Number]);
 
-
+  randomNumber = Math.floor(Math.random() * SongsArray.length);
+  useEffect(() => {
+    setNumber(randomNumber)
+  }, [Number])
   filtered = SongsArray.filter((filteredSongs, index) => index === Number);
 
 
@@ -104,6 +106,11 @@ export function HomePage() {
   titleFiltered = SongsArray.filter(
     (filteredSongs, index) => filteredSongs.title == searchTitle
   );
+
+
+  console.log(filtered + 'filtered')
+    console.log(randomNumber + 'randomNumber')
+    console.log(Number + 'Number')
 
   if (UserSignedIn) {
     return (

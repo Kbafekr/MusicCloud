@@ -175,6 +175,6 @@
         width: 100%;
 }
 
-.OneAlbum-songDescription {
+.OneAlbum-songDescription, .EachSongId {
     font-size: 1.5em
 }

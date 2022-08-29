@@ -145,6 +145,7 @@ export default function AlbumDetails() {
           {album.Songs.map((song) => {
             return (
               <div key={song.id} className="OneAlbum-songCard">
+                <div className="EachSongId">Song id: {song.id}</div>
                 <img className="OneAlbum-songImage" src={song.imageUrl} />
                 <NavLink className="OneAlbum-songLink" to={`/songs/${song.id}`}>
                   {song.title}

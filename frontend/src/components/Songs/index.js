@@ -35,12 +35,12 @@ export default function ReturnAllSongs() {
         </div>
         <div className="headers">
           <h2>Looks like you're an unauthorized user</h2>
-          <div className="linkerror">
-            <h3>
-              Please sign in as a Demo User:
-              <LoginAsDemo />
-            </h3>
-          </div>
+          <div className="demoContainerHome">
+      <h3 className="textforDemo">Sign in as a</h3>
+      <div className="DemoUserHomePage">
+        <LoginAsDemo id="DemoUserHomePage" />
+      </div>
+    </div>
         </div>
       </div>
     );
@@ -48,20 +48,21 @@ export default function ReturnAllSongs() {
   if (!songs.Album && !songs.Artist) {
     return (
       <div className="songs-container">
-        <div className="createSongForm">
-          <CreateSongModal />
+        <div >
+          <CreateSongModal className="createSongForm"/>
         </div>
+        <div className="AllSongArray">
         {SongsArray &&
           SongsArray.map((song) => {
             return (
-                <div className="songCard" key={song.id}>
-                  <div>{song.id}</div>
+              <div className="songCard" key={song.id}>
+                  <div className="songSongId">Song id: {song.id}</div>
                   <img className="songImage" src={song.imageUrl}></img>
                   <div className="songDescription">
                     Description: {song.description}
                   </div>
-                  <div className="userId">User: {song.userId}</div>
-                  <div className="albumId">Album: {song.albumId}</div>
+                  <div className="SonguserId">User: {song.userId}</div>
+                  <div className="SongalbumId">Album: {song.albumId}</div>
 
                   <NavLink className="songLink" to={`/songs/${song.id}`}>
                     {song.title}
@@ -72,10 +73,11 @@ export default function ReturnAllSongs() {
                     src={song.url}
                     muted={true}
                     onPlay={(e) => console.log("onPlay")}
-                  />
+                    />
                 </div>
             );
           })}
+          </div>
       </div>
     );
   }

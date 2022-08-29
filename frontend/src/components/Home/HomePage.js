@@ -30,25 +30,25 @@ export function HomePage() {
   //set search bar state
   const [searchTitle, setSearchTitle] = useState("");
 
-  //useEffect to get all songs
-  useEffect(() => {
-      dispatch(getAllSongs());
-    }, [dispatch]);
+  // //useEffect to get all songs
+  // useEffect(() => {
+  //     dispatch(getAllSongs());
+  //   }, [dispatch]);
 
 
     //randomNumber
-    randomNumber = Math.floor(Math.random() * SongsArray.length);
+    // randomNumber = Math.floor(Math.random() * SongsArray.length);
   //useEffect to setRandomNumber
-  useEffect(() => {
-      setNumber(randomNumber);
-    }, [dispatch, Number]);
+  // useEffect(() => {
+  //     setNumber(randomNumber);
+  //   }, [dispatch, Number]);
 
 
     // currently trending filter
-  filtered = SongsArray.filter((filteredSongs, index) => index === Number);
-    console.log(filtered + 'filtered')
-    console.log(randomNumber + 'randomNumber')
-    console.log(Number + 'Number')
+  // filtered = SongsArray.filter((filteredSongs, index) => index === Number);
+    // console.log(filtered + 'filtered')
+    // console.log(randomNumber + 'randomNumber')
+    // console.log(Number + 'Number')
 
   // filtered by search
 
@@ -71,6 +71,8 @@ export function HomePage() {
     }
     // if user is signed in
   else
+  dispatch(getAllSongs());
+  randomNumber = Math.floor(Math.random() * SongsArray.length);
     if (imageNumber < ImagesArray.length) {
       const ImageTransition = setInterval(() => {
         //check to see if previous number is greater than images array length, if not then
@@ -84,9 +86,12 @@ export function HomePage() {
     } else {
       setImageNumber(0);
     }
-  }, [imageNumber, backgroundImageNumber]);
+
+    setNumber(randomNumber)
+  }, [imageNumber, backgroundImageNumber, dispatch, Number]);
 
 
+  filtered = SongsArray.filter((filteredSongs, index) => index === Number);
 
 
   //   handlesubmit for search
@@ -144,16 +149,16 @@ export function HomePage() {
             {titleFiltered &&
               titleFiltered.map((song) => {
                 return (
-                  <div className="songCard" key={song.id}>
+                  <div className="TrendingsongCard" key={song.id}>
                     <div>Song id: {song.id}</div>
-                    <img className="songImage" src={song.imageUrl}></img>
-                    <div className="songDescription">
+                    <img className="TrendingsongImage" src={song.imageUrl}></img>
+                    <div className="TrendingsongDescription">
                       Description: {song.description}
                     </div>
-                    <div className="userId">User: {song.userId}</div>
-                    <div className="albumId">Album: {song.albumId}</div>
+                    <div className="TrendinguserId">User: {song.userId}</div>
+                    <div className="TrendingalbumId">Album: {song.albumId}</div>
 
-                    <NavLink className="songLink" to={`/songs/${song.id}`}>
+                    <NavLink className="TrendingsongLink" to={`/songs/${song.id}`}>
                       {song.title}
                     </NavLink>
                   </div>
@@ -164,20 +169,20 @@ export function HomePage() {
           {/* trending songs */}
 
           <h1>This song is trending!</h1>
-          <div className="songs-container">
+          <div className="Trendingsong-container">
             {filtered &&
               filtered.map((song) => {
                 return (
-                  <div className="songCard" key={song.id}>
+                  <div className="TrendingsongCard" key={song.id}>
                     <div>Song id: {song.id}</div>
-                    <img className="songImage" src={song.imageUrl}></img>
-                    <div className="songDescription">
+                    <img className="TrendingsongImage" src={song.imageUrl}></img>
+                    <div className="TrendingsongDescription">
                       Description: {song.description}
                     </div>
-                    <div className="userId">User: {song.userId}</div>
-                    <div className="albumId">Album: {song.albumId}</div>
+                    <div className="TrendinguserId">User: {song.userId}</div>
+                    <div className="TrendingalbumId">Album: {song.albumId}</div>
 
-                    <NavLink className="songLink" to={`/songs/${song.id}`}>
+                    <NavLink className="TrendingsongLink" to={`/songs/${song.id}`}>
                       {song.title}
                     </NavLink>
                   </div>
@@ -236,7 +241,7 @@ export function HomePage() {
         <div className="containerForDemoSection">
           <h2 className="DemoHeader">Want to look around first?</h2>
           <div className="demoContainerHome">
-            <h3>Sign in as a</h3>
+            <h3 className="textforDemo">Sign in as a</h3>
             <div className="DemoUserHomePage">
               <LoginAsDemo id="DemoUserHomePage" />
             </div>

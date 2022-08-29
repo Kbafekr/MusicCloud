@@ -126,6 +126,7 @@ z-index: 0;
         background-color: rgb(255, 111, 0);
         display: flex;
         align-items: center;
+        padding-bottom: 0.1em;
         height: 2em;
         border-radius: 5%;
     }
@@ -160,6 +161,7 @@ z-index: 0;
             background-color: rgb(255, 111, 0);
             display: flex;
             align-items: center;
+            padding-bottom: 0.1em;
             height: 2em;
             border-radius: 5%;
         }
@@ -192,10 +194,11 @@ z-index: 0;
     }
     .DemoUserHomePage {
         background-color: rgb(255, 111, 0);
-        display: flex;
-        align-items: center;
-        height: 2em;
-        border-radius: 5%;
+            display: flex;
+            align-items: center;
+            padding-bottom: 0.1em;
+            height: 2em;
+            border-radius: 5%;
     }
     }
 
@@ -223,13 +226,14 @@ z-index: 0;
         .demoContainerHome {
             display: flex;
             flex-direction: row;
-            column-gap: 0.2em;
+            column-gap: 0.5em;
             align-items: center;
         }
         .DemoUserHomePage {
             background-color: rgb(255, 111, 0);
             display: flex;
             align-items: center;
+            padding-bottom: 0.1em;
             height: 2em;
             border-radius: 5%;
         }
@@ -278,7 +282,7 @@ z-index: 0;
         .demoContainerHome {
             display: flex;
             flex-direction: row;
-            column-gap: 0.2em;
+            column-gap: 0.5em;
             align-items: center;
         }
 
@@ -286,6 +290,7 @@ z-index: 0;
             background-color: rgb(255, 111, 0);
             display: flex;
             align-items: center;
+            padding-bottom: 0.1em;
             height: 2em;
             border-radius: 5%;
         }
@@ -310,21 +315,21 @@ z-index: 0;
 
 /* songs */
 
-.songs-container {
+.Trendingsong-container {
     width: 100%;
     background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
     box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
 }
 
-.songCard {
+.TrendingsongCard {
 width: 100%
 }
 
-.songImage {
+.TrendingsongImage {
 width: 100%;
 }
 
-.songLink {
+.TrendingsongLink {
  font-size: 2em;
 }
 
@@ -351,4 +356,8 @@ width: 100%;
 
 .HiddenResult {
     visibility: hidden;
+}
+
+.textforDemo {
+    padding-bottom: 0.2em;
 }

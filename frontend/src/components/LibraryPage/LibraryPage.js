@@ -1,16 +1,12 @@
 import './LibraryPage.css'
-import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import {useSelector} from 'react-redux'
-import {ImagesArray} from '../../images/Images'
 import LibraryGif from '../../images/LibraryGif.gif'
 
 
 import LoginAsDemo from "../LoginDemoUser";
 import Whomp from "../../images/Whomp.webp";
 import "../UnknownPage/PageNotFound.css";
-import "../Navigation/Navigation.css";
-
 
 export function LibraryPage() {
     const UserSignedIn = useSelector(state => state.session.user)
@@ -41,12 +37,12 @@ export function LibraryPage() {
               </div>
               <div className="headers">
                 <h2>Looks like you're an unauthorized user</h2>
-                <div className="linkerror">
-                  <h3>
-                    Sign in as a Demo User Below:
-                    <LoginAsDemo />
-                  </h3>
-                </div>
+                <div className="demoContainerHome">
+            <h3 className="textforDemo">Sign in as a</h3>
+            <div className="DemoUserHomePage">
+              <LoginAsDemo id="DemoUserHomePage" />
+            </div>
+          </div>
               </div>
             </div>
           );

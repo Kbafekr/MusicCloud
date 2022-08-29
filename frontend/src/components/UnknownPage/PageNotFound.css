@@ -37,4 +37,28 @@
 
 .linkerror {
     font-size: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 1em;
+    align-items: center;
+    text-align: center;
+}
+
+.DemoLoginError {
+    display: flex;
+    background-color: black;
+    align-items: center;
+    width: fit-content;
+}
+
+.ErrorhomeLink, .ErrorsongsLink, .ErrorownedLink {
+    padding: 0.2em;
+    border: 1px solid  black;
+    border-radius: 10%;
+}
+.ErrorhomeLink:hover, .ErrorsongsLink:hover, .ErrorownedLink:hover {
+    box-shadow: -3px 0px 23px 7px rgb(255, 109, 4);
+    transform: scale(1.1);
+    font-weight: bold;
 }

@@ -1,8 +1,8 @@
-/*
+
 
 .songs-container {
-    margin: 0 9%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -10,6 +10,45 @@
     background-color: white;
     padding-top: 30px;
     padding-bottom: 50px;
+}
+
+.CreateSongButton  {
+    color: white;
+    font-size: 2em;
+  height: 2.5em;
+  border-radius: 7%;
+    background-color: rgb(255, 98, 0);
+    border: 0.05em rgb(255, 111, 0) ;
+    margin-bottom: 1em;
+}
+
+
+
+.CreateSongButton:hover {
+    cursor: pointer;
+}
+.AllSongArray {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 50%;
+    flex-grow: 1;
+    column-gap: 1em;
+}
+.songCard {
+    background-color: rgb(214, 213, 213);
+    width: 100%;
+    background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.songName {
+    border: 1 px solid rgba(0, 0, 0, 0.669);
 }
 
 .songImage {
@@ -22,17 +61,31 @@ margin-left: auto;
 margin-right: auto;
 z-index: 0;
     border-radius: 5px;
-    width: 200px;
-    height: 150px;
-    padding: 20px;
+    width: 100%;
 
 }
 
-.songImage:hover {
-    opacity: 1;
-    transition-duration: 1s;
-    transform: scale(1.1);
-}
+.songImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 0;
+        border-radius: 5px;
+        width: 100%;
+
+    }
+
+    .songLink:hover {
+        opacity: 1;
+        transition-duration: 1s;
+        transform: scale(1.02);
+
+
+    }
 
 .albumId > * {
     font-weight:100;
@@ -42,4 +95,9 @@ z-index: 0;
 .songLink {
     font-style: italic;
     font-size: 48px;
-} */
+}
+
+.songSongId, .songDescription, .SonguserId, .SongalbumId
+{
+ font-size: 1.5em;
+}

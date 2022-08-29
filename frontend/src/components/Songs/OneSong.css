@@ -1,55 +1,167 @@
-/*
-
-
 
 .song-details-container {
-    margin: 0 9%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     text-align: center;
     background-color: white;
-    height: 100%;
-    padding-top: 50px;
+    padding-top: 30px;
+    padding-bottom: 50px;
 }
 
-.songImage {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-position: relative;
-margin-left: auto;
-margin-right: auto;
-z-index: 0;
-    border-radius: 5px;
-    width: 200px;
-    height: 150px;
-    padding: 20px;
+.buttonsEditAndDeleteSong {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2em;
+    margin-bottom: 2em;
+}
+
+.EditSongForm, .DeleteSongButton  {
+    color: white;
+    font-size: 2em;
+  height: 2.5em;
+  border-radius: 7%;
+    background-color: rgb(255, 98, 0);
+    border: 0.05em rgb(255, 111, 0) ;
+    margin-bottom: 1em;
+}
+
+
+
+.EditSongForm:hover, .DeleteSongButton:hover{
+    cursor: pointer;
+}
+
+.Onesong-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    padding-bottom: 20px;
+}
+
+.songCard {
+    width: 100%;
+    background-color: rgb(214, 213, 213);
+    background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.OnesongImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 0;
+        border-radius: 5px;
+        width: 100%;
+
+    }
+
+    .songLink:hover {
+        opacity: 1;
+        transition-duration: 1s;
+        transform: scale(1.02);
+    }
+
+    .songTitle, .description
+{
+ font-size: 1.5em;
+}
+
+.Song-Album-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
 
 }
 
-.songImage:hover {
-    opacity: 1;
-    transition-duration: 1s;
-    transform: scale(1.1);
+.Song-Album-Card {
+    background-color: rgb(214, 213, 213);
+    width: 100%;
+    background-image: linear-gradient(to top left, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
 }
 
-.albumId {
+.OneSongalbumId {
     font-weight: bold;
-    font-size: 60px;
+    font-size: 5em;
 }
 
-.songLink {
+.OnealbumImage {
+        width: 20em;
+        height: 15em;
+        border-radius: 5px;
+}
+.OneSongalbumLink {
     font-style: italic;
     font-size: 48px;
 }
 
+.Song-Artist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+}
+
+.Song-Artist-Card {
+    background-color: rgb(214, 213, 213);
+    width: 100%;
+    background-image: linear-gradient(to top right, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
 
 
+.OneSongartistId{
+    font-weight: bold;
+    font-size: 5em;
+}
+.OneSongartistUsername {
+font-size: 2.45em;
+}
 
-.artistProfilePic {
+.OnealbumImage {
+        width: 20em;
+        height: 15em;
+        border-radius: 5px;
+}
+.OneSongalbumLink {
+    font-style: italic;
+    font-size: 48px;
+}
+
+.SongartistProfilePic {
     display: flex;
 flex-direction: column;
 justify-content: center;
@@ -65,4 +177,4 @@ z-index: 0;
     padding: 20px;
     margin-top: 20px;
 
-} */
+}

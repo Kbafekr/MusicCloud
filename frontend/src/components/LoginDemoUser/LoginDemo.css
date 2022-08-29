@@ -1,6 +1,7 @@
 .LogInDemo {
   border: none;
   background-color: transparent;
+  height: 100%;
 }
 
 .LogInDemo:hover {

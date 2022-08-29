@@ -24,7 +24,7 @@ import "react-h5-audio-player/lib/styles.css";
 export default function SongDetails() {
   const dispatch = useDispatch();
   const { songId } = useParams();
-  const history = useHistory()
+  const history = useHistory();
 
   const [showModal, setShowModal] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
@@ -51,90 +51,102 @@ export default function SongDetails() {
         </div>
         <div className="headers">
           <h2>Looks like you're an unauthorized user</h2>
-          <div className="linkerror">
-            <h3>
-              Please sign in as a Demo User:
-              <LoginAsDemo />
-            </h3>
+          <div className="demoContainerHome">
+            <h3 className="textforDemo">Sign in as a</h3>
+            <div className="DemoUserHomePage">
+              <LoginAsDemo id="DemoUserHomePage" />
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
-  if (!song.id ) {
+  if (!song.id) {
     return (
       <Suspense fallback={<div>loading...</div>}>
-      <div className="errorPage">
-        <h1>Whomp Whomp!</h1>
-        <div className="Whomps">
-          <img className="whomp1" src={Whomp} alt="Whomp1" />
-          <img className="whomp2" src={Whomp} alt="Whomp2" />
-        </div>
-        <div className="headers">
-          <h2>Looks like this song doesn't exist</h2>
-          <div className="linkerror">
-            <NavLink to="/">Click here to go home</NavLink>
-            <NavLink to="/songs">Click here to go back to all songs</NavLink>
-            <NavLink to="/songs/current">
-              Click here to go back to owned songs
-            </NavLink>
+        <div className="errorPage">
+          <h1>Whomp Whomp!</h1>
+          <div className="Whomps">
+            <img className="whomp1" src={Whomp} alt="Whomp1" />
+            <img className="whomp2" src={Whomp} alt="Whomp2" />
+          </div>
+          <div className="headers">
+            <h2>Looks like this song doesn't exist</h2>
+            <div className="linkerror">
+              <NavLink to="/" className="ErrorhomeLink">
+                Click here to go home
+              </NavLink>
+              <NavLink to="/songs" className="ErrorsongsLink">
+                Click here to go back to all songs
+              </NavLink>
+              <NavLink to="/songs/current" className="ErrorownedLink">
+                Click here to go back to owned songs
+              </NavLink>
+            </div>
           </div>
         </div>
-      </div>
       </Suspense>
     );
   }
   if (song.Artist && song.Album) {
     return (
       <div className="song-details-container">
-        {/* <div className='EditSongForm'>
-        <EditSongModal />
-      </div> */}
-        <button className="EditSongForm" onClick={() => setShowModal(true)}>
-          Edit Song
-        </button>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <EditSong setShowModal={setShowModal} />
-          </Modal>
-        )}
-        <button
-          className="DeleteSongButton"
-          onClick={() => setModalDelete(true)}
-        >
-          Delete Song
-        </button>
-        {modalDelete && (
-          <Modal onClose={() => setModalDelete(false)}>
-            <DeleteSong setModalDelete={setModalDelete} />
-          </Modal>
-        )}
-        <div className="song-container">
-          <div className="songName">
-            <img className="songImage" src={song.imageUrl}></img>
-            <div className="songTitle">Song: {song.title}</div>
-            <div className="description">Description: {song.description}</div>
-            <AudioPlayer
-              autoPlay={false}
-              src={song.url}
-              muted={true}
-              onPlay={(e) => console.log("onPlay")}
-            />
+        <div className="buttonsEditAndDeleteSong">
+          <button className="EditSongForm" onClick={() => setShowModal(true)}>
+            Edit Song
+          </button>
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+              <EditSong setShowModal={setShowModal} />
+            </Modal>
+          )}
+          <button
+            className="DeleteSongButton"
+            onClick={() => setModalDelete(true)}
+          >
+            Delete Song
+          </button>
+          {modalDelete && (
+            <Modal onClose={() => setModalDelete(false)}>
+              <DeleteSong setModalDelete={setModalDelete} />
+            </Modal>
+          )}
+        </div>
+        <div className="Onesong-container">
+          {/* song */}
+          <div className="songCard">
+            <div className="songName">
+              <img className="OnesongImage" src={song.imageUrl}></img>
+              <div className="songTitle">Song: {song.title}</div>
+              <div className="description">Description: {song.description}</div>
+              <AudioPlayer
+                autoPlay={false}
+                src={song.url}
+                muted={true}
+                onPlay={(e) => console.log("onPlay")}
+              />
+            </div>
           </div>
-          <div className="Album-container">
-            <div className="albumId">Album # {song.Album.id}</div>
-            <img className="albumImage" src={song.Album.imageUrl} />
-            <NavLink className="albumLink" to={`/albums/${song.Album.id}`}>
-              {song.Album.title}
-            </NavLink>
+          {/* album */}
+          <div className="Song-Album-container">
+            <div className="Song-Album-Card">
+              <div className="OneSongalbumId">Album # {song.Album.id}</div>
+              <img className="OnealbumImage" src={song.Album.imageUrl} />
+              <NavLink className="OneSongalbumLink" to={`/albums/${song.Album.id}`}>
+                {song.Album.title}
+              </NavLink>
+            </div>
           </div>
-          <div className="Artist-container">
-            <div className="artistId">Artist: {song.Artist.id}</div>
-            <div className="artistUsername">
+          {/* artist */}
+          <div className="Song-Artist-container">
+          <div className="Song-Artist-Card">
+            <div className="OneSongartistId">Artist: {song.Artist.id}</div>
+            <div className="OneSongartistUsername">
               Username: {song.Artist.username}
             </div>
-            <img className="artistProfilePic" src={song.Artist.imageUrl} />
+            <img className="SongartistProfilePic" src={song.Artist.imageUrl} />
+            </div>
           </div>
         </div>
       </div>

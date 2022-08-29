@@ -1,5 +1,5 @@
-/*
-.SignupForm-outer {
+
+.CreateSong-outer {
     padding: 50px;
     width: 500px;
     height: 550px;
@@ -11,7 +11,7 @@
 
   }
 
-  .SignupForm-inner {
+  .CreateSong-inner {
    display: flex;
    flex-direction: column;
    padding: 10px;
@@ -19,63 +19,62 @@
    align-items: center;
 
   }
-  .emailInputSignup {
+  .albumIdInputCreateSong {
     padding: 5px;
     font-size: 24px;
     margin: 10px;
     width: 450px;
   }
-  .usernameInputSignup {
+  .titleInputCreateSong {
     padding: 5px;
     font-size: 24px;
     margin: 10px;
     width: 450px;
   }
-  .firstnameInputSignup {
+  .descriptionCreateSong {
     padding: 5px;
     font-size: 24px;
     margin: 10px;
     width: 450px;
   }
-  .lastnameInputSignup {
+  .urlCreateSong {
     padding: 5px;
     font-size: 24px;
     margin: 10px;
     width: 450px;
   }
-  .imageUrlInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
-  .passwordInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
-  .confirmpasswordInputSignup {
+  .imageUrlCreateSong {
     padding: 5px;
     font-size: 24px;
     margin: 10px;
     width: 450px;
   }
 
-  .submitInputSignup {
+
+  .createSongButtons {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .submitCreateSong {
     padding: 5px;
     font-size: 24px;
     margin: 10px;
-    width: 450px;
+    width: 80%;
     background-color: rgb(255, 111, 0);
   }
+  .cancelCreateSong {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 40%;
+    background-color: rgb(172, 172, 171);
+  }
 
-  .submitInputSignup:hover {
+  .submitCreateSong:hover, .cancelCreateSong:hover {
     cursor: pointer;
     transform: scale(1.1);
   }
-
-  .SignUpNavBar:hover {
-    cursor: pointer;
-  }
-   */

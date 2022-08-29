@@ -175,6 +175,7 @@
 .LogInDemo {
   background-color: transparent;
   border: none;
+  height: 100%;
 }
 
 /* once signed in */

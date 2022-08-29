@@ -33,6 +33,40 @@ View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
 
 ![image](https://github.com/Kbafekr/MusicCloud/blob/main/Read%20Me%20Images/SignUpPage.png)
 
+### Home Page
+
+![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/HomePage.png)
+
+
+
+
+
+### Library Page
+
+![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/LibraryPage.png)
+
+
+### Songs Page
+
+![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/SongsPage.png)
+
+### Albums Page
+
+![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/AlbumsPage.png)
+
+### SongDetails Page
+
+![image](hhttps://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/SongDetailsPage.png)
+
+
+### AlbumDetails Page
+
+![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/AlbumDetailsPage.png)
+
+
+
+
+
 #### Future Features:
 
 * Playlists

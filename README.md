@@ -2,7 +2,7 @@
 
 ## Description
 
-A fullstack pixel-perfect clone of SoundCloud using React, Redux, and Express. 
+A fullstack pixel-perfect clone of SoundCloud using React, Redux, and Express.
 View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
 
 ## Features
@@ -18,7 +18,7 @@ View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
         * Run ```npm start``` in the backend directory.
   3. Run ```npm start``` in frontend directory.
   4. Open http://localhost:3000 to view in browser.
-  
+
 ## Technologies Used:
 
 * CSS
@@ -31,7 +31,7 @@ View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
 
 ### Sign Up Page
 
-![image]
+![image](https://github.com/Kbafekr/MusicCloud/blob/main/Read%20Me%20Images/SignUpPage.png)
 
 #### Future Features:
 

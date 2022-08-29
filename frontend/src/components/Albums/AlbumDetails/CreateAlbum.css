@@ -1,0 +1,73 @@
+
+.CreateAlbum-outer {
+    padding: 50px;
+    width: 500px;
+    height: 400px;
+    display: flex;
+   flex-direction: column;
+   padding: 10px;
+   justify-content: center;
+   align-items: center;
+
+  }
+
+  .CreateAlbum-inner {
+   display: flex;
+   flex-direction: column;
+   padding: 10px;
+   justify-content: center;
+   align-items: center;
+
+  }
+  .titleInputCreateAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 450px;
+  }
+  .descriptionCreateAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 450px;
+  }
+  .descriptionCreateSong {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 450px;
+  }
+  .imageUrlCreateAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 450px;
+  }
+
+  .createAlbumButtons {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .submitCreateAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 80%;
+    background-color: rgb(255, 111, 0);
+  }
+  .cancelCreateAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 40%;
+    background-color: rgb(172, 172, 171);
+  }
+
+  .submitCreateAlbum:hover, .cancelCreateAlbum:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }

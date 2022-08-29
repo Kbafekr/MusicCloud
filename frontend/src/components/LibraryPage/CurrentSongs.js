@@ -49,6 +49,7 @@ export default function CurrentSongs() {
   if (!songs.Album && !songs.Artist) {
     return (
       <div className="songs-container">
+        <h1>My Songs</h1>
         {/* <div className='createSongForm'>
       </div> */}
       <div className="currentSongsArray">

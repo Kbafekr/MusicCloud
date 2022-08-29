@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Suspense, useState, useEffect } from "react";
 import { getOneAlbum } from "../../../store/albums";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
@@ -51,90 +51,105 @@ export default function AlbumDetails() {
         </div>
         <div className="headers">
           <h2>Looks like you're an unauthorized user</h2>
-          <div className="linkerror">
-            <h3>
-              Please sign in as a Demo User:
-              <LoginAsDemo />
-            </h3>
+          <div className="demoContainerHome">
+            <h3 className="textforDemo">Sign in as a</h3>
+            <div className="DemoUserHomePage">
+              <LoginAsDemo id="DemoUserHomePage" />
+            </div>
           </div>
         </div>
       </div>
     );
   }
 
-  // if (!album.id) {
-  //   return (
-  //     <div className="errorPage">
-  //       <h1>Whomp Whomp!</h1>
-  //       <div className="Whomps">
-  //         <img className="whomp1" src={Whomp} alt="Whomp1" />
-  //         <img className="whomp2" src={Whomp} alt="Whomp2" />
-  //       </div>
-  //       <div className="headers">
-  //         <h2>Looks like this album doesn't exist</h2>
-  //         <div className='linkerror'>
-  //            <NavLink to="/">Click here to go home</NavLink>
-  //            <NavLink to="/albums">Click here to go back to all albums</NavLink>
-  //            <NavLink to="/albums/current">Click here to go back to owned albums</NavLink>
-  //               </div>
-  //         </div>
-  //       </div>
-  //   );
-  // }
+  if (!album.id) {
+    return (
+      <Suspense fallback={<div>loading...</div>}>
+        <div className="errorPage">
+          <h1>Whomp Whomp!</h1>
+          <div className="Whomps">
+            <img className="whomp1" src={Whomp} alt="Whomp1" />
+            <img className="whomp2" src={Whomp} alt="Whomp2" />
+          </div>
+          <div className="headers">
+            <h2>Looks like this album doesn't exist</h2>
+            <div className="linkerror">
+              <NavLink to="/" className="ErrorhomeLink">
+                Click here to go home
+              </NavLink>
+              <NavLink to="/albums" className="ErrorsongsLink">
+                Click here to go back to all albums
+              </NavLink>
+              <NavLink to="/albums/current" className="ErrorownedLink">
+                Click here to go back to owned albums
+              </NavLink>
+            </div>
+          </div>
+        </div>
+      </Suspense>
+    );
+  }
 
   if (album.Artist && album.Songs) {
     return (
       <div className="album-details-container">
-        <button className="EditAlbumButton" onClick={() => setShowModal(true)}>
-          Edit Album
-        </button>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <EditAlbum setShowModal={setShowModal} />
-          </Modal>
-        )}
+        <div className="buttonsEditAndDeleteAlbum">
+          <button
+            className="EditAlbumButton"
+            onClick={() => setShowModal(true)}
+          >
+            Edit Album
+          </button>
+          {showModal && (
+            <Modal onClose={() => setShowModal(false)}>
+              <EditAlbum setShowModal={setShowModal} />
+            </Modal>
+          )}
 
-        <button
-          className="DeleteAlbumButton"
-          onClick={() => setModalDelete(true)}
-        >
-          Delete Album
-        </button>
-        {modalDelete && (
-          <Modal onClose={() => setModalDelete(false)}>
-            <DeleteAlbum setModalDelete={setModalDelete} />
-          </Modal>
-        )}
-
-        <div className="album-container">
-          <div className="albumKey">
-            <div className="albumTitle">Album: {album.title}</div>
-            <img className="albumImage" src={album.imageUrl}></img>
-            <div className="albumDescription">
+          <button
+            className="DeleteAlbumButton"
+            onClick={() => setModalDelete(true)}
+          >
+            Delete Album
+          </button>
+          {modalDelete && (
+            <Modal onClose={() => setModalDelete(false)}>
+              <DeleteAlbum setModalDelete={setModalDelete} />
+            </Modal>
+          )}
+        </div>
+        <div className="Onealbum-container">
+          <div className="OneAlbumCard">
+            <div className="OnealbumTitle">Album: {album.title}</div>
+            <img className="OnealbumImage" src={album.imageUrl}></img>
+            <div className="OnealbumDescription">
               Description: {album.description}
             </div>
           </div>
         </div>
 
-        <div className="Artist-container">
-          <div key={album.Artist.id} className="artistId">
-            Artist: {album.userId}
+        <div className="Album-Artist-container">
+          <div key={album.Artist.id} className="OneAlbumartistCard">
+            <div className="OneAlbumArtistUserId">Artist: {album.userId}</div>
+            <img
+              className="Album-artistProfilePic"
+              src={album.Artist.imageUrl}
+            />
+            <div className="Album-artistUsername">
+              Artist Username: {album.Artist.username}
+            </div>
           </div>
-          <div className="artistUsername">
-            Artist Username: {album.Artist.username}
-          </div>
-          <img className="artistProfilePic" src={album.Artist.imageUrl} />
         </div>
 
-        <div className="Songs-container">
+        <div className="OneAlbum-Songs-container">
           {album.Songs.map((song) => {
             return (
-              <div key={song.id} className="song">
-                <NavLink className="songLink" to={`/songs/${song.id}`}>
+              <div key={song.id} className="OneAlbum-songCard">
+                <img className="OneAlbum-songImage" src={song.imageUrl} />
+                <NavLink className="OneAlbum-songLink" to={`/songs/${song.id}`}>
                   {song.title}
                 </NavLink>
-                <img className="songImage" src={song.imageUrl} />
-                <div className="songDescription">
+                <div className="OneAlbum-songDescription">
                   Song Description: {song.description}
                 </div>
 
@@ -151,37 +166,38 @@ export default function AlbumDetails() {
         </div>
       </div>
     );
-  } else
-    return (
-      <div className="album-details-container">
-        <button className="EditAlbumButton" onClick={() => setShowModal(true)}>
-          Edit Album
-        </button>
-        {showModal && (
-          <Modal onClose={() => setShowModal(false)}>
-            <EditAlbum setShowModal={setShowModal} />
-          </Modal>
-        )}
-        <button
-          className="DeleteAlbumButton"
-          onClick={() => setModalDelete(true)}
-        >
-          Delete Album
-        </button>
-        {modalDelete && (
-          <Modal onClose={() => setModalDelete(false)}>
-            <DeleteAlbum setModalDelete={setModalDelete} />
-          </Modal>
-        )}
-        <div className="album-container">
-          <div className="albumKey" key={albumId}>
-            <div className="albumTitle">{album.title}</div>
-            <img className="albumImage" src={album.imageUrl}></img>
-            <div className="albumDescription">
-              Description: {album.description}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+  }
+  // else
+  //   return (
+  //     <div className="album-details-container">
+  //       <button className="EditAlbumButton" onClick={() => setShowModal(true)}>
+  //         Edit Album
+  //       </button>
+  //       {showModal && (
+  //         <Modal onClose={() => setShowModal(false)}>
+  //           <EditAlbum setShowModal={setShowModal} />
+  //         </Modal>
+  //       )}
+  //       <button
+  //         className="DeleteAlbumButton"
+  //         onClick={() => setModalDelete(true)}
+  //       >
+  //         Delete Album
+  //       </button>
+  //       {modalDelete && (
+  //         <Modal onClose={() => setModalDelete(false)}>
+  //           <DeleteAlbum setModalDelete={setModalDelete} />
+  //         </Modal>
+  //       )}
+  //       <div className="album-container">
+  //         <div className="albumKey" key={albumId}>
+  //           <div className="albumTitle">{album.title}</div>
+  //           <img className="albumImage" src={album.imageUrl}></img>
+  //           <div className="albumDescription">
+  //             Description: {album.description}
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
 }

@@ -1,8 +1,6 @@
-/*
-
 .albums-container {
-    margin: 0 9%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-direction: column;
@@ -12,26 +10,46 @@
     padding-bottom: 50px;
 }
 
-.albumCard {
-    background-color: rgb(214, 213, 213);
+.CreateAlbumButton  {
+    color: white;
+    font-size: 2em;
+  height: 2.5em;
+  border-radius: 7%;
+    background-color: rgb(255, 98, 0);
+    border: 0.05em rgb(255, 111, 0) ;
+    margin-bottom: 1em;
+}
+
+
+
+.CreateAlbumButton:hover {
+    cursor: pointer;
+}
+.AllAlbumArray {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     width: 50%;
-    height: 50%;
+    flex-grow: 1;
+    column-gap: 1em;
+}
+.AllalbumCard {
+    background-color: rgb(214, 213, 213);
+    width: 100%;
+    background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
     margin: 2%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 2em;
 }
 
-.albumKey {
+.AllalbumId {
     border: 1 px solid rgba(0, 0, 0, 0.669);
 }
 
-.albumId {
-    font-weight:100;
-    font-size: 4em;
-    margin-top: 5%;
-}
-.albumImage {
+.AllAlbumImage {
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -41,24 +59,25 @@ margin-left: auto;
 margin-right: auto;
 z-index: 0;
     border-radius: 5px;
-    width: 30vw;
-    height: 30vh;
-    padding: 20px;
+    width: 100%;
+    max-height: 40em;
 
 }
 
-.albumImage:hover {
+.AllalbumsLink:hover {
     opacity: 1;
     transition-duration: 1s;
-    transform: scale(1.1);
+    transform: scale(1.02);
+
+
 }
 
-.userId > * {
-    font-weight:100;
-    font-size: 24px;
-}
-
-.albumLink {
+.AllalbumsLink {
     font-style: italic;
     font-size: 48px;
-} */
+}
+
+.AllalbumId, .AllalbumDescription, .AllalbumUserId
+{
+ font-size: 1.5em;
+}

@@ -73,8 +73,10 @@ function EditAlbum({setShowModal}) {
           onChange={(e) => setImageUrl(e.target.value)}
           />
       </label>
+      <div className="editAlbumButtons">
       <button className="submitEditAlbum" type="submit">Update album</button>
       <button className='cancelEditAlbum' onClick={() => setShowModal(false)}>Cancel</button>
+      </div>
     </form>
           </div>
   );

@@ -1,0 +1,68 @@
+
+.EditAlbum-outer {
+    padding: 50px;
+    width: 500px;
+    height: 400px;
+    display: flex;
+   flex-direction: column;
+   padding: 10px;
+   justify-content: center;
+   align-items: center;
+
+  }
+
+  .EditAlbum-inner {
+   display: flex;
+   flex-direction: column;
+   padding: 10px;
+   justify-content: center;
+   align-items: center;
+
+  }
+  .titleInputEditAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 450px;
+  }
+  .descriptionInputEditAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 450px;
+  }
+  .imageUrlEditAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 450px;
+  }
+
+
+  .editAlbumButtons {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .submitEditAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 80%;
+    background-color: rgb(255, 111, 0);
+  }
+  .cancelEditAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 40%;
+    background-color: rgb(172, 172, 171);
+  }
+
+  .submitEditAlbum:hover, .cancelEditAlbum:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }

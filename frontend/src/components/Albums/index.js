@@ -33,12 +33,12 @@ export default function ReturnAllAlbums() {
         </div>
         <div className="headers">
           <h2>Looks like you're an unauthorized user</h2>
-          <div className="linkerror">
-            <h3>
-              Please sign in as a Demo User:
-              <LoginAsDemo />
-            </h3>
-          </div>
+          <div className="demoContainerHome">
+      <h3 className="textforDemo">Sign in as a</h3>
+      <div className="DemoUserHomePage">
+        <LoginAsDemo id="DemoUserHomePage" />
+      </div>
+    </div>
         </div>
       </div>
     );
@@ -49,24 +49,26 @@ export default function ReturnAllAlbums() {
         <div className="createAlbumForm">
           <CreateAlbumModal />
         </div>
-
-        {AlbumsArray.map((album) => {
+        <div className="AllAlbumArray">
+        {AlbumsArray &&
+        AlbumsArray.map((album) => {
           return (
-            <div className="albumCard" key={album.id}>
-              <div className="albumId">Album Id: {album.id}</div>
-              <img className="albumImage" src={album.imageUrl}></img>
-              <div className="userId">User: {album.userId}</div>
-              <div className="albumDescription">
+            <div className="AllalbumCard" key={album.id}>
+              <div className="AllalbumId">Album Id: {album.id}</div>
+              <img className="AllalbumImage" src={album.imageUrl}></img>
+              <div className="AllalbumUserId">User: {album.userId}</div>
+              <div className="AllalbumDescription">
                 Description: {album.description}
               </div>
 
-              <NavLink className="albumLink" to={`/albums/${album.id}`}>
+              <NavLink className="AllalbumsLink" to={`/albums/${album.id}`}>
                 {album.title}
               </NavLink>
             </div>
           );
         })}
       </div>
+    </div>
     );
   }
 }

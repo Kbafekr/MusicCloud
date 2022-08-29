@@ -1,0 +1,50 @@
+
+.DeleteAlbum-outer {
+    padding: 50px;
+    width: 500px;
+    height: 350px;
+    display: flex;
+   flex-direction: column;
+   padding: 10px;
+   justify-content: center;
+   align-items: center;
+
+  }
+
+  .DeleteAlbum-inner {
+   display: flex;
+   flex-direction: column;
+   padding: 10px;
+   justify-content: center;
+   align-items: center;
+   text-align: center;
+
+  }
+
+  .deleteAlbumButtons {
+    display: flex;
+    flex-direction: row;
+    column-gap: 1em;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .submitDeleteAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 80%;
+    background-color: rgb(255, 111, 0);
+  }
+  .cancelDeleteAlbum {
+    padding: 5px;
+    font-size: 24px;
+    margin: 10px;
+    width: 40%;
+    background-color: rgb(172, 172, 171);
+  }
+
+  .submitDeleteAlbum:hover, .cancelDeleteAlbum:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }

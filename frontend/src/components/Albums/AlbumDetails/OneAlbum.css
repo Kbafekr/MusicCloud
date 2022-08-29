@@ -1,0 +1,180 @@
+
+.album-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+.buttonsEditAndDeleteAlbum {
+    display: flex;
+    flex-direction: row;
+    column-gap: 2em;
+    margin-bottom: 2em;
+}
+
+.EditAlbumButton, .DeleteAlbumButton  {
+    color: white;
+    font-size: 2em;
+  height: 2.5em;
+  border-radius: 7%;
+    background-color: rgb(255, 98, 0);
+    border: 0.05em rgb(255, 111, 0) ;
+    margin-bottom: 1em;
+}
+
+
+
+.EditAlbumButton:hover, .DeleteAlbumButton:hover{
+    cursor: pointer;
+}
+
+.Onealbum-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+    padding-bottom: 20px;
+}
+
+.OneAlbumCard {
+    width: 100%;
+    background-color: rgb(214, 213, 213);
+    background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.OnealbumImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 0;
+        border-radius: 5px;
+        width: 100%;
+
+    }
+
+    .songLink:hover {
+        opacity: 1;
+        transition-duration: 1s;
+        transform: scale(1.02);
+    }
+
+    .OnealbumDescription, .OnealbumTitle
+{
+ font-size: 1.5em;
+}
+
+.Album-Artist-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+
+}
+
+.OneAlbumartistCard {
+    background-color: rgb(214, 213, 213);
+    width: 100%;
+    background-image: linear-gradient(to top left, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.OneAlbumArtistUserId {
+    font-weight: bold;
+    font-size: 2em;
+}
+
+.Album-artistProfilePic {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 0;
+        border: 2px solid black;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        padding: 20px;
+        margin-top: 20px;
+}
+.Album-artistUsername {
+    font-size: 2em;
+}
+
+
+
+
+
+
+.OneAlbum-Songs-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    background-color: white;
+}
+
+.OneAlbum-songCard {
+    background-color: rgb(214, 213, 213);
+    width: 100%;
+    background-image: linear-gradient(to top right, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+    margin: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.OneAlbum-songLink {
+    font-style: italic;
+    font-size: 2em;
+}
+
+.OneAlbum-songImage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 0;
+        border-radius: 5px;
+        width: 100%;
+}
+
+.OneAlbum-songDescription {
+    font-size: 1.5em
+}

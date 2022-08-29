@@ -304,9 +304,62 @@ z-index: 0;
 .backgroundImageText {
     color: white;
 }
- /* below image carousel */
- /* .CreateAccountButtonHomePage {
 
-    width: 10%;
 
-} */
+
+
+/* songs */
+
+.songs-container {
+    width: 100%;
+    background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+}
+
+.songCard {
+width: 100%
+}
+
+.songImage {
+width: 100%;
+}
+
+.songDescription {
+
+}
+
+.userId {
+
+}
+.albumId {
+
+}
+
+.songLink {
+ font-size: 2em;
+}
+
+
+/* searchbar */
+
+.searchbar {
+    width: 100%;
+}
+.searchbarDiv {
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+
+/* search bar result */
+
+.SearchResult-container {
+    width: 100%;
+    background-image: linear-gradient(to bottom left, #fc6500, #6cd9d0);
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+    margin-bottom: 2em;
+}
+
+.HiddenResult {
+    visibility: hidden;
+}

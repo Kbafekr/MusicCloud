@@ -14,7 +14,7 @@ const DELETE_A_SONG = 'songs/DeleteASong'
 
 const GET_OWNED_SONGS = 'songs/GetOwnedSongs'
 
-
+const TRENDING_SONG = 'songs/TrendingSong'
 
 
 //actions
@@ -42,6 +42,15 @@ const actionGetOneSong = (song) => {
     }
 }
 
+//get trending song action
+
+const actionTrendingSong = (song) => {
+    return {
+        type: TRENDING_SONG,
+        song
+    }
+}
+
 //create a song
 const actionCreateASong = (song) => {
     return {
@@ -65,6 +74,8 @@ const actionDeleteASong = (songId) => {
         songId
     }
 }
+
+
 
 
 //action thunk creators
@@ -99,6 +110,16 @@ export const getOneSong = (songId) => async dispatch => {
     }
 }
 
+
+//trending song thunk
+
+export const getTrendingSong = (song) => async dispatch => {
+    const response = await csrfFetch('/api/songs')
+    if (response.ok) {
+        const allSongs = await response.json()
+        await dispatch(actionTrendingSong(allSongs))
+    }
+}
 //create a song thunk
 
 export const CreateASong = (song) => async dispatch => {
@@ -150,7 +171,7 @@ const initialState = {}
 
 export const songsReducer = (state = initialState, action) => {
     switch (action.type) {
-        
+
         case GET_ALL_SONGS: {
             const newState = {};
 
@@ -221,6 +242,9 @@ export const songsReducer = (state = initialState, action) => {
                 delete newState[action.id]
                 return newState
             }
+        case TRENDING_SONG:
+            const newState = {...state}
+            return newState
         default:
             return state
     }

@@ -3,46 +3,30 @@ import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import {ImagesArray} from '../../images/Images'
+import LibraryGif from '../../images/LibraryGif.gif'
 
 export function LibraryPage() {
     const UserSignedIn = useSelector(state => state.session.user)
-
-
-    const [imageNumber, setImageNumber] = useState(0)
-
-    //prevents counter from updating after every single render
-    useEffect(() => {
-        if (imageNumber < ImagesArray.length) {
-           const ImageTransition =  setInterval(() => {
-            //check to see if previous number is greater than images array length, if not then
-                setImageNumber((previousImageNumber) => (previousImageNumber + 1) % ImagesArray.length)
-            }, 2000)
-            return () => clearInterval(ImageTransition)
-        }
-        else {
-            setImageNumber(0)
-        }
-    }, [imageNumber])
 
     if (UserSignedIn) {
         return (
             <div className='homePage'>
             <h1>Welcome to your library!</h1>
-            <NavLink className='mySongsText' to={'/songs/current'}>
+            <img className='libraryGif' src={LibraryGif} alt='abstract dj dog'/>
+            <div className='NavLinksLibrary'>
+            <NavLink className='mySongsLink' to={'/songs/current'}>
             My Songs
           </NavLink>
-          <NavLink className='myAlbumsText' to={'/albums/current'}>
+          <NavLink className='myAlbumsLink' to={'/albums/current'}>
             My Albums
           </NavLink>
+            </div>
         </div>
         )
     }
     else {
         return (
             <div className='homePage'>
-                <div className='CarouselImages'>
-                 <img className='images' src={ImagesArray[imageNumber].image} alt='images'/>
-                </div>
 
                 <div className='headers'>
                  <h1>Insert search bar for tracks and artists & signin button that redirects to songs page</h1>

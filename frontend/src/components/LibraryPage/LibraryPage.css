@@ -1,0 +1,86 @@
+.homePage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: auto;
+    height: auto;
+
+}
+
+.libraryGif {
+    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
+}
+
+.NavLinksLibrary {
+    display: flex;
+    flex-direction: row;
+    column-gap: 4em;
+    margin-top: 3em;
+    margin-bottom: 3em;
+
+}
+
+.mySongsLink, .myAlbumsLink {
+    text-decoration: none;
+    padding: 0.2em;
+    border: 1px solid  black;
+    border-radius: 10%;
+    color: rgb(37, 46, 62);
+}
+
+.mySongsLink:hover, .myAlbumsLink:hover {
+    box-shadow: -3px 0px 23px 7px rgb(255, 109, 4);
+    transform: scale(1.1);
+    font-weight: bold;
+}
+
+@media screen and (min-width:1200px) {
+    .libraryGif {
+        width: 70%;
+        height: 45em;
+    }
+    .mySongsLink, .myAlbumsLink {
+        font-size: 4em;
+    }
+}
+
+@media screen and (max-width:1200px) and (min-width:1000px){
+    .libraryGif {
+        width: 80%;
+        height: 40em;
+    }
+    .mySongsLink, .myAlbumsLink {
+        font-size: 4em;
+    }
+}
+
+@media screen and (max-width:1000px) and (min-width:800px){
+    .libraryGif {
+        width: 90%;
+        height: 40em;
+    }
+    .mySongsLink, .myAlbumsLink {
+        font-size: 3em;
+    }
+}
+@media screen and (max-width:800px)and (min-width:650px) {
+    .libraryGif {
+        width: 90%;
+        height: 30em;
+    }
+    .mySongsLink, .myAlbumsLink {
+        font-size: 3em;
+    }
+}
+
+@media screen and (max-width:650px) {
+    .libraryGif {
+        width: 80%;
+        height: 25em;
+    }
+    .mySongsLink, .myAlbumsLink {
+        font-size: 2em;
+    }
+}

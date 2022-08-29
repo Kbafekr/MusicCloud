@@ -163,7 +163,7 @@ export function HomePage() {
 
           {/* trending songs */}
 
-          <h1>These songs are trending!</h1>
+          <h1>This song is trending!</h1>
           <div className="songs-container">
             {filtered &&
               filtered.map((song) => {

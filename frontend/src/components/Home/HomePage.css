@@ -42,17 +42,122 @@ z-index: 0;
     width: 100%;
 }
 
+
+/* signup background animation */
+/* @keyframes backgroundopacity {
+    0% {
+        opacity: 0;
+      }
+
+    50% {
+        opacity: 1;
+      }
+
+    100% {
+        opacity: 0;
+      } */
+    /* } */
+
+#ActiveBackground {
+    /* animation: backgroundopacity 5s infinite; */
+    width: 100%;
+}
+
+
+
+/* background images text */
+
+
 /* media screens */
 @media screen and (min-width: 1200px){
     .imagesArray {
         width: 100%;
         height: 50em;
     }
+    .foregroundContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 15em;
+        width: 35%;
     }
+
+    .BackgroundHeader {
+        color: white;
+        font-size: 2em;
+    }
+
+    .CreateAccountButtonHomePage {
+        width: 100%;
+        height: 5em;
+    }
+    .SignInHomePage {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 1em;
+        justify-content: center;
+        width: auto;
+    }
+    .backgroundImageText {
+        font-size: 1.2em;
+    }
+
+    .signinbutton{
+        height: 4em;
+        display: flex;
+        align-items: center;
+    }
+    .containerForDemoSection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .demoContainerHome {
+        display: flex;
+        flex-direction: row;
+        column-gap: 0.2em;
+        align-items: center;
+    }
+
+    .DemoUserHomePage {
+        background-color: rgb(255, 111, 0);
+        display: flex;
+        align-items: center;
+        height: 2em;
+        border-radius: 5%;
+    }
+    .DemoHeader {
+        font-size: 2.em;
+    }
+
+    }
+
+    @media screen and (min-width: 650px) and (max-width: 880px){
+        .foregroundContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 5em;
+            width: 30%;
+        }
+    }
+
 @media screen and (min-width: 1000px) and (max-width: 1200px){
     .imagesArray {
         width: 100%;
         height: 40em;
+    }
+    .foregroundContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 15em;
+        width: 35%;
     }
     }
 
@@ -63,6 +168,15 @@ z-index: 0;
             width: 100%;
             height: 30em;
         }
+        .foregroundContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 8em;
+            width: 30%;
+        }
+
     }
 
     @media screen and (max-width: 650px)
@@ -71,23 +185,71 @@ z-index: 0;
             width: 100%;
             height: 20em;
         }
+        .foregroundContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            top: 7em;
+            width: 15em;
+            height: 20em;
+        }
+        .BackgroundHeader {
+            color: white;
+            font-size: 1em;
+        }
+        .CreateAccountButtonHomePage {
+            width: 100%;
+            height: 3em;
+        }
+        .SignInHomePage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .signinbutton{
+            height: 3em;
+            width: 100%;
+        }
+        .containerForDemoSection {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .demoContainerHome {
+            display: flex;
+            flex-direction: row;
+            column-gap: 0.2em;
+            align-items: center;
+        }
+
+        .DemoUserHomePage {
+            background-color: rgb(255, 111, 0);
+            display: flex;
+            align-items: center;
+            height: 2em;
+            border-radius: 5%;
+        }
+        .DemoHeader {
+            font-size: 1.1em;
+        }
+
     }
 
-    /* below image carousel */
-.CreateAccountButtonHomePage {
+.BackgroundHeader {
+    color: white;
+}
+.SignupHeader {
+    color: white;
+}
+.backgroundImageText {
+    color: white;
+}
+ /* below image carousel */
+ /* .CreateAccountButtonHomePage {
 
     width: 10%;
 
-}
-
-.SignInHomePage {
-    display: flex;
-    flex-direction: row;
-}
-
-.signinbutton{
-    position: relative;
-    top: 1.8vh;
-    height: 40%;
-    width: 30%;
-}
+} */

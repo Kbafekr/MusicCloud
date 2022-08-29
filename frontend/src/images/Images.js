@@ -11,6 +11,8 @@
 // import Image11 from './Image11.png'
 // import Image12 from './Image12.webp'
 
+
+
 export const ImagesArray = [
    {image: 'https://i.pinimg.com/originals/30/d9/88/30d98857934946a57b0b16f02cd8a573.jpg'},
    {image: 'https://c4.wallpaperflare.com/wallpaper/961/188/1/sound-wave-sound-wave-speaker-wallpaper-preview.jpg'},
@@ -24,4 +26,10 @@ export const ImagesArray = [
    {image: 'https://wallpaperaccess.com/full/5300233.jpg'},
    {image: 'https://wallpaperaccess.com/full/5300220.jpg'},
    {image: 'https://cdn.wallpapersafari.com/36/26/LOwgY8.jpg'},
+]
+
+
+export const backgroundImages = [
+   {image: 'https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_featured_artists-8081257b.jpg'},
+   {image: 'https://a-v2.sndcdn.com/assets/images/sc_landing_header_web_b-447230ef.jpg'}
 ]

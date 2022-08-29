@@ -31,35 +31,46 @@ View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
 
 ### Sign Up Page
 
+The Sign up page that includes a demo login.
+
 ![image](https://github.com/Kbafekr/MusicCloud/blob/main/Read%20Me%20Images/SignUpPage.png)
 
 ### Home Page
 
+The home page after signing in.
+
 ![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/HomePage.png)
 
-
-
-
-
 ### Library Page
+
+Your personal library which includes links to albums and songs that you own.
 
 ![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/LibraryPage.png)
 
 
 ### Songs Page
 
+View all songs on Music Cloud!
+
 ![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/SongsPage.png)
 
 ### Albums Page
+
+View all songs on Music Cloud!
 
 ![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/AlbumsPage.png)
 
 ### SongDetails Page
 
-![image](hhttps://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/SongDetailsPage.png)
+View details of a song, including artist and album details. Also includes the option to edit or delete a song.
+
+
+![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/SongDetailsPage.png)
 
 
 ### AlbumDetails Page
+
+View details of an album, including artist and song details. Also includes the option to edit or delete an album.
 
 ![image](https://github.com/Kbafekr/MusicCloud/blob/2f486309654cb7ff28aabcc0a9ba7b15e94221a9/Read%20Me%20Images/AlbumDetailsPage.png)
 

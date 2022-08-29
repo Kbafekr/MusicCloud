@@ -2,7 +2,7 @@ import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {EditASong } from "../../store/songs";
 
-import './CreateSong.css'
+import './EditSong.css'
 
 function EditSong({setShowModal}) {
   const dispatch = useDispatch();
@@ -73,7 +73,7 @@ function EditSong({setShowModal}) {
       </label>
       <label>
         <input
-        className="descriptionCreateSong"
+        className="descriptionEditSong"
         placeholder={description || 'description...'}
         type="text"
         autoComplete="off"
@@ -84,7 +84,7 @@ function EditSong({setShowModal}) {
       </label>
       <label>
         <input
-        className="urlCreateSong"
+        className="urlEditSong"
           placeholder={url || 'Audio Url (required)...'}
           autoComplete="off"
           type="url"
@@ -95,7 +95,7 @@ function EditSong({setShowModal}) {
       </label>
       <label>
         <input
-        className="imageUrlCreateSong"
+        className="imageUrlEditSong"
           placeholder={imageUrl || "Song Image Url (optional)..."}
           type="url"
           value={imageUrl}

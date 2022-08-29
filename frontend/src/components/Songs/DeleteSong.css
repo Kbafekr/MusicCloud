@@ -1,81 +1,50 @@
-/*
-.SignupForm-outer {
-    padding: 50px;
-    width: 500px;
-    height: 550px;
-    display: flex;
-   flex-direction: column;
-   padding: 10px;
-   justify-content: center;
-   align-items: center;
 
-  }
+.DeleteSong-outer {
+  padding: 50px;
+  width: 500px;
+  height: 350px;
+  display: flex;
+ flex-direction: column;
+ padding: 10px;
+ justify-content: center;
+ align-items: center;
 
-  .SignupForm-inner {
-   display: flex;
-   flex-direction: column;
-   padding: 10px;
-   justify-content: center;
-   align-items: center;
+}
 
-  }
-  .emailInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
-  .usernameInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
-  .firstnameInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
-  .lastnameInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
-  .imageUrlInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
-  .passwordInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
-  .confirmpasswordInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-  }
+.DeleteSong-inner {
+ display: flex;
+ flex-direction: column;
+ padding: 10px;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
 
-  .submitInputSignup {
-    padding: 5px;
-    font-size: 24px;
-    margin: 10px;
-    width: 450px;
-    background-color: rgb(255, 111, 0);
-  }
+}
 
-  .submitInputSignup:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-  }
+.deleteSongButtons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 1em;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.submitDeleteSong {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 80%;
+  background-color: rgb(255, 111, 0);
+}
+.cancelDeleteSong {
+  padding: 5px;
+  font-size: 24px;
+  margin: 10px;
+  width: 40%;
+  background-color: rgb(172, 172, 171);
+}
 
-  .SignUpNavBar:hover {
-    cursor: pointer;
-  }
-   */
+.submitDeleteSong:hover, .cancelDeleteSong:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}

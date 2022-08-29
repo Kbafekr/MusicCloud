@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {DeleteASong} from "../../store/songs";
 import { useHistory } from "react-router-dom";
 
-import './CreateSong.css'
+import './DeleteSong.css'
 
 function DeleteSong({setModalDelete}) {
   const dispatch = useDispatch();
@@ -31,9 +31,9 @@ function DeleteSong({setModalDelete}) {
     <div className="DeleteSong-outer">
 
     <form className="DeleteSong-inner" onSubmit={handleSubmit} autoComplete='off'>
-      <p>Warning! This will permanently remove {song.title} from your library.</p>
+      <h1>Warning! This will permanently remove {song.title} from your library.</h1>
         <div></div>
-       <p>Are you sure you want to delete?</p>
+       <h2>Are you sure you want to delete?</h2>
        <div className="deleteSongButtons">
       <button className="submitDeleteSong" type="submit">Delete song</button>
       <button className='cancelDeleteSong' onClick={() => setModalDelete(false)}>Cancel</button>

@@ -82,7 +82,7 @@ function SignupForm() {
       <label className= 'label'>
         <input
         className="imageUrlInputSignup"
-          placeholder="Profile Image Url..."
+          placeholder="Profile Image Url (Optional)..."
           type="text"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}

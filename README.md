@@ -6,8 +6,8 @@ A fullstack pixel-perfect clone of SoundCloud using React, Redux, and Express.
 View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
 
 ## Features
-* Create, edit, delete, and search for songs.
-* Create, edit, delete, and search for playlists.
+* Create, edit, delete, and listen to songs.
+* Create, edit, delete, and listen to albums.
 
 ## Setup
   1. Clone this repository and ```npm install``` at root directory.
@@ -28,3 +28,12 @@ View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
 * Redux
 * Sequelize
 * SQLite
+
+### Sign Up Page
+
+![image]
+
+#### Future Features:
+
+* Playlists
+* Comments

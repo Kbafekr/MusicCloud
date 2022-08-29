@@ -63,6 +63,9 @@ function ProfileButton({ user }) {
           <div className="separatordropdown">email</div>
           {/* <li>{localStorage.getItem('email')}</li> */}
           <li>{user.email}</li>
+          <div className="separatordropdown">user id: </div>
+          {/* <li>{localStorage.getItem('username')}</li> */}
+          <li>{user.id}</li>
 
           <li>
             <div className="mySongs">

@@ -108,9 +108,9 @@ export function HomePage() {
   );
 
 
-  console.log(filtered + 'filtered')
-    console.log(randomNumber + 'randomNumber')
-    console.log(Number + 'Number')
+  // console.log(filtered + 'filtered')
+  //   console.log(randomNumber + 'randomNumber')
+  //   console.log(Number + 'Number')
 
   if (UserSignedIn) {
     return (

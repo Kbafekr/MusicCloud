@@ -3,17 +3,44 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { ImagesArray } from "../../images/Images";
 import { backgroundImages } from "../../images/Images";
-
+import { getAllSongs } from "../../store/songs";
+import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
 import SignUpModal from "../SignUpModal";
 import LoginFormModal from "../LoginFormModal";
 import LoginAsDemo from "../LoginDemoUser";
 export function HomePage() {
-  const UserSignedIn = useSelector((state) => state.session.user);
+    //get all songs
+    const dispatch = useDispatch();
+    const UserSignedIn = useSelector((state) => state.session.user);
+    const user = useSelector((state) => state.session.user);
 
-  const [imageNumber, setImageNumber] = useState(0);
-  const [backgroundImageNumber, setBackgroundImageNumber] = useState(0);
+    const songs = useSelector((state) => state.song);
+    const SongsArray = Object.values(songs);
+    //filter through songs to randomly select whats trending
+    let randomNumber;
 
-  //prevents counter from updating after every single render
+    let filtered;
+
+    //prevents counter from updating after every single render
+
+
+    //set state for
+    const [imageNumber, setImageNumber] = useState(0);
+    const [backgroundImageNumber, setBackgroundImageNumber] = useState(0);
+
+  useEffect(() => {
+    dispatch(getAllSongs())
+}, [])
+
+
+randomNumber = Math.floor(Math.random() * SongsArray.length)
+filtered = SongsArray.filter((filteredSongs, index) => index === randomNumber)
+
+//   console.log(filtered + 'filtered')
+//   console.log(randomNumber + 'randomNumber')
   useEffect(() => {
     if (!UserSignedIn) {
       if (backgroundImageNumber < backgroundImages.length) {
@@ -68,12 +95,38 @@ export function HomePage() {
 
         <div className="headers">
           <h1>
-            Insert search bar for tracks and artists & signin button that
-            redirects to songs page
+            Search for songs by title
           </h1>
+          <div>searchbar</div>
+          <h1>These songs are trending!</h1>
+          <div className="songs-container">
+          {filtered &&
+          filtered.map((song) => {
+            return (
+                <div className="songCard" key={song.id}>
+                  <div>{song.id}</div>
+                  <img className="songImage" src={song.imageUrl}></img>
+                  <div className="songDescription">
+                    Description: {song.description}
+                  </div>
+                  <div className="userId">User: {song.userId}</div>
+                  <div className="albumId">Album: {song.albumId}</div>
 
-          <h1>Here's whats trending in the MusicCloud Community</h1>
-          <h2>add 'explore trending playlists' button</h2>
+                  <NavLink className="songLink" to={`/songs/${song.id}`}>
+                    {song.title}
+                  </NavLink>
+
+                  <AudioPlayer
+                    autoPlay={false}
+                    src={song.url}
+                    muted={true}
+                    onPlay={(e) => console.log("onPlay")}
+                  />
+                </div>
+            )
+          })
+        }
+          </div>
 
           <h1>Thanks for listening!</h1>
         </div>

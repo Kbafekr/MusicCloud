@@ -30,18 +30,26 @@ export function HomePage() {
   //set search bar state
   const [searchTitle, setSearchTitle] = useState("");
 
-  //randomNumber
-  randomNumber = Math.floor(Math.random() * SongsArray.length);
-  //useEffect to get all songs and setRandomNumber
+  //useEffect to get all songs
   useEffect(() => {
-    dispatch(getAllSongs());
-    setNumber(randomNumber);
-  }, [dispatch]);
+      dispatch(getAllSongs());
+    }, [dispatch]);
 
-  // currently trending filter
+
+    //randomNumber
+    randomNumber = Math.floor(Math.random() * SongsArray.length);
+  //useEffect to setRandomNumber
+  useEffect(() => {
+      setNumber(randomNumber);
+    }, [dispatch, Number]);
+
+
+    // currently trending filter
   filtered = SongsArray.filter((filteredSongs, index) => index === Number);
-  //   console.log(filtered + 'filtered')
-  //   console.log(randomNumber + 'randomNumber')
+    console.log(filtered + 'filtered')
+    console.log(randomNumber + 'randomNumber')
+    console.log(Number + 'Number')
+
   // filtered by search
 
   // useEffects for if user isn't signed in set carousel image
@@ -209,7 +217,7 @@ export function HomePage() {
           })}
           <div className="foregroundContainer">
             <h1 className="BackgroundHeader">
-              Save tracks, follow artists and build playlists.
+              Save tracks, follow artists and build playlists
             </h1>
             <h1 className="BackgroundHeader">All for free</h1>
             <h2 className="BackgroundHeader">Sign up and connect</h2>

@@ -129,7 +129,7 @@ export function HomePage() {
 
           <div
             className={
-              titleFiltered.length ? "SearchResult-container" : "Hidden"
+              titleFiltered.length ? "SearchResult-container" : "HiddenResult"
             }
           >
             {/* search return map */}

@@ -61,7 +61,7 @@ export function HomePage() {
           //check to see if previous number is greater than images array length, if not then
           setBackgroundImageNumber(
             (previousBackgroundImageNumber) =>
-              (previousBackgroundImageNumber + 1) % backgroundImages.length
+              ++previousBackgroundImageNumber % backgroundImages.length
           );
         }, 5000);
 

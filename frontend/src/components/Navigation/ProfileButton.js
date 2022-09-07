@@ -4,8 +4,6 @@ import * as sessionActions from "../../store/session";
 import { NavLink } from "react-router-dom";
 import "./ProfileButton.css";
 import "./Navigation.css";
-
-import '../../index.css'
 import icon1 from '../../images/icons/icon1.png'
 import icon2 from '../../images/icons/icon2.png'
 function ProfileButton({ user }) {
@@ -25,7 +23,6 @@ function ProfileButton({ user }) {
 
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
-  const [theme, setTheme] = useState('light')
 
   const openMenu = () => {
     if (showMenu) return;
@@ -48,10 +45,6 @@ function ProfileButton({ user }) {
     e.preventDefault();
     dispatch(sessionActions.logout());
   };
-
-  const themeButtonPressed = (e) => {
-    e.preventDefault()
-  }
   return (
     <>
     <div className='containerRow'>
@@ -94,15 +87,6 @@ function ProfileButton({ user }) {
               <NavLink className="myAlbumsText" to={"/albums/current"}>
                 My Albums
               </NavLink>
-            </div>
-          </li>
-          <li>
-            <div className="ThemeMode">
-            <button className="themeButton" onClick={() => {
-              theme === 'dark' ? setTheme('light') : setTheme('dark')
-            }}>
-              Toggle Theme
-            </button>
             </div>
           </li>
 

@@ -1,64 +1,40 @@
 
 .SignupForm-outer {
-  width: 42vw;
-  height: 60vh;
- padding: 1em;
+  height: auto;
+  width: auto;
+ padding: 2em 5em;
 }
 .SignupForm-inner {
+  width: auto;
+  height: auto;
+  padding: 0em 5em;
  display: flex;
  flex-direction: column;
  justify-content: center;
  align-items: center;
+ box-sizing: border-box;
 
 }
 .label {
-  width: 90%;
+  width: 150%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 3%;
+  margin: 2%;
 }
-.emailInputSignup {
-  padding: 0.2em;
-  font-size: 2em;
-  margin: 0.3em;
+.labelHeader {
+  font-size: 3vw;
 }
-.usernameInputSignup {
-  padding: 0.2em;
-  font-size: 2em;
-  margin: 0.3em;
+.labelInput {
+  font-size: 1.3vw;
 }
-.firstnameInputSignup {
-  padding: 0.2em;
-  font-size: 2em;
-  margin: 0.3em;
-}
-.lastnameInputSignup {
-  padding: 0.2em;
-  font-size: 2em;
-  margin: 0.3em;
-}
-.imageUrlInputSignup {
-  padding: 0.2em;
-  font-size: 2em;
-  margin: 0.3em;
-}
-.passwordInputSignup {
-  padding: 0.2em;
-  font-size: 2em;
-  margin: 0.3em;
-}
-.confirmpasswordInputSignup {
-  padding: 0.2em;
-  font-size: 2em;
-  margin: 0.3em;
-}
-
 .submitInputSignup {
   color: rgb(186, 186, 186);
-  padding: 0.2em;
-  font-size: 2em;
-  margin: 0.3em;
-  width: 87%;
+  padding: 2%;
+  font-size: 1.5vw;
+  margin: 2%;
+  width: 140%;
   border: none;
   background-color: rgb(255, 111, 0);
 }

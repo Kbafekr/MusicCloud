@@ -29,10 +29,10 @@ function LoginForm() {
             <li key={idx}>{error}</li>
             ))}
       </ul>
-      <h1>Sign in</h1>
-      <label className= 'label'>
+      <h1 className="SignInModalHeader">Sign in</h1>
+      <label className= 'SignUplabel'>
         <input
-        className="credentialInputLogin"
+        className="SignInInputLabel"
         placeholder="Username or Email..."
           type="text"
           autoComplete="email"
@@ -41,9 +41,9 @@ function LoginForm() {
           required
           />
       </label>
-      <label className= 'label'>
+      <label className= 'SignUplabel'>
         <input
-        className="passwordInputLogin"
+        className="SignInInputLabel"
         placeholder="Password..."
         autoComplete="current-password"
           type="password"

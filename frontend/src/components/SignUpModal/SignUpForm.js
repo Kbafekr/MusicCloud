@@ -34,10 +34,10 @@ function SignupForm() {
       <ul>
         {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>
-      <h1>Create an account</h1>
+      <h1 className="labelHeader">Create an account</h1>
       <label className= 'label'>
         <input
-        className="emailInputSignup"
+        className="labelInput"
         autoComplete="email"
           placeholder="Email..."
           type="text"
@@ -48,7 +48,7 @@ function SignupForm() {
       </label>
       <label className= 'label'>
         <input
-        className="usernameInputSignup"
+        className="labelInput"
         placeholder="Username..."
         autoComplete="username"
           type="text"
@@ -59,7 +59,7 @@ function SignupForm() {
       </label>
       <label className= 'label'>
         <input
-        className="firstnameInputSignup"
+        className="labelInput"
         placeholder="First Name..."
         type="text"
         autoComplete="cc-given-name"
@@ -70,7 +70,7 @@ function SignupForm() {
       </label>
       <label className= 'label'>
         <input
-        className="lastnameInputSignup"
+        className="labelInput"
           placeholder="Last Name..."
           autoComplete="cc-family-name"
           type="text"
@@ -81,7 +81,7 @@ function SignupForm() {
       </label>
       <label className= 'label'>
         <input
-        className="imageUrlInputSignup"
+        className="labelInput"
           placeholder="Profile Image Url (Optional)..."
           type="text"
           value={imageUrl}
@@ -90,7 +90,7 @@ function SignupForm() {
       </label>
       <label className= 'label'>
         <input
-        className="passwordInputSignup"
+        className="labelInput"
         autoComplete="new-password"
           placeholder="Password..."
           type="password"
@@ -101,7 +101,7 @@ function SignupForm() {
       </label>
       <label className= 'label'>
         <input
-        className="confirmpasswordInputSignup"
+        className="labelInput"
         autoComplete="new-password"
         placeholder="Confirm Password..."
           type="password"

@@ -20,20 +20,24 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3%;
-  margin: 2%;
+  /* padding: 3%;
+  margin: 2%; */
 }
 .labelHeader {
-  font-size: 3vw;
+  font-size: 5vmin;
+}
+
+.SignupModalHeader2 {
+  font-size: 2vmin;
 }
 .labelInput {
-  font-size: 1.3vw;
+  font-size: 2vmin;
 }
 .submitInputSignup {
   color: rgb(186, 186, 186);
   padding: 2%;
-  font-size: 1.5vw;
-  margin: 2%;
+  font-size: 2.5vmin;
+  margin-top: 10%;
   width: 140%;
   border: none;
   background-color: rgb(255, 111, 0);

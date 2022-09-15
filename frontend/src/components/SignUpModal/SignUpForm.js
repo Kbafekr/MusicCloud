@@ -36,6 +36,7 @@ function SignupForm() {
       </ul>
       <h1 className="labelHeader">Create an account</h1>
       <label className= 'label'>
+      <h2 className="SignupModalHeader2">Email</h2>
         <input
         className="labelInput"
         autoComplete="email"
@@ -47,6 +48,7 @@ function SignupForm() {
           />
       </label>
       <label className= 'label'>
+        <h2 className="SignupModalHeader2">Username</h2>
         <input
         className="labelInput"
         placeholder="Username..."
@@ -58,6 +60,8 @@ function SignupForm() {
           />
       </label>
       <label className= 'label'>
+      <h2 className="SignupModalHeader2">First Name</h2>
+
         <input
         className="labelInput"
         placeholder="First Name..."
@@ -69,6 +73,8 @@ function SignupForm() {
           />
       </label>
       <label className= 'label'>
+      <h2 className="SignupModalHeader2">Last Name</h2>
+
         <input
         className="labelInput"
           placeholder="Last Name..."
@@ -80,6 +86,7 @@ function SignupForm() {
           />
       </label>
       <label className= 'label'>
+      <h2 className="SignupModalHeader2">Profile Image (Optional)</h2>
         <input
         className="labelInput"
           placeholder="Profile Image Url (Optional)..."
@@ -89,6 +96,7 @@ function SignupForm() {
           />
       </label>
       <label className= 'label'>
+      <h2 className="SignupModalHeader2">Password</h2>
         <input
         className="labelInput"
         autoComplete="new-password"
@@ -100,6 +108,7 @@ function SignupForm() {
           />
       </label>
       <label className= 'label'>
+      <h2 className="SignupModalHeader2">Confirm Password</h2>
         <input
         className="labelInput"
         autoComplete="new-password"

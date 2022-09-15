@@ -461,7 +461,7 @@ module.exports = {
           albumId: 48,
           title: "Gou Ni Moyu",
           description: "Japanese Post-Hardcore Rock",
-          url: "https://soundclouddata.s3.amazonaws.com/%E3%81%9D%E3%81%93%E3%81%AB%E9%B3%B4%E3%82%8B+-+%E6%A5%AD%E3%81%AB%E7%87%83%E3%82%86%E3%80%90Official+Music+Video%E3%80%91Sokoninaru+-+Gou+Ni+Moyu.mp3",
+          url: "https://soundclouddata.s3.amazonaws.com/Sokoninaru+-+Gou+Ni+Moyu.mp3",
           imageUrl:
             "https://i.ytimg.com/vi/Nl4Z5f4QwEY/sddefault.jpg",
         },

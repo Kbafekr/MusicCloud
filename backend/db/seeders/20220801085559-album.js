@@ -189,6 +189,145 @@ module.exports = {
           imageUrl:
           "https://i.scdn.co/image/ab67706c0000bebba3cda736c4c2e5d3a5a49e19",
         },
+        {
+          userId: 3,
+          title: "Someone To Spend Time With",
+          description: "Album by Los Retros (2019)",
+          imageUrl:
+            "https://lastfm.freetls.fastly.net/i/u/ar0/e0301541c854f2d3326ff189875f8760.jpg",
+        },
+        {
+          userId: 3,
+          title: "The Divine Feminine",
+          description: "Fourth Studio Album from Mac Miller (2016)",
+          imageUrl:
+            "https://upload.wikimedia.org/wikipedia/en/9/93/Mac_Miller_-_The_Divine_Feminine.png",
+        },
+        {
+          userId: 1,
+          title: "i'mperfect",
+          description: "Fifth Studio Album from Ling Tosite Sigure(2013)",
+          imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6uFbUubFO4S_YR6GPmdSvlAbsdb7h8f4nI4beWKHpwnDSc2jRhe6SKFNJU9bQM4ymRXs&usqp=CAU",
+        },
+        {
+          userId: 2,
+          title: "Riot!",
+          description: "Second Studio Album from Paramore (2007)",
+          imageUrl:
+            "https://m.media-amazon.com/images/I/91b6aYwjwjL._SL1425_.jpg",
+        },
+        {
+          userId: 1,
+          title: "Wars in a Wonderland",
+          description: "Album from Neoni (2021)",
+          imageUrl:
+          "https://i.scdn.co/image/ab67616d0000b27381207f9d9c8eef5f3a62407f",
+        },
+        {
+          userId: 1,
+          title: "Something in the Way",
+          description: "Electronic cover of the Nirvana Song by Illenium",
+          imageUrl:
+            "https://i1.sndcdn.com/artworks-G1Zh95kFgk7Y3BEt-OkfYjQ-t500x500.jpg",
+        },
+        {
+          userId: 1,
+          title: "I Write Sins Not Tragedies",
+          description: "Cover of the Panic! At the Disco Song by D'acierno",
+          imageUrl:
+          "https://i1.sndcdn.com/artworks-000248795568-5h02ip-t500x500.jpg",
+        },
+        {
+          userId: 2,
+          title: "Renegades",
+          description: "Fourth Studio Album by Rage Against the Machine (2000)",
+          imageUrl:
+            "https://upload.wikimedia.org/wikipedia/en/5/54/Ratm_renegades.png",
+        },
+        {
+          userId: 1,
+          title: "Really Slow Motion",
+          description: "Dramatic Music from Really Slow Motion",
+          imageUrl:
+          "https://yt3.ggpht.com/ytc/AMLnZu9BsJpJad9Dx03g1h7hcKiPojvHjpoI0fLI1f-l2g=s900-c-k-c0x00ffffff-no-rj",
+        },
+        {
+          userId: 1,
+          title: "Run the Jewels 2",
+          description: "Second Studio Album from Run the Jewels (2014)",
+          imageUrl:
+            "https://upload.wikimedia.org/wikipedia/en/9/93/RunTheJewelsRTJ2.jpg",
+        },
+        {
+          userId: 1,
+          title: "Glitch Mob",
+          description: "Electronic Music from the Duo Glitch Mob",
+          imageUrl:
+          "https://i.ytimg.com/vi/-m7e7tCn7Bk/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          title: "Tortured Thoughts",
+          description: "Debut EP Album from Silent Child (2021)",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d0000b2739c582c3dd07178fd6212a50d",
+        },
+        {
+          userId: 1,
+          title: "Malia J",
+          description: "Song Covers from Malia J",
+          imageUrl:
+          "https://i.scdn.co/image/ab67616d0000b2738bd22f040a2a2852ebeea584",
+        },
+        {
+          userId: 1,
+          title: "Solo",
+          description: "Album by Prismo (2021)",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d0000b273f65449e0b0d9a05eeef79e48",
+        },
+
+
+
+
+
+        
+        {
+          userId: 1,
+          title: "Run the Jewels 2",
+          description: "Second Studio Album from Run the Jewels (2014)",
+          imageUrl:
+            "https://upload.wikimedia.org/wikipedia/en/9/93/RunTheJewelsRTJ2.jpg",
+        },
+        {
+          userId: 1,
+          title: "Glitch Mob",
+          description: "Electronic Music from the Duo Glitch Mob",
+          imageUrl:
+          "https://i.ytimg.com/vi/-m7e7tCn7Bk/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          title: "Tortured Thoughts",
+          description: "Debut EP Album from Silent Child (2021)",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d0000b2739c582c3dd07178fd6212a50d",
+        },
+        {
+          userId: 1,
+          title: "Malia J",
+          description: "Song Covers from Malia J",
+          imageUrl:
+          "https://i.scdn.co/image/ab67616d0000b2738bd22f040a2a2852ebeea584",
+        },
+        {
+          userId: 1,
+          title: "Solo",
+          description: "Album by Prismo (2021)",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d0000b273f65449e0b0d9a05eeef79e48",
+        },
 
       ],
       {}

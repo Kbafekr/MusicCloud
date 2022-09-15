@@ -239,6 +239,192 @@ module.exports = {
           imageUrl:
             "https://i.ytimg.com/vi/4MDRWT9AlgU/maxresdefault.jpg",
         },
+        {
+          userId: 3,
+          albumId: 26,
+          title: "Someone To Spend Time With",
+          description: "Alternative/Indie",
+          url: "https://soundclouddata.s3.amazonaws.com/Los+Retros++Someone+To+Spend+Time+With.mp3",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d0000b273a1f060b534d1d9c859acc73f",
+        },
+        {
+          userId: 3,
+          albumId: 27,
+          title: "Stay",
+          description: "R&B/Soul, Hip-Hop/Rap",
+          url: "https://soundclouddata.s3.amazonaws.com/Mac+Miller++Stay++Lyrics+Songs.mp3",
+          imageUrl:
+            "https://i1.sndcdn.com/artworks-000406849008-ydddi5-t500x500.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 28,
+          title: "Metamorphose",
+          description: "Japanese Math Rock/Post-Hardcore",
+          url: "https://soundclouddata.s3.amazonaws.com/Metamorphose.mp3",
+          imageUrl:
+            "https://cdn.shopify.com/s/files/1/0065/8482/7956/products/ling-tosite-sigure-imperfect.jpg?v=1596057485",
+        },
+        {
+          userId: 2,
+          albumId: 29,
+          title: "Misery Business",
+          description: "Pop-Punk/Emo",
+          url: "https://soundclouddata.s3.amazonaws.com/Misery+Business.mp3",
+          imageUrl:
+            "https://m.media-amazon.com/images/I/61cKkLqbLLL.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 30,
+          title: "Wonderland",
+          description: "Alternative/Indie",
+          url: "https://soundclouddata.s3.amazonaws.com/Neoni+-+WONDERLAND+(Lyrics).mp3",
+          imageUrl:
+          "https://i.ytimg.com/vi/0bTVSSiAgZs/mqdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 31,
+          title: "Something in the Way (Illenium Remix)",
+          description: "Modern Electronic Grunge Cover",
+          url: "https://soundclouddata.s3.amazonaws.com/Nirvana+-+Something+In+The+Way+(ILLENIUM+Remix).mp3",
+          imageUrl:
+            "https://i1.sndcdn.com/artworks-G1Zh95kFgk7Y3BEt-OkfYjQ-t500x500.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 32,
+          title: "I Write Sins Not Tragedies (D'Acierno Remix)",
+          description: "Emo Pop-Punk",
+          url: "https://soundclouddata.s3.amazonaws.com/Panic!+At+the+Disco+-+I+Write+Sins+Not+Tragedies+(D'Acierno+Remix).mp3",
+          imageUrl:
+            "https://i1.sndcdn.com/artworks-000248795568-5h02ip-t500x500.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 33,
+          title: "Maggie's Farm",
+          description: "Rap Rock, Hip-Hop Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Rage+Against+The+Machine+-+Maggie's+Farm+(Audio).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/q3euAfNhuR4/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 34,
+          title: "Transhuman",
+          description: "Epic Massive Hybrid Drama Music",
+          url: "https://soundclouddata.s3.amazonaws.com/Really+Slow+Motion+-+Transhuman+(Epic+Massive+Hybrid+Drama).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/_tMnhDyIwCg/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 35,
+          title: "Blockbuster Night Part 1",
+          description: "Hip-Hop Rap",
+          url: "https://soundclouddata.s3.amazonaws.com/Run+The+Jewels+-+Blockbuster+Night+Part+1+(Official+Video).mp3",
+          imageUrl:
+            "https://media.pitchfork.com/photos/5929fe940c2bba1b7de04193/1:1/w_450%2Cc_limit/60fc2402.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 36,
+          title: "Seven Nation Army (Glitch Mob Remix)",
+          description: "Electronic Garage Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Seven+Nation+Army+(Glitch+Mob+Remix)+-+Lyric+Video.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/IbvNgLYPSIs/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 37,
+          title: "F**K YOU",
+          description: "Alternative/Indie",
+          url: "https://soundclouddata.s3.amazonaws.com/Silent+Child+-+F**K+YOU+(lyrics).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/L7T6UOkHkJo/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 38,
+          title: "Smells Like Teen Spirit (Malia Remix)",
+          description: "Modern Emotional Grunge",
+          url: "https://soundclouddata.s3.amazonaws.com/Smells+Like+Teen+Spirit.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/p5M1sWA0J0Y/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 39,
+          title: "Solo",
+          description: "Indie, Pop/Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Solo.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/fL1pnzQj5j8/maxresdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 21,
+          title: "Squidward Walking Sound Effect",
+          description: "Sound Effects",
+          url: "https://soundclouddata.s3.amazonaws.com/Squidward+walking+sound+effect.mp3",
+          imageUrl:
+          "https://pbs.twimg.com/media/Bzmf25aCIAABBDi.jpg",
+        },
+
+
+
+
+
+
+        {
+          userId: 1,
+          albumId: 40,
+          title: "Seven Nation Army (Glitch Mob Remix)",
+          description: "Electronic Garage Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Seven+Nation+Army+(Glitch+Mob+Remix)+-+Lyric+Video.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/IbvNgLYPSIs/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 41,
+          title: "F**K YOU",
+          description: "Alternative/Indie",
+          url: "https://soundclouddata.s3.amazonaws.com/Silent+Child+-+F**K+YOU+(lyrics).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/L7T6UOkHkJo/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 42,
+          title: "Smells Like Teen Spirit (Malia Remix)",
+          description: "Modern Emotional Grunge",
+          url: "https://soundclouddata.s3.amazonaws.com/Smells+Like+Teen+Spirit.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/p5M1sWA0J0Y/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 43,
+          title: "Solo",
+          description: "Indie, Pop/Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Solo.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/fL1pnzQj5j8/maxresdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 44,
+          title: "Squidward Walking Sound Effect",
+          description: "Sound Effects",
+          url: "https://soundclouddata.s3.amazonaws.com/Squidward+walking+sound+effect.mp3",
+          imageUrl:
+          "https://pbs.twimg.com/media/Bzmf25aCIAABBDi.jpg",
+        },
       ],
 
       {}

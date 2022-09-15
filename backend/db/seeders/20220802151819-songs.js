@@ -402,11 +402,12 @@ module.exports = {
             "https://i.ytimg.com/vi/XyNHIsp_3k0/maxresdefault.jpg",
         },
         {
+
           userId: 1,
           albumId: 43,
           title: "Hey Kids!!!",
           description: "Japanese Rock Alternative/Indie",
-          url: "https://soundclouddata.s3.amazonaws.com/THE+ORAL+CIGARETTES%E3%80%80%E3%80%8E%E7%8B%82%E4%B9%B1+Hey+Kids!!%E3%80%8F%E5%BC%BE%E3%81%84%E3%81%A6%E3%81%BF%E3%81%9F+%E3%80%90%E3%81%9D%E3%81%93%E3%81%AB%E9%B3%B4%E3%82%8B%E8%BB%BD%E9%9F%B3%E9%83%A8%E3%80%91THE+ORAL+CIGARETTES+-+Kyouran+Hey+Kids!!+(cover).mp3",
+          url: "https://soundclouddata.s3.amazonaws.com/THE+ORAL+CIGARETTES+-+Kyouran+Hey+Kids!!+(cover).mp3",
           imageUrl:
             "https://i.ebayimg.com/images/g/bDkAAOSwtRBZuQ4V/s-l400.jpg",
         },

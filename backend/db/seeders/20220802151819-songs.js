@@ -416,9 +416,9 @@ module.exports = {
           albumId: 44,
           title: "50 Ways to Say Goodbye",
           description: "Pop Rock/Folk Rock",
-          url: "https://soundclouddata.s3.amazonaws.com/Train+-+50+Ways+To+Say+Goodbye+(Lyrics)+%22Help+me%2C+help+me+I'm+no+good+at+goodbyes%22+%5Btiktok%5D+%7C+3starz.mp3",
+          url: "https://soundclouddata.s3.amazonaws.com/Train+-+50+Ways+To+Say+Goodbye.mp3",
           imageUrl:
-          "https://i.discogs.com/Iu96knUvFdMmeAZ46Pl5fGotdN6volUbl3Yaop6sEpk/rs:fit/g:sm/q:90/h:402/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNTQ5/ODc3LTE1MTgzMjY5/NjctNzgzMC5qcGVn.jpeg",
+          "https://methodshop.com/wp-content/uploads/train-band.jpg",
         },
         {
           userId: 1,

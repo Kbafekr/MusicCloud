@@ -27,10 +27,10 @@ function Navigation({ isLoaded }) {
     memberLinks = (
       <>
         <div className="memberLinks">
-          <HomeButton user={sessionUser} />
-          <LibraryButton user={sessionUser} />
-          <SongButton user={sessionUser} />
-          <AlbumButton user={sessionUser} />
+          <div className='HomeNavButton'><HomeButton user={sessionUser} /></div>
+          <div className='NavButtons'><LibraryButton user={sessionUser} /></div>
+          <div className='NavButtons'><SongButton user={sessionUser} /></div>
+          <div className='AlbumNavButton'><AlbumButton user={sessionUser} /></div>
         </div>
       </>
     );

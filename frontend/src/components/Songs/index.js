@@ -71,7 +71,7 @@ export default function ReturnAllSongs() {
                   <AudioPlayer
                     autoPlay={false}
                     src={song.url}
-                    muted={true}
+                    // muted={true}
                     onPlay={(e) => console.log("onPlay")}
                     />
                 </div>

@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 const bcrypt = require("bcryptjs");
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  async up(queryInterface, Sequelize) {
     /**
      * Add seed commands here.
      *
@@ -10,70 +10,242 @@ module.exports = {
      *   name: 'John Doe',
      *   isBetaMember: false
      * }], {});
-    */
-     await queryInterface.bulkInsert('Songs', [
-      {
-        userId: 1,
-        albumId: 1,
-        title: "Feeling",
-        description: 'Alternative Electronic',
-        url: "https://cdn.pixabay.com/download/audio/2022/08/22/audio_82aae8fffa.mp3?filename=feeling-117865.mp3",
-        imageUrl: "https://cdn.pixabay.com/audio/2022/08/22/21-27-06-616_200x200.png"
+     */
+    await queryInterface.bulkInsert(
+      "Songs",
+      [
+        {
+          userId: 1,
+          albumId: 1,
+          title: "Nobody Speak",
+          description: "Hip-Hop/Rap",
+          url: "https://soundclouddata.s3.amazonaws.com/_Nobody+Speak_+feat.+Run+The+Jewels+-+DJ+Shadow+(The+Mountain+Will+Fall)+%5BHQ+Audio%5D.mp3",
+          imageUrl:
+            "https://c-fa.cdn.smule.com/rs-s79/arr/9a/2c/9e983943-aedd-439f-9656-e6ae266d3fb5_1024.jpg",
         },
         {
           userId: 2,
           albumId: 2,
-          title: "Inspiring Cinematic Piano",
-          description: 'Classical Piano Solo',
-          url: "https://cdn.pixabay.com/download/audio/2022/08/10/audio_158527cbab.mp3?filename=inspiring-cinematic-piano-116957.mp3",
-          imageUrl: "https://cdn.pixabay.com/audio/2022/08/10/18-47-13-464_200x200.jpg"
-          },
+          title: "Ready For War",
+          description: "Epic Intense Hip-hop",
+          url: "https://soundclouddata.s3.amazonaws.com/2WEI%2C+Joznez%2C+Kataem+-+Ready+For+War+(Official+Lyric+Video+%26+Audio).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/Zn-VQ-B1ODA/maxresdefault.jpg",
+        },
         {
-            userId: 1,
-            albumId: 1,
-            title: "Newcomer",
-            description: 'Electronic Beat',
-            url: "https://cdn.pixabay.com/download/audio/2022/08/22/audio_dd8f774855.mp3?filename=newcomer-117863.mp3",
-            imageUrl: "https://cdn.pixabay.com/audio/2022/08/22/21-27-22-839_200x200.png"
-            },
+          userId: 3,
+          albumId: 3,
+          title: "Dies Irae (feat. Blak Prez)",
+          description: "Electronic Classical/Rap",
+          url: "https://soundclouddata.s3.amazonaws.com/Apashe+-+Dies+Irae+(feat.+Black+Prez).mp3",
+          imageUrl:
+            "https://i1.sndcdn.com/artworks-000447165090-3o58w1-t500x500.jpg",
+        },
         {
-            userId: 3,
-            albumId: 3,
-            title: "Stylish",
-            description: 'Glam Rock',
-            url: "https://cdn.pixabay.com/download/audio/2022/05/17/audio_6941c02914.mp3?filename=fashion-hip-hop-rock-stylish-boy-111449.mp3",
-            imageUrl: "https://cdn.pixabay.com/audio/2022/05/17/20-39-00-165_200x200.jpg"
-            },
-        {
-            userId: 3,
-            albumId: 3,
-            title: "Explosive",
-            description: 'Upbeat Rock',
-            url: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_e49f6ef16a.mp3?filename=energetic-upbeat-indie-rock-explosive-mix-112181.mp3",
-            imageUrl: "https://cdn.pixabay.com/audio/2022/05/27/18-42-23-210_200x200.jpg"
-            },
-      {
-      userId: 1,
-      albumId: 4,
-      title: "Feed the Machine",
-      description: 'Classic Video Game Sound',
-      url: "https://cdn.pixabay.com/download/audio/2022/08/09/audio_4bd7b03f6c.mp3?filename=feed-the-machine-classic-arcade-game-116846.mp3",
-      imageUrl: "https://cdn.pixabay.com/audio/2022/08/09/16-40-54-414_200x200.jpg"
-      },
-      {
           userId: 1,
           albumId: 4,
-          title: "Floppy Disk",
-          description: 'Level 1',
-          url: "https://cdn.pixabay.com/audio/2022/08/09/audio_b7595a37c1.mp3",
-          imageUrl: "https://cdn.pixabay.com/audio/2022/08/09/16-40-54-414_200x200.jpg"
-          },
-    ],
+          title: "Chemicals (feat. Neoni)",
+          description: "Electronic/Alternative Modern Pop",
+          url: "https://soundclouddata.s3.amazonaws.com/Besomorph+-+Chemicals+(feat.+Neoni).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/e4-raurU5zI/maxresdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 5,
+          title: "Happier Than Ever",
+          description: "Alternative Rock/Indie Pop",
+          url: "https://soundclouddata.s3.amazonaws.com/Billie+Eilish+-+Happier+Than+Ever+(Official+Music+Video).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/GK10mDpZZ_w/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 6,
+          title: "Boukan",
+          description: "Japanese Post-Hardcore/Math-Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Boukan.mp3",
+          imageUrl:
+            "https://i1.jpopasia.com/albums/4/29267_n9c.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 7,
+          title: "Caravan",
+          description: "Jazz Score ",
+          url: "https://soundclouddata.s3.amazonaws.com/Caravan.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/38CRu1rCaKg/maxresdefault.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 8,
+          title: "Dr. Bones",
+          description: "Modern Jazz/Swing Ska",
+          url: "https://soundclouddata.s3.amazonaws.com/Cherry+Poppin'+Daddies+-+Dr.+Bones.mp3",
+          imageUrl:
+          "https://i.ytimg.com/vi/AZo5rV8xuEA/hqdefault.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 9,
+          title: "Childhodd Memories",
+          description: "Warm Alternative Game BGM",
+          url: "https://soundclouddata.s3.amazonaws.com/Childhood+memories.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/_rdlVC1hzdk/maxresdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 10,
+          title: "Under the Influence",
+          description: "R&B Soul",
+          url: "https://soundclouddata.s3.amazonaws.com/Chris+Brown+-+Under+The+Influence+(Audio).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/xy8HNniRsc4/maxresdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 11,
+          title: "Freeze Me",
+          description: "Alternative Indie Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Death+From+Above+1979+-+Freeze+Me+(Official+Audio).mp3",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d0000b27320ff5d1d92eb88e6ab5822a5",
+        },
+        {
+          userId: 1,
+          albumId: 12,
+          title: "Dynasties & Dystopia",
+          description: "Alternative Indie Rap/Pop",
+          url: "https://soundclouddata.s3.amazonaws.com/Denzel+Curry%2C+Gizzle%2C+Bren+Joy+-+Dynasties+%26+Dystopia+%7C+Arcane+League+of+Legends+%7C+Riot+Games+Music.mp3",
+          imageUrl:
+            "https://images.genius.com/1920168e7f50f7b1c96710cfa91d2c7d.1000x1000x1.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 13,
+          title: "Dream a Little Dream of Me",
+          description: "Modern Jazz/Pop Cover",
+          url: "https://soundclouddata.s3.amazonaws.com/Dream+a+Little+Dream+of+Me.mp3",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d00001e0285d4a567ff4e2aec1fa796b6",
+        },
+        {
+          userId: 2,
+          albumId: 14,
+          title: "Needle in the Hay",
+          description: "Indie Folk",
+          url: "https://soundclouddata.s3.amazonaws.com/Elliott+Smith+-+Needle+In+The+Hay+(from+Elliott+Smith).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/EgNgvCLRqWc/maxresdefault.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 15,
+          title: "Fair",
+          description: "Indie Pop/Folk",
+          url: "https://soundclouddata.s3.amazonaws.com/Fair.mp3",
+          imageUrl:
+            "https://m.media-amazon.com/images/I/51y9GJkWfjL._SS500_.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 16,
+          title: "Gourmet Race Remix",
+          description: "Drumstep/Dubstep 8-bit",
+          url: "https://soundclouddata.s3.amazonaws.com/Gourmet+Race+-+Drumstep+%5B+dj-Jo+Remix+%5D.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/Se1uh3PS78Y/mqdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 17,
+          title: "Interstellar Main Theme Piano",
+          description: "Classical Cover",
+          url: "https://soundclouddata.s3.amazonaws.com/Hans+Zimmer+-+Interstellar+-+Main+Theme+(Piano+Version)+%2B+Sheet+Music.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/UDVtMYqUAyw/hqdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 18,
+          title: "Heart_Shaped Box (Virtu Remix)",
+          description: "Electronic Modern Grunge",
+          url: "https://soundclouddata.s3.amazonaws.com/Heart-Shaped+Box+(VIRTU+Remix).mp3",
+          imageUrl:
+            "https://m.media-amazon.com/images/I/71CmdD0BONL._SS500_.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 19,
+          title: "Analog Logic",
+          description: "Epic Hybrid Futuristic Electronic Music",
+          url: "https://soundclouddata.s3.amazonaws.com/Hi-Finesse+-+Analog+Logic+(Epic+Hybrid+Futuristic+Trailer+Music).mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/l6PH6Og4E5w/maxresdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 20,
+          title: "Long Cool Woman (In a Black Dress)",
+          description: "Alternative Blues/Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/hollies-long-cool-woman-in-a-black-dress.mp3",
+          imageUrl:
+            "https://upload.wikimedia.org/wikipedia/en/5/59/Long_Cool_Woman_in_a_Black_Dress.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 21,
+          title: "Apple Alarm Sound Effect",
+          description: "Alarm Sound Effect from iPhone",
+          url: "https://soundclouddata.s3.amazonaws.com/iPhone+Radar+Alarm_Ringtone+(Apple+Sound)+-+Sound+Effect+for+Editing.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/1uLcHue0rZ4/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 22,
+          title: "Hollow Purple",
+          description: "Electronic Dark Dubstep",
+          url: "https://soundclouddata.s3.amazonaws.com/Jujutsu+Kaisen+-+Hollow+Purple+(Ultra+Epic+Cover).mp3",
+          imageUrl:
+            "https://miro.medium.com/max/1400/0*UuxDSONm1W5mvt_d.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 23,
+          title: "Jungle Japes",
+          description: "Tribal Jazz Video Game Music",
+          url: "https://soundclouddata.s3.amazonaws.com/Jungle+Japes+Super+Smash+Melee.mp3",
+          imageUrl:
+            "https://images.gamebanana.com/img/ss/mods/58a9c1c0e94dc.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 24,
+          title: "Intimidated",
+          description: "Wave/Pop Music",
+          url: "https://soundclouddata.s3.amazonaws.com/kaytranada-intimidated-audio-ft-her.mp3",
+          imageUrl:
+            "https://images.genius.com/5f2f2731f4d937d5445b51492d2586df.999x999x1.png",
+        },
+        {
+          userId: 1,
+          albumId: 25,
+          title: "Loki Trailer Music",
+          description: "Dark Electronic Music",
+          url: "https://soundclouddata.s3.amazonaws.com/Loki+Trailer+Music+%7C+EPIC+VERSION.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/4MDRWT9AlgU/maxresdefault.jpg",
+        },
+      ],
 
-      {});
+      {}
+    );
   },
 
-  async down (queryInterface, Sequelize) {
+  async down(queryInterface, Sequelize) {
     /**
      * Add commands to revert seed here.
      *
@@ -81,6 +253,6 @@ module.exports = {
      * await queryInterface.bulkDelete('People', null, {});
      */
 
-     await queryInterface.bulkDelete('Songs', null, {});
-  }
+    await queryInterface.bulkDelete("Songs", null, {});
+  },
 };

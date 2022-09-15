@@ -287,46 +287,68 @@ module.exports = {
           imageUrl:
             "https://i.scdn.co/image/ab67616d0000b273f65449e0b0d9a05eeef79e48",
         },
-
-
-
-
-
-        
         {
-          userId: 1,
-          title: "Run the Jewels 2",
-          description: "Second Studio Album from Run the Jewels (2014)",
+          userId: 2,
+          title: "Stadium Arcadium",
+          description: "Ninth Studio Album from Red Hot Chili Peppers",
           imageUrl:
-            "https://upload.wikimedia.org/wikipedia/en/9/93/RunTheJewelsRTJ2.jpg",
+            "https://i1.sndcdn.com/artworks-slIjDYdC4rQg-0-t500x500.jpg",
+        },
+        {
+          userId: 3,
+          title: "Succession SoundTrack",
+          description: "Soundtrack from HBO's Succession",
+          imageUrl:
+          "https://i.scdn.co/image/ab67616d0000b273e654bc3bc09b6c1e013f74a3",
         },
         {
           userId: 1,
-          title: "Glitch Mob",
-          description: "Electronic Music from the Duo Glitch Mob",
+          title: "Chaos",
+          description: "EP Album from TeZaTalks (2017)",
           imageUrl:
-          "https://i.ytimg.com/vi/-m7e7tCn7Bk/maxresdefault.jpg",
+            "https://i1.sndcdn.com/artworks-000206265688-uxqrap-t500x500.jpg",
         },
         {
           userId: 1,
-          title: "Tortured Thoughts",
-          description: "Debut EP Album from Silent Child (2021)",
+          title: "Fixion",
+          description: "Album from The Oral Cigarettes",
           imageUrl:
-            "https://i.scdn.co/image/ab67616d0000b2739c582c3dd07178fd6212a50d",
+          "https://i.scdn.co/image/ab67616d0000b273580e8939a6ac9f4ff00a99a8",
+        },
+        {
+          userId: 3,
+          title: "California 37",
+          description: "Sixth Studio Album from Train (2012)",
+          imageUrl:
+            "https://m.media-amazon.com/images/I/71D0rd2R7mL._SS500_.jpg",
         },
         {
           userId: 1,
-          title: "Malia J",
-          description: "Song Covers from Malia J",
+          title: "Worst in Me",
+          description: "Single from Unlike Pluto",
           imageUrl:
-          "https://i.scdn.co/image/ab67616d0000b2738bd22f040a2a2852ebeea584",
+            "https://pbs.twimg.com/media/C4pY86sXUAAoi5G.jpg",
         },
         {
           userId: 1,
-          title: "Solo",
-          description: "Album by Prismo (2021)",
+          title: "Westworld Season Four SoundTrack",
+          description: "Soundtrack from Season Four of HBO's Westworld",
           imageUrl:
-            "https://i.scdn.co/image/ab67616d0000b273f65449e0b0d9a05eeef79e48",
+          "https://i1.sndcdn.com/artworks-okjrAW6V7VCy-0-t500x500.jpg",
+        },
+        {
+          userId: 1,
+          title: "Ymir",
+          description: "Self-Titled Album from Ymir (2021)",
+          imageUrl:
+            "https://themusicessentials.com/wp-content/uploads/2021/11/YMIR-TRIPWIRE-e1637638248565-696x503.jpg",
+        },
+        {
+          userId: 1,
+          title: "Issen",
+          description: "Album by Sokoninaru (2019)",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d0000b273b3cb944cf56bacf99a3cdcd0",
         },
 
       ],

@@ -374,56 +374,95 @@ module.exports = {
           imageUrl:
           "https://pbs.twimg.com/media/Bzmf25aCIAABBDi.jpg",
         },
-
-
-
-
-
-
         {
-          userId: 1,
+          userId: 2,
           albumId: 40,
-          title: "Seven Nation Army (Glitch Mob Remix)",
-          description: "Electronic Garage Rock",
-          url: "https://soundclouddata.s3.amazonaws.com/Seven+Nation+Army+(Glitch+Mob+Remix)+-+Lyric+Video.mp3",
+          title: "Strip My Mind",
+          description: "Alternative/Indie, R&B/Soul",
+          url: "https://soundclouddata.s3.amazonaws.com/Strip+My+Mind.mp3",
           imageUrl:
-            "https://i.ytimg.com/vi/IbvNgLYPSIs/maxresdefault.jpg",
+            "https://i.ytimg.com/vi/woLb2dkqRYs/maxresdefault.jpg",
         },
         {
-          userId: 1,
+          userId: 3,
           albumId: 41,
-          title: "F**K YOU",
-          description: "Alternative/Indie",
-          url: "https://soundclouddata.s3.amazonaws.com/Silent+Child+-+F**K+YOU+(lyrics).mp3",
+          title: "Succession Main Theme Piano",
+          description: "Classical Instrumental",
+          url: "https://soundclouddata.s3.amazonaws.com/Succession+Main+Theme+-+Piano+(Advance+difficulty).mp3",
           imageUrl:
-            "https://i.ytimg.com/vi/L7T6UOkHkJo/maxresdefault.jpg",
+            "https://i.ytimg.com/vi/Jy7FMagiTFk/maxresdefault.jpg",
         },
         {
           userId: 1,
           albumId: 42,
-          title: "Smells Like Teen Spirit (Malia Remix)",
-          description: "Modern Emotional Grunge",
-          url: "https://soundclouddata.s3.amazonaws.com/Smells+Like+Teen+Spirit.mp3",
+          title: "STFD",
+          description: "Electro-Pop/ Dance Music",
+          url: "https://soundclouddata.s3.amazonaws.com/TeZATalks+-+STFD+%5BLyric+Video%5D+*FLASH+WARNING*.mp3",
           imageUrl:
-            "https://i.ytimg.com/vi/p5M1sWA0J0Y/maxresdefault.jpg",
+            "https://i.ytimg.com/vi/XyNHIsp_3k0/maxresdefault.jpg",
         },
         {
           userId: 1,
           albumId: 43,
-          title: "Solo",
-          description: "Indie, Pop/Rock",
-          url: "https://soundclouddata.s3.amazonaws.com/Solo.mp3",
+          title: "Hey Kids!!!",
+          description: "Japanese Rock Alternative/Indie",
+          url: "https://soundclouddata.s3.amazonaws.com/THE+ORAL+CIGARETTES%E3%80%80%E3%80%8E%E7%8B%82%E4%B9%B1+Hey+Kids!!%E3%80%8F%E5%BC%BE%E3%81%84%E3%81%A6%E3%81%BF%E3%81%9F+%E3%80%90%E3%81%9D%E3%81%93%E3%81%AB%E9%B3%B4%E3%82%8B%E8%BB%BD%E9%9F%B3%E9%83%A8%E3%80%91THE+ORAL+CIGARETTES+-+Kyouran+Hey+Kids!!+(cover).mp3",
           imageUrl:
-            "https://i.ytimg.com/vi/fL1pnzQj5j8/maxresdefault.jpg",
+            "https://i.ebayimg.com/images/g/bDkAAOSwtRBZuQ4V/s-l400.jpg",
         },
         {
           userId: 3,
           albumId: 44,
-          title: "Squidward Walking Sound Effect",
-          description: "Sound Effects",
-          url: "https://soundclouddata.s3.amazonaws.com/Squidward+walking+sound+effect.mp3",
+          title: "50 Ways to Say Goodbye",
+          description: "Pop Rock/Folk Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Train+-+50+Ways+To+Say+Goodbye+(Lyrics)+%22Help+me%2C+help+me+I'm+no+good+at+goodbyes%22+%5Btiktok%5D+%7C+3starz.mp3",
           imageUrl:
-          "https://pbs.twimg.com/media/Bzmf25aCIAABBDi.jpg",
+          "https://i.discogs.com/Iu96knUvFdMmeAZ46Pl5fGotdN6volUbl3Yaop6sEpk/rs:fit/g:sm/q:90/h:402/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNTQ5/ODc3LTE1MTgzMjY5/NjctNzgzMC5qcGVn.jpeg",
+        },
+        {
+          userId: 1,
+          albumId: 45,
+          title: "Worst in Me",
+          description: "Dance/Electronic",
+          url: "https://soundclouddata.s3.amazonaws.com/Unlike+Pluto+-+Worst+In+Me+%5BOfficial+Lyric+Video%5D.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/igQBHPvh1lc/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 46,
+          title: "The Day the World Went Away (Ramin Djawadi Remix)",
+          description: "Grunge Rock/Post-Hardcore",
+          url: "https://soundclouddata.s3.amazonaws.com/Westworld+S4+Official+Soundtrack+%7C+The+Day+the+World+Went+Away+(NIN+Cover)+-+Ramin+Djawadi.mp3",
+          imageUrl:
+            "https://i1.sndcdn.com/artworks-okjrAW6V7VCy-0-t500x500.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 47,
+          title: "Craving",
+          description: "Electronic Alternative Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/YMIR+-+Craving.mp3",
+          imageUrl:
+          "https://i.ytimg.com/vi/NAGj2FpW4ok/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 47,
+          title: "Tripwire",
+          description: "Electronic Alternative Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/YMIR+-+Tripwire.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/IScEQa2MJUk/maxresdefault.jpg",
+        },
+        {
+          userId: 1,
+          albumId: 48,
+          title: "Gou Ni Moyu",
+          description: "Japanese Post-Hardcore Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/%E3%81%9D%E3%81%93%E3%81%AB%E9%B3%B4%E3%82%8B+-+%E6%A5%AD%E3%81%AB%E7%87%83%E3%82%86%E3%80%90Official+Music+Video%E3%80%91Sokoninaru+-+Gou+Ni+Moyu.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/Nl4Z5f4QwEY/sddefault.jpg",
         },
       ],
 

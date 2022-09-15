@@ -118,7 +118,7 @@ module.exports = {
           albumId: 12,
           title: "Dynasties & Dystopia",
           description: "Alternative Indie Rap/Pop",
-          url: "https://soundclouddata.s3.amazonaws.com/Denzel+Curry%2C+Gizzle%2C+Bren+Joy+-+Dynasties+%26+Dystopia+%7C+Arcane+League+of+Legends+%7C+Riot+Games+Music.mp3",
+          url: "https://soundclouddata.s3.amazonaws.com/Dynasties+%26+Dystopia+Riot+Games+Music.mp3",
           imageUrl:
             "https://images.genius.com/1920168e7f50f7b1c96710cfa91d2c7d.1000x1000x1.jpg",
         },

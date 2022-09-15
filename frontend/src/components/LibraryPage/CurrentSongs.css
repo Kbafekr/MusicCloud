@@ -27,7 +27,7 @@
 .CreateSongButton:hover {
     cursor: pointer;
 }
-.AllSongArray {
+.CurrentSongsArray {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

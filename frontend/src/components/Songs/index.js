@@ -47,7 +47,7 @@ export default function ReturnAllSongs() {
   }
   if (!songs.Album && !songs.Artist) {
     return (
-      <div className="songs-container">
+      <div className="Homesongs-container">
         <div >
           <CreateSongModal className="createSongForm"/>
         </div>
@@ -55,16 +55,16 @@ export default function ReturnAllSongs() {
         {SongsArray &&
           SongsArray.map((song) => {
             return (
-              <div className="songCard" key={song.id}>
-                  <div className="songSongId">Song id: {song.id}</div>
-                  <img className="songImage" src={song.imageUrl}></img>
-                  <div className="songDescription">
+              <div className="songCardHome" key={song.id}>
+                  <div className="songSongIdHome">Song id: {song.id}</div>
+                  <img className="songImageHome" src={song.imageUrl}></img>
+                  <div className="songDescriptionHome">
                     Description: {song.description}
                   </div>
-                  <div className="SonguserId">User: {song.userId}</div>
-                  <div className="SongalbumId">Album: {song.albumId}</div>
+                  <div className="SonguserIdHome">User: {song.userId}</div>
+                  <div className="SongalbumIdHome">Album: {song.albumId}</div>
 
-                  <NavLink className="songLink" to={`/songs/${song.id}`}>
+                  <NavLink className="songLinkHome" to={`/songs/${song.id}`}>
                     {song.title}
                   </NavLink>
 

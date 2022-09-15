@@ -1,6 +1,6 @@
 
 
-.songs-container {
+.Homesongs-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,6 +26,15 @@
 .CreateSongButton:hover {
     cursor: pointer;
 }
+
+.AllSongArray {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 .currentSongsArray {
     display: flex;
     flex-direction: row;
@@ -34,9 +43,9 @@
     flex-grow: 1;
     column-gap: 1em;
 }
-.songCard {
+.songCardHome {
     background-color: rgb(214, 213, 213);
-    width: 100%;
+    width: 20em;
     background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
     box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
     margin: 2%;
@@ -50,7 +59,7 @@
     border: 1 px solid rgba(0, 0, 0, 0.669);
 }
 
-.songImage {
+.songImageHome {
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -61,10 +70,11 @@ margin-right: auto;
 z-index: 0;
     border-radius: 5px;
     width: 100%;
+    height: 20em;
 
 }
 
-.songLink:hover {
+.songLinkHome:hover {
     opacity: 1;
     transition-duration: 1s;
     transform: scale(1.02);
@@ -74,12 +84,12 @@ z-index: 0;
 
 
 
-.songLink {
+.songLinkHome {
     font-style: italic;
-    font-size: 48px;
+    font-size: 4vmin;
 }
 
-.songSongId, .songDescription, .SonguserId, .SongalbumId
+.songSongIdHome, .songDescriptionHome, .SonguserIdHome, .SongalbumIdHome
 {
- font-size: 1.5em;
+ font-size: 1.5vmin;
 }

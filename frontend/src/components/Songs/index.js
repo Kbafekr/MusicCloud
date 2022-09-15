@@ -36,11 +36,11 @@ export default function ReturnAllSongs() {
         <div className="headers">
           <h2>Looks like you're an unauthorized user</h2>
           <div className="demoContainerHome">
-      <h3 className="textforDemo">Sign in as a</h3>
-      <div className="DemoUserHomePage">
-        <LoginAsDemo id="DemoUserHomePage" />
-      </div>
-    </div>
+            <h3 className="textforDemo">Sign in as a</h3>
+            <div className="DemoUserHomePage">
+              <LoginAsDemo id="DemoUserHomePage" />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -48,36 +48,38 @@ export default function ReturnAllSongs() {
   if (!songs.Album && !songs.Artist) {
     return (
       <div className="Homesongs-container">
-        <div >
-          <CreateSongModal className="createSongForm"/>
+        <div>
+          <CreateSongModal className="createSongForm" />
         </div>
         <div className="AllSongArray">
-        {SongsArray &&
-          SongsArray.map((song) => {
-            return (
-              <div className="songCardHome" key={song.id}>
-                  <div className="songSongIdHome">Song id: {song.id}</div>
-                  <img className="songImageHome" src={song.imageUrl}></img>
-                  <div className="songDescriptionHome">
-                    Description: {song.description}
+          {SongsArray &&
+            SongsArray.map((song) => {
+              return (
+                <div className="songCardHome" key={song.id}>
+                  <div className="topHalfHomeSongsCard">
+                    <div className="songSongIdHome">Song id: {song.id}</div>
+                    <img className="songImageHome" src={song.imageUrl}></img>
+                    <div className="songDescriptionHome">
+                      Description: {song.description}
+                    </div>
+                    <div className="SonguserIdHome">User: {song.userId}</div>
+                    <div className="SongalbumIdHome">Album: {song.albumId}</div>
                   </div>
-                  <div className="SonguserIdHome">User: {song.userId}</div>
-                  <div className="SongalbumIdHome">Album: {song.albumId}</div>
-
-                  <NavLink className="songLinkHome" to={`/songs/${song.id}`}>
-                    {song.title}
-                  </NavLink>
-
-                  <AudioPlayer
-                    autoPlay={false}
-                    src={song.url}
-                    // muted={true}
-                    onPlay={(e) => console.log("onPlay")}
-                    />
+                  <div className="songLinkContainerHome">
+                    <NavLink className="songLinkHome" to={`/songs/${song.id}`}>
+                      {song.title}
+                    </NavLink>
+                  </div>
+                      <AudioPlayer
+                        autoPlay={false}
+                        src={song.url}
+                        // muted={true}
+                        onPlay={(e) => console.log("onPlay")}
+                      />
                 </div>
-            );
-          })}
-          </div>
+              );
+            })}
+        </div>
       </div>
     );
   }

@@ -3,6 +3,9 @@
 
 
 .NavBarContainer {
+  position: sticky;
+  top: 0px;
+  z-index: 3;
   display: flex;
   flex-flow: row nowrap;
   background-color: rgb(49, 49, 49);

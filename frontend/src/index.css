@@ -37,7 +37,10 @@ color: rgb(0, 0, 0, 0.3);
 footer > * {
   font-size: 14px;
 }
-
+.footerContainer {
+  display: flex;
+  flex-direction: column;
+}
 .footer {
   display: flex;
   flex-direction: row;

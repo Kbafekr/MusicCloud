@@ -12,11 +12,7 @@ import ReturnAllAlbums from "./components/Albums";
 import CurrentSongs from "./components/LibraryPage/CurrentSongs";
 import CurrentAlbums from "./components/LibraryPage/CurrentAlbums";
 import AlbumDetails from "./components/Albums/AlbumDetails/OneAlbum";
-//audio player to be retained by state
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
-//css to import for audio player
-import './App.css'
+import SongPlayer from "./components/AudioPlayer";
 
 function App() {
   const dispatch = useDispatch();
@@ -65,14 +61,7 @@ function App() {
           </Route>
         </Switch>
       )}
-      <div className="AudioPlayerState">
-        <AudioPlayer
-          autoPlay={false}
-          // src={song.url}
-          // muted={true}
-          onPlay={(e) => console.log("onPlay")}
-        />
-      </div>
+      <SongPlayer />
     </>
   );
 }

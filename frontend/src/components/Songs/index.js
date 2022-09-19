@@ -11,6 +11,8 @@ import CreateSongModal from "./CreateSongIndex";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 
+//play song action
+import { actionSongPlaying } from "../../store/audioPlayer";
 //get all songs, dispatch thunk action creator
 export default function ReturnAllSongs() {
   const dispatch = useDispatch();
@@ -70,12 +72,7 @@ export default function ReturnAllSongs() {
                       {song.title}
                     </NavLink>
                   </div>
-                      <AudioPlayer
-                        autoPlay={false}
-                        src={song.url}
-                        // muted={true}
-                        onPlay={(e) => console.log("onPlay")}
-                      />
+                     <button onClick={() => dispatch(actionSongPlaying(song))}>Play</button>
                 </div>
               );
             })}

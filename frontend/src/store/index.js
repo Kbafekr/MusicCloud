@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import sessionReducer from './session';
 import { songsReducer } from './songs';
 import { albumsReducer } from './albums';
+import { audioReducer } from './audioPlayer';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   song: songsReducer,
-  album: albumsReducer
+  album: albumsReducer,
+  songPlayer: audioReducer,
 });
 
 /* Initialize an enhancer variable that will be set to different store enhancers

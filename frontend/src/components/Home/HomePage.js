@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 import SignUpModal from "../SignUpModal";
 import LoginFormModal from "../LoginFormModal";
 import LoginAsDemo from "../LoginDemoUser";
+import { actionSongPlaying } from "../../store/audioPlayer";
 export function HomePage() {
   //get all songs
   const dispatch = useDispatch();
@@ -36,20 +37,18 @@ export function HomePage() {
   //     dispatch(getAllSongs());
   //   }, [dispatch]);
 
-
-    //randomNumber
-    // randomNumber = Math.floor(Math.random() * SongsArray.length);
+  //randomNumber
+  // randomNumber = Math.floor(Math.random() * SongsArray.length);
   //useEffect to setRandomNumber
   // useEffect(() => {
   //     setNumber(randomNumber);
   //   }, [dispatch, Number]);
 
-
-    // currently trending filter
+  // currently trending filter
   // filtered = SongsArray.filter((filteredSongs, index) => index === Number);
-    // console.log(filtered + 'filtered')
-    // console.log(randomNumber + 'randomNumber')
-    // console.log(Number + 'Number')
+  // console.log(filtered + 'filtered')
+  // console.log(randomNumber + 'randomNumber')
+  // console.log(Number + 'Number')
 
   // filtered by search
 
@@ -63,7 +62,7 @@ export function HomePage() {
             (previousBackgroundImageNumber) =>
               (previousBackgroundImageNumber + 1) % backgroundImages.length
           );
-        }, 5000);
+        }, 3000);
 
         return () => clearInterval(backgroundImageTransition);
       } else {
@@ -71,8 +70,7 @@ export function HomePage() {
       }
     }
     // if user is signed in
-  else
-  dispatch(getAllSongs());
+    else dispatch(getAllSongs());
     if (imageNumber < ImagesArray.length) {
       const ImageTransition = setInterval(() => {
         //check to see if previous number is greater than images array length, if not then
@@ -86,15 +84,14 @@ export function HomePage() {
     } else {
       setImageNumber(0);
     }
-
   }, [imageNumber, backgroundImageNumber, dispatch, Number]);
 
   randomNumber = Math.floor(Math.random() * SongsArray.length);
   useEffect(() => {
-    setNumber(randomNumber)
-  }, [Number])
-  filtered = SongsArray.filter((filteredSongs, index) => index === Number);
+    setNumber(randomNumber);
+  }, [Number]);
 
+  filtered = SongsArray.filter((filteredSongs, index) => index === Number);
 
   //   handlesubmit for search
 
@@ -106,7 +103,6 @@ export function HomePage() {
   titleFiltered = SongsArray.filter(
     (filteredSongs, index) => filteredSongs.title == searchTitle
   );
-
 
   // console.log(filtered + 'filtered')
   //   console.log(randomNumber + 'randomNumber')
@@ -132,7 +128,7 @@ export function HomePage() {
           {/* <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/> */}
         </div>
 
-          {/* search bar */}
+        {/* search bar */}
         <div className="headers">
           {/* SearchBar */}
           <h1>Search for songs by title</h1>
@@ -157,17 +153,27 @@ export function HomePage() {
               titleFiltered.map((song) => {
                 return (
                   <div className="TrendingsongCard" key={song.id}>
-                    <div>Song id: {song.id}</div>
-                    <img className="TrendingsongImage" src={song.imageUrl}></img>
+                    <div className="TrendingsongId">Song id: {song.id}</div>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
                     <div className="TrendingsongDescription">
                       Description: {song.description}
                     </div>
                     <div className="TrendinguserId">User: {song.userId}</div>
                     <div className="TrendingalbumId">Album: {song.albumId}</div>
 
-                    <NavLink className="TrendingsongLink" to={`/songs/${song.id}`}>
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/songs/${song.id}`}
+                    >
                       {song.title}
                     </NavLink>
+                    <br></br>
+                    <button onClick={() => dispatch(actionSongPlaying(song))}>
+                      Play
+                    </button>
                   </div>
                 );
               })}
@@ -182,16 +188,25 @@ export function HomePage() {
                 return (
                   <div className="TrendingsongCard" key={song.id}>
                     <div>Song id: {song.id}</div>
-                    <img className="TrendingsongImage" src={song.imageUrl}></img>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
                     <div className="TrendingsongDescription">
                       Description: {song.description}
                     </div>
                     <div className="TrendinguserId">User: {song.userId}</div>
                     <div className="TrendingalbumId">Album: {song.albumId}</div>
 
-                    <NavLink className="TrendingsongLink" to={`/songs/${song.id}`}>
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/songs/${song.id}`}
+                    >
                       {song.title}
                     </NavLink>
+                    <div>
+                      <button onClick={() => dispatch(actionSongPlaying(song))}>Play</button>
+                    </div>
                   </div>
                 );
               })}
@@ -202,7 +217,7 @@ export function HomePage() {
       </div>
     );
   }
-//   if user isnt signed in
+  //   if user isnt signed in
   else {
     return (
       <div className="homePage">

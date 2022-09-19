@@ -316,7 +316,8 @@ z-index: 0;
 /* songs */
 
 .Trendingsong-container {
-    width: 100%;
+    width: 20em;
+    height: 30em;
     background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
     box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
 }
@@ -330,10 +331,17 @@ width: 100%;
 }
 
 .TrendingsongLink {
- font-size: 2em;
+ font-size: 1.2em;
 }
 
+.TrendinguserId, .TrendingalbumId, .TrendingsongDescription, .TrendingsongId {
+    font-size: 1em;
+}
 
+.TrendingPlayContainer {
+    display: flex;
+    flex-direction: column;
+}
 /* searchbar */
 
 .searchbar {
@@ -348,7 +356,8 @@ width: 100%;
 /* search bar result */
 
 .SearchResult-container {
-    width: 100%;
+    width: 20em;
+    height: 30em;
     background-image: linear-gradient(to bottom left, #fc6500, #6cd9d0);
     box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
     margin-bottom: 2em;

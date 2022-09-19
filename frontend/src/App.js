@@ -12,9 +12,15 @@ import ReturnAllAlbums from "./components/Albums";
 import CurrentSongs from "./components/LibraryPage/CurrentSongs";
 import CurrentAlbums from "./components/LibraryPage/CurrentAlbums";
 import AlbumDetails from "./components/Albums/AlbumDetails/OneAlbum";
+//audio player to be retained by state
+import AudioPlayer from "react-h5-audio-player";
+import "react-h5-audio-player/lib/styles.css";
+//css to import for audio player
+import './App.css'
 
 function App() {
   const dispatch = useDispatch();
+  const [currentPlayingSong, setCurrentPlayingSong] = useState("")
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -25,32 +31,32 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <HomePage />
           </Route>
 
-          <Route exact path='/library'>
+          <Route exact path="/library">
             <LibraryPage />
           </Route>
 
-          <Route exact path='/songs'>
+          <Route exact path="/songs">
             <ReturnAllSongs />
           </Route>
-          <Route exact path='/songs/current'>
+          <Route exact path="/songs/current">
             <CurrentSongs />
           </Route>
-          <Route exact path='/songs/:songId'>
+          <Route exact path="/songs/:songId">
             <SongDetails />
           </Route>
 
-          <Route exact path='/albums'>
+          <Route exact path="/albums">
             <ReturnAllAlbums />
           </Route>
 
-          <Route exact path='/albums/current'>
+          <Route exact path="/albums/current">
             <CurrentAlbums />
           </Route>
-          <Route exact path='/albums/:albumId'>
+          <Route exact path="/albums/:albumId">
             <AlbumDetails />
           </Route>
 
@@ -59,6 +65,14 @@ function App() {
           </Route>
         </Switch>
       )}
+      <div className="AudioPlayerState">
+        <AudioPlayer
+          autoPlay={false}
+          // src={song.url}
+          // muted={true}
+          onPlay={(e) => console.log("onPlay")}
+        />
+      </div>
     </>
   );
 }

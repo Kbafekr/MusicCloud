@@ -1,6 +1,7 @@
 /* top parent container */
 
 .NavBarContainer {
+  background-color: rgba(0, 0, 0, 0.325);
   z-index: 3;
   display: flex;
   position: relative;
@@ -13,7 +14,7 @@
   };
 
   #NavBar {
-    background-color: rgba(0, 0, 0, 0.408);
+    background-color: rgba(0, 0, 0, 0.344);
     position: relative;
   }
 

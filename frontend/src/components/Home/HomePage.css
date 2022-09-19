@@ -78,7 +78,7 @@ top: -4.5em;
 @media screen and (min-width: 1200px){
     .imagesArray {
         width: 100%;
-        height: 50em;
+        height: 20%;
     }
     .foregroundContainer {
         display: flex;
@@ -176,7 +176,7 @@ top: -4.5em;
 @media screen and (min-width: 1000px) and (max-width: 1200px){
     .imagesArray {
         width: 100%;
-        height: 40em;
+        height: 20%;
     }
     .foregroundContainer {
         display: flex;
@@ -213,7 +213,7 @@ top: -4.5em;
     {
         .imagesArray {
             width: 100%;
-            height: 30em;
+            height: 20%;
         }
         .foregroundContainer {
             display: flex;
@@ -250,7 +250,8 @@ top: -4.5em;
     {
         .imagesArray {
             width: 100%;
-            height: 20em;
+            height: 20%;
+
         }
         .foregroundContainer {
             display: flex;

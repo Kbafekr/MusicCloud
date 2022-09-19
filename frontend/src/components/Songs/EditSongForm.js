@@ -11,7 +11,6 @@ function EditSong({setShowModal}) {
   const user = useSelector(state => state.session.user)
   const song = useSelector(state => state.song)
   const [id, setId] = useState(song.id)
-  const [albumId, setAlbumId] = useState(song.albumId)
   const [title, setTitle] = useState(song.title)
   const [description, setDescription] = useState(song.description);
   const [url, setUrl] = useState(song.url);
@@ -30,7 +29,7 @@ function EditSong({setShowModal}) {
     if(id){
       setShowModal(false)
 
-      return dispatch(EditASong({id, albumId, title, description, url, imageUrl}))
+      return dispatch(EditASong({id, title, description, url, imageUrl}))
         .catch(async (res) => {
           const data = await res.json();
           if (data && data.errors) setErrors(data.errors);
@@ -49,17 +48,6 @@ function EditSong({setShowModal}) {
         {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>
       <h1>Edit song</h1>
-      <label>
-        <input
-        className="albumIdInputEditSong"
-        autoComplete="off"
-          placeholder={albumId || "AlbumId (must belong to user)..."}
-          type="number"
-          value={albumId}
-          onChange={(e) => setAlbumId(e.target.value)}
-          required
-          />
-      </label>
       <label>
         <input
         className="titleInputEditSong"

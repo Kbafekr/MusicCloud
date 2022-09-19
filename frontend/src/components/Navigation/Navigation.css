@@ -1,14 +1,10 @@
 /* top parent container */
 
-
-
 .NavBarContainer {
-  position: sticky;
-  top: 0px;
   z-index: 3;
   display: flex;
+  position: relative;
   flex-flow: row nowrap;
-  background-color: rgb(49, 49, 49);
     font-size: large;
     font-weight: bold;
     align-items: center;
@@ -16,13 +12,17 @@
     width: 100%;
   };
 
-  #showNavBar {
-    background-color: rgba(44, 44, 44, 0.444);
-  }
-
   #NavBar {
     background-color: rgba(0, 0, 0, 0.408);
+    position: relative;
   }
+
+  #signedInNavigation {
+    background-color: rgb(44, 44, 44);
+    position: sticky;
+    top: 0px;
+  }
+
 
 
 

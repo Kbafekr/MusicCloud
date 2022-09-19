@@ -27,10 +27,18 @@ function Navigation({ isLoaded }) {
     memberLinks = (
       <>
         <div className="memberLinks">
-          <div className='HomeNavButton'><HomeButton user={sessionUser} /></div>
-          <div className='NavButtons'><LibraryButton user={sessionUser} /></div>
-          <div className='NavButtons'><SongButton user={sessionUser} /></div>
-          <div className='AlbumNavButton'><AlbumButton user={sessionUser} /></div>
+          <div className="HomeNavButton">
+            <HomeButton user={sessionUser} />
+          </div>
+          <div className="NavButtons">
+            <LibraryButton user={sessionUser} />
+          </div>
+          <div className="NavButtons">
+            <SongButton user={sessionUser} />
+          </div>
+          <div className="AlbumNavButton">
+            <AlbumButton user={sessionUser} />
+          </div>
         </div>
       </>
     );
@@ -58,7 +66,7 @@ function Navigation({ isLoaded }) {
   return (
     <div
       className="NavBarContainer"
-      id={signedIn === true ? "showNavBar" : "NavBar"}
+      id={signedIn ? "signedInNavigation" : "NavBar"}
     >
       <div className="LogoSide">
         <NavLink className="LogoNav" exact to="/">

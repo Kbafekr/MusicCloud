@@ -221,7 +221,7 @@ export function HomePage() {
   else {
     return (
       <div className="homePage">
-        <div className="CarouselImages">
+        <div className="CarouselImages" id="SignedOutCarousel">
           {backgroundImages.map((backgroundImage, index) => {
             return (
               <div

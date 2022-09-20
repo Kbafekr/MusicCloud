@@ -164,7 +164,7 @@ background-color: white;
 .demoContainerHome {
     display: flex;
     flex-direction: row;
-    column-gap: 0.2em;
+    column-gap: 0.6em;
     align-items: center;
 }
 
@@ -173,8 +173,9 @@ background-color: white;
     display: flex;
     align-items: center;
     padding-bottom: 0.1em;
-    height: 2em;
-    border-radius: 5%;
+    height: 1.5em;
+    width: fit-content;
+    border-radius: 7%;
 }
 .DemoHeader {
     font-size: 2.em;

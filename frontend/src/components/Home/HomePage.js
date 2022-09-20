@@ -12,7 +12,7 @@ import LoginFormModal from "../LoginFormModal";
 import LoginAsDemo from "../LoginDemoUser";
 import { actionSongPlaying } from "../../store/audioPlayer";
 
-import PlayButtonImage from '../../images/PlayButton.png'
+import PlayButtonImage from "../../images/PlayButton.png";
 
 export function HomePage() {
   //get all songs
@@ -106,12 +106,53 @@ export function HomePage() {
   };
 
   titleFiltered = SongsArray.filter(
-    (filteredSongs, index) => filteredSongs.title.toLowerCase() == searchTitle.toLowerCase()
+    (filteredSongs, index) =>
+      filteredSongs.title.toLowerCase() == searchTitle.toLowerCase()
   );
 
   // console.log(filtered + 'filtered')
   //   console.log(randomNumber + 'randomNumber')
   //   console.log(Number + 'Number')
+
+  // conditional function to return certain text on background images
+  function backgroundImageText() {
+    if ((backgroundImageNumber + 1) % backgroundImages.length == 1)
+      return (
+        <>
+          <h1 className="BackgroundHeader">
+            Discover with MusicCloud!
+          </h1>
+          <h2 className="BackgroundHeaderTwo">
+            Save tracks, follow artists and build playlists
+          </h2>
+          <h1 className="BackgroundHeader">All for free</h1>
+          <h2 className="BackgroundHeaderTwo">Sign up and connect</h2>
+          <div className="CreateAccountButtonHomePage">
+            <SignUpModal className='SignUpButtonHomePage' />
+          </div>
+          <div className="SignInHomePage">
+              <h4 className="backgroundImageText">already have an account?</h4>
+              <div className="signinbutton">
+                <LoginFormModal />
+              </div>
+            </div>
+        </>
+      );
+    else return (
+      <>
+      <h1 className="BackgroundHeader">
+      What's next in music is first on MusicCloud
+          </h1>
+          <p className="BackgroundText">Upload your first track and begin your journey. SoundCloud gives you space to create and connect with other artists.</p>
+          <h2 className="BackgroundHeader">Sign up and connect</h2>
+          <div className="CreateAccountButtonHomePage">
+            <SignUpModal />
+          </div>
+      </>
+    )
+  }
+
+
 
   if (UserSignedIn) {
     return (
@@ -161,7 +202,11 @@ export function HomePage() {
                 return (
                   <div className="TrendingsongCard" key={song.id}>
                     <div className="PlayButtonContainer">
-                      <img className='PlayMe' src={PlayButtonImage} onClick={() => dispatch(actionSongPlaying(song))} />
+                      <img
+                        className="PlayMe"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
                     </div>
                     <div className="TrendingsongId">Song id: {song.id}</div>
                     <img
@@ -194,7 +239,11 @@ export function HomePage() {
                 return (
                   <div className="TrendingsongCard" key={song.id}>
                     <div className="PlayButtonContainer">
-                      <img className='PlayMe' src={PlayButtonImage} onClick={() => dispatch(actionSongPlaying(song))} />
+                      <img
+                        className="PlayMe"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
                     </div>
                     <div>Song id: {song.id}</div>
                     <img
@@ -213,7 +262,7 @@ export function HomePage() {
                     >
                       {song.title}
                     </NavLink>
-                    </div>
+                  </div>
                 );
               })}
           </div>
@@ -248,24 +297,28 @@ export function HomePage() {
               </div>
             );
           })}
+          {}
           <div className="foregroundContainer">
-            <h1 className="BackgroundHeader">
-              Save tracks, follow artists and build playlists
-            </h1>
-            <h1 className="BackgroundHeader">All for free</h1>
-            <h2 className="BackgroundHeader">Sign up and connect</h2>
-            <div className="CreateAccountButtonHomePage">
-              <SignUpModal />
-            </div>
-            <div className="SignInHomePage">
-              <h4 className="backgroundImageText">already have an account?</h4>
-              <div className="signinbutton">
-                <LoginFormModal />
-              </div>
-            </div>
+            <div>{backgroundImageText()}</div>
             <div className="NotSignedInButtonsContainer">
-              <div onClick={() => setBackgroundImageNumber(0)} id={((backgroundImageNumber + 1) % backgroundImages.length == 1) ? 'HighlightButtonBackground' : ''}className="NotSignedInButtonOne"></div>
-              <div onClick={() => setBackgroundImageNumber(1)} id={((backgroundImageNumber + 1) % backgroundImages.length == 0) ? 'HighlightButtonBackground' : ''}className="NotSignedInButtonTwo"></div>
+              <div
+                onClick={() => setBackgroundImageNumber(0)}
+                id={
+                  (backgroundImageNumber + 1) % backgroundImages.length == 1
+                    ? "HighlightButtonBackground"
+                    : ""
+                }
+                className="NotSignedInButtonOne"
+              ></div>
+              <div
+                onClick={() => setBackgroundImageNumber(1)}
+                id={
+                  (backgroundImageNumber + 1) % backgroundImages.length == 0
+                    ? "HighlightButtonBackground"
+                    : ""
+                }
+                className="NotSignedInButtonTwo"
+              ></div>
             </div>
           </div>
           {/* <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/> */}
@@ -279,7 +332,7 @@ export function HomePage() {
             </div>
           </div>
         </div>
-        </div>
+      </div>
     );
   }
 }

@@ -35,7 +35,8 @@ export function HomePage() {
   const [imageNumber, setImageNumber] = useState(0);
   const [backgroundImageNumber, setBackgroundImageNumber] = useState(0);
   //set state for random trending song
-  const [Number, setNumber] = useState(0);
+  const [Number, setNumber] = useState(4);
+  // console.log(Number + ' this is the first number mount')
   //set search bar state
   const [searchTitle, setSearchTitle] = useState("");
 
@@ -59,11 +60,24 @@ export function HomePage() {
 
   // filtered by search
 
+//useEffect for getting DemoSongs
+useEffect(() => {
+  if (!UserSignedIn) {
+    //get all songs
+    dispatch(getAllDemoSongs())
+  } }, [dispatch])
+//useEffect for getting Songs signed in
+useEffect(() => {
+  if (UserSignedIn) {
+    //get all songs
+    dispatch(getAllSongs())
+  } }, [dispatch])
+
+
   // useEffects for if user isn't signed in set carousel image
   useEffect(() => {
     if (!UserSignedIn) {
       //get all songs
-      dispatch(getAllDemoSongs())
 
       if (backgroundImageNumber < backgroundImages.length) {
         const backgroundImageTransition = setInterval(() => {
@@ -80,7 +94,7 @@ export function HomePage() {
       }
     }
     // if user is signed in
-    else dispatch(getAllSongs());
+    else {
     if (imageNumber < ImagesArray.length) {
       const ImageTransition = setInterval(() => {
         //check to see if previous number is greater than images array length, if not then
@@ -93,13 +107,22 @@ export function HomePage() {
       return () => clearInterval(ImageTransition);
     } else {
       setImageNumber(0);
-    }
-  }, [imageNumber, backgroundImageNumber, dispatch, Number]);
+    }}
+  }, [imageNumber, backgroundImageNumber]);
 
-  randomNumber = Math.floor(Math.random() * SongsArray.length);
+  //conditional to set trending song
+if (SongsArray.length > 0) {
+  randomNumber = Math.floor(Math.random() *  SongsArray.length);
+}
+else {
+  randomNumber = Math.floor(Math.random() *  50)
+}
+  // console.log(randomNumber + 'this is Random')
   useEffect(() => {
     setNumber(randomNumber);
+    // console.log(Number + ' number has updated')
   }, [Number]);
+
 
   filtered = SongsArray.filter((filteredSongs, index) => index === Number);
 

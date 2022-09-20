@@ -55,6 +55,8 @@ export function HomePage() {
   // useEffects for if user isn't signed in set carousel image
   useEffect(() => {
     if (!UserSignedIn) {
+      //get all songs
+
       if (backgroundImageNumber < backgroundImages.length) {
         const backgroundImageTransition = setInterval(() => {
           //check to see if previous number is greater than images array length, if not then
@@ -205,7 +207,9 @@ export function HomePage() {
                       {song.title}
                     </NavLink>
                     <div>
-                      <button onClick={() => dispatch(actionSongPlaying(song))}>Play</button>
+                      <button onClick={() => dispatch(actionSongPlaying(song))}>
+                        Play
+                      </button>
                     </div>
                   </div>
                 );
@@ -269,7 +273,7 @@ export function HomePage() {
             </div>
           </div>
         </div>
-      </div>
+        </div>
     );
   }
 }

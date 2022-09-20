@@ -11,6 +11,9 @@ import SignUpModal from "../SignUpModal";
 import LoginFormModal from "../LoginFormModal";
 import LoginAsDemo from "../LoginDemoUser";
 import { actionSongPlaying } from "../../store/audioPlayer";
+
+import PlayButtonImage from '../../images/PlayButton.png'
+
 export function HomePage() {
   //get all songs
   const dispatch = useDispatch();
@@ -144,6 +147,8 @@ export function HomePage() {
               onChange={handleSubmit}
             />
           </div>
+          {/* Or upload your own
+          <button>Upload</button> */}
 
           <div
             className={
@@ -189,6 +194,9 @@ export function HomePage() {
               filtered.map((song) => {
                 return (
                   <div className="TrendingsongCard" key={song.id}>
+                    <div className="PlayButtonContainer">
+                      <img className='PlayMe' src={PlayButtonImage} onClick={() => dispatch(actionSongPlaying(song))} />
+                    </div>
                     <div>Song id: {song.id}</div>
                     <img
                       className="TrendingsongImage"
@@ -206,12 +214,7 @@ export function HomePage() {
                     >
                       {song.title}
                     </NavLink>
-                    <div>
-                      <button onClick={() => dispatch(actionSongPlaying(song))}>
-                        Play
-                      </button>
                     </div>
-                  </div>
                 );
               })}
           </div>

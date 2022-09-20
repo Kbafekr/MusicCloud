@@ -355,12 +355,14 @@ top: -4.5em;
 .Trendingsong-container {
     width: 20em;
     height: 30em;
+    position: relative;
     background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
     box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
 }
 
 .TrendingsongCard {
-width: 100%
+width: 100%;
+position: relative;
 }
 
 .TrendingsongImage {
@@ -407,3 +409,43 @@ width: 100%;
 .textforDemo {
     padding-bottom: 0.2em;
 }
+
+
+.playButtonHoverSong {
+    height: 3em;
+    width: 4em;
+}
+
+/* display play button on hover */
+/* .Trendingsong-container:hover {
+
+} */
+.PlayButtonContainer {
+    display: none;
+}
+
+.Trendingsong-container:hover .PlayButtonContainer {
+    display: block;
+    position: absolute;
+    top: 2em;
+    left: 0em;
+    width: 50%;
+}
+.Trendingsong-container:hover .PlayMe:hover {
+    cursor: pointer;
+}
+.Trendingsong-container:hover .PlayMe:active {
+    cursor: pointer;
+    background-color: rgb(209, 147, 32);
+    border-radius: 50%;
+}
+
+
+.PlayMe {
+    position: absolute;
+    width: 100%;
+}
+
+/* .PlayMe {
+    display: none;
+} */

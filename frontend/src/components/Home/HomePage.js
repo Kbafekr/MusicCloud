@@ -152,7 +152,7 @@ export function HomePage() {
 
           <div
             className={
-              titleFiltered.length ? "SearchResult-container" : "HiddenResult"
+              titleFiltered.length ? "Trendingsong-container" : "HiddenResult"
             }
           >
             {/* search return map */}
@@ -160,6 +160,9 @@ export function HomePage() {
               titleFiltered.map((song) => {
                 return (
                   <div className="TrendingsongCard" key={song.id}>
+                    <div className="PlayButtonContainer">
+                      <img className='PlayMe' src={PlayButtonImage} onClick={() => dispatch(actionSongPlaying(song))} />
+                    </div>
                     <div className="TrendingsongId">Song id: {song.id}</div>
                     <img
                       className="TrendingsongImage"
@@ -177,10 +180,6 @@ export function HomePage() {
                     >
                       {song.title}
                     </NavLink>
-                    <br></br>
-                    <button onClick={() => dispatch(actionSongPlaying(song))}>
-                      Play
-                    </button>
                   </div>
                 );
               })}

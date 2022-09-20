@@ -52,3 +52,8 @@
 .SignUpNavBar:hover {
   cursor: pointer;
 }
+
+.ErrorLi {
+  list-style: none;
+  color: red;
+}

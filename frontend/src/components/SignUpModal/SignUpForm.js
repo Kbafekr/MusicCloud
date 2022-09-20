@@ -32,7 +32,7 @@ function SignupForm() {
       {/* <button className='closeButton' onClick={handleSubmit}>Close</button> */}
     <form className="SignupForm-inner" onSubmit={handleSubmit} autoComplete='off'>
       <ul>
-        {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
+        {errors.map((error, idx) => (<li className='ErrorLi' key={idx}>{error}</li>))}
       </ul>
       <h1 className="labelHeader">Create an account</h1>
       <label className= 'label'>

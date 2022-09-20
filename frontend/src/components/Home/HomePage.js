@@ -103,7 +103,7 @@ export function HomePage() {
   };
 
   titleFiltered = SongsArray.filter(
-    (filteredSongs, index) => filteredSongs.title == searchTitle
+    (filteredSongs, index) => filteredSongs.title.toLowerCase() == searchTitle.toLowerCase()
   );
 
   // console.log(filtered + 'filtered')

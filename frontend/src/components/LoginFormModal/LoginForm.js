@@ -26,7 +26,7 @@ function LoginForm() {
     <form className='loginStyle-inner' onSubmit={handleSubmit}>
       <ul>
         {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
+            <li className='ErrorLi' key={idx}>{error}</li>
             ))}
       </ul>
       <h1 className="SignInModalHeader">Sign in</h1>

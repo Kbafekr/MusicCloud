@@ -10,7 +10,7 @@ import "../Navigation/Navigation.css";
 import CreateSongModal from "./CreateSongIndex";
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-
+import PlayButtonImage from "../../images/PlayButton.png";
 //play song action
 import { actionSongPlaying } from "../../store/audioPlayer";
 //get all songs, dispatch thunk action creator
@@ -50,7 +50,7 @@ export default function ReturnAllSongs() {
   if (!songs.Album && !songs.Artist) {
     return (
       <div className="Homesongs-container">
-        <div>
+        <div className="createSongsContainer">
           <CreateSongModal className="createSongForm" />
         </div>
         <div className="AllSongArray">
@@ -60,6 +60,7 @@ export default function ReturnAllSongs() {
                 <div className="songCardHome" key={song.id}>
                   <div className="topHalfHomeSongsCard">
                     <div className="songSongIdHome">Song id: {song.id}</div>
+
                     <img className="songImageHome" src={song.imageUrl}></img>
                     <div className="songDescriptionHome">
                       Description: {song.description}
@@ -72,7 +73,9 @@ export default function ReturnAllSongs() {
                       {song.title}
                     </NavLink>
                   </div>
-                     <button onClick={() => dispatch(actionSongPlaying(song))}>Play</button>
+                  <div className="PlayButtonContainer">
+                      <img className='PlayMe' src={PlayButtonImage} onClick={() => dispatch(actionSongPlaying(song))} />
+                    </div>
                 </div>
               );
             })}

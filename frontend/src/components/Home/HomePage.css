@@ -437,10 +437,9 @@ height: 12em;
 }
 .Trendingsong-container:hover .PlayMe:active {
     cursor: pointer;
-    background-color: rgb(209, 147, 32);
+    background-color: rgb(209, 115, 32);
     border-radius: 50%;
 }
-
 
 .PlayMe {
     position: absolute;

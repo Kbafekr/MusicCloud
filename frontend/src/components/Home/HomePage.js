@@ -263,6 +263,10 @@ export function HomePage() {
                 <LoginFormModal />
               </div>
             </div>
+            <div className="NotSignedInButtonsContainer">
+              <div onClick={() => setBackgroundImageNumber(0)} id={((backgroundImageNumber + 1) % backgroundImages.length == 1) ? 'HighlightButtonBackground' : ''}className="NotSignedInButtonOne"></div>
+              <div onClick={() => setBackgroundImageNumber(1)} id={((backgroundImageNumber + 1) % backgroundImages.length == 0) ? 'HighlightButtonBackground' : ''}className="NotSignedInButtonTwo"></div>
+            </div>
           </div>
           {/* <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/> */}
         </div>

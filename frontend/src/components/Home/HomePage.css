@@ -78,20 +78,21 @@ top: -4.5em;
 @media screen and (min-width: 1200px){
     .imagesArray {
         width: 100%;
-        height: 20%;
+        height: 30em;
     }
     .foregroundContainer {
         display: flex;
         flex-direction: column;
         align-items: center;
+        z-index: 3;
         position: absolute;
-        top: 15em;
+        top: 5em;
         width: 35%;
     }
 
     .BackgroundHeader {
         color: white;
-        font-size: 2em;
+        font-size: 2vmin;
     }
 
     .CreateAccountButtonHomePage {
@@ -107,7 +108,7 @@ top: -4.5em;
         width: auto;
     }
     .backgroundImageText {
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     .signinbutton{
@@ -119,6 +120,7 @@ top: -4.5em;
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: -5em;
     }
 
     .demoContainerHome {
@@ -171,6 +173,9 @@ top: -4.5em;
             height: 2em;
             border-radius: 5%;
         }
+        .backgroundImageText {
+            font-size: 0.8em;
+        }
     }
 
 @media screen and (min-width: 1000px) and (max-width: 1200px){
@@ -183,7 +188,7 @@ top: -4.5em;
         flex-direction: column;
         align-items: center;
         position: absolute;
-        top: 15em;
+        top: 3.5em;
         width: 35%;
     }
     .containerForDemoSection {
@@ -200,11 +205,18 @@ top: -4.5em;
     }
     .DemoUserHomePage {
         background-color: rgb(255, 111, 0);
-            display: flex;
-            align-items: center;
-            padding-bottom: 0.1em;
-            height: 2em;
-            border-radius: 5%;
+        display: flex;
+        align-items: center;
+        padding-bottom: 0.1em;
+        height: 2em;
+        border-radius: 5%;
+    }
+    .BackgroundHeader {
+        color: white;
+        font-size: 1.8vmin;
+    }
+    .backgroundImageText {
+        font-size: 1vmin;
     }
     }
 
@@ -220,7 +232,7 @@ top: -4.5em;
             flex-direction: column;
             align-items: center;
             position: absolute;
-            top: 8em;
+            top: 1em;
             width: 30%;
         }
         .containerForDemoSection {
@@ -243,6 +255,14 @@ top: -4.5em;
             height: 2em;
             border-radius: 5%;
         }
+        .BackgroundHeader {
+            color: white;
+            font-size: 1.8vmin;
+        }
+        .backgroundImageText {
+            font-size: 1vmin;
+        }
+
 
     }
 
@@ -258,7 +278,7 @@ top: -4.5em;
             flex-direction: column;
             align-items: center;
             position: absolute;
-            top: 7em;
+            top: 3em;
             width: 15em;
             height: 20em;
         }
@@ -268,7 +288,7 @@ top: -4.5em;
         }
         .CreateAccountButtonHomePage {
             width: 100%;
-            height: 3em;
+            height: 2em;
         }
         .SignInHomePage {
             display: flex;
@@ -284,6 +304,8 @@ top: -4.5em;
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 100%;
+            font-size: 2vmin;
         }
 
         .demoContainerHome {
@@ -303,6 +325,14 @@ top: -4.5em;
         }
         .DemoHeader {
             font-size: 1.1em;
+        }
+
+        .BackgroundHeader {
+            color: white;
+            font-size: 1vmin;
+        }
+        .backgroundImageText {
+            font-size: 0.8vmin;
         }
 
     }

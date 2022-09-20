@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { ImagesArray } from "../../images/Images";
 import { backgroundImages } from "../../images/Images";
 import { getAllSongs } from "../../store/songs";
+import { getAllDemoSongs } from "../../store/songs";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import SignUpModal from "../SignUpModal";
@@ -14,7 +15,10 @@ import { actionSongPlaying } from "../../store/audioPlayer";
 
 import PlayButtonImage from "../../images/PlayButton.png";
 
+//to get data for splash page without logging in
+
 export function HomePage() {
+
   //get all songs
   const dispatch = useDispatch();
   const UserSignedIn = useSelector((state) => state.session.user);
@@ -59,6 +63,7 @@ export function HomePage() {
   useEffect(() => {
     if (!UserSignedIn) {
       //get all songs
+      dispatch(getAllDemoSongs())
 
       if (backgroundImageNumber < backgroundImages.length) {
         const backgroundImageTransition = setInterval(() => {
@@ -331,6 +336,101 @@ export function HomePage() {
               <LoginAsDemo id="DemoUserHomePage" />
             </div>
           </div>
+        </div>
+        {/* search bar */}
+        <div className="headers">
+          {/* SearchBar */}
+          <h1>Search for songs by title</h1>
+          <div className="searchbarDiv">
+            <input
+              className="searchbar"
+              type="search"
+              value={searchTitle}
+              placeholder={"Enter Song Title..." || searchTitle}
+              //   onChange={(e) => setSearchTitle(e.target.value)}
+              onChange={handleSubmit}
+            />
+          </div>
+          {/* Or upload your own
+          <button>Upload</button> */}
+
+          <div
+            className={
+              titleFiltered.length ? "Trendingsong-container" : "HiddenResult"
+            }
+          >
+            {/* search return map */}
+            {titleFiltered &&
+              titleFiltered.map((song) => {
+                return (
+                  <div className="TrendingsongCard" key={song.id}>
+                    <div className="PlayButtonContainer">
+                      <img
+                        className="PlayMe"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
+                    </div>
+                    <div className="TrendingsongId">Song id: {song.id}</div>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
+                    <div className="TrendingsongDescription">
+                      Description: {song.description}
+                    </div>
+                    <div className="TrendinguserId">User: {song.userId}</div>
+                    <div className="TrendingalbumId">Album: {song.albumId}</div>
+
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/songs/${song.id}`}
+                    >
+                      {song.title}
+                    </NavLink>
+                  </div>
+                );
+              })}
+          </div>
+
+          {/* trending songs */}
+
+          <h1>This song is trending!</h1>
+          <div className="Trendingsong-container">
+            {filtered &&
+              filtered.map((song) => {
+                return (
+                  <div className="TrendingsongCard" key={song.id}>
+                    <div className="PlayButtonContainer">
+                      <img
+                        className="PlayMe"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
+                    </div>
+                    <div>Song id: {song.id}</div>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
+                    <div className="TrendingsongDescription">
+                      Description: {song.description}
+                    </div>
+                    <div className="TrendinguserId">User: {song.userId}</div>
+                    <div className="TrendingalbumId">Album: {song.albumId}</div>
+
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/songs/${song.id}`}
+                    >
+                      {song.title}
+                    </NavLink>
+                  </div>
+                );
+              })}
+          </div>
+
+          <h1>Thanks for listening!</h1>
         </div>
       </div>
     );

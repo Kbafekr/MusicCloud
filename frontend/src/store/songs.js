@@ -20,7 +20,7 @@ const TRENDING_SONG = 'songs/TrendingSong'
 //actions
 
 //get all songs action
-const actionGetSongs = (songs) => {
+export const actionGetSongs = (songs) => {
     return {
         type: GET_ALL_SONGS,
         songs
@@ -84,6 +84,15 @@ const actionDeleteASong = (songId) => {
 
 export const getAllSongs = () => async dispatch => {
     const response = await csrfFetch('/api/songs')
+    if (response.ok) {
+        const allSongs = await response.json()
+        await dispatch(actionGetSongs(allSongs))
+    }
+}
+//get all songs no validation
+
+export const getAllDemoSongs = () => async dispatch => {
+    const response = await fetch('/api/songs/Demo')
     if (response.ok) {
         const allSongs = await response.json()
         await dispatch(actionGetSongs(allSongs))

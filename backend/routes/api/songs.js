@@ -127,6 +127,54 @@ const SongValidation = [
       }
       res.json(response)
     })
+  //add query filters to get all songs
+
+  //get all songs
+    router.get('/Demo', QuerySearchValidation, async (req, res) => {
+
+      let {page, size, title, createdAt} = req.query
+      let where = {};
+
+      if (title) where.title = title
+
+      if (createdAt) where.createdAt = createdAt
+
+
+      page = parseInt(page)
+      size = parseInt(size)
+
+      if ((!page) || page > 10 ) page = 1
+      if ((!size) || size > 20 ) size = 100
+
+             let pagination = {}
+
+
+         pagination.limit = size
+         pagination.offset = size * (page - 1)
+
+
+      const allSongs = await Song.findAll({
+          where: { ...where },
+          ...pagination
+      })
+
+      if (!allSongs) {
+        const errors = {
+          'title': "Error retrieving songs",
+          'statusCode': 404,
+          'message': {}
+        }
+
+        errors.message = "Songs could not be found with requested parameters"
+        res.status(404).json(errors)
+      }
+      const response = {
+        "Songs": allSongs,
+        "page": page,
+        "size": size
+      }
+      res.json(response)
+    })
 
 
 

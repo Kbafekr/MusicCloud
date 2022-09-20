@@ -49,7 +49,7 @@
     border: 1 px solid rgba(0, 0, 0, 0.669);
 }
 
-.AllAlbumImage {
+.AllalbumImage {
 display: flex;
 flex-direction: column;
 justify-content: center;
@@ -74,7 +74,8 @@ z-index: 0;
 
 .AllalbumsLink {
     font-style: italic;
-    font-size: 48px;
+    font-size: 2em;
+    padding-bottom: 0.2em;
 }
 
 .AllalbumId, .AllalbumDescription, .AllalbumUserId

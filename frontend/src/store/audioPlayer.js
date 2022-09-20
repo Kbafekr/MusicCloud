@@ -40,15 +40,23 @@ export const audioReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case PLAYING_SONG: {
-            const newState = {};
-            newState[action.song.url] = action.song.url
+            const newState = {...action.song};
+            // newState[action.song.id] = action.song
             return newState
 
-            // const newState = {...state.songs};
+            // const newState = {};
+            // newState[action.song.albumId] = action.song.albumId
+            // newState[action.song.createdAt] = action.song.createdAt
+            // newState[action.song.description] = action.song.description
+            // newState[action.song.id] = action.song.id
+            // newState[action.song.imageUrl] = action.song.imageUrl
+            // newState[action.song.title] = action.song.title
+            // newState[action.song.url] = action.song.url
+            // newState[action.song.userId] = action.song.userId
+            // return newState
 
-            // action.songs.forEach(song => {
-            //     newState[song.id] = song
-            // })
+            // const newState = {...state};
+            // newState[action.song.id] = action.song
             // return newState
         }
         default:

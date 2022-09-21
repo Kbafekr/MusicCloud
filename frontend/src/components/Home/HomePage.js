@@ -148,10 +148,14 @@ export function HomePage() {
     setSearchTitle(e.target.value);
   };
 
+
+  if(SongsArray.length > 45) {
   titleFiltered = SongsArray.filter(
     (filteredSongs, index) =>
-      filteredSongs.title.toLowerCase().includes(searchTitle.toLowerCase())
+      filteredSongs.title.includes(searchTitle)
   );
+  }
+  else {titleFiltered = ''}
 
   // console.log(filtered + 'filtered')
   //   console.log(randomNumber + 'randomNumber')

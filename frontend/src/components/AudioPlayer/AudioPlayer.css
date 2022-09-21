@@ -9,22 +9,54 @@
    .currentSongThumbnail {
     z-index: 4;
     display: flex;
-    flex-direction: column;
-    width: 9%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 8em;
     height: 10em;
     position: fixed;
     bottom: 0;
     right: 0;
-    text-align: center
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
+    text-align: left;
+    overflow-y: scroll;
+    border:  1px solid black;
+    background-color: #f2f2f2;
+    box-sizing: border-box;
    }
-
-   .currentSongThumbnailImage {
-    width: 100%;
+   .ThumbnailContainerPlaying {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
+    width: 100%;
    }
 
+   .nowPlaying {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: fit-content;
+    width: 100%;
+    text-align: left;
+    font-size: 0.8em;
+    color: #999;
+   }
+   .currentSongThumbnailImage {
+    width: 8em;
+    height: 8em;
+   }
+.linkContainerModal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+}
    .CurrentSongThumbNailLinkHome{
-    background-color: rgb(231, 150, 88);
-    font-size: 2vmin;
+    display: flex;
+    flex-direction: row;
+    font-size: 1em;
     color: rgb(59, 59, 59);
+    overflow-y: scroll;
+    flex-wrap: nowrap;
    }

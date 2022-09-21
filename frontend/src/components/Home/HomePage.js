@@ -135,6 +135,16 @@ export function HomePage() {
     randomNumber2 = Math.floor(Math.random() * 50);
     randomNumber3 = Math.floor(Math.random() * 50);
   }
+
+  if (randomNumber == randomNumber2) {
+    randomNumber = Math.floor(Math.random() * 50);
+  }
+  if (randomNumber == randomNumber3) {
+    randomNumber = Math.floor(Math.random() * 50);
+  }
+  if (randomNumber2 == randomNumber3) {
+    randomNumber2 = Math.floor(Math.random() * 50);
+  }
   // console.log(randomNumber + 'this is Random')
   useEffect(() => {
     setNumber(randomNumber);

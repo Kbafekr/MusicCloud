@@ -13,11 +13,10 @@
 .CreateAlbumButton  {
     color: white;
     font-size: 2em;
-  height: 2.5em;
+  height: 2em;
   border-radius: 7%;
     background-color: rgb(255, 98, 0);
     border: 0.05em rgb(255, 111, 0) ;
-    margin-bottom: 1em;
 }
 
 

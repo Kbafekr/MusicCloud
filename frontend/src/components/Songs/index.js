@@ -300,7 +300,7 @@ export default function ReturnAllSongs() {
           {/* hiphop playlist */}
           <div className="searchBarContainer">
             <h1>Hip-Hop</h1>
-            <p className="subheaderHomePage">The latest and hottest J-Rock Songs</p>
+            <p className="subheaderHomePage">The latest and hottest Hip-Hop Songs</p>
             <div
               className={
                 hipHopSongsFilter.length ? "Filteredsong-container" : "HiddenResult"

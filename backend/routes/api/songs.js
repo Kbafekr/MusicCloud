@@ -107,6 +107,12 @@ const SongValidation = [
 
       const allSongs = await Song.findAll({
           where: { ...where },
+          include: [{ model: User, as: 'Artist',
+     attributes: ['id', 'username', 'imageUrl']
+      }, {model: Album,
+        attributes: ['id', 'title', 'imageUrl']}
+
+      ],
           ...pagination
       })
 
@@ -155,6 +161,12 @@ const SongValidation = [
 
       const allSongs = await Song.findAll({
           where: { ...where },
+          include: [{ model: User, as: 'Artist',
+     attributes: ['id', 'username', 'imageUrl']
+      }, {model: Album,
+        attributes: ['id', 'title', 'imageUrl']}
+
+      ],
           ...pagination
       })
 

@@ -24,14 +24,20 @@ export default function SongPlayer() {
   }, [currentSong]);
   return (
     <>
-
-     <div className={currentSong.url ? "currentSongThumbnail" : "NoThumbnail"}>
-          <NavLink className="CurrentSongThumbNailLinkHome" to={`/songs/${currentSong.id}`}>
-            {currentSong.title}
-          </NavLink>
-
-          <img className="currentSongThumbnailImage" src={currentSong.imageUrl}></img>
-        </div>
+      <div className={currentSong.url ? "currentSongThumbnail" : "NoThumbnail"}>
+        <div className="ThumbnailContainerPlaying">
+        <div className="nowPlaying">Now Playing...</div>
+        <img className="currentSongThumbnailImage" src={currentSong.imageUrl} />
+        <div className="linkContainerModal">
+        <NavLink
+          className="CurrentSongThumbNailLinkHome"
+          to={`/songs/${currentSong.id}`}
+          >
+          {currentSong.title}
+        </NavLink>
+          </div>
+            </div>
+      </div>
       <div className="AudioPlayerState">
         <AudioPlayer
           autoPlay={false}

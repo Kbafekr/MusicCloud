@@ -23,6 +23,8 @@ export function HomePage() {
   const UserSignedIn = useSelector((state) => state.session.user);
   const songs = useSelector((state) => state.song);
   const SongsArray = Object.values(songs);
+//create copy of songsarray to mutate for sort
+  const SongsArrayCopy = [...SongsArray]
   //filter through songs to randomly select whats trending
   let randomNumber;
   let randomNumber2;
@@ -33,6 +35,10 @@ export function HomePage() {
   let filtered3;
 
   let titleFiltered;
+
+  let sortedByNewest;
+
+  let workoutSongsFilter;
 
   //prevents counter from updating after every single render
 
@@ -129,6 +135,16 @@ export function HomePage() {
     randomNumber2 = Math.floor(Math.random() * 50);
     randomNumber3 = Math.floor(Math.random() * 50);
   }
+
+  if (randomNumber == randomNumber2) {
+    randomNumber = Math.floor(Math.random() * 50);
+  }
+  if (randomNumber == randomNumber3) {
+    randomNumber = Math.floor(Math.random() * 50);
+  }
+  if (randomNumber2 == randomNumber3) {
+    randomNumber2 = Math.floor(Math.random() * 50);
+  }
   // console.log(randomNumber + 'this is Random')
   useEffect(() => {
     setNumber(randomNumber);
@@ -161,6 +177,28 @@ export function HomePage() {
   //   console.log(randomNumber + 'randomNumber')
   //   console.log(Number + 'Number')
 
+
+//sort through songs array and
+sortedByNewest = SongsArrayCopy.sort((a, b) => b.id - a.id)
+
+
+//filter for workout songs
+
+// workoutSongsFilter = SongsArray.filter((filteredSongs, index) => index == 28 || index == 11 || index == 3 || index == 2 || index == 4 || index == 1 || index == 12 || index == 19 ||
+// index == 22 || index == 30 || index == 31 || index == 32 || index == 33 || index == 34 || index == 35 || index == 36 || index == 37 || index == 38 || index == 39 || index == 43 ||
+// index == 44 || index == 46 || index == 47 || index == 48 || index == 49)
+// let workoutArraySongs = [1, 2, 10, 11, 17, 18, 21, 27, 30, 31, 33, 34, 35, 36, 37, 38, 45, 46, 47, 47]
+
+
+workoutSongsFilter = SongsArray.filter((filteredSongs, index) => index == 1 || index == 2 || index == 10 || index == 11 || index == 17 || index == 18 ||
+index == 21 || index == 27 || index == 30 || index == 31 || index == 33 || index == 34 || index == 35 || index == 36 || index == 37 || index == 38 ||
+index == 45 || index == 46 || index == 47 || index == 48 )
+let hipHopSongsFilter = SongsArray.filter((filteredSongs, index) => index == 0 || index == 1 || index == 2 || index == 11 || index == 26 || index == 34 )
+//filter for j-rock songs
+let jRockSongsfilter = SongsArray.filter((filteredSongs, index) => index == 21 || index == 27 || index == 5 || index == 43 || index == 49)
+//filter for j-rock songs
+let remixSongsFilter = SongsArray.filter((filteredSongs, index) => index == 15 || index == 17 || index == 22 || index == 30 || index == 31 || index == 35 ||
+index == 37 || index == 46 || index == 12)
   // conditional function to return certain text on background images
   function backgroundImageText() {
     if ((backgroundImageNumber + 1) % backgroundImages.length == 1)
@@ -367,11 +405,202 @@ export function HomePage() {
             </div>
           </div>
 
+
+           {/* newest 50 songs */}
+          <div className="searchBarContainer">
+            <h1>Charts: New & hot</h1>
+            <p className="subheaderHomePage">Up-and-coming tracks on MusicCloud</p>
+            <div
+              className={
+                sortedByNewest.length ? "Filteredsong-container" : "HiddenResult"
+              } >
+              {/* search return map */}
+              <div className="FilteredSongsContainer">
+              {sortedByNewest &&
+                sortedByNewest.map((song) => {
+                  return (
+                    <div className="TrendingsongCard" key={song.id}>
+                       <div className="PlayButtonContainer">
+                        <img
+                          className="PlayMe"
+                          src={PlayButtonImage}
+                          onClick={() => dispatch(actionSongPlaying(song))}
+                        />
+                      </div>
+                      <img
+                        className="TrendingsongImage"
+                        src={song.imageUrl}
+                      ></img>
+                      <NavLink
+                        className="TrendingsongLink"
+                        to={`/songs/${song.id}`}
+                      >
+                        {song.title}
+                      </NavLink>
+                    </div>
+                  );
+                })}
+            </div>
+            </div>
+          </div>
+
+           {/* workout playlist */}
+          <div className="searchBarContainer">
+            <h1>Workout</h1>
+            <p className="subheaderHomePage">Songs for your exercise routine</p>
+            <div
+              className={
+                workoutSongsFilter.length ? "Filteredsong-container" : "HiddenResult"
+              } >
+              {/* search return map */}
+              <div className="FilteredSongsContainer">
+              {workoutSongsFilter &&
+                workoutSongsFilter.map((song) => {
+                  return (
+                    <div className="TrendingsongCard" key={song.id}>
+                       <div className="PlayButtonContainer">
+                        <img
+                          className="PlayMe"
+                          src={PlayButtonImage}
+                          onClick={() => dispatch(actionSongPlaying(song))}
+                        />
+                      </div>
+                      <img
+                        className="TrendingsongImage"
+                        src={song.imageUrl}
+                      ></img>
+                      <NavLink
+                        className="TrendingsongLink"
+                        to={`/songs/${song.id}`}
+                      >
+                        {song.title}
+                      </NavLink>
+                    </div>
+                  );
+                })}
+            </div>
+            </div>
+          </div>
+           {/* Remix playlist */}
+          <div className="searchBarContainer">
+            <h1>Remixed Songs</h1>
+            <p className="subheaderHomePage">Twists on Classic Songs</p>
+            <div
+              className={
+                remixSongsFilter.length ? "Filteredsong-container" : "HiddenResult"
+              } >
+              {/* search return map */}
+              <div className="FilteredSongsContainer">
+              {remixSongsFilter &&
+                remixSongsFilter.map((song) => {
+                  return (
+                    <div className="TrendingsongCard" key={song.id}>
+                       <div className="PlayButtonContainer">
+                        <img
+                          className="PlayMe"
+                          src={PlayButtonImage}
+                          onClick={() => dispatch(actionSongPlaying(song))}
+                        />
+                      </div>
+                      <img
+                        className="TrendingsongImage"
+                        src={song.imageUrl}
+                      ></img>
+                      <NavLink
+                        className="TrendingsongLink"
+                        to={`/songs/${song.id}`}
+                      >
+                        {song.title}
+                      </NavLink>
+                    </div>
+                  );
+                })}
+            </div>
+            </div>
+          </div>
+           {/* k-Rock playlist */}
+          <div className="searchBarContainer">
+            <h1>J-Rock</h1>
+            <p className="subheaderHomePage">The latest and hottest J-Rock Songs</p>
+            <div
+              className={
+                jRockSongsfilter.length ? "Filteredsong-container" : "HiddenResult"
+              } >
+              {/* search return map */}
+              <div className="FilteredSongsContainer">
+              {jRockSongsfilter &&
+                jRockSongsfilter.map((song) => {
+                  return (
+                    <div className="TrendingsongCard" key={song.id}>
+                       <div className="PlayButtonContainer">
+                        <img
+                          className="PlayMe"
+                          src={PlayButtonImage}
+                          onClick={() => dispatch(actionSongPlaying(song))}
+                        />
+                      </div>
+                      <img
+                        className="TrendingsongImage"
+                        src={song.imageUrl}
+                      ></img>
+                      <NavLink
+                        className="TrendingsongLink"
+                        to={`/songs/${song.id}`}
+                      >
+                        {song.title}
+                      </NavLink>
+                    </div>
+                  );
+                })}
+            </div>
+            </div>
+          </div>
+          {/* hiphop playlist */}
+          <div className="searchBarContainer">
+            <h1>Hip-Hop</h1>
+            <p className="subheaderHomePage">The latest and hottest J-Rock Songs</p>
+            <div
+              className={
+                hipHopSongsFilter.length ? "Filteredsong-container" : "HiddenResult"
+              } >
+              {/* search return map */}
+              <div className="FilteredSongsContainer">
+              {hipHopSongsFilter &&
+                hipHopSongsFilter.map((song) => {
+                  return (
+                    <div className="TrendingsongCard" key={song.id}>
+                       <div className="PlayButtonContainer">
+                        <img
+                          className="PlayMe"
+                          src={PlayButtonImage}
+                          onClick={() => dispatch(actionSongPlaying(song))}
+                        />
+                      </div>
+                      <img
+                        className="TrendingsongImage"
+                        src={song.imageUrl}
+                      ></img>
+                      <NavLink
+                        className="TrendingsongLink"
+                        to={`/songs/${song.id}`}
+                      >
+                        {song.title}
+                      </NavLink>
+                    </div>
+                  );
+                })}
+            </div>
+            </div>
+          </div>
+
           <h1>Thanks for listening!</h1>
         </div>
       </div>
     );
   }
+
+
+
 
   //   if user isn't signed in
   else {

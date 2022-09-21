@@ -159,7 +159,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: -5em;
+  margin-top: -4.5em;
+  width: 90%;
+  border-bottom: 0.1em solid #dbdada;
 }
 
 .demoContainerHome {
@@ -167,6 +169,7 @@
   flex-direction: row;
   column-gap: 0.6em;
   align-items: center;
+  margin-top: -1em;
 }
 
 .DemoUserHomePage {
@@ -179,7 +182,8 @@
   border-radius: 7%;
 }
 .DemoHeader {
-  font-size: 2em;
+  font-size: 24px;
+    font-weight: 100;
 }
 
 /* media screens */
@@ -474,6 +478,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     column-gap: 2em;
+    border-bottom: 0.1em solid #dbdada;
 }
 .Trendingsong-container {
     display: flex;
@@ -554,6 +559,7 @@
     overflow-x: scroll;
     overflow-y: hidden;
     flex-wrap: wrap;
+    border-bottom: 0.1em solid #dbdada;
   }
 .SearchResult-container {
   width: 20em;
@@ -636,3 +642,17 @@
 /* .PlayMe {
     display: none;
 } */
+
+
+
+/* Newest 50 songs */
+
+.subheaderHomePage {
+    margin-top: -0.5em;
+    font-weight: 100;
+    color: #999;
+}
+.homePage h1{
+    font-size: 24px;
+    font-weight: 100;
+}

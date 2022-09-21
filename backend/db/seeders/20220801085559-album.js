@@ -348,7 +348,7 @@ module.exports = {
           title: "Issen",
           description: "Album by Sokoninaru (2019)",
           imageUrl:
-            "https://i.scdn.co/image/ab67616d0000b273b3cb944cf56bacf99a3cdcd0",
+            "https://m.media-amazon.com/images/I/61gu9lxQKGL._SL1000_.jpg",
         },
 
       ],

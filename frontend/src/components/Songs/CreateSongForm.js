@@ -71,7 +71,7 @@ function CreateSong({setShowModal}) {
             {myAlbumsFilter &&
                 myAlbumsFilter.map((album) => {
                 return (
-                  <option value={album.id} key={album.id}>{album.name}</option>
+                  <option value={album.id} key={album.id}>{album.title}</option>
                 )})}
             </select>
       <label>Song Title</label>

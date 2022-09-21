@@ -243,7 +243,7 @@ index == 37 || index == 46 || index == 12)
     return (
       <div className="homePage">
         <h1>Welcome back {UserSignedIn.username}!</h1>
-        <div className="CarouselImages">
+        {/* <div className="CarouselImages">
           {ImagesArray.map((image, index) => {
             return (
               <div
@@ -255,9 +255,9 @@ index == 37 || index == 46 || index == 12)
                 )}
               </div>
             );
-          })}
+          })} */}
           {/* <img className='imagesArray' src={ImagesArray[imageNumber].image} alt='images'/> */}
-        </div>
+        {/* </div> */}
 
         {/* search bar */}
         <div className="headers">

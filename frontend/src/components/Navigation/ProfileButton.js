@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import { NavLink } from "react-router-dom";
 import "./ProfileButton.css";
@@ -7,6 +8,8 @@ import "./Navigation.css";
 import icon1 from '../../images/icons/icon1.png'
 import icon2 from '../../images/icons/icon2.png'
 function ProfileButton({ user }) {
+
+  const history = useHistory()
   // set image to local storage since it gets deleted off of render and doesn;t expire when exiting page
 
   // if (!localStorage.getItem('imageUrl')) {
@@ -44,6 +47,7 @@ function ProfileButton({ user }) {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push('/')
   };
   return (
     <>

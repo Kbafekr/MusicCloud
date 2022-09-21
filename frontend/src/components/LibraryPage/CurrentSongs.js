@@ -11,6 +11,10 @@ import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
 import { UserSongs } from "../../store/songs";
 
+import { actionSongPlaying } from "../../store/audioPlayer";
+
+import PlayButtonImage from "../../images/PlayButton.png";
+
 //get all songs owned by current User, dispatch thunk action creator
 export default function CurrentSongs() {
   const dispatch = useDispatch();
@@ -18,13 +22,15 @@ export default function CurrentSongs() {
 
   const songs = useSelector((state) => state.song);
   const SongsArray = Object.values(songs);
-
+  let SongsArrayCopy = [...SongsArray];
   // console.log('this is songsarray' + SongsArray)
   // console.log('this is songs' + Object.values(songs))
 
   useEffect(() => {
     dispatch(UserSongs());
   }, [dispatch]);
+
+  let sortedSongsByNewest = SongsArrayCopy.sort((a, b) => b.id - a.id);
 
   if (!user) {
     return (
@@ -48,38 +54,84 @@ export default function CurrentSongs() {
   }
   if (!songs.Album && !songs.Artist) {
     return (
-      <div className="songs-container">
-        <h1>My Songs</h1>
-        {/* <div className='createSongForm'>
-      </div> */}
-      <div className="currentSongsArray">
-
-        {SongsArray.map((song) => {
-           return (
-              <div className="songCard" key={song.id}>
-               <div className="songSongId">Song id: {song.id}</div>
-                <img className="songImage" src={song.imageUrl}></img>
-                <div className="songDescription">
-                    Description: {song.description}
+      <div className="headers">
+      <div className="TrendingSection">
+        <h1>These are all of your songs</h1>
+        <div
+          className={
+            SongsArray.length
+              ? "Filteredsong-container"
+              : "HiddenResult"
+          }
+        >
+          {/* search return map */}
+          <div className="FilteredSongsContainer">
+            {SongsArray &&
+              SongsArray.map((song) => {
+                return (
+                  <div className="TrendingsongCard" key={song.id}>
+                    <div className="PlayButtonContainer">
+                      <img
+                        className="PlayMe"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
+                    </div>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/songs/${song.id}`}
+                    >
+                      {song.title}
+                    </NavLink>
                   </div>
-                  <div className="SonguserId">User: {song.userId}</div>
-                <div className="SongalbumId">Album: {song.albumId}</div>
-
-                <NavLink className="songLink" to={`/songs/${song.id}`}>
-                  {song.title}
-                </NavLink>
-
-                <AudioPlayer
-                  autoPlay={false}
-                  muted={true}
-                  src={song.url}
-                  onPlay={(e) => console.log("onPlay")}
-                  />
-              </div>
-          );
-         })}
-         </div>
+                );
+              })}
+          </div>
+        </div>
+        <div className="TrendingSection">
+          <h1>These are your most recent songs</h1>
+          <div
+            className={
+              SongsArray.length
+                ? "Filteredsong-container"
+                : "HiddenResult"
+            }
+          >
+           {/* search return map */}
+          <div className="FilteredSongsContainer">
+            {sortedSongsByNewest &&
+              sortedSongsByNewest.map((song) => {
+                return (
+                  <div className="TrendingsongCard" key={song.id}>
+                    <div className="PlayButtonContainer">
+                      <img
+                        className="PlayMe"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
+                    </div>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/songs/${song.id}`}
+                    >
+                      {song.title}
+                    </NavLink>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+        </div>
       </div>
+    </div>
     );
   }
 }

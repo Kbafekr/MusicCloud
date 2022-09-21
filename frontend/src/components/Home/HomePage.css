@@ -619,16 +619,16 @@
   position: absolute;
 }
 
-.FilteredSongsContainer:hover .PlayButtonContainer {
+.TrendingsongCard:hover .PlayButtonContainer {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-.FilteredSongsContainer:hover .PlayMe:hover {
+.TrendingsongCard:hover .PlayMe:hover {
   cursor: pointer;
 }
-.FilteredSongsContainer:hover .PlayMe:active {
+.TrendingsongCard:hover .PlayMe:active {
   cursor: pointer;
   background-color: rgb(209, 115, 32);
   border-radius: 50%;

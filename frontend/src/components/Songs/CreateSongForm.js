@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateASong, songsReducer } from "../../store/songs";
 import { useHistory } from "react-router-dom";
 import './CreateSong.css'
 
+import { getAllAlbums } from '../../store/albums';
+
 function CreateSong({setShowModal}) {
   const history = useHistory()
   const dispatch = useDispatch();
   const user = useSelector(state => state.session.user)
+  const albums = useSelector(state => state.album)
+  const AlbumsArray = Object.values(albums)
 
   const [albumId, setAlbumId] = useState('')
   const [title, setTitle] = useState('')
@@ -18,7 +22,11 @@ function CreateSong({setShowModal}) {
 
   // const [isModalOpen, setModalOpen] = useState(false)
 
+  useEffect(() => {
+    dispatch(getAllAlbums())
+ }, [dispatch])
 
+ let myAlbumsFilter = AlbumsArray.filter((filteredAlbums, index) => filteredAlbums.userId == user.id)
 
   const handleSubmit = (e) => {
 
@@ -50,8 +58,8 @@ function CreateSong({setShowModal}) {
         {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
       </ul>
       <h1>Create a song</h1>
-      <label>
-        <input
+      <label>Select an Album...</label>
+        <select
         className="albumIdInputCreateSong"
         autoComplete="off"
           placeholder="AlbumId (must belong to user)..."
@@ -59,9 +67,14 @@ function CreateSong({setShowModal}) {
           value={albumId}
           onChange={(e) => setAlbumId(e.target.value)}
           required
-          />
-      </label>
-      <label>
+          >
+            {myAlbumsFilter &&
+                myAlbumsFilter.map((album) => {
+                return (
+                  <option value={album.id} key={album.id}>{album.name}</option>
+                )})}
+            </select>
+      <label>Song Title</label>
         <input
         className="titleInputCreateSong"
         placeholder="Title..."
@@ -71,8 +84,7 @@ function CreateSong({setShowModal}) {
           onChange={(e) => setTitle(e.target.value)}
           required
           />
-      </label>
-      <label>
+      <label>Song Description</label>
         <input
         className="descriptionCreateSong"
         placeholder="description..."
@@ -82,8 +94,7 @@ function CreateSong({setShowModal}) {
           onChange={(e) => setDescription(e.target.value)}
           required
           />
-      </label>
-      <label>
+      <label>Song mp3 Link</label>
         <input
         className="urlCreateSong"
           placeholder="Audio Url (required)..."
@@ -93,8 +104,7 @@ function CreateSong({setShowModal}) {
           onChange={(e) => setUrl(e.target.value)}
           required
           />
-      </label>
-      <label>
+      <label>Song Image Link</label>
         <input
         className="imageUrlCreateSong"
           placeholder="Song Image Url (optional)..."
@@ -102,7 +112,6 @@ function CreateSong({setShowModal}) {
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           />
-      </label>
       <div className="createSongButtons">
       <button className="submitCreateSong" type="submit">Submit new song</button>
       <button className='cancelCreateSong' onClick={() => setShowModal(false)}>Cancel</button>

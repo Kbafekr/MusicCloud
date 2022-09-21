@@ -124,7 +124,7 @@ z-index: 0;
 /* .Trendingsong-container:hover {
 
 } */
-.PlayButtonContainer {
+/* .PlayButtonContainer {
     display: none;
 }
 
@@ -142,9 +142,4 @@ z-index: 0;
     cursor: pointer;
     background-color: rgb(209, 115, 32);
     border-radius: 50%;
-}
-
-.PlayMe {
-    position: absolute;
-    width: 100%;
-}
+} */

@@ -89,7 +89,7 @@ module.exports = {
         {
           userId: 2,
           albumId: 9,
-          title: "Childhodd Memories",
+          title: "Childhood Memories",
           description: "Warm Alternative Game BGM",
           url: "https://soundclouddata.s3.amazonaws.com/Childhood+memories.mp3",
           imageUrl:

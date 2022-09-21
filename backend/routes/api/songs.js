@@ -130,7 +130,7 @@ const SongValidation = [
   //add query filters to get all songs
 
   //get all songs
-    router.get('/Demo', QuerySearchValidation, async (req, res) => {
+    router.get('/Demo', restoreUser, QuerySearchValidation, async (req, res) => {
 
       let {page, size, title, createdAt} = req.query
       let where = {};

@@ -1,485 +1,574 @@
 .OverallContainerAlbumDetails {
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .BackgroundAlbumDetailsSection {
-    width: 100%;
-    height: 380px;
-    background-image: linear-gradient(to bottom right, #fc6500, #505050);
-    position: relative;
+  width: 100%;
+  height: 380px;
+  background-image: linear-gradient(to bottom right, #fc6500, #505050);
+  position: relative;
 }
 
-
 .AlbumDetailsForegroundSection {
-position: absolute;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-box-sizing: border-box;
-padding: 30px 560px 20px 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30px 560px 20px 30px;
 }
 /* Album image */
 .AlbumArtwork {
-    position: absolute;
-    top: 20px;
-    width: 340px;
-    height: 340px;
-    right: 20px;
+  position: absolute;
+  top: 20px;
+  width: 340px;
+  height: 340px;
+  right: 20px;
 }
 
 /* Title section */
-.AlbumDetailsTitleSection{
-    display: flex;
-    align-items: flex-start;
+.AlbumDetailsTitleSection {
+  display: flex;
+  align-items: flex-start;
 }
 
 .SoundPlayButtonAlbumDetailsContainer {
-    display: flex;
-height: 60px;
-width: 60px;
-margin-right: 10px;
+  display: flex;
+  height: 60px;
+  width: 60px;
+  margin-right: 10px;
 }
 
 .PlayButtonAlbumDetails {
-border-radius: 50%;
-width: 100%;
-height: 100%;
-background-color: #f50;
-border-color: #f50;
-text-indent: -100000em
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  background-color: #f50;
+  border-color: #f50;
+  text-indent: -100000em;
 }
 
 .PlayButtonAlbumDetails:hover {
-    cursor: pointer;
-    background-color: rgb(255, 89, 0);
-    border-radius: 50%;
-
-  }
- .PlayButtonAlbumDetails:active {
-    cursor: pointer;
-    background-color: rgb(255, 89, 0);
-    border-radius: 50%;
-  }
-
+  cursor: pointer;
+  background-color: rgb(255, 89, 0);
+  border-radius: 50%;
+}
+.PlayButtonAlbumDetails:active {
+  cursor: pointer;
+  background-color: rgb(255, 89, 0);
+  border-radius: 50%;
+}
 
 .TitleSectionAlbumDetailsContainer {
-flex: 1;
-min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .TitleAlbumDetailsContainer {
-margin-bottom: 7px;
+  margin-bottom: 7px;
 }
 
 .HeaderAlbumDetailsTitle {
-    position: relative;
-    font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;;
-    color: white;
-    font-weight: 100;
-    font-size: 24px;
-    line-height: 37px;
-    padding: 4px 7px;
-    background-color: rgba(0,0,0,.8);
-    max-width: fit-content;
-    box-sizing: border-box;
-    top: -0.5em;
-
-
+  position: relative;
+  font-family: Lucida Grande, Lucida Sans Unicode, Lucida Sans, Garuda, Verdana,
+    Tahoma, sans-serif;
+  color: white;
+  font-weight: 100;
+  font-size: 24px;
+  line-height: 37px;
+  padding: 4px 7px;
+  background-color: rgba(0, 0, 0, 0.8);
+  max-width: fit-content;
+  box-sizing: border-box;
+  top: -0.5em;
 }
 /* .UsernameAlbumDetailsContainer {
 
 } */
 
 .UsernameAlbumDetailsTitle {
-    position: relative;
-    color: #ccc;
-    font-weight: 100;
-    padding: 2px 7px 3px;
-    font-size: 16px;
-    line-height: 1.2;
-    background-color: rgba(0,0,0,.8);
-    max-width: fit-content;
-    box-sizing: border-box;
-    top: -1.5em;
-
+  position: relative;
+  color: #ccc;
+  font-weight: 100;
+  padding: 2px 7px 3px;
+  font-size: 16px;
+  line-height: 1.2;
+  background-color: rgba(0, 0, 0, 0.8);
+  max-width: fit-content;
+  box-sizing: border-box;
+  top: -1.5em;
 }
-
-
 
 /* Info section */
 .InfoSectionAlbumDetails {
-    position: absolute;
-    top: 32px;
-    right: 392px;
-    text-align: right;
+  position: absolute;
+  top: 32px;
+  right: 392px;
+  text-align: right;
 }
 
 .InfoSectionAlbumCreatedTime {
-    color: #fff;
-    margin-bottom: 16px;
-    font-size: 16px;
-    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-weight: 100;
+  color: #fff;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
 }
 
 .relativeTime {
-    color: #fff;
-    font-size: 16px;
-    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-weight: 100;
+  color: #fff;
+  font-size: 16px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
 }
 
 .InfoSectionAlbumIdDetails {
-    position: relative;
-    width: fit-content;
-    left: 5.5em;
-    height: fit-content;
-    padding: 0 8px;
-    background: #999;
-    border: 1px solid #999;
-    color: #fff;
-    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-weight: 100;
-    line-height: 20px;
-    border-radius: 20px;
-    height: 24px;
-    font-size: 16px;
+  position: relative;
+  width: fit-content;
+  left: 5.5em;
+  height: fit-content;
+  padding: 0 8px;
+  background: #999;
+  border: 1px solid #999;
+  color: #fff;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
+  line-height: 20px;
+  border-radius: 20px;
+  height: 24px;
+  font-size: 16px;
 }
 
 /*waveform area */
-.WaveFormContainerAlbumDetails{
-    position: absolute;
-    bottom: -10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    left: 20px;
-    right: 380px;
+.WaveFormContainerAlbumDetails {
+  position: absolute;
+  bottom: -10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  left: 20px;
+  right: 380px;
 }
 
-.WaveFormSubContainer{
-    display: flex;
-height: 100px;
-width: 100%;
-margin-bottom: 30px;
+.WaveFormSubContainer {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  margin-bottom: 30px;
 }
 
 .WaveFormImg {
-    position: relative;
-    width: 100%;
-    height: 200px;
-    bottom: 100px;
+  position: relative;
+  width: 100%;
+  height: 200px;
+  bottom: 100px;
 }
-
-
 
 /* main section */
 
 .AboutAlbumDetailsSection {
-    position: relative;
-    height: 400px;
-    width: 95%;
-    left: 25px;
+  position: relative;
+  height: 1000px;
+  width: 95%;
+  left: 25px;
 }
 
 .AboutAlbumDetailsMainContainer {
-margin-right: 330px;
-padding-top: 20px;
+  margin-right: 330px;
+  padding-top: 20px;
 }
 
 .AboutAlbumDetailsMain {
-padding-right: 30px;
-border-right: 1px solid #f2f2f2
+  padding-right: 30px;
+  border-right: 1px solid #f2f2f2;
 }
 
 .AboutAlbumDetailsMainHeader {
-margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-.AboutAlbumDetailsMainHeaderContainer{
-border: 1px solid #fff;
-box-shadow: 0 1px 0 0 #f2f2f2;
-padding: 19px 0 4px;
-margin-bottom: 1px;
+.AboutAlbumDetailsMainHeaderContainer {
+  border: 1px solid #fff;
+  box-shadow: 0 1px 0 0 #f2f2f2;
+  padding: 19px 0 4px;
+  margin-bottom: 1px;
 }
 
 .AboutAlbumDetailsMainHeaderContainerFlexBox {
-    display: flex;
-    min-height: 33px;
-    flex-wrap: wrap;
-    align-items: center;
+  display: flex;
+  min-height: 33px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-
 .EditAlbumButtonContainerMain {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    position: relative;
-    left: 20px;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  left: 20px;
 }
 
 .DeleteAlbumButtonContainerMain {
-    display: flex;
-    flex: 1 0 auto;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: flex-end;
+  flex-wrap: wrap;
 }
 
 /* main content */
 
 .AboutAlbumDetailsMainContentContainer {
-    position: relative;
+  position: relative;
 }
 
 .AboutAlbumDetailsUserContainer {
-position: absolute;
-top: 0;
-left: 0;
-width: 120px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
 }
 
 .UserSubContainerAlbumDetails {
-    position: relative;
-    min-height: 50px;
-    left: 10px;
+  position: relative;
+  min-height: 50px;
+  left: 10px;
 }
 
 .UserContainerUserImageAlbumDetails {
-width: 120px;
-height: 120px;
+  width: 120px;
+  height: 120px;
 }
 
 .UserImageAlbumDetailsContainer {
-    position: relative;
+  position: relative;
 }
 
 .UserImageAlbumDetailsMainContainer {
-    position: relative;
-    text-align: center;
-    border-radius: 50%;
-    height: 100%;
-    width: 100%;
-    background-color: #50505092;
+  position: relative;
+  text-align: center;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  background-color: #50505092;
 }
 
 .UserContainerUserNameAlbumDetails {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 .UserTitleAlbumDetailsContainer {
-    margin: 6px 0 0;
-    margin-bottom: 5px;
+  margin: 6px 0 0;
+  margin-bottom: 5px;
 }
 
 .UserNameAlbumDetailsMain {
-    display: flex;
-    font-size: 14px;
-    font-weight: 100;
-    color: #999;
-    margin: 12px 0 0;
-    line-height: 1.3;
+  display: flex;
+  font-size: 14px;
+  font-weight: 100;
+  color: #999;
+  margin: 12px 0 0;
+  line-height: 1.3;
 }
 .UserIdAlbumDetailsMain {
-    display: flex;
-    font-size: 12px;
-    font-weight: 100;
-    color: rgb(176, 176, 176);
+  display: flex;
+  font-size: 12px;
+  font-weight: 100;
+  color: rgb(176, 176, 176);
 }
-
 
 /* middlemost part */
 
 .MiddlePartOverallContainer {
-
-}
-/* side bar */
-.AboutAlbumDetailsSideBar {
-
+  padding-left: 150px;
+  /* display: flex; */
 }
 
+.TopHalfMiddlePartContainer {
+  max-height: 140px;
+  overflow: hidden;
+  position: relative;
+  left: 20px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  margin: 0 0 7px;
+  font-size: 14px;
+  line-height: 1.3em;
+}
 
+.LastUpdatedAlbumDetailsHeader {
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 1.3em;
+  color: #333;
+}
 
+.LastUpdatedAlbumDetailsInformation {
+  font-weight: 100;
+  margin: 0 0 0.5em;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  line-height: 1.3em;
+  color: #999;
+}
 
+.BottomHalfMiddlePartContainer {
+  position: relative;
+  left: 20px;
+  margin-top: -7px;
+  transition: all 0.3s ease-in-out;
+}
 
-.album-details-container {
+.SongsInAlbumDetailsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+/* songcard */
+
+.SongInAlbumDetails {
+  border-bottom: 1px solid #f2f2f2;
+  position: relative;
+}
+
+.SongInAlbumDetailsContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    line-height: 44px;
+    border-radius: 4px;
+    font-weight: 100;
+    color: #999;
+    position: relative;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-size: 14px;
+}
+
+.SongImageContainerAlbumDetailsList {
+    /* position: relative; */
+    margin: 7px 15px 0 0;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+}
+.songImageAlbumDetailsList {
+    width: 30px;
+    height: 30px;
+}
+
+/* Hover for play button */
+
+.PlayButtonContainer {
+    width: 20px;
+    height: 20px;
+    display: none;
+    position: absolute;
+    left: 5px;
+    top: 10px;
+  }
+
+  .SongInAlbumDetails:hover .PlayButtonContainer {
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    background-color: white;
-    padding-top: 30px;
-    padding-bottom: 50px;
+  }
+  .SongInAlbumDetails:hover .PlayMe:hover {
+    cursor: pointer;
+  }
+  .SongInAlbumDetails:hover .PlayMe:active {
+    cursor: pointer;
+    background-color: rgb(209, 115, 32);
+    border-radius: 50%;
+  }
+
+  /* trackNumber */
+  .SongNumberInTrackListAlbumDetailsContainer {
+margin-right: 15px;
+font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+
+  }
+/* side bar */
+.AboutAlbumDetailsSideBar {
+}
+
+.album-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  padding-top: 30px;
+  padding-bottom: 50px;
 }
 
 .buttonsEditAndDeleteAlbum {
-    display: flex;
-    flex-direction: row;
-    column-gap: 2em;
-    margin-bottom: 2em;
+  display: flex;
+  flex-direction: row;
+  column-gap: 2em;
+  margin-bottom: 2em;
 }
 
-.EditAlbumButton, .DeleteAlbumButton  {
-    color: #fff;
-    font-size: 2em;
+.EditAlbumButton,
+.DeleteAlbumButton {
+  color: #fff;
+  font-size: 2em;
   height: 2em;
   border-radius: 7px;
-    background-color: rgb(255, 98, 0);
-    border: 0.05em rgb(255, 111, 0) ;
-    margin-bottom: 0.2em;
+  background-color: rgb(255, 98, 0);
+  border: 0.05em rgb(255, 111, 0);
+  margin-bottom: 0.2em;
 }
 
-
-
-.EditAlbumButton:hover, .DeleteAlbumButton:hover{
-    cursor: pointer;
+.EditAlbumButton:hover,
+.DeleteAlbumButton:hover {
+  cursor: pointer;
 }
 
 .Onealbum-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    background-color: white;
-    padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
+  padding-bottom: 20px;
 }
 
 .OneAlbumCard {
-    max-width: 25em;
-    background-color: rgb(214, 213, 213);
-    background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
-    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
-    margin: 2%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2em;
+  max-width: 25em;
+  background-color: rgb(214, 213, 213);
+  background-image: linear-gradient(to bottom right, #fc6500, #6cd9d0);
+  box-shadow: -3px 0px 23px 7px rgba(145, 138, 138, 1);
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
 }
 
 .OnealbumImage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 0;
-        border-radius: 5px;
-        width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 0;
+  border-radius: 5px;
+  width: 100%;
+}
 
-    }
+.songLink:hover {
+  opacity: 1;
+  transition-duration: 1s;
+  transform: scale(1.02);
+}
 
-    .songLink:hover {
-        opacity: 1;
-        transition-duration: 1s;
-        transform: scale(1.02);
-    }
-
-    .OnealbumDescription, .OnealbumTitle
-{
- font-size: 1.5em;
+.OnealbumDescription,
+.OnealbumTitle {
+  font-size: 1.5em;
 }
 
 .Album-Artist-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    background-color: white;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
 }
 
 .OneAlbumartistCard {
-    background-color: rgb(214, 213, 213);
-    width: 100%;
-    background-image: linear-gradient(to top left, #fc6500, #6cd9d0);
-    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
-    margin: 2%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2em;
+  background-color: rgb(214, 213, 213);
+  width: 100%;
+  background-image: linear-gradient(to top left, #fc6500, #6cd9d0);
+  box-shadow: -3px 0px 23px 7px rgba(145, 138, 138, 1);
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
 }
 
 .OneAlbumArtistUserId {
-    font-weight: bold;
-    font-size: 2em;
+  font-weight: bold;
+  font-size: 2em;
 }
 
 .Album-artistProfilePic {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 0;
-        border: 2px solid black;
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        padding: 20px;
-        margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 0;
+  border: 2px solid black;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  padding: 20px;
+  margin-top: 20px;
 }
 .Album-artistUsername {
-    font-size: 2em;
+  font-size: 2em;
 }
 
-
-
-
-
-
 .OneAlbum-Songs-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: white;
 }
 
 .OneAlbum-songCard {
-    background-color: rgb(214, 213, 213);
-    width: 100%;
-    background-image: linear-gradient(to top right, #fc6500, #6cd9d0);
-    box-shadow: -3px 0px 23px 7px rgba(145,138,138,1);
-    margin: 2%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2em;
+  background-color: rgb(214, 213, 213);
+  width: 100%;
+  background-image: linear-gradient(to top right, #fc6500, #6cd9d0);
+  box-shadow: -3px 0px 23px 7px rgba(145, 138, 138, 1);
+  margin: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2em;
 }
 
 .OneAlbum-songLink {
-    font-style: italic;
-    font-size: 2em;
+  font-style: italic;
+  font-size: 2em;
 }
 
 .OneAlbum-songImage {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    z-index: 0;
-        border-radius: 5px;
-        width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 0;
+  border-radius: 5px;
+  width: 100%;
 }
 
-.OneAlbum-songDescription, .EachSongId {
-    font-size: 1.5em
+.OneAlbum-songDescription,
+.EachSongId {
+  font-size: 1.5em;
 }

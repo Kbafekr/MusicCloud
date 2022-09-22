@@ -40,6 +40,7 @@ export default function AlbumDetails() {
   //   console.log(Albumvalues)
   //   const Artist = useSelector(state => state.song.Artist)
 
+
   useEffect(() => {
     dispatch(getOneAlbum(albumId));
   }, [dispatch, showModal, user, modalDelete]);
@@ -48,9 +49,28 @@ export default function AlbumDetails() {
   if (album.Songs) {
     songs = Object.values(album.Songs);
   }
+
+  let myAlbumsFilter;
+
+  if (songs && user) {
+
+  myAlbumsFilter = songs.filter(
+      (filteredSongs, index) => index == 0
+      );
+    }
   function DateTimeSubString() {
     if (album.createdAt) {
       const string = Object.values(album.createdAt);
+
+      const newString = string.join("");
+
+      const subString = newString.substring(0, 10);
+      return <span>{subString}</span>;
+    }
+  }
+  function DateTimeSubStringUpdate() {
+    if (album.updatedAt) {
+      const string = Object.values(album.updatedAt);
 
       const newString = string.join("");
 
@@ -105,8 +125,8 @@ export default function AlbumDetails() {
             <img className="AlbumArtwork" src={album.imageUrl} />
             <div className="AlbumDetailsTitleSection">
               <div className="SoundPlayButtonAlbumDetailsContainer">
-                {songs &&
-                  songs.map((song) => {
+                {myAlbumsFilter &&
+                  myAlbumsFilter.map((song) => {
                     return (
                       <img
                         className="PlayButtonAlbumDetails"
@@ -220,7 +240,49 @@ export default function AlbumDetails() {
               </div>
               {/* main section of content, middlemost part */}
               <div className="MiddlePartOverallContainer">
-
+                <div className="TopHalfMiddlePartContainer">
+                  <div className="LastUpdatedAlbumDetailsHeader">
+                    Album last updated:
+                  </div>
+                  <div className="LastUpdatedAlbumDetailsInformation">
+                    {DateTimeSubStringUpdate()}
+                  </div>
+                </div>
+                <div className="BottomHalfMiddlePartContainer">
+                  <div className="SongsInAlbumDetailsContainer">
+                    {songs &&
+                      songs.map((song) => {
+                        return (
+                          <div className="SongInAlbumDetails" key={song.id}>
+                            <div className="SongInAlbumDetailsContainer">
+                              <div className="PlayButtonContainer">
+                                <img
+                                  className="PlayButtonAlbumDetails"
+                                  src={PlayButtonImage}
+                                  onClick={() =>
+                                    dispatch(actionSongPlaying(song))
+                                  }
+                                />
+                              </div>
+                              <div className="SongImageContainerAlbumDetailsList">
+                              <img
+                                className="songImageAlbumDetailsList"
+                                src={song.imageUrl}
+                              ></img>
+                              </div>
+                              <div className="SongNumberInTrackListAlbumDetailsContainer">{}</div>
+                              <NavLink
+                                className="TrendingsongLink"
+                                to={`/songs/${song.id}`}
+                              >
+                                {song.title}
+                              </NavLink>
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
+                </div>
               </div>
             </div>
           </div>

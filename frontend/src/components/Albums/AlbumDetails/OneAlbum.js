@@ -44,11 +44,6 @@ export default function AlbumDetails() {
   if (!user) {
     return (
       <div className="errorPage">
-        <h1>Whomp Whomp!</h1>
-        <div className="Whomps">
-          <img className="whomp1" src={Whomp} alt="Whomp1" />
-          <img className="whomp2" src={Whomp} alt="Whomp2" />
-        </div>
         <div className="headers">
           <h2>Looks like you're an unauthorized user</h2>
           <div className="demoContainerHome">
@@ -64,12 +59,7 @@ export default function AlbumDetails() {
 
   if (!album.id) {
     return (
-      <Suspense fallback={<div>loading...</div>}>
         <div className="errorPage">
-          <h1>Whomp Whomp!</h1>
-          <div className="Whomps">
-            <img className="whomp1" src={Whomp} alt="Whomp1" />
-            <img className="whomp2" src={Whomp} alt="Whomp2" />
           </div>
           <div className="headers">
             <h2>Looks like this album doesn't exist</h2>
@@ -86,7 +76,6 @@ export default function AlbumDetails() {
             </div>
           </div>
         </div>
-      </Suspense>
     );
   }
 

@@ -169,8 +169,8 @@ export default function AlbumDetails() {
                           <EditAlbum setShowModal={setShowModal} />
                         </Modal>
                       )}
-                      </div>
-                      <div className="DeleteAlbumButtonContainerMain">
+                    </div>
+                    <div className="DeleteAlbumButtonContainerMain">
                       <button
                         className="DeleteAlbumButton"
                         onClick={() => setModalDelete(true)}
@@ -182,12 +182,50 @@ export default function AlbumDetails() {
                           <DeleteAlbum setModalDelete={setModalDelete} />
                         </Modal>
                       )}
-                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+              <div className="AboutAlbumDetailsMainContentContainer">
+                <div className="AboutAlbumDetailsUserContainer">
+                  <div className="UserSubContainerAlbumDetails">
+                    <div className="UserContainerUserImageAlbumDetails">
+                      <div className="UserImageAlbumDetailsContainer">
+                        <img
+                          className="UserImageAlbumDetailsMainContainer"
+                          src={album.Artist.imageUrl}
+                        />
+                      </div>
+                    </div>
+                    <div className="UserContainerUserNameAlbumDetails">
+                      <div className="UserTitleAlbumDetailsContainer">
+                        <h3 className="UserNameAlbumDetailsMain">
+                          <span>{album.Artist.username}</span>
+                          <span>
+                            <span></span>
+                          </span>
+                        </h3>
+                      </div>
+                      <div className="UserTitleAlbumDetailsContainer">
+                        <h3 className="UserIdAlbumDetailsMain">
+                          <span>User Id: #{album.Artist.id}</span>
+                          <span>
+                            <span></span>
+                          </span>
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* main section of content, middlemost part */}
+              <div className="MiddlePartOverallContainer">
+
+              </div>
             </div>
           </div>
+
+          {/* left most side bar */}
           <div className="AboutAlbumDetailsSideBar"></div>
         </div>
       </div>

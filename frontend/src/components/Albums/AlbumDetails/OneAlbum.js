@@ -8,8 +8,9 @@ import PlayButtonImage from "../../../images/PlayButton.png";
 import LoginAsDemo from "../../LoginDemoUser";
 import "../../UnknownPage/PageNotFound.css";
 import WaveForm from "../../../images/WaveForm.png";
+import { useHistory } from "react-router-dom";
 // import EditAlbumModal from "./EditAlbumIndex";
-
+import { getAllSongs } from "../../../store/songs";
 //import modal file create album index
 import { Modal } from "../../../context/Modal";
 import EditAlbum from "./EditAlbumForm";
@@ -25,6 +26,7 @@ import "react-h5-audio-player/lib/styles.css";
 
 //get one album, dispatch thunk action creator
 export default function AlbumDetails() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const { albumId } = useParams();
 
@@ -32,14 +34,18 @@ export default function AlbumDetails() {
   const [modalDelete, setModalDelete] = useState(false);
   const album = useSelector((state) => state.album);
   const user = useSelector((state) => state.session.user);
+  const Allsongs = useSelector((state) => state.song);
 
   let songs;
-
+  let songsArray;
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
   //   console.log(Albumvalues)
   //   const Artist = useSelector(state => state.song.Artist)
 
+  useEffect(() => {
+    dispatch(getAllSongs());
+  }, [dispatch]);
   useEffect(() => {
     dispatch(getOneAlbum(albumId));
   }, [dispatch, showModal, user, modalDelete]);
@@ -48,11 +54,26 @@ export default function AlbumDetails() {
   if (album.Songs) {
     songs = Object.values(album.Songs);
   }
+  if (Allsongs) {
+    songsArray = Object.values(Allsongs);
+  }
 
+  let userAlbumsFilter;
   let myAlbumsFilter;
 
+  let userFilteredSongs;
   if (songs && user) {
     myAlbumsFilter = songs.filter((filteredSongs, index) => index == 0);
+  }
+  if (songsArray && user) {
+    userFilteredSongs = songsArray.filter(
+      (filteredSongs, index) => filteredSongs.userId == album.userId
+    );
+  }
+  if (songsArray && user) {
+    userAlbumsFilter = songsArray.filter(
+      (filteredSongs, index) => filteredSongs.Album.id == album.userId
+    );
   }
   function DateTimeSubString() {
     if (album.createdAt) {
@@ -74,6 +95,7 @@ export default function AlbumDetails() {
       return <span>{subString}</span>;
     }
   }
+
   if (!user) {
     return (
       <div className="errorPage">
@@ -248,7 +270,7 @@ export default function AlbumDetails() {
                   </div>
                 </div>
                 <div className="BottomHalfMiddlePartContainer">
-                  <div className="SongsInAlbumDetailsContainer">
+                  <div className="SongsInAlbumDetailsContainers">
                     {songs &&
                       songs.map((song) => {
                         return (
@@ -283,7 +305,6 @@ export default function AlbumDetails() {
                               >
                                 {song.title}
                               </NavLink>
-
                             </div>
                           </div>
                         );
@@ -294,8 +315,87 @@ export default function AlbumDetails() {
             </div>
           </div>
 
-          {/* left most side bar */}
-          <div className="AboutAlbumDetailsSideBar"></div>
+          {/* right most side bar */}
+          <div className="AboutAlbumDetailsSideBar">
+            <div className="sideBarTopContainer">
+              <div className="sideBarSubContainer">
+                <h3 className="sideBarTopHeaderContainer">
+                  <span>albums from this user</span>
+                </h3>
+              </div>
+            </div>
+            <div className="SideBarContentMainSection">
+              <div className="SongsInSideBarContainers">
+                {userFilteredSongs &&
+                  userFilteredSongs.map((song) => {
+                    return (
+                      <div className="SongInSideBarDetails" key={song.id}>
+                        <div className="SongInSidebarContainer">
+                          <div className="PlayButtonContainerSideBar">
+                            <img
+                              className="PlayButtonAlbumDetails"
+                              src={PlayButtonImage}
+                              onClick={() => dispatch(actionSongPlaying(song))}
+                            />
+                          </div>
+                          <div className="SongImageContainerAlbumDetailsList">
+                            <img
+                              className="songImageAlbumDetailsList"
+                              src={song.imageUrl}
+                            ></img>
+                          </div>
+                          <NavLink
+                            className="TrendingsongLink"
+                            to={`/songs/${song.id}`}
+                          >
+                            {song.title}
+                          </NavLink>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+            {/* <div className="sideBarTopContainer">
+              <div className="sideBarSubContainer">
+                <h3 className="sideBarTopHeaderContainer">
+                  <span>Songs from this user</span>
+                </h3>
+              </div>
+            </div>
+            <div className="SideBarContentMainSection">
+              <div className="SongsInSideBarContainers">
+                {userFilteredSongs &&
+                  userFilteredSongs.map((song) => {
+                    return (
+                      <div className="SongInSideBarDetails" key={song.id}>
+                        <div className="SongInSidebarContainer">
+                          <div className="PlayButtonContainerSideBar">
+                            <img
+                              className="PlayButtonAlbumDetails"
+                              src={PlayButtonImage}
+                              onClick={() => dispatch(actionSongPlaying(song))}
+                            />
+                          </div>
+                          <div className="SongImageContainerAlbumDetailsList">
+                            <img
+                              className="songImageAlbumDetailsList"
+                              src={song.imageUrl}
+                            ></img>
+                          </div>
+                          <NavLink
+                            className="TrendingsongLink"
+                            to={`/songs/${song.id}`}
+                          >
+                            {song.title}
+                          </NavLink>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div> */}
+          </div>
         </div>
       </div>
     );

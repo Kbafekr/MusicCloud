@@ -94,7 +94,7 @@ module.exports = {
         {
           userId: 1,
           title: "Arcane Soundtrack",
-          description: "Soundtrack from Netflix's Arcane (2021))",
+          description: "Soundtrack from Netflix's Arcane (2021)",
           imageUrl:
             "https://i.scdn.co/image/ab67616d0000b273d10169c17651c8b2ab5c8416",
         },

@@ -299,7 +299,7 @@ export default function SongDetails() {
             <div className="sideBarTopContainer">
               <div className="sideBarSubContainer">
                 <h3 className="sideBarTopHeaderContainer">
-                  <span>albums from this user</span>
+                  <span>Albums from this user</span>
                 </h3>
               </div>
             </div>

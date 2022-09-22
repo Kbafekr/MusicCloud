@@ -170,8 +170,20 @@
 }
 
 /* main section */
-
+.AboutAlbumDetailsSectionContainerParent {
+  width:100%;
+  height: 400px;
+}
+.AboutAlbumDetailsSectionContainer {
+  width:100%;
+  height:100%;
+  /* opacity: 0.2;
+  background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1824514986569441317/84F988320A11BAB884ADF2EABEA95A5E1B770B7D/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false');
+  background-repeat: no-repeat;
+  background-size: cover;} */
+}
 .AboutAlbumDetailsSection {
+
   position: relative;
   width: 95%;
   left: 25px;

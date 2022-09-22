@@ -317,7 +317,7 @@ export default function AlbumDetails() {
             <div className="sideBarTopContainer">
               <div className="sideBarSubContainer">
                 <h3 className="sideBarTopHeaderContainer">
-                  <span>albums from this user</span>
+                  <span>Songs from this user</span>
                 </h3>
               </div>
             </div>
@@ -453,6 +453,8 @@ export default function AlbumDetails() {
           </div>
         </div>
         {/* bottom half */}
+        <div className='AboutAlbumDetailsSectionContainerParent'>
+        <div className='AboutAlbumDetailsSectionContainer'>
         <div className="AboutAlbumDetailsSection">
           <div className="AboutAlbumDetailsMainContainer">
             <div className="AboutAlbumDetailsMain">
@@ -596,6 +598,8 @@ export default function AlbumDetails() {
               </div>
             </div>
             </div>
+        </div>
+        </div>
         </div>
       </div>
     );

@@ -14,6 +14,11 @@ import PlayButtonImage from "../../images/PlayButton.png";
 //play song action
 import { actionSongPlaying } from "../../store/audioPlayer";
 //get all songs, dispatch thunk action creator
+
+//create default album if user has no albums
+import { CreateAnAlbum } from "../../store/albums";
+import { getAllAlbums } from "../../store/albums";
+
 export default function ReturnAllSongs() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -23,6 +28,34 @@ export default function ReturnAllSongs() {
   const SongsArrayCopy = [...SongsArray];
   // console.log('this is songsarray' + SongsArray)
   // console.log('this is songs' + Object.values(songs))
+
+  const albums = useSelector((state) => state.album)
+  const AlbumsArray = Object.values(albums)
+  const AlbumsArrayCopy = [...AlbumsArray]
+
+  //useEffect for getting Songs signed in
+  useEffect(() => {
+    dispatch(getAllAlbums());
+  }, [dispatch, user]);
+
+
+
+
+   //useEffect for creating default album if user does not have one
+let myAlbumsFilter;
+if (AlbumsArray && user) {
+
+myAlbumsFilter = AlbumsArray.filter(
+    (filteredSongs, index) => filteredSongs.userId == user.id
+    );
+  }
+
+  useEffect(() => {
+    if (user && !myAlbumsFilter.length) {
+      //get all songs
+      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: '' }));
+    }
+  }, [dispatch, user]);
 
   useEffect(() => {
     dispatch(getAllSongs());

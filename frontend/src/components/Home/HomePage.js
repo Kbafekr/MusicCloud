@@ -6,12 +6,16 @@ import { ImagesArray } from "../../images/Images";
 import { backgroundImages } from "../../images/Images";
 import { getAllSongs } from "../../store/songs";
 import { getAllDemoSongs } from "../../store/songs";
+import { getAllAlbums } from "../../store/albums";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import SignUpModal from "../SignUpModal";
 import LoginFormModal from "../LoginFormModal";
 import LoginAsDemo from "../LoginDemoUser";
 import { actionSongPlaying } from "../../store/audioPlayer";
+
+//create default album if user has no albums
+import { CreateAnAlbum } from "../../store/albums";
 
 import PlayButtonImage from "../../images/PlayButton.png";
 
@@ -25,6 +29,13 @@ export function HomePage() {
   const SongsArray = Object.values(songs);
 //create copy of songsarray to mutate for sort
   const SongsArrayCopy = [...SongsArray]
+
+
+  const albums = useSelector((state) => state.album)
+  const AlbumsArray = Object.values(albums)
+  const AlbumsArrayCopy = [...AlbumsArray]
+
+
   //filter through songs to randomly select whats trending
   let randomNumber;
   let randomNumber2;
@@ -87,6 +98,29 @@ export function HomePage() {
       dispatch(getAllSongs());
     }
   }, [dispatch]);
+  //useEffect for getting Songs signed in
+  useEffect(() => {
+    dispatch(getAllAlbums());
+  }, [dispatch, UserSignedIn]);
+
+
+
+
+   //useEffect for creating default album if user does not have one
+let myAlbumsFilter;
+if (AlbumsArray && UserSignedIn) {
+
+myAlbumsFilter = AlbumsArray.filter(
+    (filteredSongs, index) => filteredSongs.userId == UserSignedIn.id
+    );
+  }
+
+  useEffect(() => {
+    if (UserSignedIn && !myAlbumsFilter.length) {
+      //get all songs
+      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: '' }));
+    }
+  }, [dispatch, UserSignedIn]);
 
   // useEffects for if user isn't signed in set carousel image
   useEffect(() => {
@@ -200,6 +234,7 @@ let jRockSongsfilter = SongsArray.filter((filteredSongs, index) => index == 21 |
 let remixSongsFilter = SongsArray.filter((filteredSongs, index) => index == 15 || index == 17 || index == 22 || index == 30 || index == 31 || index == 35 ||
 index == 37 || index == 46 || index == 12)
   // conditional function to return certain text on background images
+
   function backgroundImageText() {
     if ((backgroundImageNumber + 1) % backgroundImages.length == 1)
       return (

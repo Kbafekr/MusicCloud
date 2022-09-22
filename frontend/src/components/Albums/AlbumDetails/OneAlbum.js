@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { getOneAlbum } from "../../../store/albums";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
@@ -7,8 +7,6 @@ import "./OneAlbum.css";
 import PlayButtonImage from "../../../images/PlayButton.png";
 import LoginAsDemo from "../../LoginDemoUser";
 import "../../UnknownPage/PageNotFound.css";
-import WaveForm from "../../../images/WaveForm.png";
-import { useHistory } from "react-router-dom";
 // import EditAlbumModal from "./EditAlbumIndex";
 import { getAllSongs } from "../../../store/songs";
 //import modal file create album index
@@ -26,7 +24,6 @@ import "react-h5-audio-player/lib/styles.css";
 
 //get one album, dispatch thunk action creator
 export default function AlbumDetails() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const { albumId } = useParams();
 

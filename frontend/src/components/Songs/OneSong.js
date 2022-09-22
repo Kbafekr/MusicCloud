@@ -132,7 +132,7 @@ export default function SongDetails() {
       </div>
     );
   }
-  if (song.Artist && song.Album) {
+  if (song.Artist && song.Album && song.Artist.id == user.id) {
     return (
       <div className="OverallContainerAlbumDetails">
         <div className="BackgroundAlbumDetailsSection">
@@ -214,6 +214,182 @@ export default function SongDetails() {
                         </Modal>
                       )}
                     </div>
+                  </div>
+                </div>
+              </div>
+              <div className="AboutAlbumDetailsMainContentContainer">
+                <div className="AboutAlbumDetailsUserContainer">
+                  <div className="UserSubContainerAlbumDetails">
+                    <div className="UserContainerUserImageAlbumDetails">
+                      <div className="UserImageAlbumDetailsContainer">
+                        <img
+                          className="UserImageAlbumDetailsMainContainer"
+                          src={song.Artist.imageUrl}
+                        />
+                      </div>
+                    </div>
+                    <div className="UserContainerUserNameAlbumDetails">
+                      <div className="UserTitleAlbumDetailsContainer">
+                        <h3 className="UserNameAlbumDetailsMain">
+                          <span>{song.Artist.username}</span>
+                          <span>
+                            <span></span>
+                          </span>
+                        </h3>
+                      </div>
+                      <div className="UserTitleAlbumDetailsContainer">
+                        <h3 className="UserIdAlbumDetailsMain">
+                          <span>User Id: #{song.Artist.id}</span>
+                          <span>
+                            <span></span>
+                          </span>
+                        </h3>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {/* main section of content, middlemost part */}
+              <div className="MiddlePartOverallContainer">
+                <div className="TopHalfMiddlePartContainer">
+                  <div className="LastUpdatedAlbumDetailsHeader">
+                    Song last updated:
+                  </div>
+                  <div className="LastUpdatedAlbumDetailsInformation">
+                    {DateTimeSubStringUpdate()}
+                  </div>
+                  <div className="LastUpdatedAlbumDetailsHeader">
+                    {song.description}
+                  </div>
+                </div>
+                <div className="BottomHalfMiddlePartContainer">
+                  <div className="SongsInAlbumDetailsContainers">
+                          <div className="SongInAlbumDetails" key={song.Album.id}>
+                            <div className="SongInAlbumDetailsContainer">
+                              <div className="SongImageContainerAlbumDetailsList">
+                                <img
+                                  className="songImageAlbumDetailsList"
+                                  src={song.Album.imageUrl}
+                                ></img>
+                              </div>
+                              <div className="SongIdinTrackListAlbumDetailsContainer">
+                                <div className="SongIdinTrackListAlbumDetails">
+                                  Album id: #{song.Album.id}
+                                </div>
+                              </div>
+                              <div className="SongNumberInTrackListAlbumDetailsContainer">
+                                Album Title:{" "}
+                              </div>
+                              <NavLink
+                                className="TrendingsongLink"
+                                to={`/albums/${song.Album.id}`}
+                              >
+                                {song.Album.title}
+                              </NavLink>
+                            </div>
+                          </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* right most side bar */}
+          <div className="AboutAlbumDetailsSideBar">
+            <div className="sideBarTopContainer">
+              <div className="sideBarSubContainer">
+                <h3 className="sideBarTopHeaderContainer">
+                  <span>albums from this user</span>
+                </h3>
+              </div>
+            </div>
+            <div className="SideBarContentMainSection">
+              <div className="SongsInSideBarContainers">
+                {userFilteredAlbums &&
+                  userFilteredAlbums.map((song) => {
+                    return (
+                      <div className="SongInSideBarDetails" key={song.id}>
+                        <div className="SongInSidebarContainer">
+                          <div className="SongImageContainerAlbumDetailsList">
+                            <img
+                              className="songImageAlbumDetailsList"
+                              src={song.imageUrl}
+                            ></img>
+                          </div>
+                          <NavLink
+                            className="TrendingsongLink"
+                            to={`/albums/${song.id}`}
+                          >
+                            {song.title}
+                          </NavLink>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  if (song.Artist && song.Album && song.Artist.id != user.id) {
+    return (
+      <div className="OverallContainerAlbumDetails">
+        <div className="BackgroundAlbumDetailsSection">
+          {/* top half */}
+          <div className="AlbumDetailsForegroundSection">
+            <img className="AlbumArtwork" src={song.imageUrl} />
+            <div className="AlbumDetailsTitleSection">
+              <div className="SoundPlayButtonAlbumDetailsContainer">
+                <img
+                  className="PlayButtonAlbumDetails"
+                  src={PlayButtonImage}
+                  onClick={() => dispatch(actionSongPlaying(song))}
+                />
+              </div>
+              <div className="TitleSectionAlbumDetailsContainer">
+                <div className="TitleAlbumDetailsContainer">
+                  <h1 className="HeaderAlbumDetailsTitle">
+                    <span>{song.title}</span>
+                  </h1>
+                </div>
+                <div className="UsernameAlbumDetailsContainer">
+                  <h2 className="UsernameAlbumDetailsTitle">
+                    {song.Artist.username}
+                  </h2>
+                </div>
+              </div>
+            </div>
+            {/* Info section */}
+            <div className="InfoSectionAlbumDetails">
+              <div className="InfoSectionAlbumCreatedTime">
+                <time className="relativeTime" dateTime={song.createdAt}>
+                  <span>Created on: {DateTimeSubString()}</span>
+                </time>
+              </div>
+              <div className="InfoSectionAlbumIdDetails">
+                <span>Song id: {song.id}</span>
+              </div>
+            </div>
+            <div className="WaveFormContainerAlbumDetails">
+              <div className="WaveFormSubContainer">
+                <img
+                  className="WaveFormImg"
+                  src="https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        {/* bottom half */}
+        <div className="AboutAlbumDetailsSection">
+          <div className="AboutAlbumDetailsMainContainer">
+            <div className="AboutAlbumDetailsMain">
+              <div className="AboutAlbumDetailsMainHeader">
+                <div className="AboutAlbumDetailsMainHeaderContainer">
+                  <div className="AboutAlbumDetailsMainHeaderContainerFlexBox">
+                    You do not own this song
                   </div>
                 </div>
               </div>

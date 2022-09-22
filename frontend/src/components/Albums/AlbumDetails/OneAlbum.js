@@ -2,8 +2,9 @@ import React, { Suspense, useState, useEffect } from "react";
 import { getOneAlbum } from "../../../store/albums";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
+import { actionSongPlaying } from "../../../store/audioPlayer";
 import "./OneAlbum.css";
-import Whomp from "../../../images/Whomp.webp";
+import PlayButtonImage from "../../../images/PlayButton.png";
 import LoginAsDemo from "../../LoginDemoUser";
 import "../../UnknownPage/PageNotFound.css";
 // import EditAlbumModal from "./EditAlbumIndex";
@@ -30,6 +31,9 @@ export default function AlbumDetails() {
   const [modalDelete, setModalDelete] = useState(false);
   const album = useSelector((state) => state.album);
   const user = useSelector((state) => state.session.user);
+
+  let songs;
+
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
   //   console.log(Albumvalues)
@@ -40,7 +44,9 @@ export default function AlbumDetails() {
   }, [dispatch, showModal, user, modalDelete]);
   // dispatch, album.Artist, album.Songs]);
   //  [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
-
+  if (album.Songs) {
+    songs = Object.values(album.Songs);
+  }
   if (!user) {
     return (
       <div className="errorPage">
@@ -59,104 +65,141 @@ export default function AlbumDetails() {
 
   if (!album.id) {
     return (
-        <div className="errorPage">
+      <div className="errorPage">
+        <div className="headers">
+          <h2>Looks like this album doesn't exist</h2>
+          <div className="linkerror">
+            <NavLink to="/" className="ErrorhomeLink">
+              Click here to go home
+            </NavLink>
+            <NavLink to="/albums" className="ErrorsongsLink">
+              Click here to go back to all albums
+            </NavLink>
+            <NavLink to="/albums/current" className="ErrorownedLink">
+              Click here to go back to owned albums
+            </NavLink>
           </div>
-          <div className="headers">
-            <h2>Looks like this album doesn't exist</h2>
-            <div className="linkerror">
-              <NavLink to="/" className="ErrorhomeLink">
-                Click here to go home
-              </NavLink>
-              <NavLink to="/albums" className="ErrorsongsLink">
-                Click here to go back to all albums
-              </NavLink>
-              <NavLink to="/albums/current" className="ErrorownedLink">
-                Click here to go back to owned albums
-              </NavLink>
-            </div>
-          </div>
-        </div>
-    );
-  }
-
-  if (album.Artist && album.Songs) {
-    return (
-      <div className="album-details-container">
-        <div className="buttonsEditAndDeleteAlbum">
-          <button
-            className="EditAlbumButton"
-            onClick={() => setShowModal(true)}
-          >
-            Edit Album
-          </button>
-          {showModal && (
-            <Modal onClose={() => setShowModal(false)}>
-              <EditAlbum setShowModal={setShowModal} />
-            </Modal>
-          )}
-
-          <button
-            className="DeleteAlbumButton"
-            onClick={() => setModalDelete(true)}
-          >
-            Delete Album
-          </button>
-          {modalDelete && (
-            <Modal onClose={() => setModalDelete(false)}>
-              <DeleteAlbum setModalDelete={setModalDelete} />
-            </Modal>
-          )}
-        </div>
-        <div className="Onealbum-container">
-          <div className="OneAlbumCard">
-            <div className="OnealbumTitle">Album: {album.title}</div>
-            <img className="OnealbumImage" src={album.imageUrl}></img>
-            <div className="OnealbumDescription">
-              Description: {album.description}
-            </div>
-          </div>
-        </div>
-
-        <div className="Album-Artist-container">
-          <div key={album.Artist.id} className="OneAlbumartistCard">
-            <div className="OneAlbumArtistUserId">Artist: {album.userId}</div>
-            <img
-              className="Album-artistProfilePic"
-              src={album.Artist.imageUrl}
-            />
-            <div className="Album-artistUsername">
-              Artist Username: {album.Artist.username}
-            </div>
-          </div>
-        </div>
-
-        <div className="OneAlbum-Songs-container">
-          {album.Songs.map((song) => {
-            return (
-              <div key={song.id} className="OneAlbum-songCard">
-                <div className="EachSongId">Song id: {song.id}</div>
-                <img className="OneAlbum-songImage" src={song.imageUrl} />
-                <NavLink className="OneAlbum-songLink" to={`/songs/${song.id}`}>
-                  {song.title}
-                </NavLink>
-                <div className="OneAlbum-songDescription">
-                  Song Description: {song.description}
-                </div>
-
-                <div className="audioPlayer">
-                  <AudioPlayer
-                    autoPlay={false}
-                    src={song.url}
-                    onPlay={(e) => console.log("onPlay")}
-                  />
-                </div>
-              </div>
-            );
-          })}
         </div>
       </div>
     );
   }
+
+  //main section
+  if (album.Artist && album.Songs) {
+    return (
+      <div className="OverallContainerAlbumDetails">
+        <div className="BackgroundAlbumDetailsSection">
+          <div className="AlbumDetailsForegroundSection">
+            <img className="AlbumArtwork" src={album.imageUrl} />
+            <div className="AlbumDetailsTitleSection">
+              <div className="SoundPlayButtonAlbumDetailsContainer">
+                {songs &&
+                  songs.map((song) => {
+                    return (
+                      <img
+                        className="PlayButtonAlbumDetails"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
+                    );
+                  })}
+              </div>
+              <div className="TitleSectionAlbumDetailsContainer">
+                <div className="TitleAlbumDetailsContainer">
+                  <h1 className="HeaderAlbumDetailsTitle">
+                    <span>{album.title}</span>
+                  </h1>
+                </div>
+                <div className="UsernameAlbumDetailsContainer">
+                  <h2 className="UsernameAlbumDetailsTitle">
+                    {album.Artist.username}
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="AboutAlbumDetailsSection"></div>
+      </div>
+    );
+  }
+
+  //     <div className="album-details-container">
+  //       <div className="buttonsEditAndDeleteAlbum">
+  //         <button
+  //           className="EditAlbumButton"
+  //           onClick={() => setShowModal(true)}
+  //         >
+  //           Edit Album
+  //         </button>
+  //         {showModal && (
+  //           <Modal onClose={() => setShowModal(false)}>
+  //             <EditAlbum setShowModal={setShowModal} />
+  //           </Modal>
+  //         )}
+
+  //         <button
+  //           className="DeleteAlbumButton"
+  //           onClick={() => setModalDelete(true)}
+  //         >
+  //           Delete Album
+  //         </button>
+  //         {modalDelete && (
+  //           <Modal onClose={() => setModalDelete(false)}>
+  //             <DeleteAlbum setModalDelete={setModalDelete} />
+  //           </Modal>
+  //         )}
+  //       </div>
+  //       <div className="Onealbum-container">
+  //         <div className="OneAlbumCard">
+  //           <div className="OnealbumTitle">Album: {album.title}</div>
+  //           <img className="OnealbumImage" src={album.imageUrl}></img>
+  //           <div className="OnealbumDescription">
+  //             Description: {album.description}
+  //           </div>
+  //         </div>
+  //       </div>
+
+  //       <div className="Album-Artist-container">
+  //         <div key={album.Artist.id} className="OneAlbumartistCard">
+  //           <div className="OneAlbumArtistUserId">Artist: {album.userId}</div>
+  //           <img
+  //             className="Album-artistProfilePic"
+  //             src={album.Artist.imageUrl}
+  //           />
+  //           <div className="Album-artistUsername">
+  //             Artist Username: {album.Artist.username}
+  //           </div>
+  //         </div>
+  //       </div>
+
+  //       <div className="OneAlbum-Songs-container">
+  //         {album.Songs.map((song) => {
+  //           return (
+  //             <div key={song.id} className="OneAlbum-songCard">
+  //               <div className="EachSongId">Song id: {song.id}</div>
+  //               <img className="OneAlbum-songImage" src={song.imageUrl} />
+  //               <NavLink className="OneAlbum-songLink" to={`/songs/${song.id}`}>
+  //                 {song.title}
+  //               </NavLink>
+  //               <div className="OneAlbum-songDescription">
+  //                 Song Description: {song.description}
+  //               </div>
+
+  //               <div className="audioPlayer">
+  //                 <AudioPlayer
+  //                   autoPlay={false}
+  //                   src={song.url}
+  //                   onPlay={(e) => console.log("onPlay")}
+  //                 />
+  //               </div>
+  //             </div>
+  //           );
+  //         })}
+  //       </div>
+  //     </div>
+  //   );
+  // }
   // else
   //   return (
   //     <div className="album-details-container">

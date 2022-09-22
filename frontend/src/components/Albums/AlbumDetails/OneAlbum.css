@@ -1,3 +1,126 @@
+.OverallContainerAlbumDetails {
+width: 100%;
+height: 100%;
+}
+
+.BackgroundAlbumDetailsSection {
+    width: 100%;
+    height: 380px;
+    background-image: linear-gradient(to bottom right, #fc6500, #505050);
+    position: relative;
+}
+
+
+.AlbumDetailsForegroundSection {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+box-sizing: border-box;
+padding: 30px 560px 20px 30px;
+}
+/* Album image */
+.AlbumArtwork {
+    z-index: 1;
+    position: absolute;
+    top: 20px;
+    width: 340px;
+    height: 340px;
+    right: 20px;
+}
+
+/* Title section */
+.AlbumDetailsTitleSection{
+    display: flex;
+    align-items: flex-start;
+}
+
+.SoundPlayButtonAlbumDetailsContainer {
+    display: flex;
+height: 60px;
+width: 60px;
+margin-right: 10px;
+}
+
+.PlayButtonAlbumDetails {
+border-radius: 50%;
+width: 100%;
+height: 100%;
+background-color: #f50;
+border-color: #f50;
+text-indent: -100000em
+}
+
+.PlayButtonAlbumDetails:hover {
+    cursor: pointer;
+    background-color: rgb(255, 89, 0);
+    border-radius: 50%;
+
+  }
+ .PlayButtonAlbumDetails:active {
+    cursor: pointer;
+    background-color: rgb(255, 89, 0);
+    border-radius: 50%;
+  }
+
+
+.TitleSectionAlbumDetailsContainer {
+flex: 1;
+min-width: 0;
+}
+
+.TitleAlbumDetailsContainer {
+margin-bottom: 7px;
+}
+
+.HeaderAlbumDetailsTitle {
+    position: relative;
+    font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;;
+    color: white;
+    font-weight: 100;
+    font-size: 24px;
+    line-height: 37px;
+    padding: 4px 7px;
+    background-color: rgba(0,0,0,.8);
+    max-width: fit-content;
+    box-sizing: border-box;
+    top: -0.5em;
+
+
+}
+.UsernameAlbumDetailsContainer {
+
+}
+
+.UsernameAlbumDetailsTitle {
+    position: relative;
+    color: #ccc;
+    font-weight: 100;
+    padding: 2px 7px 3px;
+    font-size: 16px;
+    line-height: 1.2;
+    background-color: rgba(0,0,0,.8);
+    max-width: fit-content;
+    box-sizing: border-box;
+    top: -1.5em;
+
+}
+
+/* description */
+
+.AboutAlbumDetailsSection {
+
+    width: 100%;
+    height: 400px;
+}
+
+
+
+
+
+
+
 
 .album-details-container {
     display: flex;
@@ -19,7 +142,7 @@
 }
 
 .EditAlbumButton, .DeleteAlbumButton  {
-    color: white;
+    color: #fff;
     font-size: 2em;
   height: 2.5em;
   border-radius: 7%;

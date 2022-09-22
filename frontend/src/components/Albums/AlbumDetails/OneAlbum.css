@@ -22,7 +22,6 @@ padding: 30px 560px 20px 30px;
 }
 /* Album image */
 .AlbumArtwork {
-    z-index: 1;
     position: absolute;
     top: 20px;
     width: 340px;
@@ -89,9 +88,9 @@ margin-bottom: 7px;
 
 
 }
-.UsernameAlbumDetailsContainer {
+/* .UsernameAlbumDetailsContainer {
 
-}
+} */
 
 .UsernameAlbumDetailsTitle {
     position: relative;
@@ -176,22 +175,63 @@ margin-bottom: 30px;
 
 
 
-
-
-
-
-
-
-/* description */
+/* main section */
 
 .AboutAlbumDetailsSection {
-
-    width: 100%;
+    position: relative;
     height: 400px;
+}
+
+.AboutAlbumDetailsMainContainer {
+margin-right: 330px;
+padding-top: 20px;
+}
+
+.AboutAlbumDetailsMain {
+padding-right: 30px;
+border-right: 1px solid #f2f2f2
+}
+
+.AboutAlbumDetailsMainHeader {
+margin-bottom: 20px;
+}
+
+.AboutAlbumDetailsMainHeaderContainer{
+border: 1px solid #fff;
+box-shadow: 0 1px 0 0 #f2f2f2;
+padding: 19px 0 4px;
+margin-bottom: 1px;
+}
+
+.AboutAlbumDetailsMainHeaderContainerFlexBox {
+    display: flex;
+    min-height: 33px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+.EditAlbumButtonContainerMain {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    position: relative;
+    left: 20px;
+}
+
+.DeleteAlbumButtonContainerMain {
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 
 
+/* side bar */
+.AboutAlbumDetailsSideBar {
+
+}
 
 
 
@@ -219,11 +259,11 @@ margin-bottom: 30px;
 .EditAlbumButton, .DeleteAlbumButton  {
     color: #fff;
     font-size: 2em;
-  height: 2.5em;
-  border-radius: 7%;
+  height: 2em;
+  border-radius: 7px;
     background-color: rgb(255, 98, 0);
     border: 0.05em rgb(255, 111, 0) ;
-    margin-bottom: 1em;
+    margin-bottom: 0.2em;
 }
 
 

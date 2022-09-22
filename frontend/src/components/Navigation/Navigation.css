@@ -185,7 +185,7 @@
 .LogInNavBar, .SignupNavBar, .LogInDemo {
   color: white;
   height: 50%;
-  border-radius: 7%;
+  border-radius: 7px;
 
 }
 .LogInNavBar {

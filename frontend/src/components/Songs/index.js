@@ -51,11 +51,11 @@ myAlbumsFilter = AlbumsArray.filter(
   }
 
   useEffect(() => {
-    if (user && !myAlbumsFilter.length) {
+    if (user && !myAlbumsFilter.length && !albums.Artist) {
       //get all songs
       dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: '' }));
     }
-  }, [dispatch, user]);
+  }, [dispatch, user, albums]);
 
   useEffect(() => {
     dispatch(getAllSongs());

@@ -14,7 +14,7 @@
     color: white;
     font-size: 2em;
   height: 2em;
-  border-radius: 7%;
+  border-radius: 7px;
     background-color: rgb(255, 98, 0);
     border: 0.05em rgb(255, 111, 0) ;
 }

@@ -179,7 +179,7 @@
   padding-bottom: 0.1em;
   height: 1.5em;
   width: fit-content;
-  border-radius: 7%;
+  border-radius: 7px;
 }
 .DemoHeader {
   font-size: 24px;

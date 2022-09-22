@@ -7,9 +7,8 @@ import "./OneAlbum.css";
 import PlayButtonImage from "../../../images/PlayButton.png";
 import LoginAsDemo from "../../LoginDemoUser";
 import "../../UnknownPage/PageNotFound.css";
-import WaveForm from '../../../images/WaveForm.png'
+import WaveForm from "../../../images/WaveForm.png";
 // import EditAlbumModal from "./EditAlbumIndex";
-
 
 //import modal file create album index
 import { Modal } from "../../../context/Modal";
@@ -23,8 +22,6 @@ import DeleteAlbum from "./DeleteAlbumForm";
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
-
-
 
 //get one album, dispatch thunk action creator
 export default function AlbumDetails() {
@@ -103,6 +100,7 @@ export default function AlbumDetails() {
     return (
       <div className="OverallContainerAlbumDetails">
         <div className="BackgroundAlbumDetailsSection">
+          {/* top half */}
           <div className="AlbumDetailsForegroundSection">
             <img className="AlbumArtwork" src={album.imageUrl} />
             <div className="AlbumDetailsTitleSection">
@@ -144,12 +142,54 @@ export default function AlbumDetails() {
             </div>
             <div className="WaveFormContainerAlbumDetails">
               <div className="WaveFormSubContainer">
-                  <img className="WaveFormImg" src='https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png'/>
+                <img
+                  className="WaveFormImg"
+                  src="https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png"
+                />
               </div>
             </div>
           </div>
         </div>
-        <div className="AboutAlbumDetailsSection"></div>
+        {/* bottom half */}
+        <div className="AboutAlbumDetailsSection">
+          <div className="AboutAlbumDetailsMainContainer">
+            <div className="AboutAlbumDetailsMain">
+              <div className="AboutAlbumDetailsMainHeader">
+                <div className="AboutAlbumDetailsMainHeaderContainer">
+                  <div className="AboutAlbumDetailsMainHeaderContainerFlexBox">
+                    <div className="EditAlbumButtonContainerMain">
+                      <button
+                        className="EditAlbumButton"
+                        onClick={() => setShowModal(true)}
+                      >
+                        Edit Album
+                      </button>
+                      {showModal && (
+                        <Modal onClose={() => setShowModal(false)}>
+                          <EditAlbum setShowModal={setShowModal} />
+                        </Modal>
+                      )}
+                      </div>
+                      <div className="DeleteAlbumButtonContainerMain">
+                      <button
+                        className="DeleteAlbumButton"
+                        onClick={() => setModalDelete(true)}
+                      >
+                        Delete Album
+                      </button>
+                      {modalDelete && (
+                        <Modal onClose={() => setModalDelete(false)}>
+                          <DeleteAlbum setModalDelete={setModalDelete} />
+                        </Modal>
+                      )}
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="AboutAlbumDetailsSideBar"></div>
+        </div>
       </div>
     );
   }

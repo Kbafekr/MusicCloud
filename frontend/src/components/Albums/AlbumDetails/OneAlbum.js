@@ -7,7 +7,9 @@ import "./OneAlbum.css";
 import PlayButtonImage from "../../../images/PlayButton.png";
 import LoginAsDemo from "../../LoginDemoUser";
 import "../../UnknownPage/PageNotFound.css";
+import WaveForm from '../../../images/WaveForm.png'
 // import EditAlbumModal from "./EditAlbumIndex";
+
 
 //import modal file create album index
 import { Modal } from "../../../context/Modal";
@@ -21,6 +23,8 @@ import DeleteAlbum from "./DeleteAlbumForm";
 
 import AudioPlayer from "react-h5-audio-player";
 import "react-h5-audio-player/lib/styles.css";
+
+
 
 //get one album, dispatch thunk action creator
 export default function AlbumDetails() {
@@ -46,6 +50,16 @@ export default function AlbumDetails() {
   //  [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
   if (album.Songs) {
     songs = Object.values(album.Songs);
+  }
+  function DateTimeSubString() {
+    if (album.createdAt) {
+      const string = Object.values(album.createdAt);
+
+      const newString = string.join("");
+
+      const subString = newString.substring(0, 10);
+      return <span>{subString}</span>;
+    }
   }
   if (!user) {
     return (
@@ -115,6 +129,22 @@ export default function AlbumDetails() {
                     {album.Artist.username}
                   </h2>
                 </div>
+              </div>
+            </div>
+            {/* Info section */}
+            <div className="InfoSectionAlbumDetails">
+              <div className="InfoSectionAlbumCreatedTime">
+                <time className="relativeTime" dateTime={album.createdAt}>
+                  <span>Created on: {DateTimeSubString()}</span>
+                </time>
+              </div>
+              <div className="InfoSectionAlbumIdDetails">
+                <span>Album id: {album.id}</span>
+              </div>
+            </div>
+            <div className="WaveFormContainerAlbumDetails">
+              <div className="WaveFormSubContainer">
+                  <img className="WaveFormImg" src='https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png'/>
               </div>
             </div>
           </div>

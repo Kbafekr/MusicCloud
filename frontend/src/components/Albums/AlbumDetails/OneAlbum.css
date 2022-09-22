@@ -107,6 +107,81 @@ margin-bottom: 7px;
 
 }
 
+
+
+/* Info section */
+.InfoSectionAlbumDetails {
+    position: absolute;
+    top: 32px;
+    right: 392px;
+    text-align: right;
+}
+
+.InfoSectionAlbumCreatedTime {
+    color: #fff;
+    margin-bottom: 16px;
+    font-size: 16px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-weight: 100;
+}
+
+.relativeTime {
+    color: #fff;
+    font-size: 16px;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-weight: 100;
+}
+
+.InfoSectionAlbumIdDetails {
+    position: relative;
+    width: fit-content;
+    left: 5.5em;
+    height: fit-content;
+    padding: 0 8px;
+    background: #999;
+    border: 1px solid #999;
+    color: #fff;
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-weight: 100;
+    line-height: 20px;
+    border-radius: 20px;
+    height: 24px;
+    font-size: 16px;
+}
+
+/*waveform area */
+.WaveFormContainerAlbumDetails{
+    position: absolute;
+    bottom: -10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    left: 20px;
+    right: 380px;
+}
+
+.WaveFormSubContainer{
+    display: flex;
+height: 100px;
+width: 100%;
+margin-bottom: 30px;
+}
+
+.WaveFormImg {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    bottom: 100px;
+}
+
+
+
+
+
+
+
+
+
 /* description */
 
 .AboutAlbumDetailsSection {

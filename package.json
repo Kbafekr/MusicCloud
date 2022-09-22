@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/Kbafekr/SoundCloudCloneaA#readme",
   "dependencies": {
-    "sqlite3": "^5.0.11"
+    "sqlite3": "^5.0.11",
+    "wavesurfer.js": "^6.2.0"
   }
 }

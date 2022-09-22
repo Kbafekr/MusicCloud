@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { getOneSong } from "../../store/songs";
 import { actionSongPlaying } from "../../store/audioPlayer";
-import PlayButtonImage from '../../images/PlayButton.png'
+import PlayButtonImage from "../../images/PlayButton.png";
 import "./OneSong.css";
 import LoginAsDemo from "../LoginDemoUser";
 import "../UnknownPage/PageNotFound.css";
@@ -29,7 +29,7 @@ export default function SongDetails() {
 
   const [showModal, setShowModal] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
-  const allAlbums = useSelector((state) => state.album)
+  const allAlbums = useSelector((state) => state.album);
   const song = useSelector((state) => state.song);
   const user = useSelector((state) => state.session.user);
   //   console.log(song)
@@ -70,7 +70,7 @@ export default function SongDetails() {
     );
   }
   if (albumsArray && user) {
-    console.log(albumsArray)
+    console.log(albumsArray);
     userSongsFilter = albumsArray.filter(
       (filteredSongs, index) => filteredSongs.id == song.userId
     );
@@ -114,22 +114,22 @@ export default function SongDetails() {
 
   if (!song.id) {
     return (
-        <div className="errorPage">
-          <div className="headers">
-            <h2>Looks like this song doesn't exist</h2>
-            <div className="linkerror">
-              <NavLink to="/" className="ErrorhomeLink">
-                Click here to go home
-              </NavLink>
-              <NavLink to="/songs" className="ErrorsongsLink">
-                Click here to go back to all songs
-              </NavLink>
-              <NavLink to="/songs/current" className="ErrorownedLink">
-                Click here to go back to owned songs
-              </NavLink>
-            </div>
+      <div className="errorPage">
+        <div className="headers">
+          <h2>Looks like this song doesn't exist</h2>
+          <div className="linkerror">
+            <NavLink to="/" className="ErrorhomeLink">
+              Click here to go home
+            </NavLink>
+            <NavLink to="/songs" className="ErrorsongsLink">
+              Click here to go back to all songs
+            </NavLink>
+            <NavLink to="/songs/current" className="ErrorownedLink">
+              Click here to go back to owned songs
+            </NavLink>
           </div>
         </div>
+      </div>
     );
   }
   if (song.Artist && song.Album) {
@@ -141,16 +141,11 @@ export default function SongDetails() {
             <img className="AlbumArtwork" src={song.imageUrl} />
             <div className="AlbumDetailsTitleSection">
               <div className="SoundPlayButtonAlbumDetailsContainer">
-                {mySongsFilter &&
-                  mySongsFilter.map((song) => {
-                    return (
-                      <img
-                        className="PlayButtonAlbumDetails"
-                        src={PlayButtonImage}
-                        onClick={() => dispatch(actionSongPlaying(song))}
-                      />
-                    );
-                  })}
+                <img
+                  className="PlayButtonAlbumDetails"
+                  src={PlayButtonImage}
+                  onClick={() => dispatch(actionSongPlaying(song))}
+                />
               </div>
               <div className="TitleSectionAlbumDetailsContainer">
                 <div className="TitleAlbumDetailsContainer">
@@ -269,44 +264,30 @@ export default function SongDetails() {
                 </div>
                 <div className="BottomHalfMiddlePartContainer">
                   <div className="SongsInAlbumDetailsContainers">
-                    {albums &&
-                      albums.map((song) => {
-                        return (
-                          <div className="SongInAlbumDetails" key={song.id}>
+                          <div className="SongInAlbumDetails" key={song.Album.id}>
                             <div className="SongInAlbumDetailsContainer">
-                              <div className="PlayButtonContainer">
-                                <img
-                                  className="PlayButtonAlbumDetails"
-                                  src={PlayButtonImage}
-                                  onClick={() =>
-                                    dispatch(actionSongPlaying(song))
-                                  }
-                                />
-                              </div>
                               <div className="SongImageContainerAlbumDetailsList">
                                 <img
                                   className="songImageAlbumDetailsList"
-                                  src={song.imageUrl}
+                                  src={song.Album.imageUrl}
                                 ></img>
                               </div>
                               <div className="SongIdinTrackListAlbumDetailsContainer">
                                 <div className="SongIdinTrackListAlbumDetails">
-                                  Album id: #{song.id}
+                                  Album id: #{song.Album.id}
                                 </div>
                               </div>
                               <div className="SongNumberInTrackListAlbumDetailsContainer">
-                                Track Name:{" "}
+                                Album Title:{" "}
                               </div>
                               <NavLink
                                 className="TrendingsongLink"
-                                to={`/albums/${song.id}`}
+                                to={`/albums/${song.Album.id}`}
                               >
-                                {song.title}
+                                {song.Album.title}
                               </NavLink>
                             </div>
                           </div>
-                        );
-                      })}
                   </div>
                 </div>
               </div>
@@ -329,13 +310,6 @@ export default function SongDetails() {
                     return (
                       <div className="SongInSideBarDetails" key={song.id}>
                         <div className="SongInSidebarContainer">
-                          <div className="PlayButtonContainerSideBar">
-                            <img
-                              className="PlayButtonAlbumDetails"
-                              src={PlayButtonImage}
-                              onClick={() => dispatch(actionSongPlaying(song))}
-                            />
-                          </div>
                           <div className="SongImageContainerAlbumDetailsList">
                             <img
                               className="songImageAlbumDetailsList"
@@ -354,17 +328,11 @@ export default function SongDetails() {
                   })}
               </div>
             </div>
-            </div>
+          </div>
         </div>
       </div>
     );
   }
-
-
-
-
-
-
 
   //   return (
   //     <div className="song-details-container">

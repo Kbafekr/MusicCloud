@@ -69,7 +69,7 @@ export default function AlbumDetails() {
   }
   if (songsArray && user) {
     userAlbumsFilter = songsArray.filter(
-      (filteredSongs, index) => filteredSongs.Album.id == album.userId
+      (filteredSongs, index) => filteredSongs.userId == album.userId
     );
   }
   function DateTimeSubString() {

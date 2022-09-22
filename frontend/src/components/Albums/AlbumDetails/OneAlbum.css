@@ -185,7 +185,8 @@
 
 .AboutAlbumDetailsMain {
   padding-right: 30px;
-  border-right: 1px solid #f2f2f2;
+  border-right: 1px solid #bebebe;;
+
 }
 
 .AboutAlbumDetailsMainHeader {
@@ -193,7 +194,7 @@
 }
 
 .AboutAlbumDetailsMainHeaderContainer {
-  border: 1px solid #fff;
+  border-bottom: 1px solid #bebebe;;
   box-shadow: 0 1px 0 0 #f2f2f2;
   padding: 19px 0 4px;
   margin-bottom: 1px;
@@ -335,11 +336,12 @@
 /* songcard */
 
 .SongInAlbumDetails {
-  border-bottom: 1px solid #f2f2f2;
+  border-bottom: 1px solid #bebebe;
   position: relative;
 }
 
 .SongInAlbumDetailsContainer {
+    width: 100%;
     display: flex;
     flex-direction: row;
     line-height: 44px;
@@ -393,6 +395,26 @@
   .SongNumberInTrackListAlbumDetailsContainer {
 margin-right: 15px;
 font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+
+  }
+
+  .SongIdinTrackListAlbumDetailsContainer {
+    padding: 0 5px 0 12px;
+    margin-right: 25px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: right;
+  }
+
+  .SongIdinTrackListAlbumDetails {
+    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+    font-weight: 100;
+    color: #999;
+    margin-left: 2px;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
 
   }
 /* side bar */

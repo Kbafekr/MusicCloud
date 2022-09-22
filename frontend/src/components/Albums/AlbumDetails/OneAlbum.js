@@ -40,7 +40,6 @@ export default function AlbumDetails() {
   //   console.log(Albumvalues)
   //   const Artist = useSelector(state => state.song.Artist)
 
-
   useEffect(() => {
     dispatch(getOneAlbum(albumId));
   }, [dispatch, showModal, user, modalDelete]);
@@ -53,11 +52,8 @@ export default function AlbumDetails() {
   let myAlbumsFilter;
 
   if (songs && user) {
-
-  myAlbumsFilter = songs.filter(
-      (filteredSongs, index) => index == 0
-      );
-    }
+    myAlbumsFilter = songs.filter((filteredSongs, index) => index == 0);
+  }
   function DateTimeSubString() {
     if (album.createdAt) {
       const string = Object.values(album.createdAt);
@@ -247,6 +243,9 @@ export default function AlbumDetails() {
                   <div className="LastUpdatedAlbumDetailsInformation">
                     {DateTimeSubStringUpdate()}
                   </div>
+                  <div className="LastUpdatedAlbumDetailsHeader">
+                    {album.description}
+                  </div>
                 </div>
                 <div className="BottomHalfMiddlePartContainer">
                   <div className="SongsInAlbumDetailsContainer">
@@ -265,18 +264,26 @@ export default function AlbumDetails() {
                                 />
                               </div>
                               <div className="SongImageContainerAlbumDetailsList">
-                              <img
-                                className="songImageAlbumDetailsList"
-                                src={song.imageUrl}
-                              ></img>
+                                <img
+                                  className="songImageAlbumDetailsList"
+                                  src={song.imageUrl}
+                                ></img>
                               </div>
-                              <div className="SongNumberInTrackListAlbumDetailsContainer">{}</div>
+                              <div className="SongIdinTrackListAlbumDetailsContainer">
+                                <div className="SongIdinTrackListAlbumDetails">
+                                  Song id: #{song.id}
+                                </div>
+                              </div>
+                              <div className="SongNumberInTrackListAlbumDetailsContainer">
+                                Track Name:{" "}
+                              </div>
                               <NavLink
                                 className="TrendingsongLink"
                                 to={`/songs/${song.id}`}
                               >
                                 {song.title}
                               </NavLink>
+
                             </div>
                           </div>
                         );

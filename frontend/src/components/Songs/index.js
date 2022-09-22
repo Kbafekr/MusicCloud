@@ -43,6 +43,15 @@ export default function ReturnAllSongs() {
 
    //useEffect for creating default album if user does not have one
 let myAlbumsFilter;
+let filterOwnSongs;
+
+if (SongsArray && user) {
+
+  filterOwnSongs = SongsArray.filter(
+    (filteredSongs, index) => filteredSongs.userId == user.id
+    );
+  }
+
 if (AlbumsArray && user) {
 
 myAlbumsFilter = AlbumsArray.filter(
@@ -50,16 +59,18 @@ myAlbumsFilter = AlbumsArray.filter(
     );
   }
 
-  useEffect(() => {
-    if (user && !myAlbumsFilter.length && !albums.Artist) {
-      //get all songs
-      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: '' }));
-    }
-  }, [dispatch, user, albums]);
 
   useEffect(() => {
     dispatch(getAllSongs());
   }, [dispatch, user]);
+
+  useEffect(() => {
+    if (user && !myAlbumsFilter.length > 0 && AlbumsArray.length > 30 && !albums.Artist) {
+      //get all songs
+      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
+    }
+  }, [dispatch, albums, user, myAlbumsFilter]);
+
 
   let mySongsFilter = SongsArray.filter((filteredSongs, index) => filteredSongs.userId == user.id)
   let sortedByNewest = SongsArrayCopy.sort((a, b) => b.id - a.id);

@@ -115,13 +115,6 @@ myAlbumsFilter = AlbumsArray.filter(
     );
   }
 
-  useEffect(() => {
-    if (UserSignedIn && !myAlbumsFilter.length && !albums.Artist) {
-      //get all songs
-      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: '' }));
-    }
-  }, [dispatch, UserSignedIn, albums]);
-
   // useEffects for if user isn't signed in set carousel image
   useEffect(() => {
     if (!UserSignedIn) {

@@ -273,7 +273,7 @@ export default function AlbumDetails() {
                         return (
                           <div className="SongInAlbumDetails" key={song.id}>
                             <div className="SongInAlbumDetailsContainer">
-                              <div className="PlayButtonContainer">
+                              <div className="PlayButtonContainerDetails">
                                 <img
                                   className="PlayButtonAlbumDetails"
                                   src={PlayButtonImage}
@@ -515,7 +515,7 @@ export default function AlbumDetails() {
                         return (
                           <div className="SongInAlbumDetails" key={song.id}>
                             <div className="SongInAlbumDetailsContainer">
-                              <div className="PlayButtonContainer">
+                              <div className="PlayButtonContainerDetails">
                                 <img
                                   className="PlayButtonAlbumDetails"
                                   src={PlayButtonImage}

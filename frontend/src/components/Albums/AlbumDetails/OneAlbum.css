@@ -368,7 +368,7 @@
 
 /* Hover for play button */
 
-.PlayButtonContainer {
+.PlayButtonContainerDetails {
     width: 20px;
     height: 20px;
     display: none;
@@ -377,7 +377,7 @@
     top: 10px;
   }
 
-  .SongInAlbumDetails:hover .PlayButtonContainer {
+  .SongInAlbumDetails:hover .PlayButtonContainerDetails {
     display: flex;
     flex-direction: row;
     align-items: center;

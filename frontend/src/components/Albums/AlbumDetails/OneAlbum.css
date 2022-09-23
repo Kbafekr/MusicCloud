@@ -171,19 +171,18 @@
 
 /* main section */
 .AboutAlbumDetailsSectionContainerParent {
-  width:100%;
+  width: 100%;
   height: 400px;
 }
 .AboutAlbumDetailsSectionContainer {
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   /* opacity: 0.2;
   background-image: url('https://steamuserimages-a.akamaihd.net/ugc/1824514986569441317/84F988320A11BAB884ADF2EABEA95A5E1B770B7D/?imw=512&&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=false');
   background-repeat: no-repeat;
   background-size: cover;} */
 }
 .AboutAlbumDetailsSection {
-
   position: relative;
   width: 95%;
   left: 25px;
@@ -198,8 +197,7 @@
 
 .AboutAlbumDetailsMain {
   padding-right: 30px;
-  border-right: 1px solid #bebebe;;
-
+  border-right: 1px solid #bebebe;
 }
 
 .AboutAlbumDetailsMainHeader {
@@ -207,7 +205,7 @@
 }
 
 .AboutAlbumDetailsMainHeaderContainer {
-  border-bottom: 1px solid #bebebe;;
+  border-bottom: 1px solid #bebebe;
   box-shadow: 0 1px 0 0 #f2f2f2;
   padding: 19px 0 4px;
   margin-bottom: 1px;
@@ -354,270 +352,235 @@
 }
 
 .SongInAlbumDetailsContainer {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    line-height: 44px;
-    border-radius: 4px;
-    font-weight: 100;
-    color: #999;
-    position: relative;
-    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-size: 14px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  line-height: 44px;
+  border-radius: 4px;
+  font-weight: 100;
+  color: #999;
+  position: relative;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
 }
 
 .SongImageContainerAlbumDetailsList {
-    /* position: relative; */
-    margin: 7px 15px 0 0;
-    height: 30px;
-    width: 30px;
-    text-align: center;
+  /* position: relative; */
+  margin: 7px 15px 0 0;
+  height: 30px;
+  width: 30px;
+  text-align: center;
 }
 .songImageAlbumDetailsList {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
 /* Hover for play button */
 
 .PlayButtonContainerDetails {
-    width: 20px;
-    height: 20px;
-    display: none;
-    position: absolute;
-    left: 5px;
-    top: 10px;
-  }
+  width: 20px;
+  height: 20px;
+  display: none;
+  position: absolute;
+  left: 5px;
+  top: 10px;
+}
 
-  .SongInAlbumDetails:hover .PlayButtonContainerDetails {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-  }
-  .SongInAlbumDetails:hover .PlayMe:hover {
-    cursor: pointer;
-  }
-  .SongInAlbumDetails:hover .PlayMe:active {
-    cursor: pointer;
-    background-color: rgb(209, 115, 32);
-    border-radius: 50%;
-  }
+.SongInAlbumDetails:hover .PlayButtonContainerDetails {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.SongInAlbumDetails:hover .PlayMe:hover {
+  cursor: pointer;
+}
+.SongInAlbumDetails:hover .PlayMe:active {
+  cursor: pointer;
+  background-color: rgb(209, 115, 32);
+  border-radius: 50%;
+}
 
-  /* trackNumber */
-  .SongNumberInTrackListAlbumDetailsContainer {
-margin-right: 15px;
-font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+/* trackNumber */
+.SongNumberInTrackListAlbumDetailsContainer {
+  margin-right: 15px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+}
 
-  }
+.SongIdinTrackListAlbumDetailsContainer {
+  padding: 0 5px 0 12px;
+  margin-right: 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+}
 
-  .SongIdinTrackListAlbumDetailsContainer {
-    padding: 0 5px 0 12px;
-    margin-right: 25px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    text-align: right;
-  }
-
-  .SongIdinTrackListAlbumDetails {
-    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    font-weight: 100;
-    color: #999;
-    margin-left: 2px;
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.SongIdinTrackListAlbumDetails {
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
+  color: #999;
+  margin-left: 2px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
 
 /* side bar */
 .AboutAlbumDetailsSideBar {
-    top: 30px;
-    width: 300px;
-    right: 0;
-    position: absolute;
-    bottom: auto;
-    padding-bottom: 145px;
-
+  top: 30px;
+  width: 300px;
+  right: 0;
+  position: absolute;
+  bottom: auto;
+  padding-bottom: 145px;
 }
 
 .sideBarTopContainer {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
-.sideBarSubContainer{
-    height: 30px;
-    color: #999;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #b3b3b3;
-    padding-bottom: 5px;
+.sideBarSubContainer {
+  height: 30px;
+  color: #999;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #b3b3b3;
+  padding-bottom: 5px;
 }
 
-.sideBarTopHeaderContainer{
-    line-height: 24px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-weight: 100;
-    color: #999;
-    font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-    margin: 18px 0 0;
-    font-size: 14px;
+.sideBarTopHeaderContainer {
+  line-height: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 100;
+  color: #999;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  margin: 18px 0 0;
+  font-size: 14px;
 }
 
-.sideBarTopHeaderIcon{
-    background-repeat: no-repeat;
-    height: 24px;
-    width: 21px;
-    margin-right: 4px;
-    background-size: 18px 18px;
-    background-image:url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMThweCIgaGVpZ2h0PSIxOHB4IiB2aWV3Qm94PSIwIDAgMTggMTgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQzLjEgKDM5MDEyKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5pY19wbGF5bGlzdF8xODwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZzLz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJpY19wbGF5bGlzdCIgZmlsbD0icmdiKDE1MywgMTUzLCAxNTMpIj4KICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4wMDAwMDAsIDIuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTIiIHg9IjAiIHk9IjQiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlBhdGgtMiIgZmlsbC1vcGFjaXR5PSIwLjciIHBvaW50cz0iMyAwIDE0IDAgMTQgMTAgMTIgMTAgMTIgMiAzIDIiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+)
+.sideBarTopHeaderIcon {
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 21px;
+  margin-right: 4px;
+  background-size: 18px 18px;
+  background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMThweCIgaGVpZ2h0PSIxOHB4IiB2aWV3Qm94PSIwIDAgMTggMTgiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQzLjEgKDM5MDEyKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5pY19wbGF5bGlzdF8xODwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZzLz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJpY19wbGF5bGlzdCIgZmlsbD0icmdiKDE1MywgMTUzLCAxNTMpIj4KICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMi4wMDAwMDAsIDIuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cmVjdCBpZD0iUmVjdGFuZ2xlLTIiIHg9IjAiIHk9IjQiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCIvPgogICAgICAgICAgICAgICAgPHBvbHlnb24gaWQ9IlBhdGgtMiIgZmlsbC1vcGFjaXR5PSIwLjciIHBvaW50cz0iMyAwIDE0IDAgMTQgMTAgMTIgMTAgMTIgMiAzIDIiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+);
 }
-
 
 /* albums by user */
 
 .SideBarContentMainSection {
-height: 216px;
-padding-top: 5px;
-overflow-y: scroll;
-overflow-x: hidden;
-
-
+  height: 216px;
+  padding-top: 5px;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
-
 .SongsInSideBarContainers {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-  }
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
 
-  /* songcard */
+/* songcard */
 
-  .SongInSideBarDetails {
-    border-bottom: 1px solid #bebebe;
-    position: relative;
-  }
+.SongInSideBarDetails {
+  border-bottom: 1px solid #bebebe;
+  position: relative;
+}
 
-  .SongInSidebarContainer {
-      width: 500px;
-      height: 80px;
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      line-height: 44px;
-      border-radius: 4px;
-      font-weight: 100;
-      color: #999;
-      position: relative;
-      font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-      font-size: 14px;
-      overflow-x: hidden;
-  }
+.SongInSidebarContainer {
+  width: 500px;
+  height: 80px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  line-height: 44px;
+  border-radius: 4px;
+  font-weight: 100;
+  color: #999;
+  position: relative;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-size: 14px;
+  overflow-x: hidden;
+}
 
-  .SongImageContainerAlbumDetailsList {
-      /* position: relative; */
-      margin: 7px 15px 0 0;
-      height: 30px;
-      width: 30px;
-      text-align: center;
-  }
-  .songImageAlbumDetailsList {
-      width: 30px;
-      height: 30px;
-  }
+.SongImageContainerAlbumDetailsList {
+  /* position: relative; */
+  margin: 7px 15px 0 0;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+}
+.songImageAlbumDetailsList {
+  width: 30px;
+  height: 30px;
+}
 
-  /* Hover for play button */
+/* Hover for play button */
 
-  .PlayButtonContainerSideBar {
-      width: 20px;
-      height: 20px;
-      display: none;
-      position: absolute;
-      left: 5px;
-      top: 32px;
-    }
+.PlayButtonContainerSideBar {
+  width: 20px;
+  height: 20px;
+  display: none;
+  position: absolute;
+  left: 5px;
+  top: 32px;
+}
 
-    .SongInSideBarDetails:hover .PlayButtonContainerSideBar {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-    }
-    .SongInSideBarDetails:hover .PlayMe:hover {
-      cursor: pointer;
-    }
-    .SongInSideBarDetails:hover .PlayMe:active {
-      cursor: pointer;
-      background-color: rgb(209, 115, 32);
-      border-radius: 50%;
-    }
+.SongInSideBarDetails:hover .PlayButtonContainerSideBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.SongInSideBarDetails:hover .PlayMe:hover {
+  cursor: pointer;
+}
+.SongInSideBarDetails:hover .PlayMe:active {
+  cursor: pointer;
+  background-color: rgb(209, 115, 32);
+  border-radius: 50%;
+}
 
-    /* trackNumber */
-    .SongNumberInTrackListAlbumDetailsContainer {
+/* trackNumber */
+.SongNumberInTrackListAlbumDetailsContainer {
   margin-right: 15px;
-  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+}
 
-    }
+.SongIdinTrackListAlbumDetailsContainer {
+  padding: 0 5px 0 12px;
+  margin-right: 25px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: right;
+}
 
-    .SongIdinTrackListAlbumDetailsContainer {
-      padding: 0 5px 0 12px;
-      margin-right: 25px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      text-align: right;
-    }
-
-    .SongIdinTrackListAlbumDetails {
-      font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
-      font-weight: 100;
-      color: #999;
-      margin-left: 2px;
-      display: flex;
-      justify-content: flex-end;
-      width: 100%;
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.SongIdinTrackListAlbumDetails {
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+    Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: 100;
+  color: #999;
+  margin-left: 2px;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
 
 .album-details-container {
   display: flex;

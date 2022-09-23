@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
+import { getAllSongs } from "../../store/songs";
 import { getOneSong } from "../../store/songs";
 import { actionSongPlaying } from "../../store/audioPlayer";
 import PlayButtonImage from "../../images/PlayButton.png";
@@ -30,7 +31,9 @@ export default function SongDetails() {
   const [showModal, setShowModal] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
   const allAlbums = useSelector((state) => state.album);
-  const song = useSelector((state) => state.song);
+  const songs = useSelector((state) => state.song);
+
+  const song = { ...songs[songId] };
   const user = useSelector((state) => state.session.user);
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
@@ -39,14 +42,15 @@ export default function SongDetails() {
 
   let albums;
   let albumsArray;
+  let songsArray;
 
   useEffect(() => {
     dispatch(getAllAlbums());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getOneSong(songId));
-  }, [dispatch, showModal, user, modalDelete]);
+    dispatch(getAllSongs());
+  }, [dispatch]);
 
   // }, [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 
@@ -55,6 +59,9 @@ export default function SongDetails() {
   }
   if (allAlbums) {
     albumsArray = Object.values(allAlbums);
+  }
+  if (songs) {
+    songsArray = Object.values(songs);
   }
 
   let userSongsFilter;
@@ -70,9 +77,8 @@ export default function SongDetails() {
     );
   }
   if (albumsArray && user) {
-    console.log(albumsArray);
-    userSongsFilter = albumsArray.filter(
-      (filteredSongs, index) => filteredSongs.id == song.userId
+    userSongsFilter = songsArray.filter(
+      (filteredSongs, index) => filteredSongs.userId == song.Artist.id
     );
   }
   function DateTimeSubString() {
@@ -264,30 +270,30 @@ export default function SongDetails() {
                 </div>
                 <div className="BottomHalfMiddlePartContainer">
                   <div className="SongsInAlbumDetailsContainers">
-                          <div className="SongInAlbumDetails" key={song.Album.id}>
-                            <div className="SongInAlbumDetailsContainer">
-                              <div className="SongImageContainerAlbumDetailsList">
-                                <img
-                                  className="songImageAlbumDetailsList"
-                                  src={song.Album.imageUrl}
-                                ></img>
-                              </div>
-                              <div className="SongIdinTrackListAlbumDetailsContainer">
-                                <div className="SongIdinTrackListAlbumDetails">
-                                  Album id: #{song.Album.id}
-                                </div>
-                              </div>
-                              <div className="SongNumberInTrackListAlbumDetailsContainer">
-                                Album Title:{" "}
-                              </div>
-                              <NavLink
-                                className="TrendingsongLink"
-                                to={`/albums/${song.Album.id}`}
-                              >
-                                {song.Album.title}
-                              </NavLink>
-                            </div>
+                    <div className="SongInAlbumDetails" key={song.Album.id}>
+                      <div className="SongInAlbumDetailsContainer">
+                        <div className="SongImageContainerAlbumDetailsList">
+                          <img
+                            className="songImageAlbumDetailsList"
+                            src={song.Album.imageUrl}
+                          ></img>
+                        </div>
+                        <div className="SongIdinTrackListAlbumDetailsContainer">
+                          <div className="SongIdinTrackListAlbumDetails">
+                            Album id: #{song.Album.id}
                           </div>
+                        </div>
+                        <div className="SongNumberInTrackListAlbumDetailsContainer">
+                          Album Title:{" "}
+                        </div>
+                        <NavLink
+                          className="TrendingsongLinkTrackList"
+                          to={`/albums/${song.Album.id}`}
+                        >
+                          {song.Album.title}
+                        </NavLink>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -299,17 +305,24 @@ export default function SongDetails() {
             <div className="sideBarTopContainer">
               <div className="sideBarSubContainer">
                 <h3 className="sideBarTopHeaderContainer">
-                  <span>Albums from this user</span>
+                  <span>Songs from this user</span>
                 </h3>
               </div>
             </div>
             <div className="SideBarContentMainSection">
               <div className="SongsInSideBarContainers">
-                {userFilteredAlbums &&
-                  userFilteredAlbums.map((song) => {
+              {userSongsFilter &&
+                  userSongsFilter.map((song) => {
                     return (
                       <div className="SongInSideBarDetails" key={song.id}>
                         <div className="SongInSidebarContainer">
+                          <div className="PlayButtonContainerSideBar">
+                            <img
+                              className="PlayButtonAlbumDetails"
+                              src={PlayButtonImage}
+                              onClick={() => dispatch(actionSongPlaying(song))}
+                            />
+                          </div>
                           <div className="SongImageContainerAlbumDetailsList">
                             <img
                               className="songImageAlbumDetailsList"
@@ -317,8 +330,8 @@ export default function SongDetails() {
                             ></img>
                           </div>
                           <NavLink
-                            className="TrendingsongLink"
-                            to={`/albums/${song.id}`}
+                            className="TrendingsongLinkTrackList"
+                            to={`/songs/${song.id}`}
                           >
                             {song.title}
                           </NavLink>
@@ -440,30 +453,30 @@ export default function SongDetails() {
                 </div>
                 <div className="BottomHalfMiddlePartContainer">
                   <div className="SongsInAlbumDetailsContainers">
-                          <div className="SongInAlbumDetails" key={song.Album.id}>
-                            <div className="SongInAlbumDetailsContainer">
-                              <div className="SongImageContainerAlbumDetailsList">
-                                <img
-                                  className="songImageAlbumDetailsList"
-                                  src={song.Album.imageUrl}
-                                ></img>
-                              </div>
-                              <div className="SongIdinTrackListAlbumDetailsContainer">
-                                <div className="SongIdinTrackListAlbumDetails">
-                                  Album id: #{song.Album.id}
-                                </div>
-                              </div>
-                              <div className="SongNumberInTrackListAlbumDetailsContainer">
-                                Album Title:{" "}
-                              </div>
-                              <NavLink
-                                className="TrendingsongLink"
-                                to={`/albums/${song.Album.id}`}
-                              >
-                                {song.Album.title}
-                              </NavLink>
-                            </div>
+                    <div className="SongInAlbumDetails" key={song.Album.id}>
+                      <div className="SongInAlbumDetailsContainer">
+                        <div className="SongImageContainerAlbumDetailsList">
+                          <img
+                            className="songImageAlbumDetailsList"
+                            src={song.Album.imageUrl}
+                          ></img>
+                        </div>
+                        <div className="SongIdinTrackListAlbumDetailsContainer">
+                          <div className="SongIdinTrackListAlbumDetails">
+                            Album id: #{song.Album.id}
                           </div>
+                        </div>
+                        <div className="SongNumberInTrackListAlbumDetailsContainer">
+                          Album Title:{" "}
+                        </div>
+                        <NavLink
+                          className="TrendingsongLinkTrackList"
+                          to={`/albums/${song.Album.id}`}
+                        >
+                          {song.Album.title}
+                        </NavLink>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -475,17 +488,24 @@ export default function SongDetails() {
             <div className="sideBarTopContainer">
               <div className="sideBarSubContainer">
                 <h3 className="sideBarTopHeaderContainer">
-                  <span>albums from this user</span>
+                  <span>Songs from this user</span>
                 </h3>
               </div>
             </div>
             <div className="SideBarContentMainSection">
               <div className="SongsInSideBarContainers">
-                {userFilteredAlbums &&
-                  userFilteredAlbums.map((song) => {
+                {userSongsFilter &&
+                  userSongsFilter.map((song) => {
                     return (
                       <div className="SongInSideBarDetails" key={song.id}>
                         <div className="SongInSidebarContainer">
+                          <div className="PlayButtonContainerSideBar">
+                            <img
+                              className="PlayButtonAlbumDetails"
+                              src={PlayButtonImage}
+                              onClick={() => dispatch(actionSongPlaying(song))}
+                            />
+                          </div>
                           <div className="SongImageContainerAlbumDetailsList">
                             <img
                               className="songImageAlbumDetailsList"
@@ -493,8 +513,8 @@ export default function SongDetails() {
                             ></img>
                           </div>
                           <NavLink
-                            className="TrendingsongLink"
-                            to={`/albums/${song.id}`}
+                            className="TrendingsongLinkTrackList"
+                            to={`/songs/${song.id}`}
                           >
                             {song.title}
                           </NavLink>

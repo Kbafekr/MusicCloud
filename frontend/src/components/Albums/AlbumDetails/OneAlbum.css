@@ -76,9 +76,11 @@
     Tahoma, sans-serif;
   color: white;
   font-weight: 100;
+  min-width: 160px;
   font-size: 24px;
   line-height: 37px;
-  padding: 4px 7px;
+  padding: 12px;
+  text-align: center;
   background-color: rgba(0, 0, 0, 0.8);
   max-width: fit-content;
   box-sizing: border-box;
@@ -104,14 +106,22 @@
 /* Info section */
 .InfoSectionAlbumDetails {
   position: absolute;
-  top: 32px;
-  right: 392px;
+  top: 30px;
+  right: 380px;
   text-align: right;
+  width: fit-content;
 }
 
 .InfoSectionAlbumCreatedTime {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
   color: #fff;
   margin-bottom: 16px;
+  position: relative;
+  /* right: -8px; */
+
   font-size: 16px;
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
     Garuda, Verdana, Tahoma, sans-serif;
@@ -126,10 +136,20 @@
   font-weight: 100;
 }
 
+.DateTimeInfoStyle {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: rgb(186, 186, 186);
+  font-size: 16px;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+  Garuda, Verdana, Tahoma, sans-serif;
+  font-weight: bold;
+}
 .InfoSectionAlbumIdDetails {
   position: relative;
   width: fit-content;
-  left: 5.5em;
+  /* left: 22.5em; */
+  /* top: 1em; */
   height: fit-content;
   padding: 0 8px;
   background: #999;
@@ -157,16 +177,18 @@
 
 .WaveFormSubContainer {
   display: flex;
-  height: 100px;
+  position: relative;
+  height: 120px;
   width: 100%;
   margin-bottom: 30px;
 }
 
 .WaveFormImg {
   position: relative;
+  height: 100%;
   width: 100%;
-  height: 200px;
-  bottom: 100px;
+  max-height: 200px;
+  bottom: 000px;
 }
 
 /* main section */
@@ -187,7 +209,7 @@
   width: 95%;
   left: 25px;
   margin-bottom: 100px;
-  height: 300px;
+  height: auto;
 }
 
 .AboutAlbumDetailsMainContainer {
@@ -209,12 +231,14 @@
   box-shadow: 0 1px 0 0 #f2f2f2;
   padding: 19px 0 4px;
   margin-bottom: 1px;
+  min-width: 400px;
 }
 
 .AboutAlbumDetailsMainHeaderContainerFlexBox {
   display: flex;
   min-height: 33px;
-  flex-wrap: wrap;
+  overflow-x: scroll;
+  flex-wrap: nowrap;
   align-items: center;
 }
 
@@ -271,6 +295,8 @@
 }
 
 .UserContainerUserNameAlbumDetails {
+  position: relative;
+  bottom: 10px;
   overflow: hidden;
 }
 
@@ -342,6 +368,8 @@
 .SongsInAlbumDetailsContainers {
   display: flex;
   flex-direction: column;
+  height: 150px;
+  overflow-y: scroll;
 }
 
 /* songcard */
@@ -352,9 +380,12 @@
 }
 
 .SongInAlbumDetailsContainer {
+  height: 45px;
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  overflow-x: scroll;
   line-height: 44px;
   border-radius: 4px;
   font-weight: 100;
@@ -405,29 +436,44 @@
 
 /* trackNumber */
 .SongNumberInTrackListAlbumDetailsContainer {
+  display: flex;
+  justify-content: flex-end;
   margin-right: 15px;
+  height: 100%;
+  min-width: 88px;
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
     Garuda, Verdana, Tahoma, sans-serif;
 }
 
+.TrendingsongLinkTrackList {
+  z-index: 0;
+  min-width: fit-content;
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.633);
+  overflow-x: scroll;
+}
 .SongIdinTrackListAlbumDetailsContainer {
+  min-width: fit-content;
   padding: 0 5px 0 12px;
-  margin-right: 25px;
+  margin-right: 15px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
-  text-align: right;
+  text-align: left;
 }
 
 .SongIdinTrackListAlbumDetails {
+
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
     Garuda, Verdana, Tahoma, sans-serif;
   font-weight: 100;
   color: #999;
   margin-left: 2px;
+  text-align: left;
   display: flex;
-  justify-content: flex-end;
-  width: 100%;
+  justify-content: flex-start;
+  height: 100%;
+  min-width: fit-content;
 }
 
 /* side bar */
@@ -480,7 +526,7 @@
 /* albums by user */
 
 .SideBarContentMainSection {
-  height: 216px;
+  height: 258px;
   padding-top: 5px;
   overflow-y: scroll;
   overflow-x: hidden;
@@ -555,33 +601,6 @@
   border-radius: 50%;
 }
 
-/* trackNumber */
-.SongNumberInTrackListAlbumDetailsContainer {
-  margin-right: 15px;
-  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
-    Garuda, Verdana, Tahoma, sans-serif;
-}
-
-.SongIdinTrackListAlbumDetailsContainer {
-  padding: 0 5px 0 12px;
-  margin-right: 25px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  text-align: right;
-}
-
-.SongIdinTrackListAlbumDetails {
-  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
-    Garuda, Verdana, Tahoma, sans-serif;
-  font-weight: 100;
-  color: #999;
-  margin-left: 2px;
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-
 .album-details-container {
   display: flex;
   flex-direction: column;
@@ -604,7 +623,7 @@
 .EditAlbumButton,
 .DeleteAlbumButton {
   color: #fff;
-  font-size: 2em;
+  font-size: 2vmax;
   height: 2em;
   border-radius: 7px;
   background-color: rgb(255, 98, 0);

@@ -25,10 +25,15 @@ const validateAlbum = [
 router.get('/', restoreUser, async (req, res) => {
   const albums = await Album.findAll({
     where: {},
-    attributes: { include: [
+    include: [{ model: User, as: 'Artist',
+    attributes: ['id', 'username', 'imageUrl']
+     }, {model: Song,
+       attributes: ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']},
+     ],
+     attributes: { include: [
       'id', 'userId', 'title', 'description', 'imageUrl', 'createdAt', 'updatedAt'
-    ]}
-  })
+    ],
+  }})
   const response = {
     'Albums': albums
   }

@@ -20,6 +20,7 @@ body, footer{
   width: auto;
   height: auto;
   background-color: white;
+  min-width: 800px;
 }
 
 

@@ -19,7 +19,7 @@ function CreateAlbum({setShowModal}) {
     const formValidationErrors = [];
 
     if (title.length > 256) {
-      formValidationErrors.push("Title must be fewer than 256 characters");
+      formValidationErrors.push("Title must be no more than 256 characters");
     }
     if (title.length < 1) {
       formValidationErrors.push("Title required");
@@ -28,7 +28,7 @@ function CreateAlbum({setShowModal}) {
       formValidationErrors.push("Description required");
     }
     if (description.length > 256) {
-      formValidationErrors.push("Description must be fewer than 256 characters");
+      formValidationErrors.push("Description must be no more than 256 characters");
     }
     if (!user) {
       formValidationErrors.push("User must be signed in");
@@ -66,17 +66,19 @@ function CreateAlbum({setShowModal}) {
     <div className="CreateAlbum-outer">
 
     <form className="CreateAlbum-inner" onSubmit={handleSubmit} autoComplete='off'>
-    {errors.length > 0 && (
-          <div className="HeaderErrorStyling">
-            <ul className="UlBulletErrorStyling">
-              {errors.map((error, idx) => (
-                <li className="ErrorPoints" key={idx}>
-                  {error}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+    <div className="errorHandlingContainer">
+          {errors.length > 0 && (
+            <div className="HeaderErrorStyling">
+              <ul className="UlBulletErrorStyling">
+                {errors.map((error, idx) => (
+                  <li className="ErrorPoints" key={idx}>
+                    {error}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       <h1 className="CreateSongHeader">Create an album</h1>
       <label>
         <input

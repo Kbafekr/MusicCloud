@@ -183,6 +183,10 @@
   background-color: black;
   border: 0.05em solid white;
 }
+
+.LogInNavBar:hover {
+  cursor: pointer;
+}
 .SignupNavBar {
   background-color: rgb(255, 98, 0);
   border: 0.05em rgb(255, 111, 0) ;

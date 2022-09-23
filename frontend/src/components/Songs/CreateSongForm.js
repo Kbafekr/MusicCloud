@@ -40,7 +40,7 @@ function CreateSong({ setShowModal }) {
       formValidationErrors.push("Song must link to an mp3 file");
     }
     if (title.length > 256) {
-      formValidationErrors.push("Song title must be fewer than 256 characters");
+      formValidationErrors.push("Song title must be no more than 256 characters");
     }
     if (title.length < 1) {
       formValidationErrors.push("Title required");
@@ -49,7 +49,7 @@ function CreateSong({ setShowModal }) {
       formValidationErrors.push("Description required");
     }
     if (description.length > 256) {
-      formValidationErrors.push("Description must be fewer than 256 characters");
+      formValidationErrors.push("Description must be no more than 256 characters");
     }
     if (!user) {
       formValidationErrors.push("User must be signed in");
@@ -84,17 +84,19 @@ function CreateSong({ setShowModal }) {
         onSubmit={handleSubmit}
         autoComplete="off"
       >
-        {errors.length > 0 && (
-          <div className="HeaderErrorStyling">
-            <ul className="UlBulletErrorStyling">
-              {errors.map((error, idx) => (
-                <li className="ErrorPoints" key={idx}>
-                  {error}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+         <div className="errorHandlingContainer">
+          {errors.length > 0 && (
+            <div className="HeaderErrorStyling">
+              <ul className="UlBulletErrorStyling">
+                {errors.map((error, idx) => (
+                  <li className="ErrorPoints" key={idx}>
+                    {error}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
         <h1 className="CreateSongHeader">Create a song</h1>
         <label className="CreateSongLabel">Select an Album...</label>
         <div className="SelectAlbumsCreateSongContainer">

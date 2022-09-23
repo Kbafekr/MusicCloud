@@ -65,6 +65,7 @@ let albumsArray;
   let myAlbumsFilter;
 
   let userFilteredSongs;
+  
   if (songs && user) {
     myAlbumsFilter = songs.filter((filteredSongs, index) => index == 0);
   }

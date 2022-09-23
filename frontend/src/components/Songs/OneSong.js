@@ -78,6 +78,7 @@ export default function SongDetails() {
   let mySongsFilter;
 
   let userFilteredAlbums;
+  
   if (albums && user) {
     mySongsFilter = albums.filter((filteredSongs, index) => index == 0);
   }

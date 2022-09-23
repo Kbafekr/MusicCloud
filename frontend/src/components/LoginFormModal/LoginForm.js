@@ -3,11 +3,12 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import './LoginForm.css'
 
-function LoginForm() {
+function LoginForm({ setShowModalSignIn }) {
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,18 +18,26 @@ function LoginForm() {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
-    );
+    ).then(() => setShowModalSignIn(false));
   };
 
   return (
     <div className="loginStyle-outer">
 
     <form className='loginStyle-inner' onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => (
-            <li className='ErrorLi' key={idx}>{error}</li>
-            ))}
-      </ul>
+    <div className="errorHandlingContainer">
+          {errors.length > 0 && (
+            <div className="HeaderErrorStyling">
+              <ul className="UlBulletErrorStyling">
+                {errors.map((error, idx) => (
+                  <li className="ErrorPoints" key={idx}>
+                    {error}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
       <h1 className="SignInModalHeader">Sign in</h1>
       <label className= 'SignUplabel'>
         <input

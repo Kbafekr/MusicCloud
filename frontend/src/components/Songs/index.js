@@ -71,12 +71,12 @@ myAlbumsFilter = AlbumsArray.filter(
     dispatch(getAllSongs());
   }, [dispatch, user]);
 
-  useEffect(() => {
-    if (user && !myAlbumsFilter.length > 0 && AlbumsArray.length > 40 && !albums.Artist && !mySongsFilter.length) {
-      //get all songs
-      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
-    }
-  }, [dispatch, albums, user, myAlbumsFilter]);
+  // useEffect(() => {
+  //   if (user && !myAlbumsFilter.length > 0 && AlbumsArray.length > 40 && !albums.Artist && !mySongsFilter.length) {
+  //     //get all songs
+  //     dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
+  //   }
+  // }, [dispatch, albums, user, myAlbumsFilter]);
 
 
   let mySongsFilter = SongsArray.filter((filteredSongs, index) => filteredSongs.userId == user.id)

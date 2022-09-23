@@ -82,6 +82,8 @@ export function HomePage() {
   // console.log(randomNumber + 'randomNumber')
   // console.log(Number + 'Number')
 
+  let myAlbumsFilter;
+  let mySongsFilter;
   // filtered by search
 
   //useEffect for getting DemoSongs
@@ -97,7 +99,7 @@ export function HomePage() {
       //get all songs
       dispatch(getAllSongs());
     }
-  }, [dispatch]);
+  }, [dispatch, UserSignedIn, CreateAnAlbum, albums]);
   //useEffect for getting Songs signed in
   useEffect(() => {
     dispatch(getAllAlbums());
@@ -105,9 +107,15 @@ export function HomePage() {
 
 
 
+  useEffect(() => {
+    if (UserSignedIn && !myAlbumsFilter.length && AlbumsArray.length && !albums.Artist && !mySongsFilter.length) {
+      //get all songs
+      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
+    }
+  }, [dispatch, albums, UserSignedIn, myAlbumsFilter]);
 
+  mySongsFilter = SongsArray.filter((filteredSongs, index) => filteredSongs.userId == UserSignedIn.id)
    //useEffect for creating default album if user does not have one
-let myAlbumsFilter;
 if (AlbumsArray && UserSignedIn) {
 
 myAlbumsFilter = AlbumsArray.filter(

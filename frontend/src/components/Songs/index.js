@@ -15,6 +15,7 @@ import { actionSongPlaying } from "../../store/audioPlayer";
 //create default album if user has no albums
 import { CreateAnAlbum } from "../../store/albums";
 import { getAllAlbums } from "../../store/albums";
+import { Modal } from "../../context/Modal";
 
 export default function ReturnAllSongs() {
   const dispatch = useDispatch();
@@ -65,14 +66,14 @@ myAlbumsFilter = AlbumsArray.filter(
 
   useEffect(() => {
     dispatch(getAllSongs());
-  }, [dispatch, user]);
+  }, [dispatch, user, CreateAnAlbum, albums]);
 
-  // useEffect(() => {
-  //   if (user && !myAlbumsFilter.length > 0 && AlbumsArray.length > 40 && !albums.Artist && !mySongsFilter.length) {
-  //     //get all songs
-  //     dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
-  //   }
-  // }, [dispatch, albums, user, myAlbumsFilter]);
+  useEffect(() => {
+    if (user && !myAlbumsFilter.length && AlbumsArray.length && !albums.Artist && !mySongsFilter.length) {
+      //get all songs
+      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
+    }
+  }, [dispatch, albums, user, myAlbumsFilter]);
 
 
   let mySongsFilter = SongsArray.filter((filteredSongs, index) => filteredSongs.userId == user.id)

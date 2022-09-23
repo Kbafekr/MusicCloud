@@ -32,15 +32,16 @@ export default function ReturnAllSongs() {
   const albums = useSelector((state) => state.album)
   const AlbumsArray = Object.values(albums)
   const AlbumsArrayCopy = [...AlbumsArray]
+  let lastAlbum;
 
   //useEffect for getting Songs signed in
   useEffect(() => {
     dispatch(getAllAlbums());
-  }, [dispatch, user, CreateAnAlbum]);
+  }, [dispatch, user, CreateAnAlbum, albums.length, lastAlbum]);
 
  useEffect(() => {
     dispatch(getAllSongs());
-  }, [dispatch, user, CreateAnAlbum]);
+  }, [dispatch, user, CreateAnAlbum, albums]);
 
 
    //useEffect for creating default album if user does not have one
@@ -69,12 +70,12 @@ myAlbumsFilter = AlbumsArray.filter(
   }
 
 
-  // useEffect(() => {
-  //   if (user && !myAlbumsFilter.length && AlbumsArray.length && !albums.Artist && !mySongsFilter.length) {
-  //     //get all songs
-  //     dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
-  //   }
-  // }, [dispatch, albums, user, myAlbumsFilter]);
+  useEffect(() => {
+    if (user && !myAlbumsFilter.length && AlbumsArray.length && !albums.Artist && !mySongsFilter.length) {
+      //get all songs
+      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
+    }
+  }, [dispatch, user]);
 
 
   let mySongsFilter = SongsArray.filter((filteredSongs, index) => filteredSongs.userId == user.id)
@@ -89,7 +90,8 @@ myAlbumsFilter = AlbumsArray.filter(
   let remixSongsFilter = SongsArray.filter((filteredSongs, index) => index == 15 || index == 17 || index == 22 || index == 30 || index == 31 || index == 35 ||
   index == 37 || index == 46 || index == 12)
 
-  // lastSong = sortedByNewest.filter((filtered, index) => index == 0)
+  let sortedAlbumByNewest = AlbumsArrayCopy.sort((a, b) => b.id - a.id);
+  lastAlbum = sortedAlbumByNewest.filter((filtered, index) => index == 0)
 
   // if (!lastSong.Album && !lastSong.Artist) {
   //   setNewSongDetails(previousState => !previousState)

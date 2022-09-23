@@ -55,6 +55,8 @@ export function HomePage() {
 
   let workoutSongsFilter;
 
+  let lastAlbum
+  let sortedAlbumByNewest
   //prevents counter from updating after every single render
 
   //set state for images carousel
@@ -111,13 +113,14 @@ export function HomePage() {
   //useEffect for getting Songs signed in
   useEffect(() => {
     dispatch(getAllAlbums());
-  }, [dispatch, UserSignedIn]);
+    console.log(lastAlbum)
+  }, [dispatch, UserSignedIn, albums.length, lastAlbum]);
 
   useEffect(() => {
     if (
       UserSignedIn &&
       !myAlbumsFilter.length &&
-      AlbumsArray.length &&
+      AlbumsArray. length &&
       !albums.Artist &&
       !mySongsFilter.length
     ) {
@@ -131,7 +134,12 @@ export function HomePage() {
         })
       );
     }
-  }, [dispatch, albums, UserSignedIn, myAlbumsFilter]);
+  }, [dispatch, UserSignedIn ]);
+
+
+
+
+
   if (UserSignedIn) {
     mySongsFilter = SongsArray.filter(
       (filteredSongs, index) => filteredSongs.userId == UserSignedIn.id
@@ -234,7 +242,9 @@ export function HomePage() {
 
   //sort through songs array and
   sortedByNewest = SongsArrayCopy.sort((a, b) => b.id - a.id);
+  sortedAlbumByNewest = AlbumsArrayCopy.sort((a, b) => b.id - a.id);
 
+   lastAlbum = sortedAlbumByNewest.filter((filtered, index) => index == 0)
   //filter for workout songs
 
   // workoutSongsFilter = SongsArray.filter((filteredSongs, index) => index == 28 || index == 11 || index == 3 || index == 2 || index == 4 || index == 1 || index == 12 || index == 19 ||

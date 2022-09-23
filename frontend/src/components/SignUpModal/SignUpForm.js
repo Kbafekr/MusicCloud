@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import * as sessionActions from "../../store/session";
 import "./SignUpForm.css";
 
-function SignupForm({ setModalState }) {
+function SignupForm({setShowModal}) {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -49,7 +49,6 @@ function SignupForm({ setModalState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (errors.length <= 0) {
-      setModalState(false);
       return dispatch(
         sessionActions.signup({
           email,
@@ -62,7 +61,7 @@ function SignupForm({ setModalState }) {
       ).catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-      });
+      }).then(() => setShowModal(false));
     }
     return errors;
   };

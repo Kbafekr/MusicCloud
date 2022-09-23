@@ -5,16 +5,13 @@ import { getAllSongs } from "../../store/songs";
 import { actionSongPlaying } from "../../store/audioPlayer";
 import PlayButtonImage from "../../images/PlayButton.png";
 import "./OneSong.css";
+import "../Albums/AlbumDetails/OneAlbum.css";
 import LoginAsDemo from "../LoginDemoUser";
 import "../UnknownPage/PageNotFound.css";
 import { getAllAlbums } from "../../store/albums";
 //import modal file create album index
 import { Modal } from "../../context/Modal";
 import EditSong from "./EditSongForm";
-
-
-
-
 
 //exceeded rendering capacity with conditional rendering for nested properties
 //just create modal in here
@@ -37,7 +34,6 @@ export default function SongDetails() {
   const allAlbums = useSelector((state) => state.album);
   const songs = useSelector((state) => state.song);
 
-
   const song = { ...songs[songId] };
   const user = useSelector((state) => state.session.user);
   //   console.log(song)
@@ -49,8 +45,6 @@ export default function SongDetails() {
   let albumsArray;
   let songsArray;
 
-
-
   useEffect(() => {
     dispatch(getAllAlbums());
   }, [dispatch]);
@@ -60,7 +54,6 @@ export default function SongDetails() {
   }, [dispatch, showModal, user, modalDelete]);
 
   // useEffect(getOneSong(songId))
-
 
   // }, [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 
@@ -78,7 +71,7 @@ export default function SongDetails() {
   let mySongsFilter;
 
   let userFilteredAlbums;
-  
+
   if (albums && user) {
     mySongsFilter = albums.filter((filteredSongs, index) => index == 0);
   }
@@ -181,11 +174,12 @@ export default function SongDetails() {
             <div className="InfoSectionAlbumDetails">
               <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={song.createdAt}>
-                  <span>Created on: {DateTimeSubString()}</span>
+                  <span>Created on:</span>
+                  <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
                 </time>
-              </div>
-              <div className="InfoSectionAlbumIdDetails">
-                <span>Song id: {song.id}</span>
+                <div className="InfoSectionAlbumIdDetails">
+                  <span>Song id: {song.id}</span>
+                </div>
               </div>
             </div>
             <div className="WaveFormContainerAlbumDetails">
@@ -322,7 +316,7 @@ export default function SongDetails() {
             </div>
             <div className="SideBarContentMainSection">
               <div className="SongsInSideBarContainers">
-              {userSongsFilter &&
+                {userSongsFilter &&
                   userSongsFilter.map((song) => {
                     return (
                       <div className="SongInSideBarDetails" key={song.id}>
@@ -387,13 +381,14 @@ export default function SongDetails() {
             </div>
             {/* Info section */}
             <div className="InfoSectionAlbumDetails">
-              <div className="InfoSectionAlbumCreatedTime">
+            <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={song.createdAt}>
-                  <span>Created on: {DateTimeSubString()}</span>
+                  <span>Created on:</span>
+                  <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
                 </time>
-              </div>
-              <div className="InfoSectionAlbumIdDetails">
-                <span>Song id: {song.id}</span>
+                <div className="InfoSectionAlbumIdDetails">
+                  <span>Song id: {song.id}</span>
+                </div>
               </div>
             </div>
             <div className="WaveFormContainerAlbumDetails">

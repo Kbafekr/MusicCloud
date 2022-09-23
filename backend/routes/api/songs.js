@@ -281,7 +281,7 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
   //edit song
 
 router.put('/:id', restoreUser, requireAuth, SongValidation, async (req, res) => {
-    const {title, description, url} = req.body
+    const {title, description, url, imageUrl} = req.body
   const userId = req.user.id
     const Id = req.params.id
 
@@ -314,6 +314,7 @@ if (editSong.userId !== userId) {
 if (title) {editSong.title = title }
 if (description) {editSong.description = description }
 if (url) {editSong.url = url }
+if (url) {editSong.imageUrl = imageUrl }
 
 await editSong.save()
 return res.status(200).json(editSong)

@@ -35,6 +35,12 @@ export default function AlbumDetails() {
   let songs;
   let songsArray;
   let albumsArray;
+
+  let rerender;
+
+  if (!album.Songs && !album.Artist) {
+    rerender +=1
+  }
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
   //   console.log(Albumvalues)
@@ -42,11 +48,11 @@ export default function AlbumDetails() {
 
   useEffect(() => {
     dispatch(getAllSongs());
-  }, [dispatch]);
+  }, [dispatch, showModal, user, modalDelete, rerender]);
 
   useEffect(() => {
     dispatch(getAllAlbums());
-  }, [dispatch, showModal, user, modalDelete]);
+  }, [dispatch, showModal, user, modalDelete, rerender]);
 
   // dispatch, album.Artist, album.Songs]);
   //  [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])

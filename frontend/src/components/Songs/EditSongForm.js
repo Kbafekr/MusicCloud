@@ -42,8 +42,8 @@ function EditSong({setShowModal}) {
 
   const handleSubmit =  (e) => {
     e.preventDefault();
+    setShowModal(false);
     if (errors.length <= 0) {
-      setShowModal(false);
       return dispatch(
         EditASong({ id, title, description, url, imageUrl })
       ).catch(async (res) => {

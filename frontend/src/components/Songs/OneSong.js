@@ -45,13 +45,19 @@ export default function SongDetails() {
   let albumsArray;
   let songsArray;
 
+  let rerender;
+
+  if (!song.Album && !song.Artist) {
+    rerender +=1
+  }
+
   useEffect(() => {
     dispatch(getAllAlbums());
-  }, [dispatch]);
+  }, [dispatch, showModal, user, modalDelete, rerender]);
 
   useEffect(() => {
     dispatch(getAllSongs());
-  }, [dispatch, showModal, user, modalDelete]);
+  }, [dispatch, showModal, user, modalDelete, rerender]);
 
   // useEffect(getOneSong(songId))
 

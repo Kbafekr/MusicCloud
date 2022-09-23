@@ -30,6 +30,9 @@ function CreateSong({ setShowModal }) {
     (filteredAlbums, index) => filteredAlbums.userId == user.id
   );
 
+  useEffect(() => {
+    const errors = []
+  })
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
@@ -44,7 +47,6 @@ function CreateSong({ setShowModal }) {
         if (data && data.errors) setErrors(data.errors);
         // console.log(data.errors + 'this is dataerrors')
         // console.log(setErrors + 'this is setErrors')
-        alert("Request denied. User does not own album.");
       });
     }
     return setErrors(["User must be signed in to create song"]);

@@ -2,16 +2,20 @@ import React  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {DeleteASong} from "../../store/songs";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import './DeleteSong.css'
 
 function DeleteSong({setModalDelete}) {
+  const { songId } = useParams();
+
   const dispatch = useDispatch();
   const history = useHistory()
   // const {songId} = useParams()
   const user = useSelector(state => state.session.user)
-  const song = useSelector(state => state.song)
-  const songId = useSelector(state => state.song.id)
+  const songs = useSelector((state) => state.song);
+
+  const song = { ...songs[songId] };
 
 
   const handleSubmit = async (e) => {

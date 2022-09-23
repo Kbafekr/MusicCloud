@@ -1,15 +1,20 @@
 import React, { useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {EditASong } from "../../store/songs";
-
+import { useParams } from "react-router-dom";
 import './EditSong.css'
 
 function EditSong({setShowModal}) {
   const dispatch = useDispatch();
+  const { songId } = useParams();
+
   // const {songId} = useParams()
 
   const user = useSelector(state => state.session.user)
-  const song = useSelector(state => state.song)
+  const songs = useSelector((state) => state.song);
+
+  const song = { ...songs[songId] };
+
   const [id, setId] = useState(song.id)
   const [title, setTitle] = useState(song.title)
   const [description, setDescription] = useState(song.description);

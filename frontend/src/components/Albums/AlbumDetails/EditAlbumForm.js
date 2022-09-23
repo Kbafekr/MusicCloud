@@ -1,14 +1,18 @@
 import React, { useState} from "react";
+import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { EditAnAlbum } from "../../../store/albums";
 import './EditAlbum.css'
 
 function EditAlbum({setShowModal}) {
+  const { albumId } = useParams();
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.session.user)
 
-  const album = useSelector(state => state.album)
+  const albums = useSelector((state) => state.album);
+
+  const album = {...albums[albumId]}
 
   const [id, setId] = useState(album.id)
   const [title, setTitle] = useState(album.title)

@@ -4,13 +4,11 @@ import { useSelector } from "react-redux";
 import LibraryGif from "../../images/LibraryGif.gif";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { UserSongs } from "../../store/songs";
-import { UserAlbums } from "../../store/albums";
+import { getAllSongs } from "../../store/songs";
+import { getAllAlbums } from "../../store/albums";
 import { actionSongPlaying } from "../../store/audioPlayer";
-
 import PlayButtonImage from "../../images/PlayButton.png";
 import LoginAsDemo from "../LoginDemoUser";
-import Whomp from "../../images/Whomp.webp";
 import "../UnknownPage/PageNotFound.css";
 
 export function LibraryPage() {
@@ -21,20 +19,192 @@ export function LibraryPage() {
   const SongsArray = Object.values(songs);
   let SongsArrayCopy = [...SongsArray];
 
+
   const albums = useSelector((state) => state.album);
   const AlbumsArray = Object.values(albums);
   let AlbumsArrayCopy = [...AlbumsArray];
 
   useEffect(() => {
-    dispatch(UserSongs());
+    dispatch(getAllSongs());
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(UserAlbums());
+    dispatch(getAllAlbums());
+
   }, [dispatch]);
 
-  let sortedSongsByNewest = SongsArrayCopy.sort((a, b) => b.id - a.id);
-  let sortedAlbumsByNewest = AlbumsArrayCopy.sort((a, b) => b.id - a.id);
+  let myAlbumsFilter = AlbumsArray.filter(
+    (filteredSongs, index) => filteredSongs.userId == UserSignedIn.id
+  );
+  let mySongsFilter = SongsArray.filter(
+    (filteredSongs, index) => filteredSongs.userId == UserSignedIn.id
+  );
+
+  let sortedAllSongsByNewest = SongsArrayCopy.sort((a, b) => b.id - a.id);
+  let sortedAllAlbumsByNewest = AlbumsArrayCopy.sort((a, b) => b.id - a.id);
+
+
+  let sortedSongsByNewest = mySongsFilter.sort((a, b) => b.id - a.id);
+  let sortedAlbumsByNewest = myAlbumsFilter.sort((a, b) => b.id - a.id);
+
+  function TrendingSongs() {
+    if (sortedSongsByNewest.length > 0)
+    return (
+      <div className="TrendingSection">
+        <h1>These are your most recent songs</h1>
+        <div
+          className={
+            sortedSongsByNewest.length
+              ? "Filteredsong-container"
+              : "HiddenResult"
+          }
+        >
+          {/* search return map */}
+          <div className="FilteredSongsContainer">
+            {sortedSongsByNewest &&
+              sortedSongsByNewest.map((song) => {
+                return (
+                  <div className="TrendingsongCard" key={song.id}>
+                    <div className="PlayButtonContainer">
+                      <img
+                        className="PlayMe"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
+                    </div>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/songs/${song.id}`}
+                    >
+                      {song.title}
+                    </NavLink>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
+    );
+    else return (
+      <div className="TrendingSection">
+        <h1>Looks like you don't have any songs</h1>
+        <h2>Here are the hottest songs on MusicCloud! </h2>
+        <div
+          className={
+            sortedAllSongsByNewest.length
+              ? "Filteredsong-container"
+              : "HiddenResult"
+          }
+        >
+          {/* search return map */}
+          <div className="FilteredSongsContainer">
+            {sortedAllSongsByNewest &&
+              sortedAllSongsByNewest.map((song) => {
+                return (
+                  <div className="TrendingsongCard" key={song.id}>
+                    <div className="PlayButtonContainer">
+                      <img
+                        className="PlayMe"
+                        src={PlayButtonImage}
+                        onClick={() => dispatch(actionSongPlaying(song))}
+                      />
+                    </div>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/songs/${song.id}`}
+                    >
+                      {song.title}
+                    </NavLink>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+  function TrendingAlbums() {
+    if (sortedAlbumsByNewest.length > 0)
+    return (
+      <div className="TrendingSection">
+        <h1>These are your most recent albums</h1>
+        <div
+          className={
+            sortedAlbumsByNewest.length
+              ? "Filteredsong-container"
+              : "HiddenResult"
+          }
+        >
+          {/* search return map */}
+          <div className="FilteredSongsContainer">
+            {sortedAlbumsByNewest &&
+              sortedAlbumsByNewest.map((song) => {
+                return (
+                  <div className="TrendingsongCard" key={song.id}>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/albums/${song.id}`}
+                    >
+                      {song.title}
+                    </NavLink>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
+    );
+    else return (
+      <div className="TrendingSection">
+        <h1>Looks like you don't have any albums</h1>
+        <h2>Here are the hottest albums on MusicCloud! </h2>
+        <div
+          className={
+            sortedAllAlbumsByNewest.length
+              ? "Filteredsong-container"
+              : "HiddenResult"
+          }
+        >
+          {/* search return map */}
+          <div className="FilteredSongsContainer">
+            {sortedAllAlbumsByNewest &&
+              sortedAllAlbumsByNewest.map((song) => {
+                return (
+                  <div className="TrendingsongCard" key={song.id}>
+                    <img
+                      className="TrendingsongImage"
+                      src={song.imageUrl}
+                    ></img>
+                    <NavLink
+                      className="TrendingsongLink"
+                      to={`/albums/${song.id}`}
+                    >
+                      {song.title}
+                    </NavLink>
+                  </div>
+                );
+              })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+
+
+
 
   if (UserSignedIn) {
     return (
@@ -51,86 +221,14 @@ export function LibraryPage() {
         </div>
 
         <div className="headers">
-          <div className="TrendingSection">
-            <h1>These are your most recent songs</h1>
-            <div
-              className={
-                sortedSongsByNewest.length
-                  ? "Filteredsong-container"
-                  : "HiddenResult"
-              }
-            >
-              {/* search return map */}
-              <div className="FilteredSongsContainer">
-                {sortedSongsByNewest &&
-                  sortedSongsByNewest.map((song) => {
-                    return (
-                      <div className="TrendingsongCard" key={song.id}>
-                        <div className="PlayButtonContainer">
-                          <img
-                            className="PlayMe"
-                            src={PlayButtonImage}
-                            onClick={() => dispatch(actionSongPlaying(song))}
-                          />
-                        </div>
-                        <img
-                          className="TrendingsongImage"
-                          src={song.imageUrl}
-                        ></img>
-                        <NavLink
-                          className="TrendingsongLink"
-                          to={`/songs/${song.id}`}
-                        >
-                          {song.title}
-                        </NavLink>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-            <div className="TrendingSection">
-              <h1>These are your most recent albums</h1>
-              <div
-                className={
-                  sortedAlbumsByNewest.length
-                    ? "Filteredsong-container"
-                    : "HiddenResult"
-                }
-              >
-                {/* search return map */}
-                <div className="FilteredSongsContainer">
-                  {sortedAlbumsByNewest &&
-                    sortedAlbumsByNewest.map((album) => {
-                      return (
-                        <div className="TrendingsongCard" key={album.id}>
-                          <img
-                            className="TrendingsongImage"
-                            src={album.imageUrl}
-                          ></img>
-                          <NavLink
-                            className="TrendingsongLink"
-                            to={`/albums/${album.id}`}
-                          >
-                            {album.title}
-                          </NavLink>
-                        </div>
-                      );
-                    })}
-                </div>
-              </div>
-            </div>
-          </div>
+        {TrendingSongs()}
+        {TrendingAlbums()}
         </div>
       </div>
     );
   } else {
     return (
       <div className="errorPage">
-        <h1>Whomp Whomp!</h1>
-        <div className="Whomps">
-          <img className="whomp1" src={Whomp} alt="Whomp1" />
-          <img className="whomp2" src={Whomp} alt="Whomp2" />
-        </div>
         <div className="headers">
           <h2>Looks like you're an unauthorized user</h2>
           <div className="demoContainerHome">

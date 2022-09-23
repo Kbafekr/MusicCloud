@@ -2,7 +2,7 @@
 
 ## Description
 
-A fullstack pixel-perfect clone of SoundCloud using React, Redux, and Express.
+A fullstack clone of SoundCloud using React, Redux, and Express.
 View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
 
 ## Features

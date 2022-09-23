@@ -27,6 +27,8 @@ export default function ReturnAllSongs() {
   // console.log('this is songsarray' + SongsArray)
   // console.log('this is songs' + Object.values(songs))
 
+
+
   const albums = useSelector((state) => state.album)
   const AlbumsArray = Object.values(albums)
   const AlbumsArrayCopy = [...AlbumsArray]
@@ -34,9 +36,11 @@ export default function ReturnAllSongs() {
   //useEffect for getting Songs signed in
   useEffect(() => {
     dispatch(getAllAlbums());
-  }, [dispatch, user]);
+  }, [dispatch, user, CreateAnAlbum]);
 
-
+ useEffect(() => {
+    dispatch(getAllSongs());
+  }, [dispatch, user, CreateAnAlbum]);
 
 
    //useEffect for creating default album if user does not have one
@@ -64,16 +68,13 @@ myAlbumsFilter = AlbumsArray.filter(
     );
   }
 
-  useEffect(() => {
-    dispatch(getAllSongs());
-  }, [dispatch, user, CreateAnAlbum, albums]);
 
-  useEffect(() => {
-    if (user && !myAlbumsFilter.length && AlbumsArray.length && !albums.Artist && !mySongsFilter.length) {
-      //get all songs
-      dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
-    }
-  }, [dispatch, albums, user, myAlbumsFilter]);
+  // useEffect(() => {
+  //   if (user && !myAlbumsFilter.length && AlbumsArray.length && !albums.Artist && !mySongsFilter.length) {
+  //     //get all songs
+  //     dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
+  //   }
+  // }, [dispatch, albums, user, myAlbumsFilter]);
 
 
   let mySongsFilter = SongsArray.filter((filteredSongs, index) => filteredSongs.userId == user.id)

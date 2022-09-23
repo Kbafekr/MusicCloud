@@ -113,9 +113,11 @@ export function HomePage() {
       dispatch(CreateAnAlbum({title: 'Default Album', description: 'New album made for new accounts', imageUrl: 'https://static.vecteezy.com/system/resources/previews/001/200/758/original/music-note-png.png' }));
     }
   }, [dispatch, albums, UserSignedIn, myAlbumsFilter]);
+if (UserSignedIn) {
 
   mySongsFilter = SongsArray.filter((filteredSongs, index) => filteredSongs.userId == UserSignedIn.id)
-   //useEffect for creating default album if user does not have one
+  //useEffect for creating default album if user does not have one
+}
 if (AlbumsArray && UserSignedIn) {
 
 myAlbumsFilter = AlbumsArray.filter(

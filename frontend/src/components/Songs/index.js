@@ -1,15 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllSongs } from "../../store/songs";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect, NavLink } from "react-router-dom";
+import {NavLink } from "react-router-dom";
 import "./Songs.css";
 import LoginAsDemo from "../LoginDemoUser";
-import Whomp from "../../images/Whomp.webp";
 import "../UnknownPage/PageNotFound.css";
 import "../Navigation/Navigation.css";
 import CreateSongModal from "./CreateSongIndex";
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
 import PlayButtonImage from "../../images/PlayButton.png";
 //play song action
 import { actionSongPlaying } from "../../store/audioPlayer";
@@ -66,7 +63,6 @@ myAlbumsFilter = AlbumsArray.filter(
     );
   }
 
-
   useEffect(() => {
     dispatch(getAllSongs());
   }, [dispatch, user]);
@@ -90,6 +86,14 @@ myAlbumsFilter = AlbumsArray.filter(
   //filter for j-rock songs
   let remixSongsFilter = SongsArray.filter((filteredSongs, index) => index == 15 || index == 17 || index == 22 || index == 30 || index == 31 || index == 35 ||
   index == 37 || index == 46 || index == 12)
+
+  // lastSong = sortedByNewest.filter((filtered, index) => index == 0)
+
+  // if (!lastSong.Album && !lastSong.Artist) {
+  //   setNewSongDetails(previousState => !previousState)
+
+  // }
+
 
   if (!user) {
     return (

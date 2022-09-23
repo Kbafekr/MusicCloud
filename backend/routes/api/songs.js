@@ -240,6 +240,7 @@ const SongValidation = [
 
 router.post('/', restoreUser, requireAuth, async (req, res) => {
   const {title, description, url, imageUrl, albumId} = req.body
+  const user = req.user
   const userId = req.user.id
   const album = await Album.findOne({
       where: {
@@ -272,7 +273,19 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
      title: title,
      description: description,
      url: url,
-     imageUrl: imageUrl
+     imageUrl: imageUrl,
+    //  Album:
+    //  {
+    //   id: album.id,
+    //   imageUrl: album.imageUrl,
+    //   title: album.title
+    // },
+    // Artist:
+    // {
+    //   id: userId,
+    //   imageUrl: user.imageUrl,
+    //   username: user.username
+    // }
 
   })
   return res.status(201).json(newSong)

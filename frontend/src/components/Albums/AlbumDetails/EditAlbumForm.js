@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { EditAnAlbum } from "../../../store/albums";
@@ -20,20 +20,36 @@ function EditAlbum({setShowModal}) {
   const [imageUrl, setImageUrl] = useState(album.imageUrl)
   const [errors, setErrors] = useState([]);
 
+  useEffect(() => {
+    const formValidationErrors = [];
+
+    if (title.length > 256) {formValidationErrors.push('Title must be fewer than 256 characters')}
+    if (title.length < 1) {formValidationErrors.push('Title required')}
+    if (description.length < 1) {formValidationErrors.push('Description required')}
+    if (description.length > 256) {formValidationErrors.push('Description must be fewer than 256 characters')}
+    if (!user) {formValidationErrors.push('User must be signed in')}
+
+    setErrors(formValidationErrors)
+  }, [title, description])
+
   const handleSubmit = (e) => {
 
     e.preventDefault();
     setErrors([]);
-    if(user){
-      setShowModal(false)
-
-      return dispatch(EditAnAlbum({id, title, description, imageUrl}))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+    if (errors.length <= 0) {
+      setShowModal(false);
+      return dispatch(
+        EditAnAlbum({id, title, description, imageUrl})
+      ).catch(async (res) => {
+        // console.log(res + 'this is res')
+        const data = await res.json();
+        // console.log(data + 'this is data')
+        if (data && data.errors) setErrors(data.errors);
+        // console.log(data.errors + 'this is dataerrors')
+        // console.log(setErrors + 'this is setErrors')
+      });
     }
-    return setErrors(['User must be signed in to create song']);
+    return errors
   };
 
 
@@ -42,9 +58,17 @@ function EditAlbum({setShowModal}) {
     <div className="EditAlbum-outer" key={album}>
 
     <form className="EditAlbum-inner" onSubmit={handleSubmit} autoComplete='off'>
-      <ul>
-        {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
-      </ul>
+    {errors.length > 0 && (
+          <div className="HeaderErrorStyling">
+            <ul className="UlBulletErrorStyling">
+              {errors.map((error, idx) => (
+                <li className="ErrorPoints" key={idx}>
+                  {error}
+                </li>
+              ))}
+            </ul>
+          </div>
+    )}
       <h1>Edit album</h1>
       <label>
         <input

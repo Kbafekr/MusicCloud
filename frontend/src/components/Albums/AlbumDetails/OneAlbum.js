@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { getOneAlbum } from "../../../store/albums";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { actionSongPlaying } from "../../../store/audioPlayer";
@@ -20,8 +19,6 @@ import { getAllAlbums } from "../../../store/albums";
 // import DeleteAlbumModal from "./DeleteAlbumIndex";
 import DeleteAlbum from "./DeleteAlbumForm";
 
-import AudioPlayer from "react-h5-audio-player";
-import "react-h5-audio-player/lib/styles.css";
 
 //get one album, dispatch thunk action creator
 export default function AlbumDetails() {
@@ -50,7 +47,7 @@ let albumsArray;
 
   useEffect(() => {
     dispatch(getAllAlbums());
-  }, [dispatch]);
+  }, [dispatch, showModal, user, modalDelete]);
 
   // dispatch, album.Artist, album.Songs]);
   //  [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
@@ -76,7 +73,7 @@ let albumsArray;
       (filteredSongs, index) => filteredSongs.userId == album.userId
     );
   }
-  if (songsArray && user) {
+  if (songsArray && user && album.Artist) {
     userAlbumsFilter = albumsArray.filter(
       (filteredSongs, index) => filteredSongs.userId == album.userId
     );

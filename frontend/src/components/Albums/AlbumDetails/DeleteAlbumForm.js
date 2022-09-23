@@ -31,7 +31,11 @@ function DeleteAlbum({setModalDelete}) {
     <div className="DeleteAlbum-outer">
 
     <form className="DeleteAlbum-inner" onSubmit={handleSubmit} autoComplete='off'>
-      <h1>Warning! This will permanently remove {album.title} from your library.</h1>
+    <h1>Warning! This will permanently remove
+        <div className="DeleteSongStyle">
+          {album.title}
+          </div>
+          from your library.</h1>
         <div></div>
        <h2>Are you sure you want to delete?</h2>
        <div className="deleteAlbumButtons">

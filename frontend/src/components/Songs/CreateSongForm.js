@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateASong, songsReducer } from "../../store/songs";
-import { useHistory } from "react-router-dom";
+import { getAllSongs } from "../../store/songs";
 import "./CreateSong.css";
+import { useHistory } from "react-router-dom";
 
 import { getAllAlbums } from "../../store/albums";
 
@@ -19,6 +20,7 @@ function CreateSong({ setShowModal }) {
   const [url, setUrl] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [errors, setErrors] = useState([]);
+  const [submittedForm, setSubmittedForm] = useState(false);
 
   // const [isModalOpen, setModalOpen] = useState(false)
 
@@ -31,12 +33,35 @@ function CreateSong({ setShowModal }) {
   );
 
   useEffect(() => {
-    const errors = []
-  })
+    const formValidationErrors = [];
+    const urlEnd = url.slice(-6);
+
+    if (!urlEnd.includes(".mp3")) {
+      formValidationErrors.push("Song must link to an mp3 file");
+    }
+    if (title.length > 256) {
+      formValidationErrors.push("Song title must be fewer than 256 characters");
+    }
+    if (title.length < 1) {
+      formValidationErrors.push("Title required");
+    }
+    if (description.length < 1) {
+      formValidationErrors.push("Description required");
+    }
+    if (description.length > 256) {
+      formValidationErrors.push("Description must be fewer than 256 characters");
+    }
+    if (!user) {
+      formValidationErrors.push("User must be signed in");
+    }
+
+    setErrors(formValidationErrors);
+  }, [url, title, description]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setErrors([]);
-    if (user) {
+    setSubmittedForm(true);
+    if (errors.length <= 0) {
       setShowModal(false);
       return dispatch(
         CreateASong({ albumId, title, description, url, imageUrl })
@@ -49,7 +74,7 @@ function CreateSong({ setShowModal }) {
         // console.log(setErrors + 'this is setErrors')
       });
     }
-    return setErrors(["User must be signed in to create song"]);
+    return errors;
   };
 
   return (
@@ -59,76 +84,82 @@ function CreateSong({ setShowModal }) {
         onSubmit={handleSubmit}
         autoComplete="off"
       >
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <h1>Create a song</h1>
-          <label className="CreateSongLabel">Select an Album...</label>
-          <div className="SelectAlbumsCreateSongContainer">
-            <select
-              className="albumIdInputCreateSong"
-              id="albumSelectCreateSong"
-              value={albumId}
-              onChange={(e) => setAlbumId(e.target.value)}
-              required
-            >
-              <option selected disabled value="">
-                Select an Album...
-              </option>
-              {myAlbumsFilter &&
-                myAlbumsFilter.map((album) => {
-                  return (
-                    <option
-                      className="OptionsAlbumsDropdown"
-                      value={album.id}
-                      key={album.id}
-                    >
-                      {album.title}
-                    </option>
-                  );
-                })}
-            </select>
+        {errors.length > 0 && (
+          <div className="HeaderErrorStyling">
+            <ul className="UlBulletErrorStyling">
+              {errors.map((error, idx) => (
+                <li className="ErrorPoints" key={idx}>
+                  {error}
+                </li>
+              ))}
+            </ul>
           </div>
-          <label className="CreateSongLabel">Song Title</label>
-          <input
-            className="titleInputCreateSong"
-            placeholder="Title..."
-            autoComplete="off"
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+        )}
+        <h1 className="CreateSongHeader">Create a song</h1>
+        <label className="CreateSongLabel">Select an Album...</label>
+        <div className="SelectAlbumsCreateSongContainer">
+          <select
+            className="albumIdInputCreateSong"
+            id="albumSelectCreateSong"
+            value={albumId}
+            onChange={(e) => setAlbumId(e.target.value)}
             required
-          />
-          <label className="CreateSongLabel">Song Description</label>
-          <input
-            className="descriptionCreateSong"
-            placeholder="description..."
-            type="text"
-            autoComplete="off"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-          <label className="CreateSongLabel">Song mp3 Link</label>
-          <input
-            className="urlCreateSong"
-            placeholder="Audio Url (required)..."
-            autoComplete="off"
-            type="url"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            required
-          />
-          <label className="CreateSongLabel">Song Image Link</label>
-          <input
-            className="imageUrlCreateSong"
-            placeholder="Song Image Url (optional)..."
-            type="url"
-            value={imageUrl}
-            onChange={(e) => setImageUrl(e.target.value)}
-          />
+          >
+            <option selected disabled value="">
+              Select an Album...
+            </option>
+            {myAlbumsFilter &&
+              myAlbumsFilter.map((album) => {
+                return (
+                  <option
+                    className="OptionsAlbumsDropdown"
+                    value={album.id}
+                    key={album.id}
+                  >
+                    {album.title}
+                  </option>
+                );
+              })}
+          </select>
+        </div>
+        <label className="CreateSongLabel">Song Title (Required)</label>
+        <input
+          className="titleInputCreateSong"
+          placeholder="Title..."
+          autoComplete="off"
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <label className="CreateSongLabel">Song Description (Required)</label>
+        <input
+          className="descriptionCreateSong"
+          placeholder="description..."
+          type="text"
+          autoComplete="off"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          required
+        />
+        <label className="CreateSongLabel">Song MP3 Link (Required)</label>
+        <input
+          className="urlCreateSong"
+          placeholder="Audio Url (required)..."
+          autoComplete="off"
+          type="text"
+          value={url}
+          onChange={(e) => setUrl(e.target.value)}
+          required
+        />
+        <label className="CreateSongLabel">Song Image Link (Optional)</label>
+        <input
+          className="imageUrlCreateSong"
+          placeholder="Song Image Url (optional)..."
+          type="text"
+          value={imageUrl}
+          onChange={(e) => setImageUrl(e.target.value)}
+        />
         <div className="createSongButtons">
           <button className="submitCreateSong" type="submit">
             Submit new song

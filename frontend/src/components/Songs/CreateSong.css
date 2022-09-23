@@ -23,6 +23,9 @@
    text-align: left;
   }
 
+  .CreateSongHeader {
+    font-size: 24px;
+  }
   .CreateSongLabel {
     width: 96%;
   }
@@ -102,4 +105,26 @@
   .submitCreateSong:hover, .cancelCreateSong:hover {
     cursor: pointer;
     transform: scale(1.1);
+  }
+
+
+  /* Error handling */
+.HeaderErrorStyling {
+  width: 300px;
+  height: 60px;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  justify-content: center;
+  align-items: center;
+  color: rgb(123, 123, 123);
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans;
+
+}
+  .UlBulletErrorStyling {
+    list-style: none;
+    color: red;
+  font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans;
+
   }

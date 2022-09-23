@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {EditASong } from "../../store/songs";
 import { useParams } from "react-router-dom";
@@ -25,22 +25,37 @@ function EditSong({setShowModal}) {
   //force modal close
   // const [showModal, setShowModal] = useState(false);
 
+  useEffect(() => {
+    const formValidationErrors = [];
+    const urlEnd = url.slice(-6)
+
+    if (!urlEnd.includes('.mp3')) {formValidationErrors.push('Song must link to an mp3 file')}
+    if (title.length > 256) {formValidationErrors.push('Song title must be fewer than 256 characters')}
+    if (title.length < 1) {formValidationErrors.push('Title required')}
+    if (description.length < 1) {formValidationErrors.push('Description required')}
+    if (description.length > 256) {formValidationErrors.push('Description must be fewer than 256 characters')}
+    if (!user) {formValidationErrors.push('User must be signed in')}
+
+    setErrors(formValidationErrors)
+  }, [url, title, description])
 
 
-  const handleSubmit = (e) => {
-
+  const handleSubmit =  (e) => {
     e.preventDefault();
-    setErrors([]);
-    if(id){
-      setShowModal(false)
-
-      return dispatch(EditASong({id, title, description, url, imageUrl}))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
+    if (errors.length <= 0) {
+      setShowModal(false);
+      return dispatch(
+        EditASong({ id, title, description, url, imageUrl })
+      ).catch(async (res) => {
+        // console.log(res + 'this is res')
+        const data = await res.json();
+        // console.log(data + 'this is data')
+        if (data && data.errors) setErrors(data.errors);
+        // console.log(data.errors + 'this is dataerrors')
+        // console.log(setErrors + 'this is setErrors')
+      });
     }
-    return setErrors(['User must be signed in to create song']);
+    return errors
   };
 
 
@@ -49,10 +64,18 @@ function EditSong({setShowModal}) {
     <div className="EditSong-outer" key={song}>
 
     <form className="EditSong-inner" onSubmit={handleSubmit} autoComplete='off'>
-      <ul>
-        {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
-      </ul>
-      <h1>Edit song</h1>
+    {errors.length > 0 && (
+          <div className="HeaderErrorStyling">
+            <ul className="UlBulletErrorStyling">
+              {errors.map((error, idx) => (
+                <li className="ErrorPoints" key={idx}>
+                  {error}
+                </li>
+              ))}
+            </ul>
+          </div>
+    )}
+      <h1 className="CreateSongHeader">Edit song</h1>
       <label>
         <input
         className="titleInputEditSong"
@@ -80,7 +103,7 @@ function EditSong({setShowModal}) {
         className="urlEditSong"
           placeholder={url || 'Audio Url (required)...'}
           autoComplete="off"
-          type="url"
+          type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           required
@@ -90,7 +113,7 @@ function EditSong({setShowModal}) {
         <input
         className="imageUrlEditSong"
           placeholder={imageUrl || "Song Image Url (optional)..."}
-          type="url"
+          type="text"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
           />

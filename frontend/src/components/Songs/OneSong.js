@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory, useParams } from "react-router-dom";
 import { getAllSongs } from "../../store/songs";
-import { getOneSong } from "../../store/songs";
 import { actionSongPlaying } from "../../store/audioPlayer";
 import PlayButtonImage from "../../images/PlayButton.png";
 import "./OneSong.css";
@@ -12,6 +11,11 @@ import { getAllAlbums } from "../../store/albums";
 //import modal file create album index
 import { Modal } from "../../context/Modal";
 import EditSong from "./EditSongForm";
+
+
+
+
+
 //exceeded rendering capacity with conditional rendering for nested properties
 //just create modal in here
 
@@ -33,6 +37,7 @@ export default function SongDetails() {
   const allAlbums = useSelector((state) => state.album);
   const songs = useSelector((state) => state.song);
 
+
   const song = { ...songs[songId] };
   const user = useSelector((state) => state.session.user);
   //   console.log(song)
@@ -44,14 +49,17 @@ export default function SongDetails() {
   let albumsArray;
   let songsArray;
 
+
+
   useEffect(() => {
     dispatch(getAllAlbums());
   }, [dispatch]);
 
   useEffect(() => {
     dispatch(getAllSongs());
-  }, [dispatch]);
+  }, [dispatch, showModal, user, modalDelete]);
 
+  // useEffect(getOneSong(songId))
 
 
   // }, [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
@@ -78,7 +86,7 @@ export default function SongDetails() {
       (filteredSongs, index) => filteredSongs.userId == song.userId
     );
   }
-  if (albumsArray && user) {
+  if (songsArray && user && song.Artist) {
     userSongsFilter = songsArray.filter(
       (filteredSongs, index) => filteredSongs.userId == song.Artist.id
     );

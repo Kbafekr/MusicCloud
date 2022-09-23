@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { CreateAnAlbum } from "../../../store/albums";
 import { useHistory } from "react-router-dom";
@@ -15,38 +15,69 @@ function CreateAlbum({setShowModal}) {
   const [errors, setErrors] = useState([]);
 
 
+  useEffect(() => {
+    const formValidationErrors = [];
+
+    if (title.length > 256) {
+      formValidationErrors.push("Title must be fewer than 256 characters");
+    }
+    if (title.length < 1) {
+      formValidationErrors.push("Title required");
+    }
+    if (description.length < 1) {
+      formValidationErrors.push("Description required");
+    }
+    if (description.length > 256) {
+      formValidationErrors.push("Description must be fewer than 256 characters");
+    }
+    if (!user) {
+      formValidationErrors.push("User must be signed in");
+    }
+
+    setErrors(formValidationErrors);
+  }, [title, description]);
+
+
 
 
   const handleSubmit = (e) => {
 
     e.preventDefault();
     setErrors([]);
-    if (user){
-      setShowModal(false)
-      return dispatch(CreateAnAlbum({title, description, imageUrl }))
-      .catch(async (res) => {
+    if (errors.length <= 0) {
+      setShowModal(false);
+      return dispatch(
+        CreateAnAlbum({ title, description, imageUrl })
+      ).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
         // console.log(data + 'this is data')
         if (data && data.errors) setErrors(data.errors);
         // console.log(data.errors + 'this is dataerrors')
         // console.log(setErrors + 'this is setErrors')
-        alert('Request denied. User does not own album.')
-
       });
     }
-    return setErrors(['User must be signed in to create album']);
-    }
+    return errors;
+  };
+
 
 
   return (
     <div className="CreateAlbum-outer">
 
     <form className="CreateAlbum-inner" onSubmit={handleSubmit} autoComplete='off'>
-      <ul>
-        {errors.map((error, idx) => (<li key={idx}>{error}</li>))}
-      </ul>
-      <h1>Create an album</h1>
+    {errors.length > 0 && (
+          <div className="HeaderErrorStyling">
+            <ul className="UlBulletErrorStyling">
+              {errors.map((error, idx) => (
+                <li className="ErrorPoints" key={idx}>
+                  {error}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      <h1 className="CreateSongHeader">Create an album</h1>
       <label>
         <input
         className="titleInputCreateAlbum"

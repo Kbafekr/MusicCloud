@@ -48,7 +48,7 @@ export default function SongDetails() {
   let rerender;
 
   if (!song.Album && !song.Artist) {
-    rerender +=1
+    rerender += 1;
   }
 
   useEffect(() => {
@@ -289,11 +289,6 @@ export default function SongDetails() {
                             src={song.Album.imageUrl}
                           ></img>
                         </div>
-                        <div className="SongIdinTrackListAlbumDetailsContainer">
-                          <div className="SongIdinTrackListAlbumDetails">
-                            Album id: #{song.Album.id}
-                          </div>
-                        </div>
                         <div className="SongNumberInTrackListAlbumDetailsContainer">
                           Album Title:{" "}
                         </div>
@@ -303,6 +298,11 @@ export default function SongDetails() {
                         >
                           {song.Album.title}
                         </NavLink>
+                        <div className="SongIdinTrackListAlbumDetailsContainer">
+                          <div className="SongIdinTrackListAlbumDetails">
+                            Album id: #{song.Album.id}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -387,7 +387,7 @@ export default function SongDetails() {
             </div>
             {/* Info section */}
             <div className="InfoSectionAlbumDetails">
-            <div className="InfoSectionAlbumCreatedTime">
+              <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={song.createdAt}>
                   <span>Created on:</span>
                   <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
@@ -467,26 +467,30 @@ export default function SongDetails() {
                   <div className="SongsInAlbumDetailsContainers">
                     <div className="SongInAlbumDetails" key={song.Album.id}>
                       <div className="SongInAlbumDetailsContainer">
+                          <div className="TracklistContainer">
+                            <div className="LeftSideOfTrackList">
                         <div className="SongImageContainerAlbumDetailsList">
-                          <img
-                            className="songImageAlbumDetailsList"
-                            src={song.Album.imageUrl}
-                          ></img>
+                              <img
+                                className="songImageAlbumDetailsList"
+                                src={song.Album.imageUrl}
+                              ></img>
+                              </div>
+                              <div className="SongNumberInTrackListAlbumDetailsContainer">
+                                Album Title:{" "}
+                              </div>
+                              <NavLink
+                                className="TrendingsongLinkTrackList"
+                                to={`/albums/${song.Album.id}`}
+                              >
+                                {song.Album.title}
+                              </NavLink>
+                            </div>
+                            <div className="SongIdinTrackListAlbumDetailsContainer">
+                              <div className="SongIdinTrackListAlbumDetails">
+                                Album id: #{song.Album.id}
+                              </div>
+                            </div>
                         </div>
-                        <div className="SongIdinTrackListAlbumDetailsContainer">
-                          <div className="SongIdinTrackListAlbumDetails">
-                            Album id: #{song.Album.id}
-                          </div>
-                        </div>
-                        <div className="SongNumberInTrackListAlbumDetailsContainer">
-                          Album Title:{" "}
-                        </div>
-                        <NavLink
-                          className="TrendingsongLinkTrackList"
-                          to={`/albums/${song.Album.id}`}
-                        >
-                          {song.Album.title}
-                        </NavLink>
                       </div>
                     </div>
                   </div>

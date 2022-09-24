@@ -300,11 +300,6 @@ export default function AlbumDetails() {
                                   src={song.imageUrl}
                                 ></img>
                               </div>
-                              <div className="SongIdinTrackListAlbumDetailsContainer">
-                                <div className="SongIdinTrackListAlbumDetails">
-                                  Song id: #{song.id}
-                                </div>
-                              </div>
                               <div className="SongNumberInTrackListAlbumDetailsContainer">
                                 Track Name:{" "}
                               </div>
@@ -314,6 +309,11 @@ export default function AlbumDetails() {
                               >
                                 {song.title}
                               </NavLink>
+                              <div className="SongIdinTrackListAlbumDetailsContainer">
+                                <div className="SongIdinTrackListAlbumDetails">
+                                  Song id: #{song.id}
+                                </div>
+                              </div>
                             </div>
                           </div>
                         );
@@ -538,11 +538,6 @@ export default function AlbumDetails() {
                                       src={song.imageUrl}
                                     ></img>
                                   </div>
-                                  <div className="SongIdinTrackListAlbumDetailsContainer">
-                                    <div className="SongIdinTrackListAlbumDetails">
-                                      Song id: #{song.id}
-                                    </div>
-                                  </div>
                                   <div className="SongNumberInTrackListAlbumDetailsContainer">
                                     Track Name:{" "}
                                   </div>
@@ -552,6 +547,11 @@ export default function AlbumDetails() {
                                   >
                                     {song.title}
                                   </NavLink>
+                                  <div className="SongIdinTrackListAlbumDetailsContainer">
+                                    <div className="SongIdinTrackListAlbumDetails">
+                                      Song id: #{song.id}
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
                             );

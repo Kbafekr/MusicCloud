@@ -450,9 +450,9 @@
 display: flex;
     flex-direction: row;
     justify-content: space-between;
-    width: fit-content;
+    width: 100%;
     min-width: fit-content;
-    
+
 }
 .LeftSideOfTrackList {
 display: flex;

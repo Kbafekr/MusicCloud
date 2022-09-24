@@ -3,17 +3,22 @@
     flex-direction: row;
     width: 100%;
     position: sticky;
-    height: 90px;
+    height: 72.99px;
     bottom: 0;
     z-index: 0;
-    background-color: #f2f2f2;
+    background:linear-gradient(177deg, #505050, #cecece,  #fac8a7, #fc6500, #fc6d00 120%);
     border-top: 1px solid #cecece;
     margin: 10px 0px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
-
+    border-top: 1px solid #cecece;
    }
 
+
+
+
    .AudioMusicPlayer {
+    display: flex;
+    align-items: center;
     width: 70%;
     height: 100%;
    }
@@ -31,9 +36,7 @@
     text-align: left;
     overflow-y: hidden;
     overflow-x: auto;
-    background-color: #f2f2f2;
-    border-top: 1px solid #cecece;
-
+    background: none;
     box-sizing: border-box;
    }
    .ThumbnailContainerPlaying {
@@ -143,8 +146,7 @@
     font-family: inherit;
     width: 100%;
     padding: 10px 15px;
-    background-color: #f2f2f2;
-    border-top: 1px solid #cecece;
+    background: none;
     box-shadow: none;
   }
   .rhap_container:focus:not(:focus-visible) {
@@ -164,7 +166,7 @@
 
   .rhap_main {
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     flex: 1 1 auto;
   }
 
@@ -192,11 +194,12 @@
   .rhap_stacked-reverse .rhap_controls-section {
     margin-bottom: 8px;
   }
-
+/* progress bar section time */
   .rhap_progress-section {
     display: flex;
     flex: 3 1 auto;
     align-items: center;
+    width: 100%;
   }
 
   .rhap_progress-container {
@@ -214,8 +217,12 @@
     outline: 0;
   }
 
+  #rhap_current-time {
+    color: #f50;
+  }
+
   .rhap_time {
-    color: #333;
+    color: black;
     font-size: 16px;
     user-select: none;
     -webkit-user-select: none;
@@ -227,7 +234,6 @@
     z-index: 0;
     width: 100%;
     height: 5px;
-    background-color: #dddddd;
     border-radius: 2px;
   }
 
@@ -235,19 +241,14 @@
     height: 100%;
     position: absolute;
     z-index: 2;
-    background-color: #868686;
     border-radius: 2px;
   }
 
-  .rhap_progress-bar-show-download {
-    background-color: rgba(221, 221, 221, 0.5);
-  }
 
   .rhap_download-progress {
     height: 100%;
     position: absolute;
     z-index: 1;
-    background-color: #dddddd;
     border-radius: 2px;
   }
 
@@ -259,30 +260,32 @@
     height: 20px;
     margin-left: -10px;
     top: -8px;
-    background: #868686;
     border-radius: 50px;
     box-shadow: rgba(134, 134, 134, 0.5) 0 0 5px;
   }
 
+  /* controls section */
   .rhap_controls-section {
     display: flex;
     flex: 1 1 auto;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    width: 70%;
+    padding-bottom: 5px;
+    margin-right: 40px;
   }
 
   .rhap_additional-controls {
     display: flex;
     flex: 1 0 auto;
     align-items: center;
+    justify-content: center;
   }
 
   .rhap_repeat-button {
     font-size: 26px;
     width: 26px;
     height: 26px;
-    color: #868686;
-    margin-right: 6px;
   }
 
   .rhap_main-controls {
@@ -294,7 +297,6 @@
 
   .rhap_main-controls-button {
     margin: 0 3px;
-    color: #868686;
     font-size: 35px;
     width: 35px;
     height: 35px;
@@ -309,7 +311,7 @@
   .rhap_volume-controls {
     display: flex;
     flex: 1 0 auto;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
   }
 
@@ -318,8 +320,8 @@
     font-size: 26px;
     width: 26px;
     height: 26px;
-    color: #868686;
-    margin-right: 6px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
 
   .rhap_volume-container {
@@ -346,7 +348,6 @@
     position: relative;
     width: 100%;
     height: 4px;
-    background: #dddddd;
     border-radius: 2px;
   }
 
@@ -358,7 +359,6 @@
     margin-left: -6px;
     left: 0;
     top: -4px;
-    background: #868686;
     opacity: 0.9;
     border-radius: 50px;
     box-shadow: rgba(134, 134, 134, 0.5) 0 0 3px;
@@ -372,13 +372,11 @@
     height: 100%;
     position: absolute;
     z-index: 2;
-    background-color: #868686;
     border-radius: 2px;
   }
 
   /* Utils */
   .rhap_button-clear {
-    background-color: transparent;
     border: none;
     padding: 0;
     overflow: hidden;
@@ -393,4 +391,20 @@
   }
   .rhap_button-clear:focus:not(:focus-visible) {
     outline: 0;
+  }
+
+  .rhap_repeat-button, .rhap_main-controls-button,   .rhap_volume-button  {
+    color: #fc6500
+  }
+
+  .rhap_volume-bar, .rhap_progress-bar,  .rhap_progress-filled, .rhap_progress-bar-show-download, .rhap_volume-filled,  .rhap_download-progress {
+    background: linear-gradient(135deg, #939394, #c67263 100%)
+  }
+  .rhap_button-clear {
+    background-color: transparent;
+  }
+
+
+  .rhap_volume-indicator, .rhap_progress-indicator  {
+background: linear-gradient(135deg, white, #6a6a6a, #fb885a, #fa6930, #ff4800 120%)
   }

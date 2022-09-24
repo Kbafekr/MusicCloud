@@ -6,7 +6,7 @@
 .BackgroundAlbumDetailsSection {
   width: 100%;
   height: 380px;
-  background-image: linear-gradient(135deg,  #fc6500, #dc7531, rgb(99, 98, 98), #505050 110%);
+  background:linear-gradient(135deg, #505050, #cecece,  #fac8a7, #fc6500, #fc6d00 120%);
   position: relative;
 }
 

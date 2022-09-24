@@ -62,7 +62,7 @@
   }
 
   #leftSideSignedOut {
-    width: 35%;
+    width: 100%;
   }
 
   /* container of nav links */
@@ -145,7 +145,7 @@
   }
 
   #rightSideSignedOut {
-    width: 45%;
+    width: 100%;
   }
 
   .SignUpSide {
@@ -164,7 +164,7 @@
 
   .SignupSide {
     height: 100%;
-    width: 80%;
+    width: 100%;
    align-items: center;
    padding-right: 2em;
    display: flex;

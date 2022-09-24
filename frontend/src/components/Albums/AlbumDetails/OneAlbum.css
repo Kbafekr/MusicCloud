@@ -451,10 +451,11 @@ display: flex;
     flex-direction: row;
     justify-content: space-between;
     width: 100%;
-    min-width: 375px;
+    min-width: fit-content;
 }
 .LeftSideOfTrackList {
 display: flex;
+min-width: fit-content;
 }
 
 .TrendingsongLinkTrackList {

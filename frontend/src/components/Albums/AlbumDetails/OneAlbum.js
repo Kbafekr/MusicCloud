@@ -39,7 +39,7 @@ export default function AlbumDetails() {
   let rerender;
 
   if (!album.Songs && !album.Artist) {
-    rerender +=1
+    rerender += 1;
   }
   //   console.log(song)
   //   const Albumvalues = Object.values(song.Album)
@@ -285,36 +285,40 @@ export default function AlbumDetails() {
                         return (
                           <div className="SongInAlbumDetails" key={song.id}>
                             <div className="SongInAlbumDetailsContainer">
-                              <div className="PlayButtonContainerDetails">
-                                <img
-                                  className="PlayButtonAlbumDetails"
-                                  src={PlayButtonImage}
-                                  onClick={() =>
-                                    dispatch(actionSongPlaying(song))
-                                  }
-                                />
-                              </div>
-                              <div className="SongImageContainerAlbumDetailsList">
-                                <img
-                                  className="songImageAlbumDetailsList"
-                                  src={song.imageUrl}
-                                ></img>
-                              </div>
-                              <div className="SongNumberInTrackListAlbumDetailsContainer">
-                                Track Name:{" "}
-                              </div>
-                              <NavLink
-                                className="TrendingsongLinkTrackList"
-                                to={`/songs/${song.id}`}
-                              >
-                                {song.title}
-                              </NavLink>
-                              <div className="SongIdinTrackListAlbumDetailsContainer">
-                                <div className="SongIdinTrackListAlbumDetails">
-                                  Song id: #{song.id}
+                                  <div className="TracklistContainer">
+                                    <div className="LeftSideOfTrackList">
+                                      <div className="PlayButtonContainerDetails">
+                                        <img
+                                          className="PlayButtonAlbumDetails"
+                                          src={PlayButtonImage}
+                                          onClick={() =>
+                                            dispatch(actionSongPlaying(song))
+                                          }
+                                        />
+                                      </div>
+                                      <div className="SongImageContainerAlbumDetailsList">
+                                        <img
+                                          className="songImageAlbumDetailsList"
+                                          src={song.imageUrl}
+                                        ></img>
+                                      </div>
+                                      <div className="SongNumberInTrackListAlbumDetailsContainer">
+                                        Track Name:{" "}
+                                      </div>
+                                      <NavLink
+                                        className="TrendingsongLinkTrackList"
+                                        to={`/songs/${song.id}`}
+                                      >
+                                        {song.title}
+                                      </NavLink>
+                                    </div>
+                                    <div className="SongIdinTrackListAlbumDetailsContainer">
+                                      <div className="SongIdinTrackListAlbumDetails">
+                                        Song id: #{song.id}
+                                      </div>
+                                    </div>
+                                  </div>
                                 </div>
-                              </div>
-                            </div>
                           </div>
                         );
                       })}
@@ -523,33 +527,37 @@ export default function AlbumDetails() {
                             return (
                               <div className="SongInAlbumDetails" key={song.id}>
                                 <div className="SongInAlbumDetailsContainer">
-                                  <div className="PlayButtonContainerDetails">
-                                    <img
-                                      className="PlayButtonAlbumDetails"
-                                      src={PlayButtonImage}
-                                      onClick={() =>
-                                        dispatch(actionSongPlaying(song))
-                                      }
-                                    />
-                                  </div>
-                                  <div className="SongImageContainerAlbumDetailsList">
-                                    <img
-                                      className="songImageAlbumDetailsList"
-                                      src={song.imageUrl}
-                                    ></img>
-                                  </div>
-                                  <div className="SongNumberInTrackListAlbumDetailsContainer">
-                                    Track Name:{" "}
-                                  </div>
-                                  <NavLink
-                                    className="TrendingsongLinkTrackList"
-                                    to={`/songs/${song.id}`}
-                                  >
-                                    {song.title}
-                                  </NavLink>
-                                  <div className="SongIdinTrackListAlbumDetailsContainer">
-                                    <div className="SongIdinTrackListAlbumDetails">
-                                      Song id: #{song.id}
+                                  <div className="TracklistContainer">
+                                    <div className="LeftSideOfTrackList">
+                                      <div className="PlayButtonContainerDetails">
+                                        <img
+                                          className="PlayButtonAlbumDetails"
+                                          src={PlayButtonImage}
+                                          onClick={() =>
+                                            dispatch(actionSongPlaying(song))
+                                          }
+                                        />
+                                      </div>
+                                      <div className="SongImageContainerAlbumDetailsList">
+                                        <img
+                                          className="songImageAlbumDetailsList"
+                                          src={song.imageUrl}
+                                        ></img>
+                                      </div>
+                                      <div className="SongNumberInTrackListAlbumDetailsContainer">
+                                        Track Name:{" "}
+                                      </div>
+                                      <NavLink
+                                        className="TrendingsongLinkTrackList"
+                                        to={`/songs/${song.id}`}
+                                      >
+                                        {song.title}
+                                      </NavLink>
+                                    </div>
+                                    <div className="SongIdinTrackListAlbumDetailsContainer">
+                                      <div className="SongIdinTrackListAlbumDetails">
+                                        Song id: #{song.id}
+                                      </div>
                                     </div>
                                   </div>
                                 </div>

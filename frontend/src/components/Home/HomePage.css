@@ -658,7 +658,7 @@
 }
 
 
-.SideBarContentMainSection::-webkit-scrollbar, .HeaderErrorStyling::-webkit-scrollbar {
+.currentSongThumbnail::-webkit-scrollbar, .SideBarContentMainSection::-webkit-scrollbar, .HeaderErrorStyling::-webkit-scrollbar {
   display: none;
   -ms-overflow-style: none
 }

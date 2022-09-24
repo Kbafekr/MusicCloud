@@ -36,36 +36,49 @@ export default function SongPlayer() {
   }
   return (
     <>
-      <div
-        className={currentSong.url ? "currentSongThumbnail" : "NoThumbnail"}
-        id={showThumbnail == true ? "closeThumbnail" : "openThumbnail"}
-      >
-        <div className="ThumbnailContainerPlaying">
-          <div className="NowPlayingContainer">
-            <div className="nowPlaying">Now Playing...</div>
-            {displayThumbnail()}
-          </div>
-          <img
-            className="currentSongThumbnailImage"
-            src={currentSong.imageUrl}
+      <div className="AudioPlayerState">
+        <div className="AudioMusicPlayer">
+          <AudioPlayer
+            autoPlay={false}
+            src={songSource}
+            // muted={true}
+            onPlay={(e) => console.log("onPlay")}
           />
-          <div className="linkContainerModal">
-            <NavLink
-              className="CurrentSongThumbNailLinkHome"
-              to={`/songs/${currentSong.id}`}
-            >
-              {currentSong.title}
-            </NavLink>
+        </div>
+        <div
+          className="currentSongThumbnail"
+          // className={
+          //   currentSong.url ? "currentSongThumbnail" : "NoThumbnail"
+          // }
+          // id={showThumbnail == true ? "closeThumbnail" : "openThumbnail"}
+          >
+          <div className="ThumbnailContainerPlaying">
+            <div className="currentSongImageContainer">
+              <img
+                className="currentSongThumbnailImage"
+                src={currentSong.imageUrl}
+              />
+            </div>
+            {/* <div className="SongInformationContainerPlaying"> */}
+
+            <div className="songContainerPlayingNow">
+              <div className="NowPlayingContainer">
+                <div className="nowPlaying">Now Playing...</div>
+                {/* {displayThumbnail()} */}
+              </div>
+
+              <div className="linkContainerModal">
+                <NavLink
+                  className="CurrentSongThumbNailLinkHome"
+                  to={`/songs/${currentSong.id}`}
+                >
+                  {currentSong.title}
+                </NavLink>
+              </div>
+            {/* </div> */}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="AudioPlayerState">
-        <AudioPlayer
-          autoPlay={false}
-          src={songSource}
-          // muted={true}
-          onPlay={(e) => console.log("onPlay")}
-        />
       </div>
     </>
   );

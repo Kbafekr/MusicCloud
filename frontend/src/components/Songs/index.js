@@ -162,7 +162,7 @@ myAlbumsFilter = AlbumsArray.filter(
         </div>
          {/* my songs */}
         <div className="searchBarContainer">
-          <h1>Browse all your songs</h1>
+          <h1>Owned songs</h1>
           <p className="subheaderHomePage">
             All your songs on MusicCloud
           </p>

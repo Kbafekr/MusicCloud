@@ -27,6 +27,7 @@ body, footer{
 footer {
 display: flex;
 flex-direction: row;
+margin-top: 200px;
 margin: 0 4%;
 border-top: 0.1em dotted rgb(0, 0, 0, 0.5);
 text-align: left;

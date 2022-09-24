@@ -656,3 +656,9 @@
     font-size: 24px;
     font-weight: 100;
 }
+
+
+.SongInAlbumDetailsContainer::-webkit-scrollbar, .SideBarContentMainSection::-webkit-scrollbar, .FilteredSongsContainer::-webkit-scrollbar, .HeaderErrorStyling::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none
+}

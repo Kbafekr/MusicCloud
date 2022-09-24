@@ -18,7 +18,7 @@ body {
 }
 body, footer{
   width: auto;
-  height: auto;
+  height: fit-content;
   background-color: white;
   min-width: 800px;
 }
@@ -33,8 +33,8 @@ border-top: 0.1em dotted rgb(0, 0, 0, 0.5);
 text-align: left;
 padding-top: 1%;
 padding-bottom: 1%;
-min-height: 800px;
 color: rgb(0, 0, 0, 0.3);
+min-width: 700px;
 }
 
 footer > * {
@@ -52,15 +52,8 @@ footer > * {
   height: 100%;
 }
 img.icon {
-width: 3vw;
-height: 4vh;
+width: 30px
+;
+height: 30px;
 background-color: transparent;
 }
-
-@media screen and (max-width: 800px)
-    {
-        img.icon {
-          width: 3vw;
-          height: 3vh;
-        }
-    }

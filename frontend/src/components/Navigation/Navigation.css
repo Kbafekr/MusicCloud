@@ -30,7 +30,7 @@
   /* left most side containing logo */
   .LogoSide {
     height: 100%;
-    width: 20%;
+    min-width: 220px;
     display: flex;
     align-items: center;
   }
@@ -42,7 +42,7 @@
     justify-content: left;
   }
   .imgLogo {
-    width: 85%;
+    width: 180px;
     height:70%;
     padding-left: 1em;
   }
@@ -141,7 +141,7 @@
   }
 
   #rightSideSignedIn {
-    width: 30%;
+    width: 100%;
   }
 
   #rightSideSignedOut {
@@ -201,7 +201,7 @@
 /* once signed in */
 .SignInSide {
   height: 100%;
-    width: 80%;
+    width: 180px;
   display: flex;
   flex-direction: row;
   justify-content: right;

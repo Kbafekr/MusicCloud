@@ -72,8 +72,8 @@
     height: fit-content;
     width: 100%;
     text-align: left;
-    font-size: 0.7em;
-    color: #999;
+    font-size: 0.8em;
+    color: rgb(123, 123, 123);
    }
 
    .NowPlayingButton {

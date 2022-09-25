@@ -20,17 +20,6 @@ import EditSong from "./EditSongForm";
 // import DeleteSongModal from "./DeleteFormIndex";
 import DeleteSong from "./DeleteSongForm";
 
-// WaveSurfer
-import WaveSurfer from "wavesurfer.js";
-
-// var wavesurfer = WaveSurfer.create({
-//   container: '#waveform',
-//   waveColor: 'purple'
-// });
-
-// wavesurfer.load('http://ia902606.us.archive.org/35/items/shortpoetry_047_librivox/song_cjrg_teasdale_64kb.mp3');
-
-
 
 
 
@@ -123,11 +112,6 @@ export default function SongDetails() {
     }
   }
 
-  // waveform
-
-  // wavesurfer.load('https://cdn.pixabay.com/download/audio/2022/08/31/audio_419263fc12.mp3?filename=leonell-cassio-the-blackest-bouquet-118766.mp3');
-  // wavesurfer.load('https://soundclouddata.s3.amazonaws.com/_Nobody+Speak_+feat.+Run+The+Jewels+-+DJ+Shadow+(The+Mountain+Will+Fall)+%5BHQ+Audio%5D.mp3');
-
   if (!user) {
     return (
       <div className="errorPage">
@@ -206,13 +190,12 @@ export default function SongDetails() {
             </div>
             <div className="WaveFormContainerAlbumDetails">
               <div className="WaveFormSubContainer">
-                {/* <img
-                  className="WaveFormImg"
-                  src="https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png"
-                /> */}
 
-                <div id="waveform">
-                </div>
+
+
+
+
+
               </div>
             </div>
           </div>

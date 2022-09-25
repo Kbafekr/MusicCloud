@@ -43,8 +43,10 @@
 
 .PlayButtonAlbumDetails {
   border-radius: 50%;
-  width: 100%;
-  height: 100%;
+  position: relative;
+  top: 7px;
+  width: 40px;
+  height: 40px;
   background-color: #f50;
   border-color: #f50;
   text-indent: -100000em;
@@ -309,7 +311,7 @@
 
 .UserNameAlbumDetailsMain {
   display: flex;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 100;
   color: #999;
   margin: 12px 0 0;
@@ -317,7 +319,7 @@
 }
 .UserIdAlbumDetailsMain {
   display: flex;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 100;
   color: rgb(176, 176, 176);
 }
@@ -344,8 +346,9 @@
 .LastUpdatedAlbumDetailsHeader {
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
     Garuda, Verdana, Tahoma, sans-serif;
-  font-size: 14px;
-  margin-top: 10px;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   line-height: 1.3em;
   color: #333;
 }
@@ -355,7 +358,7 @@
   margin: 0 0 0.5em;
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
     Garuda, Verdana, Tahoma, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.3em;
   color: #999;
 }
@@ -370,7 +373,7 @@
 .SongsInAlbumDetailsContainers {
   display: flex;
   flex-direction: column;
-  height: 150px;
+  height: 300px;
   overflow-y: auto;;
 }
 
@@ -382,7 +385,7 @@
 }
 
 .SongInAlbumDetailsContainer {
-  height: 56px;
+  height: 80px;
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -402,24 +405,24 @@
 .SongImageContainerAlbumDetailsList {
   /* position: relative; */
   margin: 7px 15px 0 0;
-  height: 30px;
-  width: 30px;
+  height: 50px;
+  width: 50px;
   text-align: center;
 }
 .songImageAlbumDetailsList {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
 }
 
 /* Hover for play button */
 
 .PlayButtonContainerDetails {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   display: none;
   position: absolute;
   left: 5px;
-  top: 10px;
+  top: 15px;
 }
 
 .SongInAlbumDetails:hover .PlayButtonContainerDetails {
@@ -441,12 +444,15 @@
 .SongNumberInTrackListAlbumDetailsContainer {
   display: flex;
   justify-content: flex-start;
-  margin-right: 5px;
+  font-size: 16px;
+  margin-right: 10px;
   height: 100%;
   width: 100%;
-  min-width: 88px;
+  min-width: 100px;
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+
     Garuda, Verdana, Tahoma, sans-serif;
+    align-items: center;
 }
 
 .TracklistContainer {
@@ -461,17 +467,20 @@ display: flex;
 display: flex;
 min-width: fit-content;
 overflow: hidden;
+align-items: center;
 }
 .TrendingsongLinkTrackList {
   z-index: 0;
   min-width: fit-content;
-  font-size: 1.2em;
+  font-size: 1.4em;
+
   color: rgba(0, 0, 0, 0.633);
 }
 .SongIdinTrackListAlbumDetailsContainer {
   min-width: fit-content;
   padding: 0 5px 0 12px;
   margin-right: 15px;
+  font-size: 16px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -490,6 +499,7 @@ overflow: hidden;
   text-align: left;
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   height: 100%;
   min-width: fit-content;
 }
@@ -544,7 +554,7 @@ overflow: hidden;
 /* albums by user */
 
 .SideBarContentMainSection {
-  height: 258px;
+  height: 300px;
   padding-top: 5px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -570,7 +580,6 @@ overflow: hidden;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  line-height: 44px;
   border-radius: 4px;
   font-weight: 100;
   color: #999;
@@ -581,27 +590,16 @@ overflow: hidden;
   overflow-x: hidden;
 }
 
-.SongImageContainerAlbumDetailsList {
-  /* position: relative; */
-  margin: 7px 15px 0 0;
-  height: 30px;
-  width: 30px;
-  text-align: center;
-}
-.songImageAlbumDetailsList {
-  width: 30px;
-  height: 30px;
-}
 
 /* Hover for play button */
 
 .PlayButtonContainerSideBar {
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   display: none;
   position: absolute;
   left: 5px;
-  top: 32px;
+ top: 15px;
 }
 
 .SongInSideBarDetails:hover .PlayButtonContainerSideBar {

@@ -381,7 +381,8 @@ return res.status(200).json(editSong)
   router.get('/:songId/comments', restoreUser, requireAuth, async (req, res) => {
     const SongId = req.params.songId
 
-    const Comments = await Comment.findByPk(SongId, {
+    const Comments = await Comment.findAll(
+      {where: {songId: SongId},
       include: [
         {model: User, attributes:
       ['id', 'username']

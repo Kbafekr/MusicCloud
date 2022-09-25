@@ -106,21 +106,17 @@ const initialState = {};
 export const commentsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_COMMENTS: {
-      const newState = {...action}
 
-    //   newState[action.songId.Comments.songId] = action.songId.Comments
+
+      const newState = {...state}
+      action.songId.Comments.forEach(comment => {
+        newState[comment.id] = comment
+    })
       return newState;
-
-
-    //   const newState = {}
-    //   action.songId.Comments.forEach(comment => {
-    //     newState[comment.id] = comment
-    // })
-    //   return newState;
     }
     case CREATE_A_COMMENT: {
       const newState = { ...state };
-      newState[action.song.id] = action.song;
+      newState[action.comment.id] = action.comment;
       return newState;
     }
     case EDIT_A_COMMENT: {
@@ -139,7 +135,7 @@ export const commentsReducer = (state = initialState, action) => {
       // newState[action.song.ArtistProfilePic] = newState.song.ArtistProfilePic
       // return newState[action.song.id]
 
-      newState[action.song.id] = action.song;
+      newState[action.comment.id] = action.comment;
       return newState;
     }
     case DELETE_A_COMMENT: {

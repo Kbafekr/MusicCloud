@@ -273,7 +273,7 @@ router.post('/', restoreUser, requireAuth, async (req, res) => {
      title: title,
      description: description,
      url: url,
-     imageUrl: imageUrl,
+     imageUrl: imageUrl || "https://cdn.pixabay.com/photo/2018/08/27/10/11/radio-cassette-3634616__480.png",
     //  Album:
     //  {
     //   id: album.id,

@@ -7,6 +7,9 @@ import "./ProfileButton.css";
 import "./Navigation.css";
 import icon1 from '../../images/icons/icon1.png'
 import icon2 from '../../images/icons/icon2.png'
+import icon3 from '../../images/icons/icon3.png'
+import icon4 from '../../images/icons/icon4.png'
+
 function ProfileButton({ user }) {
 
   const history = useHistory()
@@ -23,6 +26,13 @@ function ProfileButton({ user }) {
   // if (!localStorage.getItem('email')) {
   //   localStorage.setItem('email', user.user.email)
   // }
+
+  function copyUsername() {
+    navigator.clipboard.writeText(user.username)
+  }
+  function copyEmail() {
+    navigator.clipboard.writeText(user.email)
+  }
 
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -63,14 +73,24 @@ function ProfileButton({ user }) {
         <ul className="profile-dropdown">
           <div className="separatordropdown">username</div>
           {/* <li>{localStorage.getItem('username')}</li> */}
-          <li>{user.username}</li>
+          <li>
+          <div className="mySongs" id="copyButtonDropdownMenu">
+          <img className='Navicon' id="copyButtonDropdown" src={icon3} alt="songs icon" onClick={() => copyUsername()}/>
+          <div onClick={() => copyUsername()}>{user.username}</div>
+          <div></div>
+
+          </div>
+          </li>
           <div className="separatordropdown">email</div>
           {/* <li>{localStorage.getItem('email')}</li> */}
-          <li>{user.email}</li>
-          <div className="separatordropdown">user id: </div>
-          {/* <li>{localStorage.getItem('username')}</li> */}
-          <li>{user.id}</li>
+          <li>
+          <div className="mySongs" id="copyButtonDropdownMenu">
+          <img className='Navicon' id="copyButtonDropdown" src={icon3} alt="songs icon" onClick={() => copyEmail()}/>
+          <div onClick={() => copyEmail()}>{user.email}</div>
+          <div></div>
 
+          </div>
+          </li>
           <li>
             <div className="mySongs">
             <NavLink to={"/songs/current"}>
@@ -79,6 +99,7 @@ function ProfileButton({ user }) {
               <NavLink className="mySongsText" to={'/songs/current'}>
                 My Songs
               </NavLink>
+              <div></div>
             </div>
           </li>
 
@@ -91,13 +112,18 @@ function ProfileButton({ user }) {
               <NavLink className="myAlbumsText" to={"/albums/current"}>
                 My Albums
               </NavLink>
+              <div></div>
             </div>
           </li>
 
           <li>
+          <div className="myAlbums">
+          <img className='Navicon' id="logoutbuttonDropdown"src={icon4} alt="albums icon" onClick={logout}/>
             <button className="logoutButton" onClick={logout}>
               Log Out
             </button>
+            <div></div>
+            </div>
           </li>
         </ul>
       )}

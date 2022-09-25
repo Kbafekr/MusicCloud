@@ -20,6 +20,7 @@ flex-direction: row;
 height: 100%;
 width: 6em;
 margin-right: 1em;
+border-radius: 5px;
 }
 
 .profileWithMenu {
@@ -28,18 +29,28 @@ flex-direction: row;
 height: 100%;
 width: 6em;
 margin-right: 1em;
+border-radius: 5px;
+
 }
 
 .profileImg {
-width: 100%;
+width: 80%;
 height: 100%;
+border-radius: 50px;
 }
 
 .ImgWithMenu {
-width: 100%;
+width: 80%;
 height: 100%;
+border-radius: 50px;
+
 }
 
+.fas {
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
 .profile-dropdown {
     position: absolute;
     top: 3em;
@@ -77,6 +88,8 @@ background-color: gray;
 /* dropdown menu */
 .separatordropdown {
 padding: 0.1em;
+position: relative;
+left: 10px;
 color: rgba(0, 0, 0, 0.38);
 font-size: 0.8em;
 font-style: italic;
@@ -96,18 +109,19 @@ transform: scale(1.05);
 color: white;
 }
 
-.mySongs, .myAlbums {
+.mySongs, .myAlbums, .myLogOutButton {
 display: flex;
 flex-direction: row;
-justify-content: left;
+justify-content: space-between;
 column-gap: 1em;
 align-items: center;
 }
 
 .Navicon {
-width: 1em;
-height: 1em;
+width: 18px;
+height: 18px;
 background-color: transparent;
+margin-left: 5px;
 }
 
 .mySongsText, .myAlbumsText{
@@ -116,11 +130,22 @@ color: black;
 }
 
 .mySongs:hover, .myAlbums:hover {
-transform: scale(1.05);
+transform: scale(1.02);
 color: white;
 }
 
-.mySongsText:hover, .myAlbumsText:hover, .Navicon:hover{
-transform: scale(1.05);
+.mySongsText:hover, .myAlbumsText:hover, .Navicon:hover, .myLogOutButton{
+transform: scale(1.02);
 color: white;
 }
+
+#copyButtonDropdown:hover,  #logoutbuttonDropdown:hover{
+  transform: scale(1.02);
+  cursor: pointer;
+
+}
+
+#copyButtonDropdownMenu {
+  color: black;
+}
+

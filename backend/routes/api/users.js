@@ -99,7 +99,7 @@ router.post('/', validateSignup, async (req, res, next) => {
       "lastName": user.lastName,
       "email": user.email,
       "username": user.username,
-      "Profile Picture": user.imageUrl,
+      "imageUrl": user.imageUrl,
       "token": user.token
 
     });

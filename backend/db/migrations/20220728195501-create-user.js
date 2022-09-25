@@ -14,12 +14,12 @@ module.exports = {
       firstName: {
         type: Sequelize.STRING(30),
         allowNull: false,
-        unique: true
+        unique: false
       },
       lastName: {
         type: Sequelize.STRING(30),
         allowNull: false,
-        unique: true
+        unique: false
       },
       email: {
         type: Sequelize.STRING(256),

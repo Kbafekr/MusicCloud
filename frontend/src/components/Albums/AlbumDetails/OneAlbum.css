@@ -457,8 +457,8 @@ display: flex;
 .LeftSideOfTrackList {
 display: flex;
 min-width: fit-content;
+overflow: hidden;
 }
-
 .TrendingsongLinkTrackList {
   z-index: 0;
   min-width: fit-content;

@@ -94,13 +94,13 @@ router.post('/', validateSignup, async (req, res, next) => {
   await user.save()
 
   return res.json({
-      "id": user.id,
-      "firstName": user.firstName,
-      "lastName": user.lastName,
-      "email": user.email,
-      "username": user.username,
-      "imageUrl": user.imageUrl,
-      "token": user.token
+      id: user.id,
+      firstName,
+      lastName,
+      email,
+      username,
+      imageUrl,
+      token
 
     });
 });

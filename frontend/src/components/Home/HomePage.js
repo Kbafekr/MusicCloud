@@ -73,6 +73,7 @@ export function HomePage() {
   // state to keep track of pressed modal
   const [showModal, setShowModal] = useState(false);
   const [showModalSignIn, setShowModalSignIn] = useState(false);
+  const [clickState, setClickState] = useState(false)
 
   // //useEffect to get all songs
   // useEffect(() => {
@@ -154,7 +155,7 @@ export function HomePage() {
 
   // useEffects for if user isn't signed in set carousel image
   useEffect(() => {
-    if (!UserSignedIn && showModal == false && showModalSignIn == false) {
+    if (!UserSignedIn && showModal == false && showModalSignIn == false && clickState == false) {
       //get all songs
 
       if (backgroundImageNumber < backgroundImages.length) {
@@ -302,6 +303,17 @@ export function HomePage() {
       index == 46 ||
       index == 12
   );
+
+  // function to stop useEffect image carousel
+
+  function setBackgroundImageNumberZero() {
+    setClickState(true)
+    setBackgroundImageNumber(0)
+  }
+  function setBackgroundImageNumberOne() {
+    setClickState(true)
+    setBackgroundImageNumber(1)
+  }
   // conditional function to return certain text on background images
 
   function backgroundImageText() {
@@ -765,7 +777,7 @@ export function HomePage() {
             <div>{backgroundImageText()}</div>
             <div className="NotSignedInButtonsContainer">
               <div
-                onClick={() => setBackgroundImageNumber(0)}
+                onClick={() => setBackgroundImageNumberZero()}
                 id={
                   (backgroundImageNumber + 1) % backgroundImages.length == 1
                     ? "HighlightButtonBackground"
@@ -774,7 +786,7 @@ export function HomePage() {
                 className="NotSignedInButtonOne"
               ></div>
               <div
-                onClick={() => setBackgroundImageNumber(1)}
+                onClick={() => setBackgroundImageNumberOne()}
                 id={
                   (backgroundImageNumber + 1) % backgroundImages.length == 0
                     ? "HighlightButtonBackground"

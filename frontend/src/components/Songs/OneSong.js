@@ -20,8 +20,11 @@ import EditSong from "./EditSongForm";
 // import DeleteSongModal from "./DeleteFormIndex";
 import DeleteSong from "./DeleteSongForm";
 
-
-
+// /import visualizer
+import {
+  SpectrumVisualizer,
+  SpectrumVisualizerTheme,
+} from "react-audio-visualizers";
 
 //get all songs, dispatch thunk action creator
 export default function SongDetails() {
@@ -190,11 +193,6 @@ export default function SongDetails() {
             </div>
             <div className="WaveFormContainerAlbumDetails">
               <div className="WaveFormSubContainer">
-
-
-
-
-
 
               </div>
             </div>
@@ -405,10 +403,10 @@ export default function SongDetails() {
             </div>
             <div className="WaveFormContainerAlbumDetails">
               <div className="WaveFormSubContainer">
-                <img
+                {/* <img
                   className="WaveFormImg"
                   src="https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png"
-                />
+                /> */}
               </div>
             </div>
           </div>

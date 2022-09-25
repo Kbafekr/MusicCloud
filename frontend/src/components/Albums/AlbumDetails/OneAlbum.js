@@ -189,10 +189,10 @@ export default function AlbumDetails() {
             </div>
             <div className="WaveFormContainerAlbumDetails">
               <div className="WaveFormSubContainer">
-                <img
+                {/* <img
                   className="WaveFormImg"
                   src="https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png"
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -454,10 +454,10 @@ export default function AlbumDetails() {
             </div>
             <div className="WaveFormContainerAlbumDetails">
               <div className="WaveFormSubContainer">
-                <img
+                {/* <img
                   className="WaveFormImg"
                   src="https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png"
-                />
+                /> */}
               </div>
             </div>
           </div>

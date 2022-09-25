@@ -96,7 +96,7 @@ router.post('/', restoreUser, requireAuth, validateAlbum, async (req, res) => {
     userId: UserId,
     title: title,
     description: description,
-    imageUrl: imageUrl
+    imageUrl: imageUrl || "https://cdn.pixabay.com/photo/2020/01/31/19/26/vinyl-4808792_1280.jpg"
   })
   res.status(201).json(newAlbum)
 })

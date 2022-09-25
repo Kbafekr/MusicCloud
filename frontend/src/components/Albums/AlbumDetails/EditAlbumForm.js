@@ -97,7 +97,7 @@ function EditAlbum({setShowModal}) {
       <label>
         <input
         className="imageUrlEditAlbum"
-          placeholder={imageUrl || "Song Image Url (optional)..."}
+          placeholder={imageUrl || "Album Image Url (optional)..."}
           type="url"
           value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}

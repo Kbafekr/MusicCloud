@@ -181,20 +181,15 @@ export default function SongDetails() {
             </div>
             {/* Info section */}
             <div className="InfoSectionAlbumDetails">
-              <div className="InfoSectionAlbumCreatedTime">
+            <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={song.createdAt}>
-                  <span>Created on:</span>
+                <div className="InfoSectionAlbumIdDetails">Created on:</div>
                   <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
                 </time>
-                <div className="InfoSectionAlbumIdDetails">
-                  <span>Song id: {song.id}</span>
-                </div>
               </div>
             </div>
             <div className="WaveFormContainerAlbumDetails">
-              <div className="WaveFormSubContainer">
-
-              </div>
+              <div className="WaveFormSubContainer"></div>
             </div>
           </div>
         </div>
@@ -391,14 +386,11 @@ export default function SongDetails() {
             </div>
             {/* Info section */}
             <div className="InfoSectionAlbumDetails">
-              <div className="InfoSectionAlbumCreatedTime">
+            <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={song.createdAt}>
-                  <span>Created on:</span>
+                <div className="InfoSectionAlbumIdDetails">Created on:</div>
                   <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
                 </time>
-                <div className="InfoSectionAlbumIdDetails">
-                  <span>Song id: {song.id}</span>
-                </div>
               </div>
             </div>
             <div className="WaveFormContainerAlbumDetails">

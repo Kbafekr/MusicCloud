@@ -5,12 +5,14 @@ import sessionReducer from './session';
 import { songsReducer } from './songs';
 import { albumsReducer } from './albums';
 import { audioReducer } from './audioPlayer';
+import { commentsReducer } from './comments';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   song: songsReducer,
   album: albumsReducer,
   songPlayer: audioReducer,
+  comments: commentsReducer
 });
 
 /* Initialize an enhancer variable that will be set to different store enhancers

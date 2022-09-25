@@ -1,263 +1,155 @@
-// import { csrfFetch } from './csrf';
+import { csrfFetch } from "./csrf";
 
-// // constant type keys
+// constant type keys
 
-// const GET_ALL_SONGS = 'songs/getAllSongs'
+const GET_ALL_COMMENTS = "comments/getAllComments";
 
-// const GET_ONE_SONG = 'songs/getOneSong'
+const CREATE_A_COMMENT = "comments/CreateAComment";
 
-// const CREATE_A_SONG = 'songs/CreateASong'
+const EDIT_A_COMMENT = "comments/EditAComment";
 
-// const EDIT_A_SONG = 'songs/EditASong'
+const DELETE_A_COMMENT = "songs/DeleteAComment";
 
-// const DELETE_A_SONG = 'songs/DeleteASong'
+//actions
 
-// const GET_OWNED_SONGS = 'songs/GetOwnedSongs'
+//get all song comments action
+export const actionGetComments = (songId) => {
+  return {
+    type: GET_ALL_COMMENTS,
+    songId,
+  };
+};
 
-// const TRENDING_SONG = 'songs/TrendingSong'
+//create a song
+const actionCreateAComment = (songId, comment) => {
+  return {
+    type: CREATE_A_COMMENT,
+    songId,
+    comment
+  };
+};
 
+//edit a song
+const actionEditAComment = (comment) => {
+  return {
+    type: EDIT_A_COMMENT,
+    comment,
+  };
+};
 
-// //actions
+//delete a song
+const actionDeleteAComment = (commentId) => {
+  return {
+    type: DELETE_A_COMMENT,
+    commentId,
+  };
+};
 
-// //get all songs action
-// export const actionGetSongs = (songs) => {
-//     return {
-//         type: GET_ALL_SONGS,
-//         songs
-//     }
-// }
+//action thunk creators
 
-// //get owned songs action
-// const actionGetOwnedSongs = (songs) => {
-//     return {
-//         type: GET_OWNED_SONGS,
-//         songs
-//     }
-// }
-// //get one song action
-// const actionGetOneSong = (song) => {
-//     return {
-//         type: GET_ONE_SONG,
-//         song
-//     }
-// }
+//get all comments thunk
 
-// //get trending song action
+export const getAllComments = (songId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/songs/${songId}/comments`);
+  if (response.ok) {
+    const allComments = await response.json();
+    await dispatch(actionGetComments(allComments));
+  }
+};
 
-// const actionTrendingSong = (song) => {
-//     return {
-//         type: TRENDING_SONG,
-//         song
-//     }
-// }
+//create a comment thunk
 
-// //create a song
-// const actionCreateASong = (song) => {
-//     return {
-//         type: CREATE_A_SONG,
-//         song
-//     }
-// }
+export const createAComment = (songId, comment) => async (dispatch) => {
+  const response = await csrfFetch(`/api/songs/${songId}/comments`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(comment),
+  });
+  if (response.ok) {
+    const newComment = await response.json();
+    await dispatch(actionCreateAComment(newComment));
+  }
+};
 
-// //edit a song
-// const actionEditASong = (song) => {
-//     return {
-//         type: EDIT_A_SONG,
-//         song
-//     }
-// }
+//edit a comment thunk
 
-// //delete a song
-// const actionDeleteASong = (songId) => {
-//     return {
-//         type: DELETE_A_SONG,
-//         songId
-//     }
-// }
+export const editAComment = (comment) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${comment.id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(comment),
+  });
+  if (response.ok) {
+    const commentEdit = await response.json();
+    await dispatch(actionEditAComment(commentEdit));
+  }
+};
+//delete a comment thunk
 
+export const deleteComment = (commentId) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${commentId}`, {
+    method: "Delete",
+  });
+  if (response.ok) {
+    const commentDelete = await response.json();
+    await dispatch(actionDeleteAComment(commentId));
+    return commentDelete;
+  }
+};
 
+//initial state
 
+const initialState = {};
 
-// //action thunk creators
+//create reducer
 
-// //get all songs
+export const commentsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case GET_ALL_COMMENTS: {
+      const newState = {...action}
 
-// export const getAllSongs = () => async dispatch => {
-//     const response = await csrfFetch('/api/songs')
-//     if (response.ok) {
-//         const allSongs = await response.json()
-//         await dispatch(actionGetSongs(allSongs))
-//     }
-// }
-// //get all songs no validation
-
-// export const getAllDemoSongs = () => async dispatch => {
-//     const response = await fetch('/api/songs/Demo')
-//     if (response.ok) {
-//         const allSongs = await response.json()
-//         await dispatch(actionGetSongs(allSongs))
-//     }
-// }
-
-// //get all songs owned by current user
-
-// export const UserSongs = () => async dispatch => {
-//     const response = await csrfFetch('/api/songs/current')
-//     if (response.ok) {
-//         const ownedSongs = await response.json()
-//         await dispatch(actionGetOwnedSongs(ownedSongs))
-//         return ownedSongs
-//     }
-// }
-
-// //get one song thunk
-// export const getOneSong = (songId) => async dispatch => {
-//     const response = await csrfFetch(`/api/songs/${songId}`)
-//     if (response.ok) {
-//         const OneSong = await response.json()
-//         await dispatch(actionGetOneSong(OneSong))
-//     }
-// }
+    //   newState[action.songId.Comments.songId] = action.songId.Comments
+      return newState;
 
 
-// //trending song thunk
+    //   const newState = {}
+    //   action.songId.Comments.forEach(comment => {
+    //     newState[comment.id] = comment
+    // })
+    //   return newState;
+    }
+    case CREATE_A_COMMENT: {
+      const newState = { ...state };
+      newState[action.song.id] = action.song;
+      return newState;
+    }
+    case EDIT_A_COMMENT: {
+      const newState = { ...state };
+      // console.log('this is newstate' + state)
+      //     const data = {...action}
+      // console.log('this is data' + data)
+      // const songCopy = { ...state[action.song.id]}
+      // newState[action.song.id] = songCopy
+      // newState[action.song.id] = action.song
+      //normalize nested components into state
+      // newState[action.song.id.AlbumTitle] = newState.song.Album.title
+      // newState[action.song.AlbumImageUrl] = newState.song.AlbumImageUrl
+      // newState[action.song.ArtistId] = newState.song.ArtistId
+      // newState[action.song.ArtistUsername] = newState.song.ArtistUsername
+      // newState[action.song.ArtistProfilePic] = newState.song.ArtistProfilePic
+      // return newState[action.song.id]
 
-// export const getTrendingSong = (song) => async dispatch => {
-//     const response = await csrfFetch('/api/songs')
-//     if (response.ok) {
-//         const allSongs = await response.json()
-//         await dispatch(actionTrendingSong(allSongs))
-//     }
-// }
-// //create a song thunk
+      newState[action.song.id] = action.song;
+      return newState;
+    }
+    case DELETE_A_COMMENT: {
+      const newState = { ...state };
+      delete newState[action.id];
+      return newState;
+    }
+    default:
+      return state;
+  }
+};
 
-// export const CreateASong = (song) => async dispatch => {
-//     const response = await csrfFetch('/api/songs/', {
-//     method: 'POST',
-//     headers: {'Content-Type': 'application/json'},
-//     body: JSON.stringify(song)
-// })
-//     if (response.ok) {
-//         const newSong = await response.json()
-//         await dispatch(actionCreateASong(newSong))
-//     }
-// }
-
-// //edit a song thunk
-
-// export const EditASong = (song) => async dispatch => {
-//     const response = await csrfFetch(`/api/songs/${song.id}`, {
-//     method: 'PUT',
-//     headers: {'Content-Type': 'application/json'},
-//     body: JSON.stringify(song)
-// })
-//     if (response.ok) {
-//         const songEdit = await response.json()
-//         await dispatch(actionEditASong(songEdit))
-//     }
-// }
-// //delete a song thunk
-
-// export const DeleteASong = (songId) => async dispatch => {
-//     const response = await csrfFetch(`/api/songs/${songId}`, {
-//     method: 'Delete',
-// })
-//     if (response.ok) {
-//         const songDelete = await response.json()
-//         await dispatch(actionDeleteASong(songId))
-//         return songDelete
-//     }
-// }
-
-
-
-
-// //initial state
-
-// const initialState = {}
-
-// //create reducer
-
-// export const commentsReducer = (state = initialState, action) => {
-//     switch (action.type) {
-
-//         case GET_ALL_SONGS: {
-//             const newState = {};
-
-//             action.songs.Songs.forEach(song => {
-//                 newState[song.id] = song
-//             })
-//             return newState
-
-//             // const newState = {...state.songs};
-
-//             // action.songs.forEach(song => {
-//             //     newState[song.id] = song
-//             // })
-//             // return newState
-//         }
-//         case GET_OWNED_SONGS: {
-//             const newState = {};
-//             action.songs.Songs.forEach(song => {
-//                 newState[song.id] = song
-//             })
-//             return newState
-
-//             // const newState = {...state.songs};
-//             // action.songs.songs.forEach(song => {
-//             //     newState[song.id] = song
-//             // })
-//             // return newState
-//         }
-
-//         case GET_ONE_SONG: {
-//             const newState = {...action.song}
-//             //normalize nested components into state
-//             // newState.AlbumId = action.song.Album.id
-//             // newState.AlbumTitle = action.song.Album.title
-//             // newState.AlbumImageUrl = action.song.Album.imageUrl
-//             // newState.ArtistId = action.song.Artist.id
-//             // newState.ArtistUsername = action.song.Artist.username
-//             // newState.ArtistProfilePic = action.song.Artist.imageUrl
-//             return newState
-//         }
-//         case CREATE_A_SONG: {
-//             const newState = {...state}
-//             newState[action.song.id] = action.song
-//             return newState
-//         }
-//         case EDIT_A_SONG:
-//             {   const newState = {...state}
-//             // console.log('this is newstate' + state)
-//             //     const data = {...action}
-//                 // console.log('this is data' + data)
-//                 // const songCopy = { ...state[action.song.id]}
-//                 // newState[action.song.id] = songCopy
-//                 // newState[action.song.id] = action.song
-//                 //normalize nested components into state
-//             // newState[action.song.id.AlbumTitle] = newState.song.Album.title
-//             // newState[action.song.AlbumImageUrl] = newState.song.AlbumImageUrl
-//             // newState[action.song.ArtistId] = newState.song.ArtistId
-//             // newState[action.song.ArtistUsername] = newState.song.ArtistUsername
-//             // newState[action.song.ArtistProfilePic] = newState.song.ArtistProfilePic
-//                 // return newState[action.song.id]
-
-//                 newState[action.song.id] = action.song;
-//                 return newState;
-//             }
-//         case DELETE_A_SONG:
-//             {
-//                 const newState = {...state}
-//                 delete newState[action.id]
-//                 return newState
-//             }
-//         case TRENDING_SONG:
-//             const newState = {...state}
-//             return newState
-//         default:
-//             return state
-//     }
-// }
-
-
-// //export reducer
+//export reducer

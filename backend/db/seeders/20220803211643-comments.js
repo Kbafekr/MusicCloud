@@ -27,6 +27,16 @@ module.exports = {
         songId: 2,
         body: 'cool song'
       },
+      {
+        userId: 1,
+        songId: 1,
+        body: 'hits different'
+      },
+      {
+        userId: 2,
+        songId: 1,
+        body: 'cool song'
+      },
     ], {});
   },
 

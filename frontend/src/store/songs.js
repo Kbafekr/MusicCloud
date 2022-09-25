@@ -89,6 +89,25 @@ export const getAllSongs = () => async dispatch => {
         await dispatch(actionGetSongs(allSongs))
     }
 }
+
+
+
+
+
+//get all songs by page
+
+export const getAllSongsWithPage = (page) => async dispatch => {
+    const response = await csrfFetch(`/api/songs?page=${page}`)
+    if (response.ok) {
+        const allSongs = await response.json()
+        await dispatch(actionGetSongs(allSongs))
+    }
+
+
+
+
+
+}
 //get all songs no validation
 
 export const getAllDemoSongs = () => async dispatch => {

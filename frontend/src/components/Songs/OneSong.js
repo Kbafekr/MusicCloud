@@ -13,6 +13,8 @@ import { getAllAlbums } from "../../store/albums";
 import { Modal } from "../../context/Modal";
 import EditSong from "./EditSongForm";
 
+import { getAllComments } from "../../store/comments";
+
 //exceeded rendering capacity with conditional rendering for nested properties
 //just create modal in here
 
@@ -61,6 +63,10 @@ export default function SongDetails() {
   useEffect(() => {
     dispatch(getAllSongs());
   }, [dispatch, showModal, user, modalDelete, rerender]);
+
+  useEffect(() => {
+    dispatch(getAllComments(songId))
+  }, [dispatch, showModal, user, modalDelete, rerender])
 
   // useEffect(getOneSong(songId))
 

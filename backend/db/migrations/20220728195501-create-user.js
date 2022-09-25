@@ -37,7 +37,8 @@ module.exports = {
       },
       imageUrl: {
         type: Sequelize.STRING,
-        allowNull: true
+        allowNull: true,
+        defaultValue: 'https://www.pngall.com/wp-content/uploads/5/Black-Dog-PNG.png'
       },
       createdAt: {
         allowNull: false,

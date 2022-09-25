@@ -81,6 +81,7 @@ router.post('/', validateSignup, async (req, res, next) => {
     return res.status(403).json(errorCode)
   }
 
+
   const user = await User.signup({firstName, lastName, email, username, password, imageUrl});
 
 
@@ -99,7 +100,7 @@ router.post('/', validateSignup, async (req, res, next) => {
       lastName,
       email,
       username,
-      imageUrl,
+      "imageUrl": imageUrl || 'https://www.pngall.com/wp-content/uploads/5/Black-Dog-PNG.png',
       token
 
     });

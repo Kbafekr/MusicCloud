@@ -308,11 +308,11 @@ export function HomePage() {
     if ((backgroundImageNumber + 1) % backgroundImages.length == 1)
       return (
         <>
-          <h1 className="BackgroundHeader">Discover with MusicCloud!</h1>
+          <h1 id="BackgroundHeader">Discover with MusicCloud!</h1>
           <h2 className="BackgroundHeaderTwo">
             Save tracks, follow artists and build playlists
           </h2>
-          <h1 className="BackgroundHeader">All for free</h1>
+          <h1 className="BackgroundHeader3">All for free</h1>
           <h2 className="BackgroundHeaderTwo">Sign up and connect</h2>
           <div className="CreateAccountButtonHomePage">
             <button className="SignupNavBar" onClick={() => setShowModal(true)}>
@@ -324,6 +324,18 @@ export function HomePage() {
               </Modal>
             )}
           </div>
+        </>
+      );
+    else
+      return (
+        <>
+          <h1 id="BackgroundHeader">
+            What's next in music is first on MusicCloud
+          </h1>
+          <p className="BackgroundText">
+            Upload your first track and begin your journey. SoundCloud gives you
+            space to create and connect with other artists.
+          </p>
           <div className="SignInHomePage">
             <h4 className="backgroundImageText">already have an account?</h4>
             <button
@@ -335,29 +347,6 @@ export function HomePage() {
             {showModalSignIn && (
               <Modal onClose={() => setShowModalSignIn(false)}>
                 <LoginForm setShowModalSignIn={setShowModalSignIn} />
-              </Modal>
-            )}
-          </div>
-        </>
-      );
-    else
-      return (
-        <>
-          <h1 className="BackgroundHeader">
-            What's next in music is first on MusicCloud
-          </h1>
-          <p className="BackgroundText">
-            Upload your first track and begin your journey. SoundCloud gives you
-            space to create and connect with other artists.
-          </p>
-          <h2 className="BackgroundHeader">Sign up and connect</h2>
-          <div className="CreateAccountButtonHomePage">
-            <button className="SignupNavBar" onClick={() => setShowModal(true)}>
-              Create account
-            </button>
-            {showModal && (
-              <Modal onClose={() => setShowModal(false)}>
-                <SignupForm setShowModal={setShowModal} />
               </Modal>
             )}
           </div>

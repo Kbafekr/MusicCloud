@@ -109,22 +109,26 @@
   justify-content: space-between;
   top: 5em;
   width: 35%;
-  height: 65%;
+  height: 380px;
 }
-
-.BackgroundHeader {
+.BackgroundHeader3 {
+  font-size: 1.5em;
   color: white;
-  font-size: 2vmin;
+
+}
+#BackgroundHeader {
+  color: white;
+  font-size: 2em;
 }
 .BackgroundHeaderTwo {
   color: white;
-  font-size: 1.5vmin;
+  font-size: 1.0em;
   margin-top: 2em;
 }
 
 .BackgroundText {
   color: white;
-  font-size: 1.5vmin;
+  font-size: 1em;
   margin-top: 3em;
   margin-bottom: 3em;
 }

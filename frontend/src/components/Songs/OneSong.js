@@ -45,6 +45,8 @@ export default function SongDetails() {
 
   let sortedCommentsbyNewest = commentsarraycopy.sort((a, b) => b.id - a.id);
 
+ console.log(sortedCommentsbyNewest.map((comment) => comment.User !== undefined))
+
   let songsArray;
 
   let rerender;
@@ -147,7 +149,7 @@ export default function SongDetails() {
     song.Artist &&
     song.Album &&
     song.Artist.id === user.id &&
-    lastComment.User
+    lastComment.User && sortedCommentsbyNewest.map((comment) => comment.User !== undefined)
   ) {
     return (
       <div className="OverallContainerAlbumDetails">
@@ -318,7 +320,7 @@ export default function SongDetails() {
                     </div>
                     <div className="CommentsContainerSongs">
                       {sortedCommentsbyNewest &&
-                        sortedCommentsbyNewest.map((comment) => {
+                        sortedCommentsbyNewest.map((comment, index) => {
                           return (
                             <div
                               className="SongInAlbumDetails"
@@ -345,11 +347,12 @@ export default function SongDetails() {
                                       </div>
                                     </div>
                                     <div className="SongIdinTrackListAlbumDetailsContainer">
-                                      <div className="AboutAlbumDetailsMainHeaderContainerFlexBox">
+                                      <div className="AboutCommentsDetailsMainHeaderContainerFlexBox">
                                         {user.id == comment.User.id && (
-                                          <div className="EditAlbumButtonContainerMain">
+                                          <div className="EditCommentsButtonContainerMain">
                                             <button
                                               className="EditAlbumButton"
+                                              id="EditCommentButton"
                                               onClick={() => setShowModal(true)}
                                             >
                                               Edit Comment
@@ -371,6 +374,7 @@ export default function SongDetails() {
                                         <div className="DeleteAlbumButtonContainerMain">
                                           <button
                                             className="DeleteAlbumButton"
+                                            id="DeleteCommentButton"
                                             onClick={() => setModalDelete(true)}
                                           >
                                             Delete Song

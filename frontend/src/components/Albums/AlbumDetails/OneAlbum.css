@@ -857,3 +857,66 @@ align-items: center;
 
   color: rgb(0, 0, 0);
 }
+
+
+
+.AboutCommentsDetailsMainHeaderContainerFlexBox {
+  display: flex;
+  min-height: 33px;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.EditAlbumButtonContainerMain {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  left: 20px;
+}
+
+.DeleteAlbumButtonContainerMain {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+
+.EditAlbumButton,
+.DeleteAlbumButton {
+  color: #fff;
+  font-size: 2vmax;
+  height: 2em;
+  border-radius: 7px;
+  background-color: rgb(255, 98, 0);
+  border: 0.05em rgb(255, 111, 0);
+  margin-bottom: 0.2em;
+}
+
+#EditCommentButton, #DeleteCommentButton {
+
+  color: #fff;
+  font-size: 0.8em;
+  height: 2em;
+  border-radius: 7px;
+  background-color: rgb(255, 98, 0);
+  border: 0.05em rgb(255, 111, 0);
+  margin-bottom: 0.2em;
+}
+
+.EditCommentsButtonContainerMain {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.DeleteAlbumButtonContainerMain {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}

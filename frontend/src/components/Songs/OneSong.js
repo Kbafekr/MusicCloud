@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory, useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import { getAllSongs } from "../../store/songs";
 import { actionSongPlaying } from "../../store/audioPlayer";
 import PlayButtonImage from "../../images/PlayButton.png";
@@ -20,21 +20,13 @@ import EditSong from "./EditSongForm";
 // import DeleteSongModal from "./DeleteFormIndex";
 import DeleteSong from "./DeleteSongForm";
 
-// /import visualizer
-import {
-  SpectrumVisualizer,
-  SpectrumVisualizerTheme,
-} from "react-audio-visualizers";
-
 //get all songs, dispatch thunk action creator
 export default function SongDetails() {
   const dispatch = useDispatch();
   const { songId } = useParams();
-  const history = useHistory();
 
   const [showModal, setShowModal] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
-  const allAlbums = useSelector((state) => state.album);
   const songs = useSelector((state) => state.song);
 
   const song = { ...songs[songId] };
@@ -44,8 +36,6 @@ export default function SongDetails() {
   //   console.log(Albumvalues)
   //   const Artist = useSelector(state => state.song.Artist)
 
-  let albums;
-  let albumsArray;
   let songsArray;
 
   let rerender;
@@ -66,32 +56,17 @@ export default function SongDetails() {
 
   // }, [dispatch, song.description, song.title, song.imageUrl, song.AlbumId, song.url])
 
-  if (song.Album) {
-    albums = Object.values(song.Album);
-  }
-  if (allAlbums) {
-    albumsArray = Object.values(allAlbums);
-  }
   if (songs) {
     songsArray = Object.values(songs);
   }
 
   let userSongsFilter;
-  let mySongsFilter;
 
-  let userFilteredAlbums;
 
-  if (albums && user) {
-    mySongsFilter = albums.filter((filteredSongs, index) => index == 0);
-  }
-  if (albumsArray && user) {
-    userFilteredAlbums = albumsArray.filter(
-      (filteredSongs, index) => filteredSongs.userId == song.userId
-    );
-  }
+
   if (songsArray && user && song.Artist) {
     userSongsFilter = songsArray.filter(
-      (filteredSongs, index) => filteredSongs.userId == song.Artist.id
+      (filteredSongs, index) => filteredSongs.userId === song.Artist.id
     );
   }
   function DateTimeSubString() {
@@ -151,18 +126,18 @@ export default function SongDetails() {
       </div>
     );
   }
-  if (song.Artist && song.Album && song.Artist.id == user.id) {
+  if (song.Artist && song.Album && song.Artist.id === user.id) {
     return (
       <div className="OverallContainerAlbumDetails">
         <div className="BackgroundAlbumDetailsSection">
           {/* top half */}
           <div className="AlbumDetailsForegroundSection">
-            <img className="AlbumArtwork" src={song.imageUrl} />
+            <img className="AlbumArtwork" src={song.imageUrl}  alt="album artwork"/>
             <div className="AlbumDetailsTitleSection">
               <div className="SoundPlayButtonAlbumDetailsContainer">
                 <img
                   className="PlayButtonAlbumDetails"
-                  src={PlayButtonImage}
+                  src={PlayButtonImage} alt="play button hover artwork"
                   onClick={() => dispatch(actionSongPlaying(song))}
                 />
               </div>
@@ -234,7 +209,7 @@ export default function SongDetails() {
                   <div className="UserSubContainerAlbumDetails">
                     <div className="UserContainerUserImageAlbumDetails">
                       <div className="UserImageAlbumDetailsContainer">
-                        <img
+                        <img alt="user artwork"
                           className="UserImageAlbumDetailsMainContainer"
                           src={song.Artist.imageUrl}
                         />
@@ -281,7 +256,7 @@ export default function SongDetails() {
                         <div className="TracklistContainer">
                           <div className="LeftSideOfTrackList">
                             <div className="SongImageContainerAlbumDetailsList">
-                              <img
+                              <img alt="album artwork"
                                 className="songImageAlbumDetailsList"
                                 src={song.Album.imageUrl}
                               ></img>
@@ -327,14 +302,14 @@ export default function SongDetails() {
                       <div className="SongInSideBarDetails" key={song.id}>
                         <div className="SongInSidebarContainer">
                           <div className="PlayButtonContainerSideBar">
-                            <img
+                            <img alt="album artwork"
                               className="PlayButtonAlbumDetails"
                               src={PlayButtonImage}
                               onClick={() => dispatch(actionSongPlaying(song))}
                             />
                           </div>
                           <div className="SongImageContainerAlbumDetailsList">
-                            <img
+                            <img alt="song artwork"
                               className="songImageAlbumDetailsList"
                               src={song.imageUrl}
                             ></img>
@@ -356,16 +331,16 @@ export default function SongDetails() {
       </div>
     );
   }
-  if (song.Artist && song.Album && song.Artist.id != user.id) {
+  if (song.Artist && song.Album && song.Artist.id !== user.id) {
     return (
       <div className="OverallContainerAlbumDetails">
         <div className="BackgroundAlbumDetailsSection">
           {/* top half */}
           <div className="AlbumDetailsForegroundSection">
-            <img className="AlbumArtwork" src={song.imageUrl} />
+            <img className="AlbumArtwork" alt="album artwork" src={song.imageUrl} />
             <div className="AlbumDetailsTitleSection">
               <div className="SoundPlayButtonAlbumDetailsContainer">
-                <img
+                <img alt="play button artwork"
                   className="PlayButtonAlbumDetails"
                   src={PlayButtonImage}
                   onClick={() => dispatch(actionSongPlaying(song))}
@@ -419,7 +394,7 @@ export default function SongDetails() {
                   <div className="UserSubContainerAlbumDetails">
                     <div className="UserContainerUserImageAlbumDetails">
                       <div className="UserImageAlbumDetailsContainer">
-                        <img
+                        <img alt="artist artwork"
                           className="UserImageAlbumDetailsMainContainer"
                           src={song.Artist.imageUrl}
                         />
@@ -466,7 +441,7 @@ export default function SongDetails() {
                         <div className="TracklistContainer">
                           <div className="LeftSideOfTrackList">
                             <div className="SongImageContainerAlbumDetailsList">
-                              <img
+                              <img alt="album artwork"
                                 className="songImageAlbumDetailsList"
                                 src={song.Album.imageUrl}
                               ></img>
@@ -512,14 +487,14 @@ export default function SongDetails() {
                       <div className="SongInSideBarDetails" key={song.id}>
                         <div className="SongInSidebarContainer">
                           <div className="PlayButtonContainerSideBar">
-                            <img
+                            <img alt="play button artwork"
                               className="PlayButtonAlbumDetails"
                               src={PlayButtonImage}
                               onClick={() => dispatch(actionSongPlaying(song))}
                             />
                           </div>
                           <div className="SongImageContainerAlbumDetailsList">
-                            <img
+                            <img alt="song artwork"
                               className="songImageAlbumDetailsList"
                               src={song.imageUrl}
                             ></img>

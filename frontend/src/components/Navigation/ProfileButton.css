@@ -20,7 +20,7 @@ flex-direction: row;
 height: 100%;
 width: 6em;
 margin-right: 1em;
-border-radius: 5px;
+border-radius: 50px;
 }
 
 .profileWithMenu {
@@ -29,7 +29,7 @@ flex-direction: row;
 height: 100%;
 width: 6em;
 margin-right: 1em;
-border-radius: 5px;
+border-radius: 50px;
 
 }
 
@@ -48,7 +48,7 @@ border-radius: 50px;
 
 .fas {
   position: relative;
-  top: 2px;
+  top: 15px;
   left: 2px;
 }
 .profile-dropdown {
@@ -148,4 +148,3 @@ color: white;
 #copyButtonDropdownMenu {
   color: black;
 }
-

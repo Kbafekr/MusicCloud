@@ -155,13 +155,13 @@ function ProfileButton({ user }) {
       )}
     </div>
     {/* alerts for copy effect */}
-    <div className={effectStateUsername == true ? "alertmessageBox" : 'hiddedenalertbox'} id='keyframeAlerts'>
-      <div className={effectStateUsername == true ? "alertmessage" : 'hiddedenalertbox'}>
+    <div className={effectStateUsername === true ? "alertmessageBox" : 'hiddedenalertbox'} id='keyframeAlerts'>
+      <div className={effectStateUsername === true ? "alertmessage" : 'hiddedenalertbox'}>
         Username copied to clipboard
         </div>
     </div>
-    <div className={effectStateEmail == true ? "alertmessageBox2" : 'hiddedenalertbox' } id='keyframeAlerts'>
-      <div className={effectStateEmail == true ? "alertmessage" : 'hiddedenalertbox'}>
+    <div className={effectStateEmail === true ? "alertmessageBox2" : 'hiddedenalertbox' } id='keyframeAlerts'>
+      <div className={effectStateEmail === true ? "alertmessage" : 'hiddedenalertbox'}>
         Email copied to clipboard
         </div>
     </div>

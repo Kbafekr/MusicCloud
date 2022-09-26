@@ -307,9 +307,7 @@ export default function SongDetails() {
   if (
     song.Artist &&
     song.Album &&
-    song.Artist.id === user.id &&
-    commentsArray.length > 0 &&
-    allCommentsComponents == true
+    song.Artist.id === user.id
   ) {
     return (
       <div className="OverallContainerAlbumDetails">
@@ -525,7 +523,7 @@ export default function SongDetails() {
       </div>
     );
   }
-  if (song.Artist && song.Album && song.Artist.id === user.id) {
+  if (song.Artist && song.Album && song.Artist.id !== user.id) {
     return (
       <div className="OverallContainerAlbumDetails">
         <div className="BackgroundAlbumDetailsSection">

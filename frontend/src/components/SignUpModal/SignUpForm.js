@@ -14,6 +14,7 @@ function SignupForm({setShowModal}) {
   const [imageUrl, setImageUrl] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const [submitted, setSubmitted] = useState(false)
 
   useEffect(() => {
     const formValidationErrors = [];
@@ -45,6 +46,7 @@ function SignupForm({setShowModal}) {
 
     setErrors(formValidationErrors);
   }, [email, username, firstName, lastName, password, confirmPassword]);
+  console.log(errors)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -60,8 +62,9 @@ function SignupForm({setShowModal}) {
         })
       ).catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
-      }).then(() => setShowModal(false));
+        console.log(data.message)
+        if (data && data.message) setErrors([data.message]);
+      })
     }
     return errors;
   };

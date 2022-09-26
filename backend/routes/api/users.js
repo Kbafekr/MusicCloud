@@ -81,6 +81,7 @@ router.post('/', validateSignup, async (req, res, next) => {
     return res.status(403).json(errorCode)
   }
 
+
   const user = await User.signup({firstName, lastName, email, username, password, imageUrl});
 
 
@@ -94,13 +95,13 @@ router.post('/', validateSignup, async (req, res, next) => {
   await user.save()
 
   return res.json({
-      "id": user.id,
-      "firstName": user.firstName,
-      "lastName": user.lastName,
-      "email": user.email,
-      "username": user.username,
-      "Profile Picture": user.imageUrl,
-      "token": user.token
+      id: user.id,
+      firstName,
+      lastName,
+      email,
+      username,
+      "imageUrl": imageUrl || 'https://www.pngall.com/wp-content/uploads/5/Black-Dog-PNG.png',
+      token
 
     });
 });

@@ -14,12 +14,12 @@ module.exports = {
       firstName: {
         type: Sequelize.STRING(30),
         allowNull: false,
-        unique: true
+        unique: false
       },
       lastName: {
         type: Sequelize.STRING(30),
         allowNull: false,
-        unique: true
+        unique: false
       },
       email: {
         type: Sequelize.STRING(256),
@@ -37,7 +37,8 @@ module.exports = {
       },
       imageUrl: {
         type: Sequelize.STRING,
-        allowNull: true
+        allowNull: true,
+        defaultValue: 'https://www.pngall.com/wp-content/uploads/5/Black-Dog-PNG.png'
       },
       createdAt: {
         allowNull: false,

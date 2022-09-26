@@ -177,14 +177,11 @@ export default function AlbumDetails() {
             </div>
             {/* Info section */}
             <div className="InfoSectionAlbumDetails">
-              <div className="InfoSectionAlbumCreatedTime">
+            <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={album.createdAt}>
-                  <span>Created on:</span>
+                <div className="InfoSectionAlbumIdDetails">Created on:</div>
                   <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
                 </time>
-                <div className="InfoSectionAlbumIdDetails">
-                  <span>Album id: {album.id}</span>
-                </div>
               </div>
             </div>
             <div className="WaveFormContainerAlbumDetails">
@@ -444,12 +441,9 @@ export default function AlbumDetails() {
             <div className="InfoSectionAlbumDetails">
               <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={album.createdAt}>
-                  <span>Created on:</span>
+                <div className="InfoSectionAlbumIdDetails">Created on:</div>
                   <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
                 </time>
-                <div className="InfoSectionAlbumIdDetails">
-                  <span>Album id: {album.id}</span>
-                </div>
               </div>
             </div>
             <div className="WaveFormContainerAlbumDetails">

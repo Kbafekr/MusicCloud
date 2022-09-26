@@ -9,8 +9,8 @@ const { Sequelize, Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const  { firstName, lastName, id, username, email, imageUrl } = this; // context will be the User instance
-      return { firstName, lastName, id, username, email, imageUrl };
+      const  { firstName, lastName, id, username, email } = this; // context will be the User instance
+      return { firstName, lastName, id, username, email };
     }
 
     validatePassword(password) {
@@ -116,7 +116,8 @@ module.exports = (sequelize, DataTypes) => {
         }
       },
       imageUrl: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue: 'https://www.pngall.com/wp-content/uploads/5/Black-Dog-PNG.png'
       }
     },
     {defaultScope: {

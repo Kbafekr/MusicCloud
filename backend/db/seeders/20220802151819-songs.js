@@ -533,8 +533,8 @@ module.exports = {
           userId: 1,
           albumId: 28,
           title: "Abnormalize",
-          description: "https://soundclouddata.s3.amazonaws.com/Abnormalize.mp3",
-          url: "https://soundclouddata.s3.amazonaws.com/Metamorphose.mp3",
+          description: "Japanese Math Rock/Post-Hardcore",
+          url: "https://soundclouddata.s3.amazonaws.com/Abnormalize.mp3",
           imageUrl:
             "https://cdn.shopify.com/s/files/1/0065/8482/7956/products/ling-tosite-sigure-imperfect.jpg?v=1596057485",
         },

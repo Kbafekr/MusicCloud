@@ -41,8 +41,7 @@ export default function SongDetails() {
 
   const commentsArray = Object.values(comments);
 
-  const lastComment = {...comments[comments.length]}
-  console.log(lastComment)
+  const lastComment = {...commentsArray[commentsArray.length - 1]}
 
   let commentsarraycopy = [...commentsArray];
 
@@ -58,6 +57,9 @@ export default function SongDetails() {
     rerender += 1;
   }
 
+  if (!lastComment.User) {
+    renderAgain += 1
+  }
 
 
 
@@ -72,7 +74,7 @@ export default function SongDetails() {
 
   useEffect(() => {
     dispatch(getAllComments(songId));
-  }, [dispatch, showModal, user, modalDelete, songId ]);
+  }, [dispatch, showModal, user, modalDelete, songId, renderAgain]);
 
   // useEffect(getOneSong(songId))
 
@@ -146,7 +148,7 @@ export default function SongDetails() {
       </div>
     );
   }
-  if (song.Artist && song.Album && song.Artist.id === user.id) {
+  if (song.Artist && song.Album && song.Artist.id === user.id && lastComment.User) {
     return (
       <div className="OverallContainerAlbumDetails">
         <div className="BackgroundAlbumDetailsSection">

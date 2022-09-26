@@ -1,28 +1,18 @@
 import React  from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {DeleteASong} from "../../store/songs";
+import { deleteComment } from "../../store/comments";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
-import './DeleteSong.css'
 
-function DeleteSong({setModalDelete}) {
-  const { songId } = useParams();
-
+function DeleteComment({setModalDelete, comment}) {
   const dispatch = useDispatch();
-  const history = useHistory()
-  // const {songId} = useParams()
-  const user = useSelector(state => state.session.user)
-  const songs = useSelector((state) => state.song);
-
-  const song = { ...songs[songId] };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-        await dispatch(DeleteASong(songId))
+        await dispatch(deleteComment(comment.id))
         setModalDelete(false)
-        history.push('/songs')
+
   }
 
 
@@ -36,14 +26,11 @@ function DeleteSong({setModalDelete}) {
 
     <form className="DeleteSong-inner" onSubmit={handleSubmit} autoComplete='off'>
       <h1>Warning! This will permanently remove
-        <div className="DeleteSongStyle">
-          {song.title}
-          </div>
-          from your library.</h1>
+          the comment.</h1>
         <div></div>
        <h2>Are you sure you want to delete?</h2>
        <div className="deleteSongButtons">
-      <button className="submitDeleteSong" type="submit">Delete song</button>
+      <button className="submitDeleteSong" type="submit">Delete comment</button>
       <button className='cancelDeleteSong' onClick={() => setModalDelete(false)}>Cancel</button>
        </div>
     </form>
@@ -51,4 +38,4 @@ function DeleteSong({setModalDelete}) {
   );
 }
 
-export default DeleteSong;
+export default DeleteComment;

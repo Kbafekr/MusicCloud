@@ -17,6 +17,7 @@ import EditSong from "./EditSongForm";
 import CreateCommentModal from "../Comments/createCommentIndex";
 import { getAllComments } from "../../store/comments";
 import EditComment from "../Comments/EditCommentForm";
+import DeleteComment from "../Comments/DeleteCommentForm";
 //exceeded rendering capacity with conditional rendering for nested properties
 //just create modal in here
 
@@ -377,7 +378,7 @@ export default function SongDetails() {
                                             id="DeleteCommentButton"
                                             onClick={() => setModalDelete(true)}
                                           >
-                                            Delete Song
+                                            Delete Comment
                                           </button>
                                           {modalDelete && (
                                             <Modal
@@ -385,8 +386,9 @@ export default function SongDetails() {
                                                 setModalDelete(false)
                                               }
                                             >
-                                              <DeleteSong
+                                              <DeleteComment
                                                 setModalDelete={setModalDelete}
+                                                comment={comment}
                                               />
                                             </Modal>
                                           )}

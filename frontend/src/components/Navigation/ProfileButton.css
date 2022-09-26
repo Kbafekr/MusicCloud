@@ -21,6 +21,7 @@ height: 100%;
 width: 6em;
 margin-right: 1em;
 border-radius: 50px;
+border: 2px solid gray;
 }
 
 .profileWithMenu {
@@ -30,6 +31,7 @@ height: 100%;
 width: 6em;
 margin-right: 1em;
 border-radius: 50px;
+border: 2px solid gray;
 
 }
 

@@ -322,7 +322,7 @@ export default function SongDetails() {
             <div className="AlbumDetailsTitleSection">
               <div className="SoundPlayButtonAlbumDetailsContainer">
                 <img
-                  className="PlayButtonAlbumDetails"
+                  className="PlayButtonAlbumDetailsMainPlay"
                   src={PlayButtonImage}
                   alt="play button hover artwork"
                   onClick={() => dispatch(actionSongPlaying(song))}
@@ -538,7 +538,7 @@ export default function SongDetails() {
               <div className="SoundPlayButtonAlbumDetailsContainer">
                 <img
                   alt="play button artwork"
-                  className="PlayButtonAlbumDetails"
+                  className="PlayButtonAlbumDetailsMainPlay"
                   src={PlayButtonImage}
                   onClick={() => dispatch(actionSongPlaying(song))}
                 />

@@ -96,7 +96,7 @@ const SongValidation = [
       size = parseInt(size)
 
       if ((!page) || page > 10 ) page = 1
-      if ((!size) || size > 20 ) size = 100
+      if ((!size) || size > 20 ) size = 120
 
              let pagination = {}
 

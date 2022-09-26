@@ -155,7 +155,7 @@ export default function AlbumDetails() {
                   myAlbumsFilter.map((song) => {
                     return (
                       <img
-                        className="PlayButtonAlbumDetails"
+                        className="PlayButtonAlbumDetailsMainPlay"
                         src={PlayButtonImage}
                         onClick={() => dispatch(actionSongPlaying(song))}
                       />
@@ -417,7 +417,7 @@ export default function AlbumDetails() {
                   myAlbumsFilter.map((song) => {
                     return (
                       <img
-                        className="PlayButtonAlbumDetails"
+                        className="PlayButtonAlbumDetailsMainPlay"
                         src={PlayButtonImage}
                         onClick={() => dispatch(actionSongPlaying(song))}
                       />

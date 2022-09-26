@@ -46,8 +46,6 @@ export default function SongDetails() {
 
   let sortedCommentsbyNewest = commentsarraycopy.sort((a, b) => b.id - a.id);
 
- console.log(sortedCommentsbyNewest.map((comment) => comment.User !== undefined))
-
   let songsArray;
 
   let rerender;
@@ -72,7 +70,8 @@ export default function SongDetails() {
 
   useEffect(() => {
     dispatch(getAllComments(songId));
-  }, [dispatch, showModal, user, modalDelete, songId, renderAgain]);
+  }, [dispatch, user, songId, renderAgain, showModal, modalDelete]);
+  // dispatch, showModal, user, modalDelete, songId, renderAgain]);
 
   // useEffect(getOneSong(songId))
 
@@ -150,7 +149,8 @@ export default function SongDetails() {
     song.Artist &&
     song.Album &&
     song.Artist.id === user.id &&
-    lastComment.User && sortedCommentsbyNewest.map((comment) => comment.User !== undefined)
+    lastComment.User &&
+    sortedCommentsbyNewest.map((comment) => comment.User !== undefined)
   ) {
     return (
       <div className="OverallContainerAlbumDetails">
@@ -366,35 +366,39 @@ export default function SongDetails() {
                                               >
                                                 <EditComment
                                                   setShowModal={setShowModal}
+                                                  comment={comment.id}
+                                                />
+                                              </Modal>
+                                            )}
+                                          </div>
+                                        )}
+                                        {user.id == comment.User.id && (
+                                          <div className="DeleteAlbumButtonContainerMain">
+                                            <button
+                                              className="DeleteAlbumButton"
+                                              id="DeleteCommentButton"
+                                              onClick={() =>
+                                                setModalDelete(true)
+                                              }
+                                            >
+                                              Delete Comment
+                                            </button>
+                                            {modalDelete && (
+                                              <Modal
+                                                onClose={() =>
+                                                  setModalDelete(false)
+                                                }
+                                              >
+                                                <DeleteComment
+                                                  setModalDelete={
+                                                    setModalDelete
+                                                  }
                                                   comment={comment}
                                                 />
                                               </Modal>
                                             )}
                                           </div>
-                                          )}
-                                          {user.id == comment.User.id && (
-                                        <div className="DeleteAlbumButtonContainerMain">
-                                          <button
-                                            className="DeleteAlbumButton"
-                                            id="DeleteCommentButton"
-                                            onClick={() => setModalDelete(true)}
-                                          >
-                                            Delete Comment
-                                          </button>
-                                          {modalDelete && (
-                                            <Modal
-                                              onClose={() =>
-                                                setModalDelete(false)
-                                              }
-                                            >
-                                              <DeleteComment
-                                                setModalDelete={setModalDelete}
-                                                comment={comment}
-                                              />
-                                            </Modal>
-                                          )}
-                                        </div>
-                                          )}
+                                        )}
                                       </div>
                                     </div>
                                   </div>
@@ -597,6 +601,102 @@ export default function SongDetails() {
                           </div>
                         </div>
                       </div>
+                    </div>
+                    {/* Comments section */}
+                    <div
+                      className="LastUpdatedAlbumDetailsInformation"
+                      id="CommentsDivisionHeader"
+                    >
+                      <CreateCommentModal className="createSongForm" />
+                    </div>
+                    <div className="CommentsContainerSongs">
+                      {sortedCommentsbyNewest &&
+                        sortedCommentsbyNewest.map((comment, index) => {
+                          return (
+                            <div
+                              className="SongInAlbumDetails"
+                              key={comment.id}
+                            >
+                              <div className="CommentsInAlbumDetailsContainers">
+                                <div className="SongInAlbumDetailsContainer">
+                                  <div className="TracklistContainer">
+                                    <div className="LeftSideOfTrackList">
+                                      <div className="SongImageContainerAlbumDetailsList">
+                                        <img
+                                          alt="album artwork"
+                                          className="songImageAlbumDetailsList"
+                                          src={comment.User.imageUrl}
+                                        ></img>
+                                      </div>
+                                      <div className="ContainerforCommentsBodyandUsername">
+                                        <div className="CommentsUsernameincontainer">
+                                          {comment.User.username}
+                                        </div>
+                                        <div className="CommentsBody">
+                                          {comment.body}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="SongIdinTrackListAlbumDetailsContainer">
+                                      <div className="AboutCommentsDetailsMainHeaderContainerFlexBox">
+                                        {user.id == comment.User.id && (
+                                          <div className="EditCommentsButtonContainerMain">
+                                            <button
+                                              className="EditAlbumButton"
+                                              id="EditCommentButton"
+                                              onClick={() => setShowModal(true)}
+                                            >
+                                              Edit Comment
+                                            </button>
+                                            {showModal && (
+                                              <Modal
+                                                onClose={() =>
+                                                  setShowModal(false)
+                                                }
+                                              >
+                                                <EditComment
+                                                  setShowModal={setShowModal}
+                                                  comment={comment.id}
+                                                />
+                                              </Modal>
+                                            )}
+                                          </div>
+                                        )}
+                                        {user.id == comment.User.id && (
+                                          <div className="DeleteAlbumButtonContainerMain">
+                                            <button
+                                              className="DeleteAlbumButton"
+                                              id="DeleteCommentButton"
+                                              onClick={() =>
+                                                setModalDelete(true)
+                                              }
+                                            >
+                                              Delete Comment
+                                            </button>
+                                            {modalDelete && (
+                                              <Modal
+                                                onClose={() =>
+                                                  setModalDelete(false)
+                                                }
+                                              >
+                                                <DeleteComment
+                                                  setModalDelete={
+                                                    setModalDelete
+                                                  }
+                                                  comment={comment}
+                                                />
+                                              </Modal>
+                                            )}
+                                          </div>
+                                        )}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>

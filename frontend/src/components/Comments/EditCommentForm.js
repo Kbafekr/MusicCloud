@@ -13,7 +13,6 @@ function EditComment({setShowModalComments, comment}) {
   const [body, setBody] = useState(comment.body);
   const [errors, setErrors] = useState([]);
 
-
   useEffect(() => {
     const formValidationErrors = [];
 

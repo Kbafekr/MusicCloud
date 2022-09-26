@@ -24,19 +24,19 @@
   margin: 2%; */
 }
 .labelHeader {
-  font-size: 2em;
+  font-size: 5vmin;
 }
 
 .SignupModalHeader2 {
-  font-size: 1em;
+  font-size: 2vmin;
 }
 .labelInput {
-  font-size: 1em;
+  font-size: 2vmin;
 }
 .submitInputSignup {
   color: rgb(186, 186, 186);
   padding: 2%;
-  font-size: 1.5em;
+  font-size: 2.5vmin;
   margin-top: 10%;
   width: 120%;
   border: none;

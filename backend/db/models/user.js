@@ -9,8 +9,8 @@ const { Sequelize, Op } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     toSafeObject() {
-      const  { firstName, lastName, id, username, email } = this; // context will be the User instance
-      return { firstName, lastName, id, username, email };
+      const  { firstName, lastName, id, username, email, imageUrl } = this; // context will be the User instance
+      return { firstName, lastName, id, username, email, imageUrl };
     }
 
     validatePassword(password) {

@@ -45,7 +45,7 @@ export default function SongDetails() {
   const lastComment = { ...commentsArray[commentsArray.length - 1] };
 
   const firstComment = { ...commentsArray[0] };
-  console.log(firstComment)
+  // console.log(firstComment)
 
   let commentsarraycopy = [...commentsArray];
 
@@ -56,6 +56,15 @@ export default function SongDetails() {
   let rerender;
 
   let renderAgain;
+
+  let checkAllcomments = sortedCommentsbyNewest.map((comment) => comment.User !== undefined)
+
+
+  let allCommentsComponents = true
+   if (Object.values(checkAllcomments).includes(false)) {
+    allCommentsComponents = false
+   }
+
 
   if (!song.Album && !song.Artist) {
     rerender += 1;
@@ -155,8 +164,8 @@ export default function SongDetails() {
     song.Album &&
     song.Artist.id === user.id &&
     lastComment.User &&
-    sortedCommentsbyNewest.map((comment) => comment.User !== undefined)
-  ) {
+    allCommentsComponents == true)
+   {
     return (
       <div className="OverallContainerAlbumDetails">
         <div className="BackgroundAlbumDetailsSection">

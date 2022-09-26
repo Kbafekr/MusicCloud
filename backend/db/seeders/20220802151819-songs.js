@@ -72,7 +72,7 @@ module.exports = {
           userId: 2,
           albumId: 7,
           title: "Caravan",
-          description: "Jazz Score ",
+          description: "Jazz Score",
           url: "https://soundclouddata.s3.amazonaws.com/Caravan.mp3",
           imageUrl:
             "https://i.ytimg.com/vi/38CRu1rCaKg/maxresdefault.jpg",
@@ -465,6 +465,98 @@ module.exports = {
           imageUrl:
             "https://i.ytimg.com/vi/Nl4Z5f4QwEY/sddefault.jpg",
         },
+        {
+          userId: 1,
+          albumId: 1,
+          title: "Three Ralphs",
+          description: "Hip-Hop/Rap",
+          url: "https://soundclouddata.s3.amazonaws.com/Dj+Shadow+-Three+Ralphs.mp3",
+          imageUrl:
+          "https://c-fa.cdn.smule.com/rs-s79/arr/9a/2c/9e983943-aedd-439f-9656-e6ae266d3fb5_1024.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 2,
+          title: "Juggernaut",
+          description: "Epic Intense/Hip-Hop",
+          url: "https://soundclouddata.s3.amazonaws.com/2WEI%2C+Joznez%2C+Kataem+-+Juggernaut.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/Zn-VQ-B1ODA/maxresdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 3,
+          title: "Lord & Master",
+          description: "Electronic Classical/Rap",
+          url: "https://soundclouddata.s3.amazonaws.com/Apashe+-+Lord+%26+Master.mp3",
+          imageUrl:
+            "https://i1.sndcdn.com/artworks-000447165090-3o58w1-t500x500.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 5,
+          title: "No Time to Die",
+          description: "Indie Pop",
+          url: "https://soundclouddata.s3.amazonaws.com/Billie+Eilish+-+No+Time+To+Die.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/GK10mDpZZ_w/maxresdefault.jpg",
+        },
+
+        {
+          userId: 2,
+          albumId: 7,
+          title: "Whiplash",
+          description: "Jazz Score",
+          url: "https://soundclouddata.s3.amazonaws.com/Whiplash.mp3",
+          imageUrl:
+            "https://i.ytimg.com/vi/38CRu1rCaKg/maxresdefault.jpg",
+        },
+        {
+          userId: 2,
+          albumId: 8,
+          title: "Zoot Suit Riot",
+          description: "Modern Jazz/Swing Ska",
+          url: "https://soundclouddata.s3.amazonaws.com/Zoot+Suit+Root.mp3",
+          imageUrl:
+          "https://i.ytimg.com/vi/AZo5rV8xuEA/hqdefault.jpg",
+        },
+        {
+          userId: 3,
+          albumId: 11,
+          title: "Romantic Rights",
+          description: "Alternative Indie Rock",
+          url: "https://soundclouddata.s3.amazonaws.com/Romantic+Rights.mp3",
+          imageUrl:
+            "https://i.scdn.co/image/ab67616d0000b27320ff5d1d92eb88e6ab5822a5",
+        },
+        {
+          userId: 1,
+          albumId: 28,
+          title: "Abnormalize",
+          description: "https://soundclouddata.s3.amazonaws.com/Abnormalize.mp3",
+          url: "https://soundclouddata.s3.amazonaws.com/Metamorphose.mp3",
+          imageUrl:
+            "https://cdn.shopify.com/s/files/1/0065/8482/7956/products/ling-tosite-sigure-imperfect.jpg?v=1596057485",
+        },
+        {
+          userId: 1,
+          albumId: 28,
+          title: "Missing Ling",
+          description: "Japanese Math Rock/Post-Hardcore",
+          url: "https://soundclouddata.s3.amazonaws.com/Missing+Ling.mp3",
+          imageUrl:
+            "https://cdn.shopify.com/s/files/1/0065/8482/7956/products/ling-tosite-sigure-imperfect.jpg?v=1596057485",
+        },
+        {
+          userId: 1,
+          albumId: 28,
+          title: "Beautiful Circus",
+          description: "Japanese Math Rock/Post-Hardcore",
+          url: "https://soundclouddata.s3.amazonaws.com/Beautiful+Circus.mp3",
+          imageUrl:
+            "https://cdn.shopify.com/s/files/1/0065/8482/7956/products/ling-tosite-sigure-imperfect.jpg?v=1596057485",
+        },
+
       ],
 
       {}

@@ -372,6 +372,7 @@ export default function SongDetails() {
                                             )}
                                           </div>
                                           )}
+                                          {user.id == comment.User.id && (
                                         <div className="DeleteAlbumButtonContainerMain">
                                           <button
                                             className="DeleteAlbumButton"
@@ -393,6 +394,7 @@ export default function SongDetails() {
                                             </Modal>
                                           )}
                                         </div>
+                                          )}
                                       </div>
                                     </div>
                                   </div>

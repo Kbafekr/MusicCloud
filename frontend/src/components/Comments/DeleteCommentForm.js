@@ -5,21 +5,15 @@ import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
 
 
-function DeleteComment({setModalDelete, comment}) {
+function DeleteComment({setModalDeleteComments, comment}) {
   const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault()
         await dispatch(deleteComment(comment.id))
-        setModalDelete(false)
+        setModalDeleteComments(false)
 
   }
-
-
-  // await dispatch(DeleteASong(songId)).then((response) => {
-  //   history.push('/songs')
-  //   setModalDelete(false)
-  //       }
 
   return (
     <div className="DeleteSong-outer">
@@ -31,7 +25,7 @@ function DeleteComment({setModalDelete, comment}) {
        <h2>Are you sure you want to delete?</h2>
        <div className="deleteSongButtons">
       <button className="submitDeleteSong" type="submit">Delete comment</button>
-      <button className='cancelDeleteSong' onClick={() => setModalDelete(false)}>Cancel</button>
+      <button className='cancelDeleteSong' onClick={() => setModalDeleteComments(false)}>Cancel</button>
        </div>
     </form>
           </div>

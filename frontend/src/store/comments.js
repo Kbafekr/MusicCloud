@@ -139,7 +139,7 @@ export const commentsReducer = (state = initialState, action) => {
     }
     case DELETE_A_COMMENT: {
       const newState = { ...state };
-      delete newState[action.id];
+      delete newState[action.commentId];
       return newState;
     }
     default:

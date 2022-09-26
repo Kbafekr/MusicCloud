@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { editAComment } from "../../store/comments";
 import { useParams } from "react-router-dom";
 
-function EditComment({setShowModal, comment}) {
+function EditComment({setShowModalComments, comment}) {
   const dispatch = useDispatch();
 
   const commentId = comment.id
@@ -30,7 +30,7 @@ function EditComment({setShowModal, comment}) {
 
   const handleSubmit =  (e) => {
     e.preventDefault();
-    setShowModal(false);
+    setShowModalComments(false);
     if (errors.length <= 0) {
       return dispatch(
         editAComment({commentId, body})
@@ -84,7 +84,7 @@ function EditComment({setShowModal, comment}) {
           </button>
           <button
             className="cancelCreateSong"
-            onClick={() => setShowModal(false)}
+            onClick={() => setShowModalComments(false)}
           >
             Cancel
           </button>

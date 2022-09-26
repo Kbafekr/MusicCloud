@@ -32,6 +32,8 @@ export default function SongDetails() {
 
   const [showModal, setShowModal] = useState(false);
   const [modalDelete, setModalDelete] = useState(false);
+  const [showModalComments, setShowModalComments] = useState(false);
+  const [modalDeleteComments, setModalDeleteComments] = useState(false);
   const songs = useSelector((state) => state.song);
 
   const song = { ...songs[songId] };
@@ -41,6 +43,9 @@ export default function SongDetails() {
   const commentsArray = Object.values(comments);
 
   const lastComment = { ...commentsArray[commentsArray.length - 1] };
+
+  const firstComment = { ...commentsArray[0] };
+  console.log(firstComment)
 
   let commentsarraycopy = [...commentsArray];
 
@@ -70,7 +75,7 @@ export default function SongDetails() {
 
   useEffect(() => {
     dispatch(getAllComments(songId));
-  }, [dispatch, user, songId, renderAgain, showModal, modalDelete]);
+  }, [dispatch, user, songId, renderAgain, showModalComments, modalDeleteComments]);
   // dispatch, showModal, user, modalDelete, songId, renderAgain]);
 
   // useEffect(getOneSong(songId))
@@ -354,18 +359,18 @@ export default function SongDetails() {
                                             <button
                                               className="EditAlbumButton"
                                               id="EditCommentButton"
-                                              onClick={() => setShowModal(true)}
+                                              onClick={() => setShowModalComments(true)}
                                             >
                                               Edit Comment
                                             </button>
-                                            {showModal && (
+                                            {showModalComments && (
                                               <Modal
                                                 onClose={() =>
-                                                  setShowModal(false)
+                                                  setShowModalComments(false)
                                                 }
                                               >
                                                 <EditComment
-                                                  setShowModal={setShowModal}
+                                                  setShowModalComments={setShowModalComments}
                                                   comment={comment}
                                                 />
                                               </Modal>
@@ -378,20 +383,20 @@ export default function SongDetails() {
                                               className="DeleteAlbumButton"
                                               id="DeleteCommentButton"
                                               onClick={() =>
-                                                setModalDelete(true)
+                                                setModalDeleteComments(true)
                                               }
                                             >
                                               Delete Comment
                                             </button>
-                                            {modalDelete && (
+                                            {modalDeleteComments && (
                                               <Modal
                                                 onClose={() =>
-                                                  setModalDelete(false)
+                                                  setModalDeleteComments(false)
                                                 }
                                               >
                                                 <DeleteComment
-                                                  setModalDelete={
-                                                    setModalDelete
+                                                  setModalDeleteComments={
+                                                    setModalDeleteComments
                                                   }
                                                   comment={comment}
                                                 />
@@ -644,18 +649,18 @@ export default function SongDetails() {
                                             <button
                                               className="EditAlbumButton"
                                               id="EditCommentButton"
-                                              onClick={() => setShowModal(true)}
+                                              onClick={() => setShowModalComments(true)}
                                             >
                                               Edit Comment
                                             </button>
-                                            {showModal && (
+                                            {setShowModalComments && (
                                               <Modal
                                                 onClose={() =>
-                                                  setShowModal(false)
+                                                  setShowModalComments(false)
                                                 }
                                               >
                                                 <EditComment
-                                                  setShowModal={setShowModal}
+                                                  setShowModalComments={setShowModalComments}
                                                   comment={comment}
                                                 />
                                               </Modal>
@@ -668,20 +673,20 @@ export default function SongDetails() {
                                               className="DeleteAlbumButton"
                                               id="DeleteCommentButton"
                                               onClick={() =>
-                                                setModalDelete(true)
+                                                setModalDeleteComments(true)
                                               }
                                             >
                                               Delete Comment
                                             </button>
-                                            {modalDelete && (
+                                            {modalDeleteComments && (
                                               <Modal
                                                 onClose={() =>
-                                                  setModalDelete(false)
+                                                  setModalDeleteComments(false)
                                                 }
                                               >
                                                 <DeleteComment
-                                                  setModalDelete={
-                                                    setModalDelete
+                                                  setModalDeleteComments={
+                                                    setModalDeleteComments
                                                   }
                                                   comment={comment}
                                                 />

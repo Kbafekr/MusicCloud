@@ -2,6 +2,7 @@
 * {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 :root {
   background-color: rgb(214, 213, 213);
   display: block;
@@ -11,6 +12,7 @@
   height: 100%;
   min-width: 600px;
   min-height: 600px;
+  margin-left: 0
 }
 
 body {

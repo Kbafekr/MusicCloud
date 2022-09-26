@@ -366,7 +366,7 @@ export default function SongDetails() {
                                               >
                                                 <EditComment
                                                   setShowModal={setShowModal}
-                                                  comment={comment.id}
+                                                  comment={comment}
                                                 />
                                               </Modal>
                                             )}
@@ -656,7 +656,7 @@ export default function SongDetails() {
                                               >
                                                 <EditComment
                                                   setShowModal={setShowModal}
-                                                  comment={comment.id}
+                                                  comment={comment}
                                                 />
                                               </Modal>
                                             )}

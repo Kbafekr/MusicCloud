@@ -21,7 +21,6 @@ body {
 body, footer{
   height: fit-content;
   background-color: white;
-  min-width: 800px;
 }
 
 

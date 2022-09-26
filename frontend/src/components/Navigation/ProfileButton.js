@@ -14,12 +14,24 @@ function ProfileButton({ user }) {
 
   const history = useHistory()
 
-  function copyUsername() {
+  const [effectStateUsername, setEffectStateUsername] = useState(false)
+  const [effectStateEmail, setEffectStateEmail] = useState(false)
+
+  const [copyUsername, setCopyUsername] = useState(false)
+  const [copyEmail, setCopyEmail] = useState(false)
+
+
+
+  function copyUsernametoClipBoard() {
     navigator.clipboard.writeText(user.username)
+    setCopyUsername(true)
+
   }
-  function copyEmail() {
+  function copyEmailtoClipboard() {
     navigator.clipboard.writeText(user.email)
+    setCopyEmail(true)
   }
+
 
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
@@ -28,6 +40,33 @@ function ProfileButton({ user }) {
     if (showMenu) return;
     setShowMenu(true);
   };
+
+
+  useEffect(() => {
+    if (copyUsername === true) {
+      setEffectStateUsername(true)
+
+      const copyUsernameTimeout = setInterval(() => {
+        setEffectStateUsername(false);
+        setCopyUsername(false)
+      }, 1000);
+      return () => clearInterval(copyUsernameTimeout);
+    }
+    else return
+  }, [dispatch, copyUsername])
+
+  useEffect(() => {
+    if (copyEmail === true) {
+      setEffectStateEmail(true)
+
+      const copyUsernameTimeout = setInterval(() => {
+        setEffectStateEmail(false);
+        setCopyEmail(false)
+      }, 1000);
+      return () => clearInterval(copyUsernameTimeout);
+    }
+    else return
+  }, [dispatch, copyEmail])
 
   useEffect(() => {
     if (!showMenu) return;
@@ -63,7 +102,7 @@ function ProfileButton({ user }) {
           <li>
           <div className="mySongs" id="copyButtonDropdownMenu">
           <img className='Navicon' id="copyButtonDropdown" src={icon3} alt="songs icon" onClick={() => copyUsername()}/>
-          <div onClick={() => copyUsername()}>{user.username}</div>
+          <div onClick={() => copyUsernametoClipBoard()}>{user.username}</div>
           <div></div>
 
           </div>
@@ -73,7 +112,7 @@ function ProfileButton({ user }) {
           <li>
           <div className="mySongs" id="copyButtonDropdownMenu">
           <img className='Navicon' id="copyButtonDropdown" src={icon3} alt="songs icon" onClick={() => copyEmail()}/>
-          <div onClick={() => copyEmail()}>{user.email}</div>
+          <div onClick={() => copyEmailtoClipboard()}>{user.email}</div>
           <div></div>
 
           </div>
@@ -114,6 +153,17 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
+    </div>
+    {/* alerts for copy effect */}
+    <div className={effectStateUsername == true ? "alertmessageBox" : 'hiddedenalertbox'} id='keyframeAlerts'>
+      <div className={effectStateUsername == true ? "alertmessage" : 'hiddedenalertbox'}>
+        Username copied to clipboard
+        </div>
+    </div>
+    <div className={effectStateEmail == true ? "alertmessageBox2" : 'hiddedenalertbox' } id='keyframeAlerts'>
+      <div className={effectStateEmail == true ? "alertmessage" : 'hiddedenalertbox'}>
+        Email copied to clipboard
+        </div>
     </div>
     </>
   );

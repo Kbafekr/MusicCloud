@@ -1,21 +1,21 @@
 import React, { useState} from 'react';
 import { Modal } from '../../context/Modal';
-import CreateSong from './CreateSongForm';
-import './CreateSong.css'
+import CreateComment from './CreateCommentForm';
+import './CreateCommentForm.css'
 
-function CreateSongModal() {
+function CreateCommentModal() {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <button className='CreateSongButton' onClick={() => setShowModal(true)}>Create Song</button>
+      <button className='CreateCommentButton' onClick={() => setShowModal(true)}>Create Comment</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <CreateSong setShowModal={setShowModal}/>
+          <CreateComment setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
   );
 }
 
-export default CreateSongModal;
+export default CreateCommentModal;

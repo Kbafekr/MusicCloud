@@ -354,6 +354,7 @@
 }
 
 .LastUpdatedAlbumDetailsInformation {
+  align-items: center;
   font-weight: 100;
   margin: 0 0 0.5em;
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
@@ -810,13 +811,21 @@ align-items: center;
 }
 
 #CommentsDivisionHeader {
-  padding-top: 20px;
+
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  align-items: center;
   font-weight: 100;
   font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
     Garuda, Verdana, Tahoma, sans-serif;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 1.3em;
   color: rgb(0, 0, 0);
+  border-bottom: 1px solid #bebebe;
 }
 
 .ContainerforCommentsBodyandUsername{

@@ -12,7 +12,9 @@ import { getAllAlbums } from "../../store/albums";
 //import modal file create album index
 import { Modal } from "../../context/Modal";
 import EditSong from "./EditSongForm";
-import allComments from "../Comments";
+
+// comments
+import CreateCommentModal from "../Comments/createCommentIndex";
 
 import { getAllComments } from "../../store/comments";
 
@@ -36,7 +38,11 @@ export default function SongDetails() {
   const user = useSelector((state) => state.session.user);
   const comments = useSelector((state) => state.comments);
 
+
   const commentsArray = Object.values(comments);
+
+  const lastComment = {...comments[comments.length]}
+  console.log(lastComment)
 
   let commentsarraycopy = [...commentsArray];
 
@@ -46,9 +52,15 @@ export default function SongDetails() {
 
   let rerender;
 
+  let renderAgain;
+
   if (!song.Album && !song.Artist) {
     rerender += 1;
   }
+
+
+
+
 
   useEffect(() => {
     dispatch(getAllAlbums());
@@ -60,7 +72,7 @@ export default function SongDetails() {
 
   useEffect(() => {
     dispatch(getAllComments(songId));
-  }, [dispatch, showModal, user, modalDelete, rerender, songId]);
+  }, [dispatch, showModal, user, modalDelete, songId ]);
 
   // useEffect(getOneSong(songId))
 
@@ -300,7 +312,7 @@ export default function SongDetails() {
                       className="LastUpdatedAlbumDetailsInformation"
                       id="CommentsDivisionHeader"
                     >
-                      Comments:
+                       <CreateCommentModal className="createSongForm" />
                     </div>
                     <div className="CommentsContainerSongs">
                       {sortedCommentsbyNewest &&

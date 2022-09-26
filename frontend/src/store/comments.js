@@ -21,10 +21,9 @@ export const actionGetComments = (songId) => {
 };
 
 //create a song
-const actionCreateAComment = (songId, comment) => {
+const actionCreateAComment = (comment) => {
   return {
     type: CREATE_A_COMMENT,
-    songId,
     comment
   };
 };
@@ -59,11 +58,11 @@ export const getAllComments = (songId) => async (dispatch) => {
 
 //create a comment thunk
 
-export const createAComment = (songId, comment) => async (dispatch) => {
+export const createAComment = ({songId, comment}) => async (dispatch) => {
   const response = await csrfFetch(`/api/songs/${songId}/comments`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(comment),
+    body: JSON.stringify({body: comment}),
   });
   if (response.ok) {
     const newComment = await response.json();
@@ -108,7 +107,7 @@ export const commentsReducer = (state = initialState, action) => {
     case GET_ALL_COMMENTS: {
 
 
-      const newState = {}
+      const newState = {...state}
       action.songId.Comments.forEach(comment => {
         newState[comment.id] = comment
     })

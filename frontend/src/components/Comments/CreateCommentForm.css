@@ -1,0 +1,22 @@
+.CreateCommentButton  {
+    color: white;
+    font-size: 0.5em;
+  height: 2em;
+  border-radius: 7px;
+    background-color: rgb(255, 98, 0);
+    border: 0.05em rgb(255, 111, 0);
+}
+
+
+
+.CreateComment-outer {
+    padding: 50px;
+    width: 600px;
+    height: 400px;
+    display: flex;
+   flex-direction: column;
+   padding: 10px;
+   justify-content: center;
+   align-items: center;
+
+  }

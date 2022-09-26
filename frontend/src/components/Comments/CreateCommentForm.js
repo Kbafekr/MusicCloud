@@ -1,68 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createAComment } from "../../store/comments";
-import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-import { getAllAlbums } from "../../store/albums";
 
-function createAComment({ setShowModal }) {
-  const history = useHistory();
+function CreateComment({ setShowModal }) {
+    const {songId} = useParams()
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.session.user);
-  const comments = useSelector((state) => state.comments);
-  const commentsArray = Object.values(comments);
 
-  const [albumId, setAlbumId] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+
+  const [comment, setComment] = useState("");
   const [errors, setErrors] = useState([]);
-  const [submittedForm, setSubmittedForm] = useState(false);
+
 
   // const [isModalOpen, setModalOpen] = useState(false)
 
   useEffect(() => {
-    dispatch(getAllAlbums());
-  }, [dispatch]);
-
-  let myAlbumsFilter = AlbumsArray.filter(
-    (filteredAlbums, index) => filteredAlbums.userId == user.id
-  );
-
-  useEffect(() => {
     const formValidationErrors = [];
-    const urlEnd = url.slice(-6);
 
-    if (!urlEnd.includes(".mp3")) {
-      formValidationErrors.push("Song must link to an mp3 file");
+    if (comment.length > 100) {
+      formValidationErrors.push("Comment body must be no more than 100 characters");
     }
-    if (title.length > 256) {
-      formValidationErrors.push("Song title must be no more than 256 characters");
+    if (comment.length < 1) {
+      formValidationErrors.push("Comment body must be more than 1 character");
     }
-    if (title.length < 1) {
-      formValidationErrors.push("Title required");
-    }
-    if (description.length < 1) {
-      formValidationErrors.push("Description required");
-    }
-    if (description.length > 256) {
-      formValidationErrors.push("Description must be no more than 256 characters");
-    }
-    if (!user) {
-      formValidationErrors.push("User must be signed in");
-    }
+
 
     setErrors(formValidationErrors);
-  }, [url, title, description]);
+  }, [comment]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmittedForm(true);
     if (errors.length <= 0) {
       setShowModal(false);
       return dispatch(
-        CreateASong({ albumId, title, description, url, imageUrl })
+        createAComment({ songId, comment })
       ).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
@@ -76,7 +48,7 @@ function createAComment({ setShowModal }) {
   };
 
   return (
-    <div className="CreateSong-outer">
+    <div className="CreateComment-outer">
       <form
         className="CreateSong-inner"
         onSubmit={handleSubmit}
@@ -95,74 +67,20 @@ function createAComment({ setShowModal }) {
             </div>
           )}
         </div>
-        <h1 className="CreateSongHeader">Create a song</h1>
-        <label className="CreateSongLabel">Select an Album...</label>
-        <div className="SelectAlbumsCreateSongContainer">
-          <select
-            className="albumIdInputCreateSong"
-            id="albumSelectCreateSong"
-            value={albumId}
-            onChange={(e) => setAlbumId(e.target.value)}
-            required
-          >
-            <option selected disabled value="">
-              Select an Album...
-            </option>
-            {myAlbumsFilter &&
-              myAlbumsFilter.map((album) => {
-                return (
-                  <option
-                    className="OptionsAlbumsDropdown"
-                    value={album.id}
-                    key={album.id}
-                  >
-                    {album.title}
-                  </option>
-                );
-              })}
-          </select>
-        </div>
-        <label className="CreateSongLabel">Song Title (Required)</label>
-        <input
-          className="titleInputCreateSong"
-          placeholder="Title..."
-          autoComplete="off"
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
-        <label className="CreateSongLabel">Song Description (Required)</label>
+        <h1 className="CreateSongHeader">Create a Comment</h1>
+        <label className="CreateSongLabel">Comment Description (Required)</label>
         <input
           className="descriptionCreateSong"
-          placeholder="description..."
+          placeholder="comment..."
           type="text"
           autoComplete="off"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
           required
-        />
-        <label className="CreateSongLabel">Song MP3 Link (Required)</label>
-        <input
-          className="urlCreateSong"
-          placeholder="Audio Url (required)..."
-          autoComplete="off"
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          required
-        />
-        <label className="CreateSongLabel">Song Image Link (Optional)</label>
-        <input
-          className="imageUrlCreateSong"
-          placeholder="Song Image Url (optional)..."
-          type="text"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
         />
         <div className="createSongButtons">
           <button className="submitCreateSong" type="submit">
-            Submit new song
+            Submit new comment
           </button>
           <button
             className="cancelCreateSong"
@@ -176,4 +94,4 @@ function createAComment({ setShowModal }) {
   );
 }
 
-export default CreateSong;
+export default CreateComment;

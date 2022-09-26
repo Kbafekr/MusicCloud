@@ -16,20 +16,6 @@
     width: 90%;
     justify-content: flex-start;
 }
-.CreateSongButton  {
-    color: white;
-    font-size: 1.2em;
-  height: 2em;
-  border-radius: 7px;
-    background-color: rgb(255, 98, 0);
-    border: 0.05em rgb(255, 111, 0) ;
-}
-
-
-
-.CreateSongButton:hover {
-    cursor: pointer;
-}
 
 .AllSongArray {
     width: 100%;

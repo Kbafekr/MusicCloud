@@ -199,11 +199,14 @@ color: white;
       opacity: 1.0;
     }
 
+  75% {
+      opacity: 0.75;
+    }
   100% {
-      opacity: 0.2;
+      opacity: 0.0;
     }
   }
 
 #keyframeAlerts {
-  animation: opacitychange 5s infinite;
+  animation: opacitychange 1.5s infinite;
 }

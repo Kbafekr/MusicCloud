@@ -15,9 +15,8 @@ import EditSong from "./EditSongForm";
 
 // comments
 import CreateCommentModal from "../Comments/createCommentIndex";
-
 import { getAllComments } from "../../store/comments";
-
+import EditComment from "../Comments/EditCommentForm";
 //exceeded rendering capacity with conditional rendering for nested properties
 //just create modal in here
 
@@ -38,10 +37,9 @@ export default function SongDetails() {
   const user = useSelector((state) => state.session.user);
   const comments = useSelector((state) => state.comments);
 
-
   const commentsArray = Object.values(comments);
 
-  const lastComment = {...commentsArray[commentsArray.length - 1]}
+  const lastComment = { ...commentsArray[commentsArray.length - 1] };
 
   let commentsarraycopy = [...commentsArray];
 
@@ -58,11 +56,8 @@ export default function SongDetails() {
   }
 
   if (!lastComment.User) {
-    renderAgain += 1
+    renderAgain += 1;
   }
-
-
-
 
   useEffect(() => {
     dispatch(getAllAlbums());
@@ -148,7 +143,12 @@ export default function SongDetails() {
       </div>
     );
   }
-  if (song.Artist && song.Album && song.Artist.id === user.id && lastComment.User) {
+  if (
+    song.Artist &&
+    song.Album &&
+    song.Artist.id === user.id &&
+    lastComment.User
+  ) {
     return (
       <div className="OverallContainerAlbumDetails">
         <div className="BackgroundAlbumDetailsSection">
@@ -314,7 +314,7 @@ export default function SongDetails() {
                       className="LastUpdatedAlbumDetailsInformation"
                       id="CommentsDivisionHeader"
                     >
-                       <CreateCommentModal className="createSongForm" />
+                      <CreateCommentModal className="createSongForm" />
                     </div>
                     <div className="CommentsContainerSongs">
                       {sortedCommentsbyNewest &&
@@ -345,8 +345,45 @@ export default function SongDetails() {
                                       </div>
                                     </div>
                                     <div className="SongIdinTrackListAlbumDetailsContainer">
-                                      <div className="SongIdinTrackListAlbumDetails">
-                                        Album id: #{song.Album.id}
+                                      <div className="AboutAlbumDetailsMainHeaderContainerFlexBox">
+                                        <div className="EditAlbumButtonContainerMain">
+                                          <button
+                                            className="EditAlbumButton"
+                                            onClick={() => setShowModal(true)}
+                                          >
+                                            Edit Comment
+                                          </button>
+                                          {showModal && (
+                                            <Modal
+                                              onClose={() =>
+                                                setShowModal(false)
+                                              }
+                                            >
+                                              <EditComment
+                                                setShowModal={setShowModal} commentId={comment.id}
+                                              />
+                                            </Modal>
+                                          )}
+                                        </div>
+                                        <div className="DeleteAlbumButtonContainerMain">
+                                          <button
+                                            className="DeleteAlbumButton"
+                                            onClick={() => setModalDelete(true)}
+                                          >
+                                            Delete Song
+                                          </button>
+                                          {modalDelete && (
+                                            <Modal
+                                              onClose={() =>
+                                                setModalDelete(false)
+                                              }
+                                            >
+                                              <DeleteSong
+                                                setModalDelete={setModalDelete}
+                                              />
+                                            </Modal>
+                                          )}
+                                        </div>
                                       </div>
                                     </div>
                                   </div>

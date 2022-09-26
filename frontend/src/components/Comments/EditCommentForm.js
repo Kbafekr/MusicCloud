@@ -1,51 +1,40 @@
 import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {EditASong } from "../../store/songs";
+import { editAComment } from "../../store/comments";
 import { useParams } from "react-router-dom";
-import './EditSong.css'
 
-function EditSong({setShowModal}) {
+function EditComment({setShowModal, commentId}) {
   const dispatch = useDispatch();
-  const { songId } = useParams();
-
-  // const {songId} = useParams()
 
   const user = useSelector(state => state.session.user)
-  const songs = useSelector((state) => state.song);
+  const comments = useSelector((state) => state.comments);
 
-  const song = { ...songs[songId] };
+  const comment = { ...comments[commentId] };
 
-  const [id, setId] = useState(song.id)
-  const [title, setTitle] = useState(song.title)
-  const [description, setDescription] = useState(song.description);
-  const [url, setUrl] = useState(song.url);
-  const [imageUrl, setImageUrl] = useState(song.imageUrl)
+  const [body, setBody] = useState(comment.body);
   const [errors, setErrors] = useState([]);
 
-  //force modal close
-  // const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const formValidationErrors = [];
-    const urlEnd = url.slice(-6)
 
-    if (!urlEnd.includes('.mp3')) {formValidationErrors.push('Song must link to an mp3 file')}
-    if (title.length > 256) {formValidationErrors.push('Song title must be no more than 256 characters')}
-    if (title.length < 1) {formValidationErrors.push('Title required')}
-    if (description.length < 1) {formValidationErrors.push('Description required')}
-    if (description.length > 256) {formValidationErrors.push('Description must be no more than 256 characters')}
-    if (!user) {formValidationErrors.push('User must be signed in')}
+    if (body.length > 100) {
+      formValidationErrors.push("Comment body must be no more than 100 characters");
+    }
+    if (body.length < 1) {
+      formValidationErrors.push("Comment body must be more than 1 character");
+    }
 
-    setErrors(formValidationErrors)
-  }, [url, title, description])
 
+    setErrors(formValidationErrors);
+  }, [body]);
 
   const handleSubmit =  (e) => {
     e.preventDefault();
     setShowModal(false);
     if (errors.length <= 0) {
       return dispatch(
-        EditASong({ id, title, description, url, imageUrl })
+        EditComment({body})
       ).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
@@ -59,12 +48,14 @@ function EditSong({setShowModal}) {
   };
 
 
-
   return (
-    <div className="EditSong-outer" key={song}>
-
-    <form className="EditSong-inner" onSubmit={handleSubmit} autoComplete='off'>
-    <div className="errorHandlingContainer">
+    <div className="CreateComment-outer">
+      <form
+        className="CreateSong-inner"
+        onSubmit={handleSubmit}
+        autoComplete="off"
+      >
+         <div className="errorHandlingContainer">
           {errors.length > 0 && (
             <div className="HeaderErrorStyling">
               <ul className="UlBulletErrorStyling">
@@ -77,56 +68,31 @@ function EditSong({setShowModal}) {
             </div>
           )}
         </div>
-      <h1 className="CreateSongHeader">Edit song</h1>
-      <label>
+        <h1 className="CreateSongHeader">Edit a Comment</h1>
+        <label className="CreateSongLabel">Comment Description (Required)</label>
         <input
-        className="titleInputEditSong"
-        placeholder={title || "Title..."}
-        autoComplete="off"
+          className="descriptionCreateSong"
+          placeholder="comment..."
           type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-          />
-      </label>
-      <label>
-        <input
-        className="descriptionEditSong"
-        placeholder={description || 'description...'}
-        type="text"
-        autoComplete="off"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-          required
-          />
-      </label>
-      <label>
-        <input
-        className="urlEditSong"
-          placeholder={url || 'Audio Url (required)...'}
           autoComplete="off"
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
           required
-          />
-      </label>
-      <label>
-        <input
-        className="imageUrlEditSong"
-          placeholder={imageUrl || "Song Image Url (optional)..."}
-          type="text"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
-          />
-      </label>
-      <div className="editSongButtons">
-      <button className="submitEditSong" type="submit">Update song</button>
-      <button className='cancelEditSong' onClick={() => setShowModal(false)}>Cancel</button>
-      </div>
-    </form>
-          </div>
+        />
+        <div className="createSongButtons">
+          <button className="submitCreateSong" type="submit">
+            Submit comment
+          </button>
+          <button
+            className="cancelCreateSong"
+            onClick={() => setShowModal(false)}
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 
-export default EditSong;
+export default EditComment;

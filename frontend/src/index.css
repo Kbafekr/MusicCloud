@@ -18,10 +18,8 @@
 body {
   margin: 0 9%;
   border-top: 0.5vh solid rgb(243, 92, 23);
-  width: 100%;
 }
 body, footer{
-  height: fit-content;
   background-color: white;
 }
 

@@ -104,10 +104,6 @@ module.exports = {
       },
       {
         userId: 1,
-<<<<<<< Updated upstream
-        songId: 1,
-        body: 'hits different'
-=======
         songId: 3,
         body: 'new comment'
       },
@@ -170,15 +166,10 @@ module.exports = {
       userId: 1,
       songId: 1,
       body: 'bark'
->>>>>>> Stashed changes
       },
       {
         userId: 2,
         songId: 1,
-<<<<<<< Updated upstream
-        body: 'cool song'
-      },
-=======
         body: 'this is a comment'
       },
       {
@@ -422,7 +413,6 @@ module.exports = {
                 body: 'opinion'
               },
 
->>>>>>> Stashed changes
     ], {});
   },
 

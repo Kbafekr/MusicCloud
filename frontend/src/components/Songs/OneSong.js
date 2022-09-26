@@ -12,6 +12,7 @@ import { getAllAlbums } from "../../store/albums";
 //import modal file create album index
 import { Modal } from "../../context/Modal";
 import EditSong from "./EditSongForm";
+import allComments from "../Comments";
 
 import { getAllComments } from "../../store/comments";
 
@@ -33,10 +34,13 @@ export default function SongDetails() {
 
   const song = { ...songs[songId] };
   const user = useSelector((state) => state.session.user);
-  //   console.log(song)
-  //   const Albumvalues = Object.values(song.Album)
-  //   console.log(Albumvalues)
-  //   const Artist = useSelector(state => state.song.Artist)
+  const comments = useSelector((state) => state.comments);
+
+  const commentsArray = Object.values(comments);
+
+  let commentsarraycopy = [...commentsArray];
+
+  let sortedCommentsbyNewest = commentsarraycopy.sort((a, b) => b.id - a.id);
 
   let songsArray;
 
@@ -55,8 +59,8 @@ export default function SongDetails() {
   }, [dispatch, showModal, user, modalDelete, rerender]);
 
   useEffect(() => {
-    dispatch(getAllComments(songId))
-  }, [dispatch, showModal, user, modalDelete, rerender])
+    dispatch(getAllComments(songId));
+  }, [dispatch, showModal, user, modalDelete, rerender, songId]);
 
   // useEffect(getOneSong(songId))
 
@@ -67,8 +71,6 @@ export default function SongDetails() {
   }
 
   let userSongsFilter;
-
-
 
   if (songsArray && user && song.Artist) {
     userSongsFilter = songsArray.filter(
@@ -138,12 +140,17 @@ export default function SongDetails() {
         <div className="BackgroundAlbumDetailsSection">
           {/* top half */}
           <div className="AlbumDetailsForegroundSection">
-            <img className="AlbumArtwork" src={song.imageUrl}  alt="album artwork"/>
+            <img
+              className="AlbumArtwork"
+              src={song.imageUrl}
+              alt="album artwork"
+            />
             <div className="AlbumDetailsTitleSection">
               <div className="SoundPlayButtonAlbumDetailsContainer">
                 <img
                   className="PlayButtonAlbumDetails"
-                  src={PlayButtonImage} alt="play button hover artwork"
+                  src={PlayButtonImage}
+                  alt="play button hover artwork"
                   onClick={() => dispatch(actionSongPlaying(song))}
                 />
               </div>
@@ -162,9 +169,9 @@ export default function SongDetails() {
             </div>
             {/* Info section */}
             <div className="InfoSectionAlbumDetails">
-            <div className="InfoSectionAlbumCreatedTime">
+              <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={song.createdAt}>
-                <div className="InfoSectionAlbumIdDetails">Created on:</div>
+                  <div className="InfoSectionAlbumIdDetails">Created on:</div>
                   <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
                 </time>
               </div>
@@ -215,7 +222,8 @@ export default function SongDetails() {
                   <div className="UserSubContainerAlbumDetails">
                     <div className="UserContainerUserImageAlbumDetails">
                       <div className="UserImageAlbumDetailsContainer">
-                        <img alt="user artwork"
+                        <img
+                          alt="user artwork"
                           className="UserImageAlbumDetailsMainContainer"
                           src={song.Artist.imageUrl}
                         />
@@ -262,7 +270,8 @@ export default function SongDetails() {
                         <div className="TracklistContainer">
                           <div className="LeftSideOfTrackList">
                             <div className="SongImageContainerAlbumDetailsList">
-                              <img alt="album artwork"
+                              <img
+                                alt="album artwork"
                                 className="songImageAlbumDetailsList"
                                 src={song.Album.imageUrl}
                               ></img>
@@ -284,6 +293,54 @@ export default function SongDetails() {
                           </div>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Comments section */}
+                    <div
+                      className="LastUpdatedAlbumDetailsInformation"
+                      id="CommentsDivisionHeader"
+                    >
+                      Comments:
+                    </div>
+                    <div className="CommentsContainerSongs">
+                      {sortedCommentsbyNewest &&
+                        sortedCommentsbyNewest.map((comment) => {
+                          return (
+                            <div
+                              className="SongInAlbumDetails"
+                              key={comment.id}
+                            >
+                              <div className="CommentsInAlbumDetailsContainers">
+                                <div className="SongInAlbumDetailsContainer">
+                                  <div className="TracklistContainer">
+                                    <div className="LeftSideOfTrackList">
+                                      <div className="SongImageContainerAlbumDetailsList">
+                                        <img
+                                          alt="album artwork"
+                                          className="songImageAlbumDetailsList"
+                                          src={comment.User.imageUrl}
+                                        ></img>
+                                      </div>
+                                      <div className="ContainerforCommentsBodyandUsername">
+                                        <div className="CommentsUsernameincontainer">
+                                          {comment.User.username}
+                                        </div>
+                                        <div className="CommentsBody">
+                                          {comment.body}
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="SongIdinTrackListAlbumDetailsContainer">
+                                      <div className="SongIdinTrackListAlbumDetails">
+                                        Album id: #{song.Album.id}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        })}
                     </div>
                   </div>
                 </div>
@@ -308,14 +365,16 @@ export default function SongDetails() {
                       <div className="SongInSideBarDetails" key={song.id}>
                         <div className="SongInSidebarContainer">
                           <div className="PlayButtonContainerSideBar">
-                            <img alt="album artwork"
+                            <img
+                              alt="album artwork"
                               className="PlayButtonAlbumDetails"
                               src={PlayButtonImage}
                               onClick={() => dispatch(actionSongPlaying(song))}
                             />
                           </div>
                           <div className="SongImageContainerAlbumDetailsList">
-                            <img alt="song artwork"
+                            <img
+                              alt="song artwork"
                               className="songImageAlbumDetailsList"
                               src={song.imageUrl}
                             ></img>
@@ -343,10 +402,15 @@ export default function SongDetails() {
         <div className="BackgroundAlbumDetailsSection">
           {/* top half */}
           <div className="AlbumDetailsForegroundSection">
-            <img className="AlbumArtwork" alt="album artwork" src={song.imageUrl} />
+            <img
+              className="AlbumArtwork"
+              alt="album artwork"
+              src={song.imageUrl}
+            />
             <div className="AlbumDetailsTitleSection">
               <div className="SoundPlayButtonAlbumDetailsContainer">
-                <img alt="play button artwork"
+                <img
+                  alt="play button artwork"
                   className="PlayButtonAlbumDetails"
                   src={PlayButtonImage}
                   onClick={() => dispatch(actionSongPlaying(song))}
@@ -367,9 +431,9 @@ export default function SongDetails() {
             </div>
             {/* Info section */}
             <div className="InfoSectionAlbumDetails">
-            <div className="InfoSectionAlbumCreatedTime">
+              <div className="InfoSectionAlbumCreatedTime">
                 <time className="relativeTime" dateTime={song.createdAt}>
-                <div className="InfoSectionAlbumIdDetails">Created on:</div>
+                  <div className="InfoSectionAlbumIdDetails">Created on:</div>
                   <div className="DateTimeInfoStyle">{DateTimeSubString()}</div>
                 </time>
               </div>
@@ -400,7 +464,8 @@ export default function SongDetails() {
                   <div className="UserSubContainerAlbumDetails">
                     <div className="UserContainerUserImageAlbumDetails">
                       <div className="UserImageAlbumDetailsContainer">
-                        <img alt="artist artwork"
+                        <img
+                          alt="artist artwork"
                           className="UserImageAlbumDetailsMainContainer"
                           src={song.Artist.imageUrl}
                         />
@@ -447,7 +512,8 @@ export default function SongDetails() {
                         <div className="TracklistContainer">
                           <div className="LeftSideOfTrackList">
                             <div className="SongImageContainerAlbumDetailsList">
-                              <img alt="album artwork"
+                              <img
+                                alt="album artwork"
                                 className="songImageAlbumDetailsList"
                                 src={song.Album.imageUrl}
                               ></img>
@@ -493,14 +559,16 @@ export default function SongDetails() {
                       <div className="SongInSideBarDetails" key={song.id}>
                         <div className="SongInSidebarContainer">
                           <div className="PlayButtonContainerSideBar">
-                            <img alt="play button artwork"
+                            <img
+                              alt="play button artwork"
                               className="PlayButtonAlbumDetails"
                               src={PlayButtonImage}
                               onClick={() => dispatch(actionSongPlaying(song))}
                             />
                           </div>
                           <div className="SongImageContainerAlbumDetailsList">
-                            <img alt="song artwork"
+                            <img
+                              alt="song artwork"
                               className="songImageAlbumDetailsList"
                               src={song.imageUrl}
                             ></img>
@@ -522,107 +590,4 @@ export default function SongDetails() {
       </div>
     );
   }
-
-  //   return (
-  //     <div className="song-details-container">
-  //       <div className="buttonsEditAndDeleteSong">
-  //         <button className="EditSongForm" onClick={() => setShowModal(true)}>
-  //           Edit Song
-  //         </button>
-  //         {showModal && (
-  //           <Modal onClose={() => setShowModal(false)}>
-  //             <EditSong setShowModal={setShowModal} />
-  //           </Modal>
-  //         )}
-  //         <button
-  //           className="DeleteSongButton"
-  //           onClick={() => setModalDelete(true)}
-  //         >
-  //           Delete Song
-  //         </button>
-  //         {modalDelete && (
-  //           <Modal onClose={() => setModalDelete(false)}>
-  //             <DeleteSong setModalDelete={setModalDelete} />
-  //           </Modal>
-  //         )}
-  //       </div>
-  //       <div className="Onesong-container">
-  //         {/* song */}
-  //         <div className="SinglesongCard">
-  //           <div className="songName">
-  //             <img className="OnesongImage" src={song.imageUrl}></img>
-  //             <div className="songTitle">Song: {song.title}</div>
-  //             <div className="description">Description: {song.description}</div>
-  //             <AudioPlayer
-  //               autoPlay={false}
-  //               src={song.url}
-  //               muted={true}
-  //               onPlay={(e) => console.log("onPlay")}
-  //             />
-  //           </div>
-  //         </div>
-  //         {/* album */}
-  //         <div className="Song-Album-container">
-  //           <div className="Song-Album-Card">
-  //             <div className="OneSongalbumId">Album # {song.Album.id}</div>
-  //             <img className="OnealbumImage" src={song.Album.imageUrl} />
-  //             <NavLink className="OneSongalbumLink" to={`/albums/${song.Album.id}`}>
-  //               {song.Album.title}
-  //             </NavLink>
-  //           </div>
-  //         </div>
-  //         {/* artist */}
-  //         <div className="Song-Artist-container">
-  //         <div className="Song-Artist-Card">
-  //           <div className="OneSongartistId">Artist: {song.Artist.id}</div>
-  //           <div className="OneSongartistUsername">
-  //             Username: {song.Artist.username}
-  //           </div>
-  //           <img className="SongartistProfilePic" src={song.Artist.imageUrl} />
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
-  // else
-  //   return (
-  //     <div className="song-details-container">
-  //       {/* <div className='EditSongForm'>
-  //             <EditSongModal />
-  //           </div> */}
-  //       <button className="EditSongForm" onClick={() => setShowModal(true)}>
-  //         Edit Song
-  //       </button>
-  //       {showModal && (
-  //         <Modal onClose={() => setShowModal(false)}>
-  //           <EditSong setShowModal={setShowModal} />
-  //         </Modal>
-  //       )}
-  //       <button
-  //         className="DeleteSongButton"
-  //         onClick={() => setModalDelete(true)}
-  //       >
-  //         Delete Song
-  //       </button>
-  //       {modalDelete && (
-  //         <Modal onClose={() => setModalDelete(false)}>
-  //           <DeleteSong setModalDelete={setModalDelete} />
-  //         </Modal>
-  //       )}
-  //       <div className="song-container">
-  //         <div className="songName">
-  //           <img className="songImage" src={song.imageUrl}></img>
-  //           <div className="songTitle">Song: {song.title}</div>
-  //           <div className="description">Description: {song.description}</div>
-  //           <AudioPlayer
-  //             autoPlay={false}
-  //             src={song.url}
-  //             muted={true}
-  //             onPlay={(e) => console.log("onPlay")}
-  //           />
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
 }

@@ -385,7 +385,7 @@ return res.status(200).json(editSong)
       {where: {songId: SongId},
       include: [
         {model: User, attributes:
-      ['id', 'username']
+      ['id', 'username', 'imageUrl']
     }
 ]
   })

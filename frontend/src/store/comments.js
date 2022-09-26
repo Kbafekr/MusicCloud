@@ -108,7 +108,7 @@ export const commentsReducer = (state = initialState, action) => {
     case GET_ALL_COMMENTS: {
 
 
-      const newState = {...state}
+      const newState = {}
       action.songId.Comments.forEach(comment => {
         newState[comment.id] = comment
     })

@@ -346,25 +346,28 @@ export default function SongDetails() {
                                     </div>
                                     <div className="SongIdinTrackListAlbumDetailsContainer">
                                       <div className="AboutAlbumDetailsMainHeaderContainerFlexBox">
-                                        <div className="EditAlbumButtonContainerMain">
-                                          <button
-                                            className="EditAlbumButton"
-                                            onClick={() => setShowModal(true)}
-                                          >
-                                            Edit Comment
-                                          </button>
-                                          {showModal && (
-                                            <Modal
-                                              onClose={() =>
-                                                setShowModal(false)
-                                              }
+                                        {user.id == comment.User.id && (
+                                          <div className="EditAlbumButtonContainerMain">
+                                            <button
+                                              className="EditAlbumButton"
+                                              onClick={() => setShowModal(true)}
                                             >
-                                              <EditComment
-                                                setShowModal={setShowModal} commentId={comment.id}
-                                              />
-                                            </Modal>
+                                              Edit Comment
+                                            </button>
+                                            {showModal && (
+                                              <Modal
+                                                onClose={() =>
+                                                  setShowModal(false)
+                                                }
+                                              >
+                                                <EditComment
+                                                  setShowModal={setShowModal}
+                                                  comment={comment}
+                                                />
+                                              </Modal>
+                                            )}
+                                          </div>
                                           )}
-                                        </div>
                                         <div className="DeleteAlbumButtonContainerMain">
                                           <button
                                             className="DeleteAlbumButton"

@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { editAComment } from "../../store/comments";
 import { useParams } from "react-router-dom";
 
-function EditComment({setShowModal, commentId}) {
+function EditComment({setShowModal, comment}) {
   const dispatch = useDispatch();
 
+  const commentId = comment.id
   const user = useSelector(state => state.session.user)
   const comments = useSelector((state) => state.comments);
-
-  const comment = { ...comments[commentId] };
 
   const [body, setBody] = useState(comment.body);
   const [errors, setErrors] = useState([]);
@@ -34,7 +33,7 @@ function EditComment({setShowModal, commentId}) {
     setShowModal(false);
     if (errors.length <= 0) {
       return dispatch(
-        EditComment({body})
+        editAComment({commentId, body})
       ).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();

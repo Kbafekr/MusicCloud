@@ -72,11 +72,11 @@ export const createAComment = ({songId, comment}) => async (dispatch) => {
 
 //edit a comment thunk
 
-export const editAComment = (comment) => async (dispatch) => {
-  const response = await csrfFetch(`/api/comments/${comment.id}`, {
+export const editAComment = ({commentId, body}) => async (dispatch) => {
+  const response = await csrfFetch(`/api/comments/${commentId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(comment),
+    body: JSON.stringify({body: body}),
   });
   if (response.ok) {
     const commentEdit = await response.json();

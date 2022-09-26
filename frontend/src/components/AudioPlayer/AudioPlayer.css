@@ -394,7 +394,9 @@
   }
 
   .rhap_repeat-button, .rhap_main-controls-button,   .rhap_volume-button  {
-    color: #ff7a32
+    color: rgb(233, 233, 233);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7373ff, #ff5900 100%)
   }
 
   .rhap_volume-bar, .rhap_progress-bar,  .rhap_progress-filled, .rhap_progress-bar-show-download, .rhap_volume-filled,  .rhap_download-progress {

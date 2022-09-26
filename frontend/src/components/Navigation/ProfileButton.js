@@ -49,7 +49,7 @@ function ProfileButton({ user }) {
       const copyUsernameTimeout = setInterval(() => {
         setEffectStateUsername(false);
         setCopyUsername(false)
-      }, 1000);
+      }, 1500);
       return () => clearInterval(copyUsernameTimeout);
     }
     else return
@@ -62,7 +62,7 @@ function ProfileButton({ user }) {
       const copyUsernameTimeout = setInterval(() => {
         setEffectStateEmail(false);
         setCopyEmail(false)
-      }, 1000);
+      }, 1500);
       return () => clearInterval(copyUsernameTimeout);
     }
     else return
@@ -101,7 +101,7 @@ function ProfileButton({ user }) {
           {/* <li>{localStorage.getItem('username')}</li> */}
           <li>
           <div className="mySongs" id="copyButtonDropdownMenu">
-          <img className='Navicon' id="copyButtonDropdown" src={icon3} alt="songs icon" onClick={() => copyUsername()}/>
+          <img className='Navicon' id="copyButtonDropdown" src={icon3} alt="songs icon" onClick={() => copyUsernametoClipBoard()}/>
           <div onClick={() => copyUsernametoClipBoard()}>{user.username}</div>
           <div></div>
 
@@ -111,7 +111,7 @@ function ProfileButton({ user }) {
           {/* <li>{localStorage.getItem('email')}</li> */}
           <li>
           <div className="mySongs" id="copyButtonDropdownMenu">
-          <img className='Navicon' id="copyButtonDropdown" src={icon3} alt="songs icon" onClick={() => copyEmail()}/>
+          <img className='Navicon' id="copyButtonDropdown" src={icon3} alt="songs icon" onClick={() => copyEmailtoClipboard()}/>
           <div onClick={() => copyEmailtoClipboard()}>{user.email}</div>
           <div></div>
 

@@ -192,15 +192,15 @@ color: white;
 
 @keyframes opacitychange {
   0% {
-      opacity: 1.0;
+      opacity: 0.2;
     }
 
   50% {
-      opacity: 0.5;
+      opacity: 1.0;
     }
 
   100% {
-      opacity: 0;
+      opacity: 0.2;
     }
   }
 

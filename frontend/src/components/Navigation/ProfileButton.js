@@ -13,19 +13,6 @@ import icon4 from '../../images/icons/icon4.png'
 function ProfileButton({ user }) {
 
   const history = useHistory()
-  // set image to local storage since it gets deleted off of render and doesn;t expire when exiting page
-
-  // if (!localStorage.getItem('imageUrl')) {
-  //   localStorage.setItem('imageUrl', user.user.imageUrl)
-  // }
-
-  // if (!localStorage.getItem('username')) {
-  //   localStorage.setItem('username', user.user.username)
-  // }
-
-  // if (!localStorage.getItem('email')) {
-  //   localStorage.setItem('email', user.user.email)
-  // }
 
   function copyUsername() {
     navigator.clipboard.writeText(user.username)

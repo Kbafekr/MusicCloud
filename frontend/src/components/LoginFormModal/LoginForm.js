@@ -18,7 +18,7 @@ function LoginForm({ setShowModalSignIn }) {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
       }
-    ).then(() => setShowModalSignIn(false));
+    );
   };
 
   return (

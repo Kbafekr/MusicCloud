@@ -114,7 +114,6 @@ export function HomePage() {
   //useEffect for getting Songs signed in
   useEffect(() => {
     dispatch(getAllAlbums());
-    console.log(lastAlbum)
   }, [dispatch, UserSignedIn, albums.length, lastAlbum]);
 
   useEffect(() => {

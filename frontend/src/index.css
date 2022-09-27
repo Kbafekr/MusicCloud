@@ -1,17 +1,18 @@
+
 * {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 :root {
   background-color: rgb(214, 213, 213);
   display: block;
   font: 12px;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  width: 100%;
+  max-width: 1400px;
   height: 100%;
   min-width: 600px;
   min-height: 600px;
-  display: flex;
-  justify-content: center;
+  margin:auto
 }
 
 body {
@@ -19,10 +20,7 @@ body {
   border-top: 0.5vh solid rgb(243, 92, 23);
 }
 body, footer{
-  width: 1400px;
-  height: fit-content;
   background-color: white;
-  min-width: 800px;
 }
 
 
@@ -58,4 +56,10 @@ width: 30px
 ;
 height: 30px;
 background-color: transparent;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    margin: 0;
+  }
 }

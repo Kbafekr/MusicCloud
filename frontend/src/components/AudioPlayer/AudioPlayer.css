@@ -6,7 +6,7 @@
     height: 72.99px;
     bottom: 0;
     z-index: 0;
-    background:linear-gradient(177deg, #505050, #cecece,  #fac8a7, #fc6500, #fc6d00 130%);
+    background:linear-gradient(177deg, #ffffff, #cecece,  #fac8a7, #fc6500, #fc6d00 130%);
     border-top: 1px solid #cecece;
     margin: 10px 0px;
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
@@ -394,7 +394,7 @@
   }
 
   .rhap_repeat-button, .rhap_main-controls-button,   .rhap_volume-button  {
-    color: rgb(233, 233, 233);
+    color: #ffffff;
     border-radius: 50%;
     background: linear-gradient(135deg, #7373ff, #ff5900 100%)
   }

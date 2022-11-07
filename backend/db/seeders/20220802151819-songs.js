@@ -1,5 +1,11 @@
 "use strict";
 const bcrypt = require("bcryptjs");
+
+let options = {};
+if (process.env.NODE_ENV === "production") {
+  options.schema = process.env.SCHEMA; // define your schema in options object
+}
+
 module.exports = {
   async up(queryInterface, Sequelize) {
     /**
@@ -11,8 +17,10 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-    await queryInterface.bulkInsert(
-      "Songs",
+
+    options.tableName = "Songs";
+    return queryInterface.bulkInsert(
+      options,
       [
         {
           userId: 1,
@@ -29,8 +37,7 @@ module.exports = {
           title: "Ready For War",
           description: "Epic Intense Hip-hop",
           url: "https://soundclouddata.s3.amazonaws.com/2WEI%2C+Joznez%2C+Kataem+-+Ready+For+War+(Official+Lyric+Video+%26+Audio).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/Zn-VQ-B1ODA/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/Zn-VQ-B1ODA/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -47,8 +54,7 @@ module.exports = {
           title: "Chemicals (feat. Neoni)",
           description: "Electronic/Alternative Modern Pop",
           url: "https://soundclouddata.s3.amazonaws.com/Besomorph+-+Chemicals+(feat.+Neoni).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/e4-raurU5zI/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/e4-raurU5zI/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -56,8 +62,7 @@ module.exports = {
           title: "Happier Than Ever",
           description: "Alternative Rock/Indie Pop",
           url: "https://soundclouddata.s3.amazonaws.com/Billie+Eilish+-+Happier+Than+Ever+(Official+Music+Video).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/GK10mDpZZ_w/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/GK10mDpZZ_w/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -65,8 +70,7 @@ module.exports = {
           title: "Boukan",
           description: "Japanese Post-Hardcore/Math-Rock",
           url: "https://soundclouddata.s3.amazonaws.com/Boukan.mp3",
-          imageUrl:
-            "https://i1.jpopasia.com/albums/4/29267_n9c.jpg",
+          imageUrl: "https://i1.jpopasia.com/albums/4/29267_n9c.jpg",
         },
         {
           userId: 2,
@@ -74,8 +78,7 @@ module.exports = {
           title: "Caravan",
           description: "Jazz Score",
           url: "https://soundclouddata.s3.amazonaws.com/Caravan.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/38CRu1rCaKg/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/38CRu1rCaKg/maxresdefault.jpg",
         },
         {
           userId: 2,
@@ -83,8 +86,7 @@ module.exports = {
           title: "Dr. Bones",
           description: "Modern Jazz/Swing Ska",
           url: "https://soundclouddata.s3.amazonaws.com/Cherry+Poppin'+Daddies+-+Dr.+Bones.mp3",
-          imageUrl:
-          "https://i.ytimg.com/vi/AZo5rV8xuEA/hqdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/AZo5rV8xuEA/hqdefault.jpg",
         },
         {
           userId: 2,
@@ -92,8 +94,7 @@ module.exports = {
           title: "Childhood Memories",
           description: "Warm Alternative Game BGM",
           url: "https://soundclouddata.s3.amazonaws.com/Childhood+memories.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/_rdlVC1hzdk/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/_rdlVC1hzdk/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -101,8 +102,7 @@ module.exports = {
           title: "Under the Influence",
           description: "R&B Soul",
           url: "https://soundclouddata.s3.amazonaws.com/Chris+Brown+-+Under+The+Influence+(Audio).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/xy8HNniRsc4/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/xy8HNniRsc4/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -137,8 +137,7 @@ module.exports = {
           title: "Needle in the Hay",
           description: "Indie Folk",
           url: "https://soundclouddata.s3.amazonaws.com/Elliott+Smith+-+Needle+In+The+Hay+(from+Elliott+Smith).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/EgNgvCLRqWc/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/EgNgvCLRqWc/maxresdefault.jpg",
         },
         {
           userId: 2,
@@ -155,8 +154,7 @@ module.exports = {
           title: "Gourmet Race Remix",
           description: "Drumstep/Dubstep 8-bit",
           url: "https://soundclouddata.s3.amazonaws.com/Gourmet+Race+-+Drumstep+%5B+dj-Jo+Remix+%5D.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/Se1uh3PS78Y/mqdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/Se1uh3PS78Y/mqdefault.jpg",
         },
         {
           userId: 3,
@@ -164,8 +162,7 @@ module.exports = {
           title: "Interstellar Main Theme Piano",
           description: "Classical Cover",
           url: "https://soundclouddata.s3.amazonaws.com/Hans+Zimmer+-+Interstellar+-+Main+Theme+(Piano+Version)+%2B+Sheet+Music.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/UDVtMYqUAyw/hqdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/UDVtMYqUAyw/hqdefault.jpg",
         },
         {
           userId: 1,
@@ -182,8 +179,7 @@ module.exports = {
           title: "Analog Logic",
           description: "Epic Hybrid Futuristic Electronic Music",
           url: "https://soundclouddata.s3.amazonaws.com/Hi-Finesse+-+Analog+Logic+(Epic+Hybrid+Futuristic+Trailer+Music).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/l6PH6Og4E5w/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/l6PH6Og4E5w/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -200,8 +196,7 @@ module.exports = {
           title: "Apple Alarm Sound Effect",
           description: "Alarm Sound Effect from iPhone",
           url: "https://soundclouddata.s3.amazonaws.com/iPhone+Radar+Alarm_Ringtone+(Apple+Sound)+-+Sound+Effect+for+Editing.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/1uLcHue0rZ4/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/1uLcHue0rZ4/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -209,8 +204,7 @@ module.exports = {
           title: "Hollow Purple",
           description: "Electronic Dark Dubstep",
           url: "https://soundclouddata.s3.amazonaws.com/Jujutsu+Kaisen+-+Hollow+Purple+(Ultra+Epic+Cover).mp3",
-          imageUrl:
-            "https://miro.medium.com/max/1400/0*UuxDSONm1W5mvt_d.jpg",
+          imageUrl: "https://miro.medium.com/max/1400/0*UuxDSONm1W5mvt_d.jpg",
         },
         {
           userId: 1,
@@ -236,8 +230,7 @@ module.exports = {
           title: "Loki Trailer Music",
           description: "Dark Electronic Music",
           url: "https://soundclouddata.s3.amazonaws.com/Loki+Trailer+Music+%7C+EPIC+VERSION.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/4MDRWT9AlgU/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/4MDRWT9AlgU/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -272,8 +265,7 @@ module.exports = {
           title: "Misery Business",
           description: "Pop-Punk/Emo",
           url: "https://soundclouddata.s3.amazonaws.com/Misery+Business.mp3",
-          imageUrl:
-            "https://m.media-amazon.com/images/I/61cKkLqbLLL.jpg",
+          imageUrl: "https://m.media-amazon.com/images/I/61cKkLqbLLL.jpg",
         },
         {
           userId: 1,
@@ -281,8 +273,7 @@ module.exports = {
           title: "Wonderland",
           description: "Alternative/Indie",
           url: "https://soundclouddata.s3.amazonaws.com/Neoni+-+WONDERLAND+(Lyrics).mp3",
-          imageUrl:
-          "https://i.ytimg.com/vi/0bTVSSiAgZs/mqdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/0bTVSSiAgZs/mqdefault.jpg",
         },
         {
           userId: 1,
@@ -308,8 +299,7 @@ module.exports = {
           title: "Maggie's Farm",
           description: "Rap Rock, Hip-Hop Rock",
           url: "https://soundclouddata.s3.amazonaws.com/Rage+Against+The+Machine+-+Maggie's+Farm+(Audio).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/q3euAfNhuR4/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/q3euAfNhuR4/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -317,8 +307,7 @@ module.exports = {
           title: "Transhuman",
           description: "Epic Massive Hybrid Drama Music",
           url: "https://soundclouddata.s3.amazonaws.com/Really+Slow+Motion+-+Transhuman+(Epic+Massive+Hybrid+Drama).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/_tMnhDyIwCg/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/_tMnhDyIwCg/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -335,8 +324,7 @@ module.exports = {
           title: "Seven Nation Army (Glitch Mob Remix)",
           description: "Electronic Garage Rock",
           url: "https://soundclouddata.s3.amazonaws.com/Seven+Nation+Army+(Glitch+Mob+Remix)+-+Lyric+Video.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/IbvNgLYPSIs/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/IbvNgLYPSIs/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -344,8 +332,7 @@ module.exports = {
           title: "F**K YOU",
           description: "Alternative/Indie",
           url: "https://soundclouddata.s3.amazonaws.com/Silent+Child+-+F**K+YOU+(lyrics).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/L7T6UOkHkJo/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/L7T6UOkHkJo/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -353,8 +340,7 @@ module.exports = {
           title: "Smells Like Teen Spirit (Malia Remix)",
           description: "Modern Emotional Grunge",
           url: "https://soundclouddata.s3.amazonaws.com/Smells+Like+Teen+Spirit.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/p5M1sWA0J0Y/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/p5M1sWA0J0Y/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -362,8 +348,7 @@ module.exports = {
           title: "Solo",
           description: "Indie, Pop/Rock",
           url: "https://soundclouddata.s3.amazonaws.com/Solo.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/fL1pnzQj5j8/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/fL1pnzQj5j8/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -371,8 +356,7 @@ module.exports = {
           title: "Squidward Walking Sound Effect",
           description: "Sound Effects",
           url: "https://soundclouddata.s3.amazonaws.com/Squidward+walking+sound+effect.mp3",
-          imageUrl:
-          "https://pbs.twimg.com/media/Bzmf25aCIAABBDi.jpg",
+          imageUrl: "https://pbs.twimg.com/media/Bzmf25aCIAABBDi.jpg",
         },
         {
           userId: 2,
@@ -380,8 +364,7 @@ module.exports = {
           title: "Strip My Mind",
           description: "Alternative/Indie, R&B/Soul",
           url: "https://soundclouddata.s3.amazonaws.com/Strip+My+Mind.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/woLb2dkqRYs/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/woLb2dkqRYs/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -389,8 +372,7 @@ module.exports = {
           title: "Succession Main Theme Piano",
           description: "Classical Instrumental",
           url: "https://soundclouddata.s3.amazonaws.com/Succession+Main+Theme+-+Piano+(Advance+difficulty).mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/Jy7FMagiTFk/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/Jy7FMagiTFk/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -398,11 +380,9 @@ module.exports = {
           title: "STFD",
           description: "Electro-Pop/ Dance Music",
           url: "https://soundclouddata.s3.amazonaws.com/TeZATalks+-+STFD+%5BLyric+Video%5D+*FLASH+WARNING*.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/XyNHIsp_3k0/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/XyNHIsp_3k0/maxresdefault.jpg",
         },
         {
-
           userId: 1,
           albumId: 43,
           title: "Hey Kids!!!",
@@ -417,8 +397,7 @@ module.exports = {
           title: "50 Ways to Say Goodbye",
           description: "Pop Rock/Folk Rock",
           url: "https://soundclouddata.s3.amazonaws.com/Train+-+50+Ways+To+Say+Goodbye.mp3",
-          imageUrl:
-          "https://methodshop.com/wp-content/uploads/train-band.jpg",
+          imageUrl: "https://methodshop.com/wp-content/uploads/train-band.jpg",
         },
         {
           userId: 1,
@@ -426,8 +405,7 @@ module.exports = {
           title: "Worst in Me",
           description: "Dance/Electronic",
           url: "https://soundclouddata.s3.amazonaws.com/Unlike+Pluto+-+Worst+In+Me+%5BOfficial+Lyric+Video%5D.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/igQBHPvh1lc/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/igQBHPvh1lc/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -444,8 +422,7 @@ module.exports = {
           title: "Craving",
           description: "Electronic Alternative Rock",
           url: "https://soundclouddata.s3.amazonaws.com/YMIR+-+Craving.mp3",
-          imageUrl:
-          "https://i.ytimg.com/vi/NAGj2FpW4ok/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/NAGj2FpW4ok/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -453,8 +430,7 @@ module.exports = {
           title: "Tripwire",
           description: "Electronic Alternative Rock",
           url: "https://soundclouddata.s3.amazonaws.com/YMIR+-+Tripwire.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/IScEQa2MJUk/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/IScEQa2MJUk/maxresdefault.jpg",
         },
         {
           userId: 1,
@@ -462,8 +438,7 @@ module.exports = {
           title: "Gou Ni Moyu",
           description: "Japanese Post-Hardcore Rock",
           url: "https://soundclouddata.s3.amazonaws.com/Sokoninaru+-+Gou+Ni+Moyu.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/Nl4Z5f4QwEY/sddefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/Nl4Z5f4QwEY/sddefault.jpg",
         },
         {
           userId: 1,
@@ -472,7 +447,7 @@ module.exports = {
           description: "Hip-Hop/Rap",
           url: "https://soundclouddata.s3.amazonaws.com/Dj+Shadow+-Three+Ralphs.mp3",
           imageUrl:
-          "https://c-fa.cdn.smule.com/rs-s79/arr/9a/2c/9e983943-aedd-439f-9656-e6ae266d3fb5_1024.jpg",
+            "https://c-fa.cdn.smule.com/rs-s79/arr/9a/2c/9e983943-aedd-439f-9656-e6ae266d3fb5_1024.jpg",
         },
         {
           userId: 2,
@@ -480,8 +455,7 @@ module.exports = {
           title: "Juggernaut",
           description: "Epic Intense/Hip-Hop",
           url: "https://soundclouddata.s3.amazonaws.com/2WEI%2C+Joznez%2C+Kataem+-+Juggernaut.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/Zn-VQ-B1ODA/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/Zn-VQ-B1ODA/maxresdefault.jpg",
         },
         {
           userId: 3,
@@ -498,8 +472,7 @@ module.exports = {
           title: "No Time to Die",
           description: "Indie Pop",
           url: "https://soundclouddata.s3.amazonaws.com/Billie+Eilish+-+No+Time+To+Die.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/GK10mDpZZ_w/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/GK10mDpZZ_w/maxresdefault.jpg",
         },
 
         {
@@ -508,8 +481,7 @@ module.exports = {
           title: "Whiplash",
           description: "Jazz Score",
           url: "https://soundclouddata.s3.amazonaws.com/Whiplash.mp3",
-          imageUrl:
-            "https://i.ytimg.com/vi/38CRu1rCaKg/maxresdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/38CRu1rCaKg/maxresdefault.jpg",
         },
         {
           userId: 2,
@@ -517,8 +489,7 @@ module.exports = {
           title: "Zoot Suit Riot",
           description: "Modern Jazz/Swing Ska",
           url: "https://soundclouddata.s3.amazonaws.com/Zoot+Suit+Root.mp3",
-          imageUrl:
-          "https://i.ytimg.com/vi/AZo5rV8xuEA/hqdefault.jpg",
+          imageUrl: "https://i.ytimg.com/vi/AZo5rV8xuEA/hqdefault.jpg",
         },
         {
           userId: 3,
@@ -556,7 +527,6 @@ module.exports = {
           imageUrl:
             "https://cdn.shopify.com/s/files/1/0065/8482/7956/products/ling-tosite-sigure-imperfect.jpg?v=1596057485",
         },
-
       ],
 
       {}
@@ -570,7 +540,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-
-    await queryInterface.bulkDelete("Songs", null, {});
+     options.tableName = 'Songs';
+    return queryInterface.bulkDelete(options);
   },
 };

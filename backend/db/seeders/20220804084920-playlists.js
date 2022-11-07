@@ -1,4 +1,11 @@
+// EVERY seeder file
 'use strict';
+
+// NEW: add this code to each migration file
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
 
 module.exports = {
   async up (queryInterface, Sequelize) {
@@ -11,7 +18,8 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-   await queryInterface.bulkInsert('playlists', [
+     options.tableName = 'playlists';
+   return queryInterface.bulkInsert(options, [
     {
     userId: 1,
     name: 'Zzz',
@@ -37,6 +45,7 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-     await queryInterface.bulkDelete('playlists', null, {});
+     options.tableName = 'playlists';
+     return queryInterface.bulkDelete(options);
   }
 };

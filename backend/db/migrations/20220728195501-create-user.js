@@ -8,8 +8,6 @@ if (process.env.NODE_ENV === 'production') {
 }
 // END of new code
 
-const { sequelize } = require("../models");
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.createTable("Users", {

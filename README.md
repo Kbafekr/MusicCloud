@@ -3,7 +3,7 @@
 ## Description
 
 A fullstack clone of SoundCloud using React, Redux, and Express.
-View a live demo [here:](https://soundcloudcloneaa.herokuapp.com)
+View a live demo [here:](https://musiccloud.onrender.com/)
 
 ## Features
 * Create, edit, delete, and listen to songs.

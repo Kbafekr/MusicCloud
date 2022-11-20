@@ -2,7 +2,7 @@
 const express = require('express');
 
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
-const { User, Song, Album, Comment, playlist } = require('../../db/models');
+const { User, Song, Album, Comment, playlist, Genre } = require('../../db/models');
 
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -164,7 +164,8 @@ const SongValidation = [
           include: [{ model: User, as: 'Artist',
      attributes: ['id', 'username', 'imageUrl']
       }, {model: Album,
-        attributes: ['id', 'title', 'imageUrl']}
+        attributes: ['id', 'title', 'imageUrl']}, {model: Genre,
+          attributes: ['id', 'songId', 'userId', 'genre']}
 
       ],
           ...pagination
@@ -437,5 +438,74 @@ return res.status(200).json(editSong)
      return res.json(comment)
   })
 
+
+
+
+  // genre
+
+
+
+  // get all genre by a Song's id
+
+  router.get('/:songId/genre', restoreUser, requireAuth, async (req, res) => {
+    const SongId = req.params.songId
+
+    const Genre = await Genre.findAll(
+      {where: {songId: SongId},
+      include: [
+        {model: User, attributes:
+      ['id', 'username', 'imageUrl']
+    },
+    {model: Song,
+      attributes: ['id', 'userId', 'albumId', 'title', 'description', 'url', 'createdAt', 'updatedAt', 'imageUrl']},
+]
+  })
+
+    if(!Genre) {
+      const errors = {
+        'title': "Error retrieving song genre",
+        'statusCode': 404,
+        'message': {}
+      }
+
+      errors.message = "Song does not exist, associated comments could not be found with requested id"
+      return res.status(404).json(errors)
+    }
+    const response = {
+      'Comments': Comments
+    }
+    return res.json(response)
+  })
+
+
+
+  //create a comment for a song based on Song's id
+
+  router.post('/:songId/Genre', restoreUser, requireAuth, validateComment, async (req, res) => {
+    const SongId = req.params.songId
+    const UserId = req.user.id
+    const {body} = req.body
+
+    const findSong = await Song.findByPk(SongId)
+
+
+    if (!findSong) {
+      const errors = {
+        'title': "Error retrieving song genre",
+        'statusCode': 404,
+        'message': {}
+      }
+
+      errors.message = "Song does not exist, associated genre could not be found with requested id"
+      return res.status(404).json(errors)
+    }
+
+    const genre = await Genre.create({
+      userId: UserId,
+      songId: SongId,
+      genre: genre
+    })
+     return res.json(genre)
+  })
 
   module.exports = router

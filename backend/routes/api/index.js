@@ -8,6 +8,7 @@ const albumsRouter = require('./albums')
 const commentRouter = require('./comments')
 const artistRouter = require('./artists')
 const playlistRouter = require('./playlist')
+const genreRouter = require('./genre.js')
 const { restoreUser } = require("../../utils/auth.js")
 
 
@@ -23,6 +24,7 @@ router.use('/albums', albumsRouter);
 router.use('/comments', commentRouter);
 router.use('/artists', artistRouter);
 router.use('/playlists', playlistRouter)
+router.use('/genre', genreRouter)
 
 // test route in api router
 router.post('/test', function(req, res) {

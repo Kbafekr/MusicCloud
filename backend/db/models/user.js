@@ -57,6 +57,7 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Song, {foreignKey: 'userId', onDelete: 'CASCADE'})
     User.hasMany(models.Album, {foreignKey: 'userId', onDelete: 'CASCADE'})
     User.hasMany(models.Comment, {foreignKey: 'userId', onDelete: 'CASCADE'})
+    User.hasMany(models.Genre, {foreignKey: 'userId', onDelete: 'CASCADE'})
     User.hasMany(models.playlist, {foreignKey: 'userId', onDelete: 'CASCADE'})
 
 };

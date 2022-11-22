@@ -110,7 +110,9 @@ const SongValidation = [
           include: [{ model: User, as: 'Artist',
      attributes: ['id', 'username', 'imageUrl']
       }, {model: Album,
-        attributes: ['id', 'title', 'imageUrl']}
+        attributes: ['id', 'title', 'imageUrl']},
+        {model: Genre,
+          attributes: ['id', 'songId', 'userId', 'genre']}
 
       ],
           ...pagination
@@ -217,7 +219,9 @@ const SongValidation = [
         include: [{ model: User, as: 'Artist',
      attributes: ['id', 'username', 'imageUrl']
       }, {model: Album,
-        attributes: ['id', 'title', 'imageUrl']}
+        attributes: ['id', 'title', 'imageUrl']},
+        {model: Genre,
+          attributes: ['id', 'songId', 'userId', 'genre']}
 
       ]
     });

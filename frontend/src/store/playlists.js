@@ -5,8 +5,8 @@ const GET_ONE_PLAYLIST = "playlist/getOnePlaylist";
 const NEW_PLAYLIST = "playlist/newPlaylist";
 const UPDATE_PLAYLIST = "playlist/updatePlaylist";
 const DELETE_PLAYLIST = "playlist/deleteVideo";
-const ADD_VIDEO_PLAYLIST = "playlist/addVideoPlaylist";
-const DELETE_VIDEO_PLAYLIST = "playlist/deleteVideoPlaylist";
+const ADD_SONG_PLAYLIST = "playlist/addVideoPlaylist";
+const DELETE_SONG_PLAYLIST = "playlist/deleteVideoPlaylist";
 
 // actions
 
@@ -46,14 +46,14 @@ const deletePlaylist = (playlistId) => {
 };
 const addVideoToPlaylist = (updated) => {
   return {
-    type: ADD_VIDEO_PLAYLIST,
+    type: ADD_SONG_PLAYLIST,
     updated,
   };
 };
 
 const deleteVideoFromPlaylist = (playlistId, playlistSong_id) => {
   return {
-    type: DELETE_VIDEO_PLAYLIST,
+    type: DELETE_SONG_PLAYLIST,
     playlistId,
     playlistSong_id
   };
@@ -177,12 +177,12 @@ export default function reducer(state = initialState, action) {
       delete newState[action.playlistId];
       return newState;
     }
-    case ADD_VIDEO_PLAYLIST: {
+    case ADD_SONG_PLAYLIST: {
         const newState = { ...state };
         newState[action.updated.id] = action.updated;
         return newState;
       }
-    case DELETE_VIDEO_PLAYLIST: {
+    case DELETE_SONG_PLAYLIST: {
         const newState = { ...state };
         delete newState[action.playlistId];
         return newState;

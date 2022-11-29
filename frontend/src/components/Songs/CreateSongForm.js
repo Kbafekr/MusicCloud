@@ -68,15 +68,9 @@ function CreateSong({ setShowModal }) {
     e.preventDefault();
     setSubmittedForm(true);
     if (errors.length <= 0) {
-      const formData = new FormData()
-      formData.append("albumId", albumId);
-      formData.append("title", title);
-      formData.append("description", description);
-      formData.append("url", url);
-      formData.append("imageUrl", imageUrl);
       setShowModal(false);
       return dispatch(
-        CreateASong(formData)
+        CreateASong({ albumId, title, description, url, imageUrl })
       ).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();

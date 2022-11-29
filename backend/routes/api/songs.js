@@ -1,32 +1,5 @@
 // backend/routes/api/songs.js
-require("dotenv").config();
-// AWS Boilerplate
-const fs = require("fs");
-// import AWS from "aws-sdk";
-const multer = require("multer");
-const upload = multer({ dest: "uploads/" });
-const S3 = require('aws-sdk/clients/s3')
-
-const s3 = new S3({
-// const s3 = new AWS.S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  bucketName: process.env.AWS_BUCKET_NAME,
-});
-
-// upload file to s3
-
- function uploadToAWS(file) {
-  const fileStream = fs.createReadStream(file.path);
-
-  const params = {
-    Bucket: process.env.AWS_BUCKET_NAME,
-    Key: file.filename,
-    Body: fileStream,
-  };
-
-  return s3.uploadFile(uploadParams).promise();
-}
+const { singlePublicFileUpload, multipleFileKeysUpload } = require("../../awsS3");
 
 const express = require("express");
 
@@ -278,57 +251,61 @@ router.get("/:songid", restoreUser, requireAuth, async (req, res) => {
 
 router.post(
   "/",
-  upload.single("url"),
+  multipleFileKeysUpload([
+    { name: "url", maxCount: 1 },
+    { name: "imageUrl", maxCount: 1 },
+  ]),
   restoreUser,
   requireAuth,
   async (req, res) => {
-    const file = req.file;
-    console.log(file)
-    // const AWSresponse = await uploadToAWS(file);
+    const { title, description, url, imageUrl, albumId } = req.body;
+    const user = req.user;
+    const userId = req.user.id;
+    const album = await Album.findOne({
+      where: {
+        id: albumId,
+      },
+    });
 
-    // console.log(AWSresponse)
+    if (!album) {
+      const errors = {
+        title: "Error retrieving album",
+        statusCode: 404,
+        message: {},
+      };
+      errors.message =
+        "Album does not exist/could not be found with requested id";
+      return res.status(404).json(errors);
+    }
 
-    // const { title, description, url, imageUrl, albumId } = req.body;
-    // const user = req.user;
-    // const userId = req.user.id;
-    // const album = await Album.findOne({
-    //   where: {
-    //     id: albumId,
-    //   },
-    // });
+    if (userId !== album.userId) {
+      const errors = {
+        title: "Error authenticating user",
+        statusCode: 403,
+        message: {},
+      };
+      errors.message = "Album does not belong to current user";
+      return res.status(403).json(errors);
+    }
 
-    // if (!album) {
-    //   const errors = {
-    //     title: "Error retrieving album",
-    //     statusCode: 404,
-    //     message: {},
-    //   };
-    //   errors.message =
-    //     "Album does not exist/could not be found with requested id";
-    //   return res.status(404).json(errors);
-    // }
+    if (req.files.url) {
+      url = await singlePublicFileUpload(req.files.url[0]);
+    }
+    if (req.files.imageUrl) {
+      imageUrl = await singlePublicFileUpload(req.files.imageUrl[0]);
+    }
 
-    // if (userId !== album.userId) {
-    //   const errors = {
-    //     title: "Error authenticating user",
-    //     statusCode: 403,
-    //     message: {},
-    //   };
-    //   errors.message = "Album does not belong to current user";
-    //   return res.status(403).json(errors);
-    // }
-    // const newSong = await Song.create({
-    //   userId: userId,
-    //   albumId: albumId,
-    //   title: title,
-    //   description: description,
-    //   url: AWSresponse.url,
-    //   imageUrl:
-    //     imageUrl ||
-    //     "https://cdn.pixabay.com/photo/2018/08/27/10/11/radio-cassette-3634616__480.png",
-    // });
-    // return res.status(201).json(newSong);
-    return res.status(201)
+    const newSong = await Song.create({
+      userId: userId,
+      albumId: albumId,
+      title: title,
+      description: description,
+      url: url,
+      imageUrl:
+        imageUrl ||
+        "https://cdn.pixabay.com/photo/2018/08/27/10/11/radio-cassette-3634616__480.png",
+    });
+    return res.status(201).json(newSong);
   }
 );
 

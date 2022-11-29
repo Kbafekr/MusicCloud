@@ -18,6 +18,9 @@ app.use(morgan('dev'));
 //cookie parser and parse json bodies
 app.use(cookieParser());
 app.use(express.json());
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({limit: '50mb'}));
+
 
 // Security Middleware
 if (!isProduction) {
@@ -83,7 +86,6 @@ app.use((err, _req, res, _next) => {
     stack: isProduction ? null : err.stack
   });
 });
-
 
 
   module.exports = app;

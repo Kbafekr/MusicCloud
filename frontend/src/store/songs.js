@@ -154,7 +154,7 @@ export const CreateASong = (song) => async dispatch => {
     const response = await csrfFetch('/api/songs/', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
-    body: song
+    body: JSON.stringify(song)
 })
     if (response.ok) {
         const newSong = await response.json()

@@ -24,7 +24,7 @@ function CreateSong({ setShowModal }) {
 
   // const [isModalOpen, setModalOpen] = useState(false)
 
-  const allowedFileTypes = ["song/mp3", "song/wav", "song/MP3", "song/WAV"];
+  const allowedFileTypes = ["audio/mp3", "audio/wav", "audio/MP3", "audio/WAV", "audio/mpeg", "audio/MPEG"];
 
   useEffect(() => {
     dispatch(getAllAlbums());

@@ -2,14 +2,13 @@
 require("dotenv").config();
 // AWS Boilerplate
 const fs = require("fs");
-import AWS from "aws-sdk";
-import { S3Customizations } from "aws-sdk/lib/services/s3";
+// import AWS from "aws-sdk";
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
-// const S3 = require('aws-sdk/clients/s3')
+const S3 = require('aws-sdk/clients/s3')
 
-// const s3 = new S3({
-const s3 = new AWS.S3({
+const s3 = new S3({
+// const s3 = new AWS.S3({
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   bucketName: process.env.AWS_BUCKET_NAME,
@@ -17,7 +16,7 @@ const s3 = new AWS.S3({
 
 // upload file to s3
 
-export function uploadToAWS(file) {
+ function uploadToAWS(file) {
   const fileStream = fs.createReadStream(file.path);
 
   const params = {
@@ -28,16 +27,6 @@ export function uploadToAWS(file) {
 
   return s3.uploadFile(uploadParams).promise();
 }
-
-// const filename = 'the-file-name'
-// const fileContent = fs.readFileSync(fileName)
-
-// s3.upload(params, (err, data) => {
-//   if (err) {
-//     reject(err)
-//   }
-//   resolve(data.Location)
-// })
 
 const express = require("express");
 
@@ -294,62 +283,52 @@ router.post(
   requireAuth,
   async (req, res) => {
     const file = req.file;
-    const AWSresponse = await uploadToAWS(file);
+    console.log(file)
+    // const AWSresponse = await uploadToAWS(file);
 
-    console.log(AWSresponse)
+    // console.log(AWSresponse)
 
-    const { title, description, url, imageUrl, albumId } = req.body;
-    const user = req.user;
-    const userId = req.user.id;
-    const album = await Album.findOne({
-      where: {
-        id: albumId,
-      },
-    });
+    // const { title, description, url, imageUrl, albumId } = req.body;
+    // const user = req.user;
+    // const userId = req.user.id;
+    // const album = await Album.findOne({
+    //   where: {
+    //     id: albumId,
+    //   },
+    // });
 
-    if (!album) {
-      const errors = {
-        title: "Error retrieving album",
-        statusCode: 404,
-        message: {},
-      };
-      errors.message =
-        "Album does not exist/could not be found with requested id";
-      return res.status(404).json(errors);
-    }
+    // if (!album) {
+    //   const errors = {
+    //     title: "Error retrieving album",
+    //     statusCode: 404,
+    //     message: {},
+    //   };
+    //   errors.message =
+    //     "Album does not exist/could not be found with requested id";
+    //   return res.status(404).json(errors);
+    // }
 
-    if (userId !== album.userId) {
-      const errors = {
-        title: "Error authenticating user",
-        statusCode: 403,
-        message: {},
-      };
-      errors.message = "Album does not belong to current user";
-      return res.status(403).json(errors);
-    }
-    const newSong = await Song.create({
-      userId: userId,
-      albumId: albumId,
-      title: title,
-      description: description,
-      url: url,
-      imageUrl:
-        imageUrl ||
-        "https://cdn.pixabay.com/photo/2018/08/27/10/11/radio-cassette-3634616__480.png",
-      //  Album:
-      //  {
-      //   id: album.id,
-      //   imageUrl: album.imageUrl,
-      //   title: album.title
-      // },
-      // Artist:
-      // {
-      //   id: userId,
-      //   imageUrl: user.imageUrl,
-      //   username: user.username
-      // }
-    });
-    return res.status(201).json(newSong);
+    // if (userId !== album.userId) {
+    //   const errors = {
+    //     title: "Error authenticating user",
+    //     statusCode: 403,
+    //     message: {},
+    //   };
+    //   errors.message = "Album does not belong to current user";
+    //   return res.status(403).json(errors);
+    // }
+    // const newSong = await Song.create({
+    //   userId: userId,
+    //   albumId: albumId,
+    //   title: title,
+    //   description: description,
+    //   url: AWSresponse.url,
+    //   imageUrl:
+    //     imageUrl ||
+    //     "https://cdn.pixabay.com/photo/2018/08/27/10/11/radio-cassette-3634616__480.png",
+    // });
+    // return res.status(201).json(newSong);
+    return res.status(201)
   }
 );
 

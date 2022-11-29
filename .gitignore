@@ -4,3 +4,5 @@ build
 .DS_Store
 *.db
 credentials.json
+backend/credentials.json
+backend/credentials.json

@@ -25,6 +25,7 @@ function CreateSong({ setShowModal }) {
   // const [isModalOpen, setModalOpen] = useState(false)
 
   const allowedFileTypes = ["audio/mp3", "audio/wav", "audio/MP3", "audio/WAV", "audio/mpeg", "audio/MPEG"];
+  const allowedImageFileTypes = ["image/jpg", "image/jpeg", "image/png"];
 
   useEffect(() => {
     dispatch(getAllAlbums());
@@ -41,6 +42,10 @@ function CreateSong({ setShowModal }) {
       formValidationErrors.push("Only MP3 and WAV video files allowed");
     if (url?.size > 30000000)
       formValidationErrors.push("Song must be smaller than 30MB");
+    if (!allowedImageFileTypes.includes(imageUrl?.type) && imageUrl != "")
+      formValidationErrors.push("Only JPEG, JPG and PNG image files allowed");
+    if (imageUrl?.size > 5000000  && imageUrl != "")
+      formValidationErrors.push("Image must be smaller than 5MB");
     if (title.length > 256) {
       formValidationErrors.push(
         "Song title must be no more than 256 characters"
@@ -62,15 +67,21 @@ function CreateSong({ setShowModal }) {
     }
 
     setErrors(formValidationErrors);
-  }, [url, title, description]);
+  }, [url, title, description, imageUrl]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmittedForm(true);
     if (errors.length <= 0) {
+      const formData = new FormData()
+      formData.append("albumId", albumId);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("url", url);
+      formData.append("imageUrl", imageUrl);
       setShowModal(false);
       return dispatch(
-        CreateASong({ albumId, title, description, url, imageUrl })
+        CreateASong(formData)
       ).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
@@ -86,6 +97,10 @@ function CreateSong({ setShowModal }) {
   const songSet = (e) => {
     const file = e.target.files[0];
     setUrl(file);
+  };
+  const imageSet = (e) => {
+    const imageFile = e.target.files[0];
+    setImageUrl(imageFile);
   };
 
   return (
@@ -163,13 +178,12 @@ function CreateSong({ setShowModal }) {
           onChange={songSet}
           required
         />
-        <label className="CreateSongLabel">Song Image Link (Optional)</label>
+        <label className="CreateSongLabel">Song Image File (Optional)</label>
         <input
-          className="imageUrlCreateSong"
-          placeholder="Song Image Url (optional)..."
-          type="text"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
+          className="urlCreateSong"
+          type="file"
+          accept=".jpeg, .png, .jpg"
+          onChange={imageSet}
         />
         <div className="createSongButtons">
           <button className="submitCreateSong" type="submit">

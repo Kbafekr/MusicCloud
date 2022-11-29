@@ -258,7 +258,7 @@ router.post(
   restoreUser,
   requireAuth,
   async (req, res) => {
-    const { title, description, url, imageUrl, albumId } = req.body;
+    let { title, description, url, imageUrl, albumId } = req.body;
     const user = req.user;
     const userId = req.user.id;
     const album = await Album.findOne({

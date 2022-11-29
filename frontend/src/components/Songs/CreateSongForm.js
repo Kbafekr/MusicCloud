@@ -17,12 +17,14 @@ function CreateSong({ setShowModal }) {
   const [albumId, setAlbumId] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [url, setUrl] = useState("");
+  const [url, setUrl] = useState(null);
   const [imageUrl, setImageUrl] = useState("");
   const [errors, setErrors] = useState([]);
   const [submittedForm, setSubmittedForm] = useState(false);
 
   // const [isModalOpen, setModalOpen] = useState(false)
+
+  const allowedFileTypes = ["song/mp3", "song/wav", "song/MP3", "song/WAV"];
 
   useEffect(() => {
     dispatch(getAllAlbums());
@@ -34,13 +36,15 @@ function CreateSong({ setShowModal }) {
 
   useEffect(() => {
     const formValidationErrors = [];
-    const urlEnd = url.slice(-6);
 
-    if (!urlEnd.includes(".mp3")) {
-      formValidationErrors.push("Song must link to an mp3 file");
-    }
+    if (!allowedFileTypes.includes(url?.type))
+      formValidationErrors.push("Only MP3 and WAV video files allowed");
+    if (url?.size > 30000000)
+      formValidationErrors.push("Song must be smaller than 30MB");
     if (title.length > 256) {
-      formValidationErrors.push("Song title must be no more than 256 characters");
+      formValidationErrors.push(
+        "Song title must be no more than 256 characters"
+      );
     }
     if (title.length < 1) {
       formValidationErrors.push("Title required");
@@ -49,7 +53,9 @@ function CreateSong({ setShowModal }) {
       formValidationErrors.push("Description required");
     }
     if (description.length > 256) {
-      formValidationErrors.push("Description must be no more than 256 characters");
+      formValidationErrors.push(
+        "Description must be no more than 256 characters"
+      );
     }
     if (!user) {
       formValidationErrors.push("User must be signed in");
@@ -62,9 +68,15 @@ function CreateSong({ setShowModal }) {
     e.preventDefault();
     setSubmittedForm(true);
     if (errors.length <= 0) {
+      const formData = new FormData()
+      formData.append("albumId", albumId);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("url", url);
+      formData.append("imageUrl", imageUrl);
       setShowModal(false);
       return dispatch(
-        CreateASong({ albumId, title, description, url, imageUrl })
+        CreateASong(formData)
       ).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
@@ -77,6 +89,11 @@ function CreateSong({ setShowModal }) {
     return errors;
   };
 
+  const songSet = (e) => {
+    const file = e.target.files[0];
+    setUrl(file);
+  };
+
   return (
     <div className="CreateSong-outer">
       <form
@@ -84,7 +101,7 @@ function CreateSong({ setShowModal }) {
         onSubmit={handleSubmit}
         autoComplete="off"
       >
-         <div className="errorHandlingContainer">
+        <div className="errorHandlingContainer">
           {errors.length > 0 && (
             <div className="HeaderErrorStyling">
               <ul className="UlBulletErrorStyling">
@@ -144,14 +161,12 @@ function CreateSong({ setShowModal }) {
           onChange={(e) => setDescription(e.target.value)}
           required
         />
-        <label className="CreateSongLabel">Song MP3 Link (Required)</label>
+        <label className="CreateSongLabel">Song File (MP3 and wav only)</label>
         <input
           className="urlCreateSong"
-          placeholder="Audio Url (required)..."
-          autoComplete="off"
-          type="text"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
+          type="file"
+          accept=".mp3, .wav"
+          onChange={songSet}
           required
         />
         <label className="CreateSongLabel">Song Image Link (Optional)</label>

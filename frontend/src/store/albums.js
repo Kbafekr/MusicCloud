@@ -104,8 +104,8 @@ export const getOneAlbum = (albumId) => async dispatch => {
 export const CreateAnAlbum = (album) => async dispatch => {
     const response = await csrfFetch('/api/albums/', {
     method: 'POST',
-    headers: {'Content-Type': 'application/json'},
-    body: JSON.stringify(album)
+    headers: {'Content-Type': 'multipart/form-data'},
+    body: album
 })
     if (response.ok) {
         const newAlbum = await response.json()

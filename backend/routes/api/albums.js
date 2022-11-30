@@ -3,6 +3,9 @@ const express = require('express');
 const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth');
 const { User, Song, Album, Comment, playlist } = require('../../db/models');
 
+const { singlePublicFileUpload, multipleFileKeysUpload } = require("../../awsS3");
+
+
 const router = express.Router();
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
@@ -87,11 +90,17 @@ router.get('/:albumid', restoreUser, requireAuth, async (req,res) => {
 
 //create an album
 
-router.post('/', restoreUser, requireAuth, validateAlbum, async (req, res) => {
+router.post('/',  multipleFileKeysUpload([
+  { name: "imageUrl", maxCount: 1 },
+]),
+restoreUser, requireAuth, validateAlbum, async (req, res) => {
   const UserId = req.user.id;
 
-  const {title, description, imageUrl} = req.body
+  let {title, description, imageUrl} = req.body
 
+  if (req.files.imageUrl) {
+    imageUrl = await singlePublicFileUpload(req.files.imageUrl[0]);
+  }
   const newAlbum = await Album.create({
     userId: UserId,
     title: title,

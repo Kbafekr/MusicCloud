@@ -6,18 +6,23 @@ import './CreateAlbum.css'
 
 function CreateAlbum({setShowModal}) {
   const dispatch = useDispatch();
+  const allowedImageFileTypes = ["image/jpg", "image/jpeg", "image/png"];
 
   const user = useSelector(state => state.session.user)
 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState("");
-  const [imageUrl, setImageUrl] = useState('')
+  const [imageUrl, setImageUrl] = useState("")
   const [errors, setErrors] = useState([]);
 
 
   useEffect(() => {
     const formValidationErrors = [];
 
+    if (!allowedImageFileTypes.includes(imageUrl?.type) && imageUrl != "")
+      formValidationErrors.push("Only JPEG, JPG and PNG image files allowed");
+    if (imageUrl?.size > 5000000  && imageUrl != "")
+      formValidationErrors.push("Image must be smaller than 5MB");
     if (title.length > 256) {
       formValidationErrors.push("Title must be no more than 256 characters");
     }
@@ -35,7 +40,7 @@ function CreateAlbum({setShowModal}) {
     }
 
     setErrors(formValidationErrors);
-  }, [title, description]);
+  }, [title, description, imageUrl]);
 
 
 
@@ -46,8 +51,12 @@ function CreateAlbum({setShowModal}) {
     setErrors([]);
     if (errors.length <= 0) {
       setShowModal(false);
+      const formData = new FormData()
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("imageUrl", imageUrl);
       return dispatch(
-        CreateAnAlbum({ title, description, imageUrl })
+        CreateAnAlbum(formData)
       ).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
@@ -60,7 +69,10 @@ function CreateAlbum({setShowModal}) {
     return errors;
   };
 
-
+  const imageSet = (e) => {
+    const imageFile = e.target.files[0];
+    setImageUrl(imageFile);
+  };
 
   return (
     <div className="CreateAlbum-outer">
@@ -102,15 +114,13 @@ function CreateAlbum({setShowModal}) {
           required
           />
       </label>
-      <label>
+      <label className="CreateSongLabel">Album Image File (Optional)</label>
         <input
-        className="imageUrlCreateAlbum"
-          placeholder="Album Image Url (optional)..."
-          type="url"
-          value={imageUrl}
-          onChange={(e) => setImageUrl(e.target.value)}
+        className="urlCreateSong"
+          type="file"
+          accept=".jpeg, .png, .jpg"
+          onChange={imageSet}
           />
-      </label>
       <div className="createAlbumButtons">
       <button className="submitCreateAlbum" type="submit">Submit new album</button>
       <button className='cancelCreateAlbum' onClick={() => setShowModal(false)}>Cancel</button>

@@ -63,9 +63,21 @@
       } */
 /* } */
 
+.imagesArray {
+  width: 100%;
+  height: 35em;
+}
+
 #ActiveBackground {
   /* animation: backgroundopacity 5s infinite; */
-  width: 100%;
+  opacity: 1;
+  transition: 1000ms opacity ease-in-out;
+}
+#InactiveBackground {
+  opacity: 0;
+  position: absolute;
+  transition: 1000ms opacity ease-in-out;
+
 }
 
 /* Background buttons */
@@ -96,10 +108,6 @@
 
 /* background images text */
 
-.imagesArray {
-  width: 100%;
-  height: 35em;
-}
 .foregroundContainer {
   display: flex;
   flex-direction: column;

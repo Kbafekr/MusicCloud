@@ -164,7 +164,7 @@ export function HomePage() {
             (previousBackgroundImageNumber) =>
               (previousBackgroundImageNumber + 1) % backgroundImages.length
           );
-        }, 3000);
+        }, 5000);
 
         return () => clearInterval(backgroundImageTransition);
       } else {
@@ -761,13 +761,13 @@ export function HomePage() {
                 }
                 key={index}
               >
-                {index === backgroundImageNumber && (
+
                   <img
                     className="imagesArray"
                     src={backgroundImage.image}
                     alt="images"
                   />
-                )}
+
               </div>
             );
           })}

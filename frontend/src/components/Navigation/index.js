@@ -39,6 +39,7 @@ function Navigation({ isLoaded }) {
           <div className="AlbumNavButton">
             <AlbumButton user={sessionUser} />
           </div>
+          {/* search bar */}
         </div>
       </>
     );

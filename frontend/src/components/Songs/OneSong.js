@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { getAllSongs } from "../../store/songs";
 import { actionSongPlaying } from "../../store/audioPlayer";
 import PlayButtonImage from "../../images/PlayButton.png";
+import { WaveSurferVisual } from "../WaveForm";
 import "./OneSong.css";
 import "../Albums/AlbumDetails/OneAlbum.css";
 import LoginAsDemo from "../LoginDemoUser";
@@ -351,7 +352,9 @@ export default function SongDetails() {
               </div>
             </div>
             <div className="WaveFormContainerAlbumDetails">
-              <div className="WaveFormSubContainer"></div>
+              <div className="WaveFormSubContainer">
+                {/* <WaveSurferVisual /> */}
+              </div>
             </div>
           </div>
         </div>

@@ -34,6 +34,7 @@ export default function SongPlayer() {
     } else {
       return <button onClick={toggleThumbnail}>Open</button>;
     }
+    
   }
 
   if (currentSong.url) {

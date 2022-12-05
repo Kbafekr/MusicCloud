@@ -26,7 +26,7 @@ export default function ReturnAllSongs() {
   const SongsArrayCopy = [...SongsArray];
   // console.log('this is songsarray' + SongsArray)
   // console.log('this is songs' + Object.values(songs))
-
+const [songCreated, setSongCreated] = useState(false)
 
 
   const albums = useSelector((state) => state.album)
@@ -41,7 +41,7 @@ export default function ReturnAllSongs() {
 
  useEffect(() => {
     dispatch(getAllSongs());
-  }, [dispatch, user, CreateAnAlbum, albums]);
+  }, [dispatch, user, CreateAnAlbum, albums, songCreated, CreateSongModal]);
 
 
    //useEffect for creating default album if user does not have one
@@ -118,7 +118,7 @@ myAlbumsFilter = AlbumsArray.filter(
     return (
       <div className="Homesongs-container">
         <div className="createSongsContainer">
-          <CreateSongModal className="createSongForm" />
+          <CreateSongModal className="createSongForm" setSongCreated={setSongCreated} songCreated={songCreated}/>
         </div>
          {/* all 50 songs */}
         <div className="searchBarContainer">

@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 
 import { getAllAlbums } from "../../store/albums";
 
-function CreateSong({ setShowModal }) {
+function CreateSong({ setShowModal, setSongCreated, songCreated }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.session.user);
@@ -82,7 +82,7 @@ function CreateSong({ setShowModal }) {
       setShowModal(false);
       return dispatch(
         CreateASong(formData)
-      ).then(() => dispatch(getAllSongs())).catch(async (res) => {
+      ).then(() => dispatch(getAllSongs())).then(() => setSongCreated(!songCreated)).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
         // console.log(data + 'this is data')

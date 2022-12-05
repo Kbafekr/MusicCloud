@@ -354,7 +354,7 @@ export default function SongDetails() {
             </div>
             <div className="WaveFormContainerAlbumDetails">
               <div className="WaveFormSubContainer">
-                {/* <WaveSurferVisual /> */}
+                <WaveSurferVisual />
               </div>
             </div>
           </div>

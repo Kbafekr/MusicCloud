@@ -473,64 +473,6 @@ export function HomePage() {
               </div>
             </div>
           </div>
-          {/* search bar section */}
-          <div className="searchBarContainer">
-            <h1>Search for songs by title</h1>
-            <div className="searchbarDiv">
-              <input
-                className="searchbar"
-                type="search"
-                value={searchTitle}
-                placeholder={"Enter Song Title..." || searchTitle}
-                //   onChange={(e) => setSearchTitle(e.target.value)}
-                onChange={handleSubmit}
-              />
-            </div>
-            {/* Or upload your own <button>Upload</button> */}
-
-            <div
-              className={
-                titleFiltered.length ? "Filteredsong-container" : "HiddenResult"
-              }
-            >
-              {/* search return map */}
-              <div className="FilteredSongsContainer">
-                {titleFiltered &&
-                  titleFiltered.map((song) => {
-                    return (
-                      <div className="TrendingsongCard" key={song.id}>
-                        <div className="PlayButtonContainer">
-                          <img
-                            className="PlayMe"
-                            src={PlayButtonImage}
-                            onClick={() => dispatch(actionSongPlaying(song))}
-                          />
-                        </div>
-                        <img
-                          className="TrendingsongImage"
-                          src={song.imageUrl}
-                        ></img>
-                        <NavLink
-                          className="TrendingsongLink"
-                          to={`/songs/${song.id}`}
-                        >
-                          {song.title}
-                        </NavLink>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-            <div
-              className={
-                !titleFiltered.length && searchTitle != ""
-                  ? "errorHandlingSongSearch"
-                  : "HiddenResult"
-              }
-            >
-              Song not found
-            </div>
-          </div>
 
           {/* newest 50 songs */}
           <div className="searchBarContainer">

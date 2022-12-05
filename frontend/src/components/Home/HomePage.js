@@ -164,7 +164,7 @@ export function HomePage() {
             (previousBackgroundImageNumber) =>
               (previousBackgroundImageNumber + 1) % backgroundImages.length
           );
-        }, 5000);
+        }, 4000);
 
         return () => clearInterval(backgroundImageTransition);
       } else {
@@ -180,7 +180,7 @@ export function HomePage() {
             (previousImageNumber) =>
               (previousImageNumber + 1) % ImagesArray.length
           );
-        }, 5000);
+        }, 4000);
 
         return () => clearInterval(ImageTransition);
       } else {

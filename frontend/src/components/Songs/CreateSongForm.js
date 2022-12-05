@@ -82,7 +82,7 @@ function CreateSong({ setShowModal }) {
       setShowModal(false);
       return dispatch(
         CreateASong(formData)
-      ).catch(async (res) => {
+      ).then(() => dispatch(getAllSongs())).catch(async (res) => {
         // console.log(res + 'this is res')
         const data = await res.json();
         // console.log(data + 'this is data')

@@ -92,7 +92,7 @@ function ProfileButton({ user }) {
       <button className={showMenu === true ? 'profileWithMenu' : 'profileButton'} onClick={openMenu}>
         {/* <img className='profileImg' src={localStorage.getItem('imageUrl')} /> */}
         <img className={showMenu === true ? 'ImgWithMenu' : 'profileImg'} src={user.imageUrl} alt="profilepic" />
-        <i className="fas fa-user-circle" />
+        {/* <i className="fas fa-user-circle" /> */}
       </button>
 
       {showMenu && (

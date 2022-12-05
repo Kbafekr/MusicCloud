@@ -4,6 +4,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { getAllSongs } from "../../store/songs";
 import { actionSongPlaying } from "../../store/audioPlayer";
 import PlayButtonImage from "../../images/PlayButton.png";
+import PauseButtonImage from "../../images/PauseButton.png";
 import { WaveSurferVisual } from "../WaveForm";
 import "./OneSong.css";
 import "../Albums/AlbumDetails/OneAlbum.css";

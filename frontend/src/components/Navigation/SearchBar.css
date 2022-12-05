@@ -1,0 +1,48 @@
+.SearchBarContainerNav {
+    margin-left: 10px;
+    height: 40px;
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    border: none;
+
+}
+
+.SearchBarInternalContainer {
+    position: relative;
+    align-items: center;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+.SearchBarNav {
+height: 40px;
+padding-left: 10px;
+flex: 1;
+background-color: rgba(13, 13, 13, 0.848);
+border: none;
+border-radius: 40px 0px 0px 40px;
+color: white;
+
+}
+
+.MagnifyingGlassSearchBarContainer {
+    border: 1px solid;
+    background-color: rgb(255 103 33 / 72%);
+    border-radius: 0px 40px 40px 0px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    height: 38px;
+    width: 64px;
+    margin: 0;
+}
+
+.MagnifyingGlassSearchBar {
+    font-size: 26px;
+    color: #d3d3d3de;
+}

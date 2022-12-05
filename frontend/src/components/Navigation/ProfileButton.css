@@ -16,6 +16,7 @@
   }
 .profileButton {
 display: flex;
+justify-content: center;
 flex-direction: row;
 height: 100%;
 width: 6em;

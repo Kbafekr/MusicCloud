@@ -13,6 +13,7 @@ import CurrentSongs from "./components/LibraryPage/CurrentSongs";
 import CurrentAlbums from "./components/LibraryPage/CurrentAlbums";
 import AlbumDetails from "./components/Albums/AlbumDetails/OneAlbum";
 import SongPlayer from "./components/AudioPlayer";
+import { SearchPage } from "./components/SearchPage/SearchPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,9 @@ function App() {
 
           <Route exact path="/library">
             <LibraryPage />
+          </Route>
+          <Route exact path="/search/:searchTerm">
+            <SearchPage />
           </Route>
 
           <Route exact path="/songs">

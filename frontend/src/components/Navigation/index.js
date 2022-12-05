@@ -11,6 +11,7 @@ import SongButton from "./SongButton";
 import HomeButton from "./HomeButton";
 import LibraryButton from "./LibraryButton";
 import AlbumButton from "./AlbumButton";
+import { SearchBar } from "./SearchBar";
 
 import "./Navigation.css";
 
@@ -39,6 +40,7 @@ function Navigation({ isLoaded }) {
           <div className="AlbumNavButton">
             <AlbumButton user={sessionUser} />
           </div>
+          <SearchBar />
           {/* search bar */}
         </div>
       </>

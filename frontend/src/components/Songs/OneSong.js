@@ -571,10 +571,7 @@ export default function SongDetails() {
             </div>
             <div className="WaveFormContainerAlbumDetails">
               <div className="WaveFormSubContainer">
-                {/* <img
-                  className="WaveFormImg"
-                  src="https://www.onlygfx.com/wp-content/uploads/2022/03/colorful-sound-wave-equalizer-2.png"
-                /> */}
+              <WaveSurferVisual />
               </div>
             </div>
           </div>
